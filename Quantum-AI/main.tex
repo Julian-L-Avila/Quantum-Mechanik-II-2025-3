@@ -1,0 +1,251 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{braket}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Analysis of a Degenerate Observable in a 4D Hilbert Space}
+\author{Gemini Assistant}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Problem Statement}
+
+We consider a quantum system whose state vectors belong to a Hilbert space of dimension four ($\dim(\mathcal{H})=4$). We are tasked with defining a Complete Set of Commuting Observables (CSCO) for this system. Subsequently, we will construct a diagonal observable, $\mathcal{A}$, that possesses a degenerate spectrum. The primary objective is to perform a complete spectral analysis of $\mathcal{A}$, determining its eigenvalues (\textit{Eigenwerte}) and the corresponding eigenspaces and eigenvectors (\textit{Eigenvektoren}).
+
+\section{System Definition and Hilbert Space}
+
+The canonical physical realization of a four-dimensional Hilbert space is the system of two non-interacting spin-1/2 particles. Each particle is described by a state in a two-dimensional Hilbert space, $\mathcal{H}_i \cong \mathbb{C}^2$. The composite system is thus described by the tensor product space:
+\begin{equation}
+    \mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2
+\end{equation}
+The dimension of $\mathcal{H}$ is $\dim(\mathcal{H}) = 2^2 = 4$, which satisfies the problem's constraint.
+
+We choose as our standard basis the simultaneous eigenbasis of the individual z-spin operators, $S_{1z}$ and $S_{2z}$. This basis, often called the computational basis, consists of four orthonormal vectors:
+\begin{equation}
+    \ket{s_1 s_2} \equiv \ket{s_1}_1 \otimes \ket{s_2}_2 \quad \text{where } s_i \in \{\uparrow, \downarrow\}
+\end{equation}
+The four basis kets are explicitly:
+\begin{align*}
+    \ket{\psi_1} &= \ket{\uparrow\uparrow} \\
+    \ket{\psi_2} &= \ket{\uparrow\downarrow} \\
+    \ket{\psi_3} &= \ket{\downarrow\uparrow} \\
+    \ket{\psi_4} &= \ket{\downarrow\downarrow}
+\end{align*}
+
+\section{Construction of the CSCO}
+
+For this two-particle system, a natural CSCO is the set of the individual z-spin projection operators:
+\begin{equation}
+    \text{CSCO} = \{ S_{1z}, S_{2z} \}
+\end{equation}
+These operators are Hermitian and, because they act on independent subspaces of the tensor product space, they mutually commute: $[S_{1z}, S_{2z}] = 0$. Their set of simultaneous eigenvalues, $(m_1, m_2)$, where $m_i = \pm \hbar/2$, provides a unique label for each of the four basis vectors, thus forming a complete, non-degenerate basis for $\mathcal{H}$.
+
+\section{The Degenerate Observable $\mathcal{A}$}
+
+We define our observable $\mathcal{A}$ as the total spin projection along the z-axis. This is a common and physically significant observable.
+\begin{equation}
+    \mathcal{A} \equiv S_{z}^{\text{total}} = S_{1z} + S_{2z}
+\end{equation}
+Since $\mathcal{A}$ is a sum of operators that are diagonal in the chosen basis, $\mathcal{A}$ is also diagonal in this basis. We will now show that its spectrum is degenerate.
+
+\section{Eigenvalue and Eigenvector Analysis}
+
+We find the spectrum of $\mathcal{A}$ by applying it to each basis vector. The eigenvalue equation is $\mathcal{A}\ket{s_1 s_2} = \lambda \ket{s_1 s_2}$, where $\lambda = m_{s_1} + m_{s_2}$.
+
+\subsection{Eigenvalue $\lambda_1 = +\hbar$}
+This result is obtained from the state where both spins are aligned up.
+\begin{itemize}
+    \item \textbf{Eigenvektor:} $\ket{\uparrow\uparrow}$
+    \item \textbf{Degeneracy $g_1=1$}. The eigenspace $\mathcal{E}_{\hbar}$ is one-dimensional.
+\end{itemize}
+\begin{equation}
+    \mathcal{A}\ket{\uparrow\uparrow} = (S_{1z} + S_{2z})\ket{\uparrow\uparrow} = (\frac{\hbar}{2} + \frac{\hbar}{2})\ket{\uparrow\uparrow} = \hbar\ket{\uparrow\uparrow}
+\end{equation}
+
+\subsection{Eigenvalue $\lambda_2 = 0$}
+This result is obtained from states where the two spins are anti-aligned. This is the degenerate case.
+\begin{itemize}
+    \item \textbf{Eigenvektoren:} $\ket{\uparrow\downarrow}$, $\ket{\downarrow\uparrow}$
+    \item \textbf{Degeneracy $g_2=2$}. The eigenspace $\mathcal{E}_{0}$ is a two-dimensional subspace spanned by these two vectors.
+    \begin{equation}
+        \mathcal{E}_{0} = \text{span}\{\ket{\uparrow\downarrow}, \ket{\downarrow\uparrow}\}
+    \end{equation}
+\end{itemize}
+\begin{align}
+    \mathcal{A}\ket{\uparrow\downarrow} = (S_{1z} + S_{2z})\ket{\uparrow\downarrow} = (\frac{\hbar}{2} - \frac{\hbar}{2})\ket{\uparrow\downarrow} = 0 \\
+    \mathcal{A}\ket{\downarrow\uparrow} = (S_{1z} + S_{2z})\ket{\downarrow\uparrow} = (-\frac{\hbar}{2} + \frac{\hbar}{2})\ket{\downarrow\uparrow} = 0
+\end{align}
+
+\subsection{Eigenvalue $\lambda_3 = -\hbar$}
+This result is obtained from the state where both spins are aligned down.
+\begin{itemize}
+    \item \textbf{Eigenvektor:} $\ket{\downarrow\downarrow}$
+    \item \textbf{Degeneracy $g_3=1$}. The eigenspace $\mathcal{E}_{-\hbar}$ is one-dimensional.
+\end{itemize}
+\begin{equation}
+    \mathcal{A}\ket{\downarrow\downarrow} = (S_{1z} + S_{2z})\ket{\downarrow\downarrow} = (-\frac{\hbar}{2} - \frac{\hbar}{2})\ket{\downarrow\downarrow} = -\hbar\ket{\downarrow\downarrow}
+\end{equation}
+
+\section{Summary and Matrix Representation}
+
+The spectrum of $\mathcal{A}$ is $\text{Spec}(\mathcal{A}) = \{+\hbar, 0, -\hbar\}$. The eigenvalue $\lambda=0$ is two-fold degenerate, while the eigenvalues $\lambda=\pm\hbar$ are non-degenerate. The sum of degeneracies $1+2+1=4$ correctly matches the dimension of the Hilbert space.
+
+In the ordered basis $\{\ket{\uparrow\uparrow}, \ket{\uparrow\downarrow}, \ket{\downarrow\uparrow}, \ket{\downarrow\downarrow}\}$, the matrix representation of $\mathcal{A}$ is a 4x4 diagonal matrix:
+$$
+[\mathcal{A}] = \hbar
+\begin{pmatrix}
+ 1 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & 0 \\
+ 0 & 0 & 0 & -1
+\end{pmatrix}
+$$
+This matrix explicitly demonstrates the degeneracy associated with the eigenvalue 0. Within the degenerate eigenspace $\mathcal{E}_0$, the two vectors $\ket{\uparrow\downarrow}$ and $\ket{\downarrow\uparrow}$ are not distinguished by $\mathcal{A}$. However, they are distinguished by the individual operators $S_{1z}$ and $S_{2z}$ from our CSCO, which lift the degeneracy and provide a complete description of the state.
+
+\section{Transformation of an Initial State}
+
+We now introduce an arbitrary initial state of the system, $\ket{\psi(0)}$, defined in a basis that is different from the eigenbasis of our observable $\mathcal{A} = S_{z}^{\text{total}}$. A standard choice for an alternative basis is the eigenbasis of the spin-x operator, $S_x$.
+
+\subsection{Defining the State in the $S_x$ Basis}
+
+For a single spin-1/2 particle, the eigenvectors of $S_x$ (with eigenvalues $\pm\hbar/2$) are given in terms of the $S_z$ eigenvectors as:
+\begin{align}
+    \ket{+}_x &= \frac{1}{\sqrt{2}} \left( \ket{\uparrow} + \ket{\downarrow} \right) \\
+    \ket{-}_x &= \frac{1}{\sqrt{2}} \left( \ket{\uparrow} - \ket{\downarrow} \right)
+\end{align}
+For our two-particle system, we can form a complete orthonormal basis by taking the tensor products of these states. Let's define our arbitrary initial state $\ket{\psi}$ to be the state where the first particle is spin-up along the x-axis and the second particle is spin-down along the x-axis.
+\begin{equation}
+    \ket{\psi} = \ket{+}_{x,1} \otimes \ket{-}_{x,2} \equiv \ket{+-}_x
+\end{equation}
+This state is, by construction, normalized and defined in a basis other than the eigenbasis of $\mathcal{A}$.
+
+\subsection{Change of Basis to the Eigenbasis of $\mathcal{A}$}
+
+Our goal is to express $\ket{\psi}$ as a linear combination of the eigenvectors of $\mathcal{A}$, which are the vectors of the z-basis $\{\ket{\uparrow\uparrow}, \ket{\uparrow\downarrow}, \ket{\downarrow\uparrow}, \ket{\downarrow\downarrow}\}$. This is achieved by substituting the definitions of the $S_x$ eigenvectors into our expression for $\ket{\psi}$.
+\begin{align}
+    \ket{\psi} &= \left( \frac{1}{\sqrt{2}} (\ket{\uparrow}_1 + \ket{\downarrow}_1) \right) \otimes \left( \frac{1}{\sqrt{2}} (\ket{\uparrow}_2 - \ket{\downarrow}_2) \right) \nonumber \\
+    &= \frac{1}{2} \left( \ket{\uparrow}_1 \otimes (\ket{\uparrow}_2 - \ket{\downarrow}_2) + \ket{\downarrow}_1 \otimes (\ket{\uparrow}_2 - \ket{\downarrow}_2) \right) \nonumber \\
+    &= \frac{1}{2} \left( \ket{\uparrow\uparrow} - \ket{\uparrow\downarrow} + \ket{\downarrow\uparrow} - \ket{\downarrow\downarrow} \right)
+\end{align}
+This is the desired expression of $\ket{\psi}$ in the eigenbasis of $\mathcal{A}$.
+
+\subsection{State Vector Representation in the $\mathcal{A}$-Basis}
+
+The transformation is completed by writing the state as a column vector whose components are the coefficients (or probability amplitudes) of the corresponding basis kets. Using the ordered basis $\{\ket{\uparrow\uparrow}, \ket{\uparrow\downarrow}, \ket{\downarrow\uparrow}, \ket{\downarrow\downarrow}\}$, the state vector representation of $\ket{\psi}$ is:
+\begin{equation}
+    [\psi]_{\mathcal{A}} =
+    \begin{pmatrix}
+        \braket{\uparrow\uparrow | \psi} \\
+        \braket{\uparrow\downarrow | \psi} \\
+        \braket{\downarrow\uparrow | \psi} \\
+        \braket{\downarrow\downarrow | \psi}
+    \end{pmatrix}
+    =
+    \frac{1}{2}
+    \begin{pmatrix}
+         1 \\
+        -1 \\
+         1 \\
+        -1
+    \end{pmatrix}
+\end{equation}
+We can verify that the state is normalized by calculating the sum of the squared moduli of the amplitudes:
+\begin{equation}
+    \braket{\psi|\psi} = \left(\frac{1}{2}\right)^2 \left( |1|^2 + |-1|^2 + |1|^2 + |-1|^2 \right) = \frac{1}{4}(1+1+1+1) = 1
+\end{equation}
+Thus, we have successfully transformed the arbitrarily chosen initial state $\ket{\psi}$ into the eigenbasis of the observable $\mathcal{A}$.
+
+\section{State Analysis and Projection onto the Degenerate Subspace}
+
+We now perform a deeper analysis of the state $\ket{\psi}$ with respect to the observable $\mathcal{A}$. This involves calculating the action of $\mathcal{A}$ on the state, and then focusing on the degenerate eigenspace $\mathcal{E}_0$ to determine measurement probabilities.
+
+\subsection{Action of the Operator $\mathcal{A}$ on $\ket{\psi}$}
+
+We apply the observable $\mathcal{A} = S_z^{\text{total}}$ to our state $\ket{\psi}$. Using the linear nature of the operator and the fact that the basis kets are its eigenvectors, we have:
+\begin{align}
+    \mathcal{A}\ket{\psi} &= \mathcal{A} \left( \frac{1}{2} (\ket{\uparrow\uparrow} - \ket{\uparrow\downarrow} + \ket{\downarrow\uparrow} - \ket{\downarrow\downarrow}) \right) \nonumber \\
+    &= \frac{1}{2} \left( \mathcal{A}\ket{\uparrow\uparrow} - \mathcal{A}\ket{\uparrow\downarrow} + \mathcal{A}\ket{\downarrow\uparrow} - \mathcal{A}\ket{\downarrow\downarrow} \right) \nonumber \\
+    &= \frac{1}{2} \left( (\hbar)\ket{\uparrow\uparrow} - (0)\ket{\uparrow\downarrow} + (0)\ket{\downarrow\uparrow} - (-\hbar)\ket{\downarrow\downarrow} \right) \nonumber \\
+    &= \frac{\hbar}{2} \left( \ket{\uparrow\uparrow} + \ket{\downarrow\downarrow} \right)
+\end{align}
+This resulting state is the state $\ket{\psi}$ after the action of the operator $\mathcal{A}$. As expected, the components in the degenerate subspace with eigenvalue 0 have been annihilated.
+
+\subsection{A Non-Orthogonal Basis for the Degenerate Subspace}
+
+The degenerate subspace is the eigenspace $\mathcal{E}_0$ corresponding to the eigenvalue $\lambda=0$, which is spanned by the orthogonal vectors $\{\ket{\uparrow\downarrow}, \ket{\downarrow\uparrow}\}$. To fulfill the request, we must construct a basis for this subspace from vectors that are linearly independent but \textbf{not orthogonal}.
+
+Let the original orthonormal basis vectors be $\ket{v_1} = \ket{\uparrow\downarrow}$ and $\ket{v_2} = \ket{\downarrow\uparrow}$. We can construct a new basis $\{\ket{u_1}, \ket{u_2}\}$ via a simple linear transformation:
+\begin{align}
+    \ket{u_1} &= \ket{v_1} = \ket{\uparrow\downarrow} \\
+    \ket{u_2} &= \ket{v_1} + \ket{v_2} = \ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}
+\end{align}
+These vectors are linearly independent, as one is not a scalar multiple of the other. We check for orthogonality by computing their inner product:
+\begin{equation}
+    \braket{u_1 | u_2} = \braket{\uparrow\downarrow | (\uparrow\downarrow + \downarrow\uparrow)} = \braket{\uparrow\downarrow | \uparrow\downarrow} + \braket{\uparrow\downarrow | \downarrow\uparrow} = 1 + 0 = 1
+\end{equation}
+Since $\braket{u_1 | u_2} \neq 0$, the vectors $\{\ket{u_1}, \ket{u_2}\}$ form a linearly independent, non-orthogonal basis for the degenerate subspace $\mathcal{E}_0$.
+
+\subsection{Orthonormalization via Gram-Schmidt Process}
+
+We now apply the Gram-Schmidt process to our non-orthogonal basis $\{\ket{u_1}, \ket{u_2}\}$ to recover an orthonormal basis $\{\ket{w_1}, \ket{w_2}\}$.
+\begin{enumerate}
+    \item \textbf{First vector:} We normalize $\ket{u_1}$.
+    \begin{equation}
+        \ket{w_1} = \frac{\ket{u_1}}{\sqrt{\braket{u_1|u_1}}} = \frac{\ket{\uparrow\downarrow}}{\sqrt{1}} = \ket{\uparrow\downarrow}
+    \end{equation}
+
+    \item \textbf{Second vector:} We project $\ket{u_2}$ onto $\ket{w_1}$ and subtract this projection from $\ket{u_2}$ to find an orthogonal vector $\ket{\tilde{w}_2}$.
+    \begin{align}
+        \ket{\tilde{w}_2} &= \ket{u_2} - \ket{w_1}\braket{w_1|u_2} \nonumber \\
+        &= (\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}) - \ket{\uparrow\downarrow}\braket{\uparrow\downarrow|(\uparrow\downarrow + \downarrow\uparrow)} \nonumber \\
+        &= (\ket{\uparrow\downarrow} + \ket{\downarrow\uparrow}) - \ket{\uparrow\downarrow}(1) = \ket{\downarrow\uparrow}
+    \end{align}
+
+    \item \textbf{Normalize the second vector:}
+    \begin{equation}
+        \ket{w_2} = \frac{\ket{\tilde{w}_2}}{\sqrt{\braket{\tilde{w}_2|\tilde{w}_2}}} = \frac{\ket{\downarrow\uparrow}}{\sqrt{1}} = \ket{\downarrow\uparrow}
+    \end{equation}
+\end{enumerate}
+The process correctly yields the original orthonormal basis for the subspace $\mathcal{E}_0$, which is $\{\ket{w_1}, \ket{w_2}\} = \{\ket{\uparrow\downarrow}, \ket{\downarrow\uparrow}\}$.
+
+\subsection{Projection onto the Degenerate Subspace}
+
+The projection operator $P_0$ onto the eigenspace $\mathcal{E}_0$ is constructed from its orthonormal basis:
+\begin{equation}
+    P_0 = \sum_{i=1}^{2} \ket{w_i}\bra{w_i} = \ket{\uparrow\downarrow}\bra{\uparrow\downarrow} + \ket{\downarrow\uparrow}\bra{\downarrow\uparrow}
+\end{equation}
+We now apply this projector to our state $\ket{\psi}$ to find the component of the state that lies within this subspace.
+\begin{equation}
+    \begin{aligned}
+    P_0 \ket{\psi} &= (\ket{\uparrow\downarrow}\bra{\uparrow\downarrow} + \ket{\downarrow\uparrow}\bra{\downarrow\uparrow}) \left[ \frac{1}{2} (\ket{\uparrow\uparrow} - \ket{\uparrow\downarrow} + \ket{\downarrow\uparrow} - \ket{\downarrow\downarrow}) \right] \nonumber \\
+    &= \frac{1}{2} \left( \ket{\uparrow\downarrow}\braket{\uparrow\downarrow|\uparrow\uparrow} - \ket{\uparrow\downarrow}\braket{\uparrow\downarrow|\uparrow\downarrow} + \dots \right) \nonumber \\
+    &= \frac{1}{2} \left( \ket{\uparrow\downarrow}(0) - \ket{\uparrow\downarrow}(1) + \ket{\downarrow\uparrow}(1) - \ket{\downarrow\uparrow}(0) \right) \nonumber \\
+    &= \frac{1}{2} \left( \ket{\downarrow\uparrow} - \ket{\uparrow\downarrow} \right)
+    \end{aligned}
+\end{equation}
+This is the projection of $\ket{\psi}$ onto the degenerate subspace $\mathcal{E}_0$.
+
+
+\subsection{Probabilities of Degenerate Eigenvalues}
+
+The probability of measuring an eigenvalue $\lambda_i$ upon measurement of the observable $\mathcal{A}$ on a system in state $\ket{\psi}$ is given by the squared norm of the projection of $\ket{\psi}$ onto the corresponding eigenspace $\mathcal{E}_i$.
+\begin{equation}
+    \text{Prob}(\lambda_i) = \| P_i \ket{\psi} \|^2 = \braket{\psi|P_i^{\dagger}P_i|\psi} = \braket{\psi|P_i|\psi}
+\end{equation}
+The only degenerate eigenvalue is $\lambda_2 = 0$. The probability of measuring this value is:
+\begin{align}
+    \text{Prob}(\lambda=0) &= \| P_0 \ket{\psi} \|^2 = \left\| \frac{1}{2}(\ket{\downarrow\uparrow} - \ket{\uparrow\downarrow}) \right\|^2 \nonumber \\
+    &= \left(\frac{1}{2}\right)^2 \braket{(\downarrow\uparrow - \uparrow\downarrow)|(\downarrow\uparrow - \uparrow\downarrow)} \nonumber \\
+    &= \frac{1}{4} \left( \braket{\downarrow\uparrow|\downarrow\uparrow} - \braket{\downarrow\uparrow|\uparrow\downarrow} - \braket{\uparrow\downarrow|\downarrow\uparrow} + \braket{\uparrow\downarrow|\uparrow\downarrow} \right) \nonumber \\
+    &= \frac{1}{4} (1 - 0 - 0 + 1) = \frac{2}{4} = \frac{1}{2}
+\end{align}
+Therefore, the probability of measuring the energy eigenvalue $\lambda = 0$ is exactly $1/2$ or $50\%$.
+\end{document}
