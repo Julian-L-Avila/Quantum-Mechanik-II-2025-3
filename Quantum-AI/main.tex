@@ -1,0 +1,731 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools}
+\usepackage{graphicx}
+\usepackage{physics}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+\title{Systematic Construction of a Complete Set of Commuting Observables on a
+4D Hilbert Space}
+\author{Julian Avila \and Laura Herrera \and Sebastian Rodriguez \\ \and
+\textit{(Assistance by Gemini)}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  This document elucidates a rigorous framework for constructing a Complete Set of
+  Commuting Observables (CSCO) for a quantum system defined on a four-dimensional
+  Hilbert space, $\mathcal{H}$. Commencing with a self-adjoint operator $A$
+  possessing a degenerate spectrum, we methodically introduce subsequent commuting
+  observables, $B$ and $C$, to resolve all degeneracies. The analysis leverages
+  the principles of spectral theory and invariant subspaces. We provide a detailed
+  treatment of the measurement process, including the derivation of state
+  transition probabilities and the resulting state vector collapse. A central
+  feature of this work is the explicit algebraic and geometric construction of the
+  orthogonal projection operators associated with the eigenspaces of each
+  observable, culminating in the projectors onto the unique simultaneous
+  eigenbasis of the CSCO. This version includes a dedicated section with explicit
+  probability calculations for a sequential measurement on a general state vector
+  and a discussion of the Gram-Schmidt orthonormalization procedure.
+\end{abstract}
+
+\section{Problem Statement and First Observable \texorpdfstring{$A$}{A}}
+
+We consider a quantum system whose states are represented by vectors in a
+complex Hilbert space $\mathcal{H}$. The observables of the system are
+self-adjoint operators acting on $\mathcal{H}$. Our objective is to construct a
+CSCO, which is a set of mutually commuting observables $\{O_1, O_2, \dots,
+O_k\}$ whose common eigenspaces are all one-dimensional. The set of eigenvalues
+$(\lambda_1, \lambda_2, \dots, \lambda_k)$ for a given simultaneous eigenvector
+then provides a unique label for that state.
+
+\subsection{Construction of the Primary Observable \texorpdfstring{$A$}{A}}
+We begin by defining a primary observable $A \in \mathcal{B}(\mathcal{H})$ (the
+algebra of bounded linear operators on $\mathcal{H}$) with the following
+properties:
+\begin{itemize}
+  \item $A = A^\dagger$ (A is self-adjoint).
+  \item The spectrum of $A$, denoted $\sigma(A)$, consists of exactly two
+    distinct real eigenvalues: $\sigma(A) = \{\alpha, \beta\}$, with $\alpha
+    \neq \beta$.
+  \item The eigenspace corresponding to $\alpha$, denoted $V_\alpha = \ker(A -
+    \alpha I)$, is three-dimensional: $\dim(V_\alpha) = 3$.
+  \item The Hilbert space $\mathcal{H}$ has the minimal dimension consistent
+    with these constraints, not to exceed 4.
+\end{itemize}
+According to the spectral theorem for self-adjoint operators on a
+finite-dimensional Hilbert space, $\mathcal{H}$ admits an orthogonal direct sum
+decomposition into the eigenspaces of $A$: $\mathcal{H} = V_\alpha \oplus
+V_\beta$. This implies $\dim(\mathcal{H}) = \dim(V_\alpha) + \dim(V_\beta)$.
+Given $\dim(V_\alpha)=3$ and the necessary condition $\dim(V_\beta) \ge 1$, the
+minimality constraint forces $\dim(V_\beta)=1$ and thus $\dim(\mathcal{H})=4$.
+Our space is isomorphic to $\mathbb{C}^4$.
+
+Let $\{\ket{j}\}_{j=1}^4$ be an orthonormal basis for $\mathcal{H}$, which we
+will refer to as the computational basis. To construct $A$ in its simplest form,
+we choose this basis to be an eigenbasis of $A$. We assign the basis vectors to
+the eigenspaces as follows:
+$$ V_\alpha = \text{span}\{\ket{1}, \ket{2}, \ket{3}\} \quad \text{and} \quad
+V_\beta = \text{span}\{\ket{4}\} $$
+In this basis, the operator $A$ has the diagonal matrix representation:
+$$
+A \mapsto \mathbf{A} = \text{diag}(\alpha, \alpha, \alpha, \beta) =
+\begin{pmatrix}
+  \alpha & 0 & 0 & 0 \\
+  0 & \alpha & 0 & 0 \\
+  0 & 0 & \alpha & 0 \\
+  0 & 0 & 0 & \beta
+\end{pmatrix}
+$$
+The 3-fold degeneracy of the eigenvalue $\alpha$ signifies that a measurement of
+$A$ alone cannot uniquely determine the state of the system if the outcome is
+$\alpha$.
+
+\subsection{Orthonormalization of Degenerate Eigenspaces}
+An essential property of self-adjoint operators is that eigenvectors
+corresponding to distinct eigenvalues are automatically orthogonal. However,
+within a degenerate eigenspace, such as our 3D space $V_\alpha$, any linear
+combination of eigenvectors is also an eigenvector for the same eigenvalue. When
+solving the eigenvalue problem for a given operator, one typically first finds a
+set of linearly independent eigenvectors spanning the degenerate eigenspace;
+this set is not guaranteed to be orthogonal.
+
+To construct the orthonormal basis required by the postulates of quantum
+mechanics, one must apply an orthonormalization procedure, most commonly the
+\textbf{Gram-Schmidt process}. Given a set of linearly independent eigenvectors
+$\{\ket{u_1}, \ket{u_2}, \dots, \ket{u_k}\}$ for a $k$-dimensional eigenspace,
+the algorithm constructs an orthonormal basis $\{\ket{e_1}, \ket{e_2}, \dots,
+\ket{e_k}\}$ as follows:
+\begin{enumerate}
+  \item Normalize the first vector: $\ket{e_1} =
+    \frac{\ket{u_1}}{\norm{\ket{u_1}}}$.
+  \item For the second vector, subtract its component parallel to $\ket{e_1}$
+    and then normalize the resulting orthogonal vector:
+    $$ \ket{v_2} = \ket{u_2} - \braket{e_1}{u_2}\ket{e_1}; \quad \ket{e_2} =
+    \frac{\ket{v_2}}{\norm{\ket{v_2}}} $$
+  \item This process is iterated. For the $j$-th vector:
+    $$ \ket{v_j} = \ket{u_j} - \sum_{i=1}^{j-1} \braket{e_i}{u_j}\ket{e_i};
+    \quad \ket{e_j} = \frac{\ket{v_j}}{\norm{\ket{v_j}}} $$
+\end{enumerate}
+In the context of this document, we employ a ``top-down'' construction. We begin
+by \textit{postulating} an orthonormal basis for the Hilbert space (the
+computational basis $\{\ket{j}\}$) and then define the operators $A$, $B$, and
+$C$ in terms of their desired properties with respect to this basis and its
+successors. For instance, we started by asserting that $V_\alpha$ is spanned by
+the mutually orthogonal vectors $\{\ket{1}, \ket{2}, \ket{3}\}$. This
+constructive approach bypasses the need to explicitly perform the Gram-Schmidt
+process, as orthonormality is imposed by definition from the outset.
+
+\section{Measurement of Observable \texorpdfstring{$A$}{A}}
+
+We now formalize the measurement process for a system prepared in an arbitrary
+state $\ket{\psi} \in \mathcal{H}$.
+
+\subsection{Projection Operators for \texorpdfstring{$A$}{A}}
+The postulates of quantum mechanics state that the probability of measuring an
+eigenvalue $\lambda$ is determined by the orthogonal projector onto the
+corresponding eigenspace $V_\lambda$.
+
+\paragraph{Geometric Construction.} The projectors $P_\alpha$ and $P_\beta$ onto
+$V_\alpha$ and $V_\beta$ are constructed from the basis vectors spanning these
+subspaces:
+$$ P_\alpha = \sum_{j=1}^{3} \dyad{j}{j} \quad \text{and} \quad P_\beta =
+\dyad{4}{4} $$
+In the computational basis, their matrix representations are:
+$$
+\mathbf{P}_\alpha = \text{diag}(1,1,1,0), \quad
+\mathbf{P}_\beta = \text{diag}(0,0,0,1)
+$$
+These operators are self-adjoint ($P_\lambda = P_\lambda^\dagger$) and
+idempotent ($P_\lambda^2 = P_\lambda$), and they form a resolution of identity,
+$P_\alpha + P_\beta = I$, as expected.
+
+\paragraph{Algebraic Construction (Functional Calculus).}
+A more powerful method for finding projectors arises from the functional
+calculus of operators. The minimal polynomial of $A$ is $m_A(\lambda) =
+(\lambda-\alpha)(\lambda-\beta)$. The projectors can be expressed as polynomials
+in $A$:
+\begin{align*}
+  P_\alpha = \frac{A - \beta I}{\alpha - \beta} \quad \text{and} \quad P_\beta =
+  \frac{A - \alpha I}{\beta - \alpha}
+\end{align*}
+This algebraic formulation is demonstrably equivalent to the geometric one and
+will be used extensively.
+
+\subsection{Probabilities and State Collapse}
+Let the system be in a normalized state $\ket{\psi} \in \mathcal{H}$. The
+probability of measuring eigenvalue $\lambda \in \sigma(A)$ is given by Born's
+rule:
+$$ \mathcal{P}(\lambda) = \norm{P_\lambda \ket{\psi}}^2 = \bra{\psi} P_\lambda
+\ket{\psi} $$
+If the measurement yields $\lambda$, the state of the system collapses to the
+normalized projection onto the corresponding eigenspace:
+$$ \ket{\psi} \xrightarrow{\text{measure } A \to \lambda} \ket{\psi'}_\lambda =
+\frac{P_\lambda \ket{\psi}}{\norm{P_\lambda \ket{\psi}}} $$
+
+\section{Second Observable \texorpdfstring{$B$}{B}: Resolving Degeneracy}
+
+To resolve the degeneracy in $V_\alpha$, we introduce a second observable $B$
+that commutes with $A$, i.e., $[A, B] = 0$. This condition implies that $B$
+leaves the eigenspaces of $A$ invariant, making its matrix representation
+block-diagonal in the eigenbasis of $A$.
+
+\subsection{Construction from Invariant Subspaces}
+We design $B$ to have eigenvalues $\gamma$ (2-fold degenerate) and $\delta$
+(non-degenerate) on $V_\alpha$. We choose an orthonormal basis for $V_\alpha$
+that is not aligned with the computational basis:
+$$ \ket{b_1} = \ket{3}, \quad \ket{b_2} = \frac{1}{\sqrt{2}}(\ket{1}+\ket{2}),
+\quad \ket{b_3} = \frac{1}{\sqrt{2}}(\ket{1}-\ket{2}) $$
+We define the action of $B$ on this basis: $B\ket{b_1}=\gamma\ket{b_1}$,
+$B\ket{b_2}=\gamma\ket{b_2}$, and $B\ket{b_3}=\delta\ket{b_3}$. We also set
+$B\ket{4}=\delta\ket{4}$. The matrix representation of $B$ in the computational
+basis is:
+$$
+\mathbf{B} = \begin{pmatrix}
+  \frac{\gamma+\delta}{2} & \frac{\gamma-\delta}{2} & 0 & 0 \\
+  \frac{\gamma-\delta}{2} & \frac{\gamma+\delta}{2} & 0 & 0 \\
+  0 & 0 & \gamma & 0 \\
+  0 & 0 & 0 & \delta
+\end{pmatrix}
+$$
+The projectors for $B$ are $P_\gamma = \dyad{b_1}{b_1}+\dyad{b_2}{b_2}$ and
+$P_\delta = \dyad{b_3}{b_3}+\dyad{4}{4}$.
+
+\section{Third Observable \texorpdfstring{$C$}{C}: Completing the Set}
+A degeneracy remains in the simultaneous eigenspace $V_{\alpha, \gamma} =
+\text{span}\{\ket{b_1}, \ket{b_2}\}$. We introduce a third observable $C$
+commuting with both $A$ and $B$.
+
+\subsection{Construction and Constraints}
+To resolve the final degeneracy, we define $C$ to have distinct eigenvalues on
+$\ket{b_1}$ and $\ket{b_2}$:
+$$ C\ket{b_1} = \kappa\ket{b_1} \quad \text{and} \quad C\ket{b_2} =
+\zeta\ket{b_2} \quad (\kappa \neq \zeta) $$
+To ensure neither $\{A,C\}$ nor $\{B,C\}$ are CSCOs, we strategically set
+$C\ket{b_3}=\kappa\ket{b_3}$ and $C\ket{4}=\kappa\ket{4}$. The resulting matrix
+in the computational basis is:
+$$
+\mathbf{C} = \begin{pmatrix}
+  \frac{\zeta+\kappa}{2} & \frac{\zeta-\kappa}{2} & 0 & 0 \\
+  \frac{\zeta-\kappa}{2} & \frac{\zeta+\kappa}{2} & 0 & 0 \\
+  0 & 0 & \kappa & 0 \\
+  0 & 0 & 0 & \kappa
+\end{pmatrix}
+$$
+The projectors for $C$ are $P_\kappa =
+\dyad{b_1}{b_1}+\dyad{b_3}{b_3}+\dyad{4}{4}$ and $P_\zeta = \dyad{b_2}{b_2}$.
+
+\section{Explicit Probability Calculation for a General State}
+
+We now provide a concrete example of the measurement process. It is crucial to
+note that measurement probabilities are calculated using \textbf{projection
+operators}, not by applying the observables themselves to the state vector. The
+probability of obtaining a sequence of outcomes $(\lambda_A, \lambda_B, \dots)$
+is found by successively projecting the state onto the corresponding
+eigenspaces.
+
+\subsection{Initial State Preparation}
+Let's prepare the system in a general normalized state $\ket{\psi}$ expressed in
+a basis that is different from the computational basis, for instance the
+$V$-basis:
+\begin{align*}
+  \ket{v_1} &= \frac{1}{\sqrt{2}}(\ket{1} + \ket{2}) & \ket{v_3} &=
+  \frac{1}{\sqrt{2}}(\ket{3} + \ket{4}) \\
+  \ket{v_2} &= \frac{1}{\sqrt{2}}(\ket{1} - \ket{2}) & \ket{v_4} &=
+  \frac{1}{\sqrt{2}}(\ket{3} - \ket{4})
+\end{align*}
+The general state is $\ket{\psi} = \sum_{i=1}^{4} c_i \ket{v_i}$, with
+$\sum_{i=1}^{4} |c_i|^2 = 1$.
+
+\subsection{Change to the Computational (A-eigen) Basis}
+To analyze the measurement of $A$, we express $\ket{\psi}$ in the computational
+basis:
+$$
+\ket{\psi} = \frac{1}{\sqrt{2}} \big[ (c_1+c_2)\ket{1} + (c_1-c_2)\ket{2} +
+(c_3+c_4)\ket{3} + (c_3-c_4)\ket{4} \big]
+$$
+
+\subsection{Measurement Probabilities}
+We calculate the joint probability $\mathcal{P}(\lambda_A, \lambda_B, \lambda_C)
+= \norm{P_{\lambda_C} P_{\lambda_B} P_{\lambda_A} \ket{\psi}}^2$.
+
+\paragraph{1. Probabilities for Measurement of $A$.}
+The probability of measuring $\alpha$ is $\mathcal{P}(\alpha) = \norm{P_\alpha
+\ket{\psi}}^2$. The projected (unnormalized) state is:
+$$ P_\alpha \ket{\psi} = \frac{1}{\sqrt{2}} \big[ (c_1+c_2)\ket{1} +
+(c_1-c_2)\ket{2} + (c_3+c_4)\ket{3} \big] $$
+The probability is the squared norm of this vector:
+\begin{align*}
+  \mathcal{P}(\alpha) &= \frac{1}{2} \left( |c_1+c_2|^2 + |c_1-c_2|^2 +
+  |c_3+c_4|^2 \right) \\
+                      &= \frac{1}{2} \left( 2|c_1|^2 + 2|c_2|^2 + |c_3+c_4|^2
+                      \right) = |c_1|^2 + |c_2|^2 + \frac{1}{2}|c_3+c_4|^2
+  \end{align*}
+  Similarly, for eigenvalue $\beta$, the projected state is $P_\beta \ket{\psi} =
+  \frac{1}{\sqrt{2}}(c_3-c_4)\ket{4}$, so:
+  $$ \mathcal{P}(\beta) = \norm{P_\beta \ket{\psi}}^2 = \frac{1}{2}|c_3-c_4|^2 $$
+  As required, $\mathcal{P}(\alpha) + \mathcal{P}(\beta) =
+  |c_1|^2+|c_2|^2+|c_3|^2+|c_4|^2 = 1$.
+
+  \paragraph{2. Joint Probabilities for $A$ and $B$.}
+  We now calculate the probability of measuring an eigenvalue of $B$ subsequent to
+  measuring an eigenvalue of $A$.
+  \begin{itemize}
+    \item \textbf{Outcome $(\alpha, \gamma)$}: We project $P_\alpha \ket{\psi}$
+      with $P_\gamma$.
+      $$ P_\gamma P_\alpha \ket{\psi} = P_\gamma \left( \frac{1}{\sqrt{2}} \big[
+      (c_1+c_2)\ket{1} + (c_1-c_2)\ket{2} + (c_3+c_4)\ket{3} \big] \right) $$
+      Using $P_\gamma = \dyad{b_1}{b_1}+\dyad{b_2}{b_2} = \dyad{3}{3} +
+      \frac{1}{2}(\dyad{1}{1}+\dyad{1}{2}+\dyad{2}{1}+\dyad{2}{2})$, we find:
+      $$ P_\gamma P_\alpha \ket{\psi} = \frac{1}{\sqrt{2}} \big[
+      c_1(\ket{1}+\ket{2}) + (c_3+c_4)\ket{3} \big] $$
+      The joint probability is $\mathcal{P}(\alpha, \gamma) = \norm{P_\gamma
+        P_\alpha \ket{\psi}}^2 = \frac{1}{2}\left( |c_1|^2 \norm{\ket{1}+\ket{2}}^2
+      + |c_3+c_4|^2 \right) = |c_1|^2 + \frac{1}{2}|c_3+c_4|^2$.
+
+    \item \textbf{Outcome $(\alpha, \delta)$}: We project $P_\alpha \ket{\psi}$
+      with $P_\delta$. Using $P_\delta = I - P_\gamma$, we get:
+      $$ P_\delta P_\alpha \ket{\psi} = P_\alpha \ket{\psi} - P_\gamma P_\alpha
+      \ket{\psi} = \frac{1}{\sqrt{2}} c_2(\ket{1}-\ket{2}) $$
+      The joint probability is $\mathcal{P}(\alpha, \delta) = \norm{P_\delta
+      P_\alpha \ket{\psi}}^2 = \frac{|c_2|^2}{2}\norm{\ket{1}-\ket{2}}^2 =
+      |c_2|^2$.
+
+    \item \textbf{Outcome $(\beta, \delta)$}: After measuring $A=\beta$, the state
+      is in the span of $\ket{4}$. Since $B\ket{4}=\delta\ket{4}$, a measurement
+      of $B$ must yield $\delta$. Thus, $\mathcal{P}(\beta, \gamma)=0$ and
+      $\mathcal{P}(\beta, \delta) = \mathcal{P}(\beta) = \frac{1}{2}|c_3-c_4|^2$.
+  \end{itemize}
+
+  \paragraph{3. Joint Probabilities for the Full CSCO.}
+  Finally, we project the results from the A and B measurements with the
+  projectors of C.
+  \begin{itemize}
+    \item \textbf{Outcome $(\alpha, \gamma, \zeta)$}: We project the state
+      $P_\gamma P_\alpha \ket{\psi}$ with $P_\zeta = \dyad{b_2}{b_2}$.
+      $$ P_\zeta P_\gamma P_\alpha \ket{\psi} = P_\zeta \left( \frac{1}{\sqrt{2}}
+      \big[ c_1(\ket{1}+\ket{2}) + (c_3+c_4)\ket{3} \big] \right) = c_1
+      \frac{\ket{1}+\ket{2}}{\sqrt{2}} = c_1 \ket{b_2} $$
+      The joint probability is $\mathcal{P}(\alpha, \gamma, \zeta) = \norm{c_1
+      \ket{b_2}}^2 = |c_1|^2$.
+
+    \item \textbf{Outcome $(\alpha, \gamma, \kappa)$}: We project with $P_\kappa =
+      I - P_\zeta$.
+      $$ P_\kappa P_\gamma P_\alpha \ket{\psi} = (P_\gamma P_\alpha \ket{\psi}) -
+      (P_\zeta P_\gamma P_\alpha \ket{\psi}) = \frac{c_3+c_4}{\sqrt{2}}\ket{3} $$
+      The joint probability is $\mathcal{P}(\alpha, \gamma, \kappa) =
+      \norm{\frac{c_3+c_4}{\sqrt{2}}\ket{3}}^2 = \frac{1}{2}|c_3+c_4|^2$.
+
+    \item \textbf{Outcome $(\alpha, \delta, \kappa)$}: After measuring
+      $(A,B)=(\alpha,\delta)$, the state is proportional to $\ket{1}-\ket{2}$,
+      which is $\sqrt{2}\ket{b_3}$. Since $C\ket{b_3}=\kappa\ket{b_3}$, the
+      outcome must be $\kappa$. Thus, $\mathcal{P}(\alpha, \delta, \zeta)=0$ and
+      $\mathcal{P}(\alpha, \delta, \kappa) = \mathcal{P}(\alpha, \delta) =
+      |c_2|^2$.
+
+    \item \textbf{Outcome $(\beta, \delta, \kappa)$}: After measuring
+      $(A,B)=(\beta,\delta)$, the state is $\ket{4}$. Since
+      $C\ket{4}=\kappa\ket{4}$, the outcome must be $\kappa$. Thus,
+      $\mathcal{P}(\beta, \delta, \zeta)=0$ and $\mathcal{P}(\beta, \delta,
+      \kappa) = \mathcal{P}(\beta, \delta) = \frac{1}{2}|c_3-c_4|^2$.
+  \end{itemize}
+
+  \subsection{Summary of Results}
+  The four possible unique outcomes of the CSCO measurement have the following
+  joint probabilities:
+  \begin{itemize}
+    \item $\mathcal{P}(\alpha, \gamma, \zeta) = |c_1|^2$  (State collapses to
+      $\ket{\psi_2}$)
+    \item $\mathcal{P}(\alpha, \gamma, \kappa) = \frac{1}{2}|c_3+c_4|^2$ (State
+      collapses to $\ket{\psi_1}$)
+    \item $\mathcal{P}(\alpha, \delta, \kappa) = |c_2|^2$ (State collapses to
+      $\ket{\psi_3}$)
+    \item $\mathcal{P}(\beta, \delta, \kappa) = \frac{1}{2}|c_3-c_4|^2$ (State
+      collapses to $\ket{\psi_4}$)
+  \end{itemize}
+  The sum of these probabilities is $|c_1|^2 + |c_2|^2 +
+  \frac{1}{2}(|c_3+c_4|^2+|c_3-c_4|^2) = |c_1|^2+|c_2|^2+|c_3|^2+|c_4|^2 = 1$,
+  confirming the consistency of the calculation.
+
+  \section{Sequential Measurement and CSCO Summary}
+
+  A sequential measurement of $A$, then $B$, then $C$ will uniquely determine the
+  final state of the system. Suppose the system starts in a normalized state
+  $\ket{\psi}$.
+  \begin{enumerate}
+    \item \textbf{Measure $A$}: The probability of obtaining $\alpha$ is
+      $\mathcal{P}(\alpha) = \norm{P_\alpha\ket{\psi}}^2$. The state collapses to
+      $\ket{\psi'}_\alpha = P_\alpha\ket{\psi} / \sqrt{\mathcal{P}(\alpha)}$.
+    \item \textbf{Measure $B$ on $\ket{\psi'}_\alpha$}: The conditional
+      probability of obtaining $\gamma$ given $\alpha$ is
+      $$ \mathcal{P}(\gamma|\alpha) =
+      \frac{\mathcal{P}(\alpha,\gamma)}{\mathcal{P}(\alpha)} =
+      \frac{\norm{P_\gamma P_\alpha \ket{\psi}}^2}{\norm{P_\alpha \ket{\psi}}^2}
+      $$
+      The state then collapses to $\ket{\psi''}_{\alpha,\gamma} = P_\gamma
+      \ket{\psi'}_\alpha / \sqrt{\mathcal{P}(\gamma|\alpha)}$.
+    \item \textbf{Measure $C$ on $\ket{\psi''}_{\alpha,\gamma}$}: The conditional
+      probability of obtaining $\kappa$ given $(\alpha,\gamma)$ is
+      $$ \mathcal{P}(\kappa|\alpha,\gamma) = \frac{\mathcal{P}(\alpha,\gamma,
+      \kappa)}{\mathcal{P}(\alpha,\gamma)} = \frac{\norm{P_\kappa P_\gamma
+      P_\alpha \ket{\psi}}^2}{\norm{P_\gamma P_\alpha \ket{\psi}}^2} $$
+      The state collapses to the final, unique state
+      $\ket{\psi'''}_{\alpha,\gamma,\kappa}$.
+  \end{enumerate}
+
+  \subsection{The Simultaneous Eigenbasis}
+  The set $\{A, B, C\}$ forms a CSCO. Their simultaneous eigenbasis, which we
+  denote $\{\ket{\psi_i}\}_{i=1}^4$, consists of the vectors that are uniquely
+  specified by a triplet of eigenvalues $(\lambda_A, \lambda_B, \lambda_C)$. This
+  basis is precisely $\{\ket{b_1}, \ket{b_2}, \ket{b_3}, \ket{4}\}$.
+
+  \begin{table}[ht!]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{c | c c c}
+      \hline\hline
+      \textbf{Simultaneous Eigenvector} & \textbf{Eigenvalue of $A$} &
+      \textbf{Eigenvalue of $B$} & \textbf{Eigenvalue of $C$} \\
+      \hline
+      $\ket{\psi_1} = \ket{b_1} = \ket{3}$ & $\alpha$ & $\gamma$ & $\kappa$ \\
+      $\ket{\psi_2} = \ket{b_2} = \frac{1}{\sqrt{2}}(\ket{1}+\ket{2})$ & $\alpha$ & $\gamma$ & $\zeta$ \\
+      $\ket{\psi_3} = \ket{b_3} = \frac{1}{\sqrt{2}}(\ket{1}-\ket{2})$ & $\alpha$ & $\delta$ & $\kappa$ \\
+      $\ket{\psi_4} = \ket{4}$ & $\beta$ & $\delta$ & $\kappa$ \\
+      \hline\hline
+    \end{tabular}
+    \caption{The simultaneous eigenbasis of the CSCO $\{A, B, C\}$. Each row
+      corresponds to a unique state vector identified by a distinct triplet of
+      eigenvalues. The set is complete provided $\alpha \neq \beta$, $\gamma \neq
+    \delta$, and $\kappa \neq \zeta$.}
+    \label{tab:csco_summary}
+  \end{table}
+
+  \subsection{Projectors onto the CSCO Basis}
+  The most fundamental projectors are those onto the one-dimensional subspaces
+  spanned by the simultaneous eigenvectors. These can be constructed by
+  multiplying the projectors for the corresponding eigenvalues. For instance, the
+  projector onto the state $\ket{\psi_1}$, specified by the eigenvalues $(\alpha,
+  \gamma, \kappa)$, is:
+  $$ P_{\psi_1} = P_{\alpha,\gamma,\kappa} = P_\alpha P_\gamma P_\kappa =
+  \dyad{\psi_1}{\psi_1}$$
+  Since the operators commute, their projectors also commute, so the order of
+  multiplication is irrelevant. The measurement of the CSCO is thus equivalent to
+  projecting the initial state vector onto this unique, physically distinguished
+  basis. The joint probabilities calculated in the previous section are precisely
+  $\mathcal{P}(\lambda_A, \lambda_B, \lambda_C) =
+  \norm{P_{\lambda_A,\lambda_B,\lambda_C}\ket{\psi}}^2$.
+
+  \section{Time Evolution of the System}
+
+  Having fully specified the state of our system through a sequence of
+  measurements that define the CSCO, we now consider its dynamics. The evolution
+  is governed by the Time-Dependent Schrödinger Equation (TDSE). For a
+  discrete spectrum and a time-independent Hamiltonian $H$, the equation and its
+  formal solution are:
+  \begin{equation*}
+    i\hbar \frac{d}{dt} |\psi(t)\rangle = H |\psi(t)\rangle \quad \implies \quad
+    |\psi(t)\rangle = \sum_{n} e^{-iE_nt/\hbar} |E_n\rangle \langle
+    E_n|\psi(0)\rangle
+  \end{equation*}
+  where $\{|E_n\rangle\}$ is the orthonormal basis of energy eigenvectors with
+  corresponding energy eigenvalues $\{E_n\}$.
+
+  \subsection{Defining a Hamiltonian from the CSCO}
+
+  To proceed, we must define a Hamiltonian for the system. A physically and
+  algebraically motivated choice is to construct $H$ from our set of commuting
+  observables. Since $A$, $B$, and $C$ all commute with each other, any function
+  of them also commutes. Let us define $H$ as a linear combination of our
+  CSCO:
+  \begin{equation*}
+    H = k_A A + k_B B + k_C C
+  \end{equation*}
+  where $k_A, k_B, k_C \in \mathbb{R}$ are constants that define the energy scale
+  associated with each observable. This construction guarantees that $H$ is
+  compatible with $A$, $B$, and $C$, meaning they share a mutual eigenbasis.
+
+  \subsection{Energy Spectrum and Eigenstates}
+
+  A direct consequence of our construction is that the simultaneous
+  eigenbasis of the CSCO is also the eigenbasis of our Hamiltonian H. Let’s
+  rename our basis vectors from Table 1 of the source document to reflect that
+  they are now energy eigenstates:
+  \begin{itemize}
+    \item $|E_1\rangle := |\psi_1\rangle = |b_1\rangle$
+    \item $|E_2\rangle := |\psi_2\rangle = |b_2\rangle$
+    \item $|E_3\rangle := |\psi_3\rangle = |b_3\rangle$
+    \item $|E_4\rangle := |\psi_4\rangle = |4\rangle$
+  \end{itemize}
+
+  The energy eigenvalue for each state is found by applying $H$ and using the
+  known eigenvalues of A, B, and C:
+  \begin{align*}
+    H |E_1\rangle &= (k_A A + k_B B + k_C C)|\psi_1\rangle = (k_A\alpha + k_B\gamma + k_C\kappa) |\psi_1\rangle \\
+                  &\implies E_1 = k_A\alpha + k_B\gamma + k_C\kappa \\[.5em]
+    H |E_2\rangle &= (k_A A + k_B B + k_C C)|\psi_2\rangle = (k_A\alpha + k_B\gamma + k_C\zeta) |\psi_2\rangle \\
+                  &\implies E_2 = k_A\alpha + k_B\gamma + k_C\zeta \\[.5em]
+    H |E_3\rangle &= (k_A A + k_B B + k_C C)|\psi_3\rangle = (k_A\alpha + k_B\delta + k_C\kappa) |\psi_3\rangle \\
+                  &\implies E_3 = k_A\alpha + k_B\delta + k_C\kappa \\[.5em]
+    H |E_4\rangle &= (k_A A + k_B B + k_C C)|\psi_4\rangle = (k_A\beta + k_B\delta + k_C\kappa) |\psi_4\rangle \\
+                  &\implies E_4 = k_A\beta + k_B\delta + k_C\kappa
+  \end{align*}
+  By choosing the constants $k_A, k_B, k_C$ appropriately, one can ensure that the
+  energy spectrum $\{E_1, E_2, E_3, E_4\}$ is non-degenerate, with each
+  energy level corresponding to a unique state vector.
+
+  \subsection{General Solution for \texorpdfstring{$\ket{\psi(t)}$}{ψ(t)}}
+
+  The time evolution of an arbitrary initial state, $|\psi(0)\rangle$, is now
+  determined. First, we project the initial state onto the energy eigenbasis to
+  find the expansion coefficients $d_n = \langle E_n|\psi(0)\rangle$:
+  \begin{equation*}
+    |\psi(0)\rangle = d_1 |E_1\rangle + d_2 |E_2\rangle + d_3 |E_3\rangle + d_4
+    |E_4\rangle
+  \end{equation*}
+  The state at any subsequent time $t$ is then given by evolving each component
+  with its characteristic complex phase:
+  \begin{equation*}
+    |\psi(t)\rangle = d_1e^{-iE_1t/\hbar} |E_1\rangle + d_2e^{-iE_2t/\hbar}
+    |E_2\rangle + d_3e^{-iE_3t/\hbar} |E_3\rangle + d_4e^{-iE_4t/\hbar} |E_4\rangle
+  \end{equation*}
+  This expression is the complete solution to the dynamics of the system. It
+  demonstrates how an initial superposition state evolves as a coherent
+  ``rotation'' in Hilbert space, with each energy eigenstate component acquiring
+  phase at a rate determined by its energy. This concludes our construction and
+  analysis of a complete quantum mechanical problem.
+
+  \section{Uncertainty Product and the CSCO}
+
+  \subsection{Expectation Values}
+  The expectation value of an observable $O$ in state $|\psi\rangle$ is defined
+  as
+  \[
+    \langle O \rangle = \langle \psi | O | \psi \rangle = \sum_i o_i P(o_i),
+  \]
+  where $o_i$ are the eigenvalues of $O$ and $P(o_i) = |\langle
+  o_i|\psi\rangle|^2$ the corresponding probabilities.
+  Explicitly
+  \begin{itemize}
+    \item $\langle A \rangle = \alpha P(\alpha) + \beta P(\beta)$
+    \item $\langle B \rangle = \gamma P(\gamma) + \delta P(\delta)$
+    \item $\langle C \rangle = \kappa P(\kappa) + \zeta P(\zeta)$
+  \end{itemize}
+
+  \subsection{Uncertainties}
+  The variance of an observable $O$, denoted $(\Delta O)^2$, measures the spread
+  of measurements around the expectation value:
+  \begin{equation*}
+    (\Delta O)^2 = \langle O^2 \rangle - \langle O \rangle^2
+  \end{equation*}
+  where the expectation value of $O^2$ is $\langle O^2 \rangle = \sum_{i} o_i^2
+  P(o_i)$. Thus, the variance for observable $A$ is:
+  \begin{equation*}
+    (\Delta A)^2 = \alpha^2 P(\alpha) + \beta^2 P(\beta) - \langle A \rangle^2
+  \end{equation*}
+  The expressions for $(\Delta B)^2$ and $(\Delta C)^2$ follow the same structure.
+
+  \subsection{The Uncertainty Principle}
+  For any two observables $O_1$ and $O_2$, the Robertson uncertainty relation
+  provides a lower bound on the product of their uncertainties:
+  \begin{equation*}
+    \Delta O_1 \Delta O_2 \ge \frac{1}{2} \left| \langle [O_1, O_2] \rangle \right|
+  \end{equation*}
+  This principle states that it is impossible to prepare a quantum state where
+  two non-commuting observables can both be measured with arbitrary precision.
+
+  \subsection{Application to the CSCO}
+  A defining feature of a Complete Set of Commuting Observables is that all
+  operators in the set mutually commute. By our construction, we ensured that:
+  \begin{equation*}
+    [A, B] = [A, C] = [B, C] = 0
+  \end{equation*}
+  Because the commutators are zero, the right-hand side of the uncertainty
+  relation vanishes:
+  \begin{equation*}
+    \Delta O_i \Delta O_j \ge \frac{1}{2} \left| \langle 0 \rangle \right| = 0
+  \end{equation*}
+  This result, $\Delta O_i \Delta O_j \ge 0$, is mathematically trivial, but it
+  confirms the physical principle that there is no fundamental limit to
+  the precision with which compatible (commuting) observables can be
+  simultaneously known.
+
+  \subsection{Effect of Degeneracy}
+  The power of the CSCO lies in resolving degeneracy. The eigenvalue $\alpha$ of
+  observable $A$ is three-fold degenerate. This means that if a measurement of
+  $A$ yields $\alpha$, the state collapses not to a unique vector, but to the 3D
+  eigenspace $V_{\alpha}$.
+
+  Consider a state $|\phi\rangle$ that is a superposition of vectors entirely
+  within $V_{\alpha}$ (for example, $|\phi\rangle = c_2|E_2\rangle +
+  c_3|E_3\rangle$). For this state:
+  \begin{itemize}
+    \item A measurement of $A$ is guaranteed to yield $\alpha$, so
+      $\Delta A = 0$.
+    \item However, $|\phi\rangle$ is a superposition of states with different
+      eigenvalues for $B$ ($\gamma$ and $\delta$) and $C$ ($\zeta$ and
+      $\kappa$). Therefore, $\Delta B \neq 0$ and
+      $\Delta C \neq 0$.
+  \end{itemize}
+  This demonstrates that even when one observable is known with perfect
+  certainty ($\Delta A = 0$), the uncertainties of other commuting observables
+  can remain non-zero if the state lies within a degenerate subspace of the
+  first observable.
+
+  \subsection{Choice of Basis within Eigenspaces}
+  Inside a degenerate eigenspace like $V_{\alpha}$, one is free to choose any
+  orthonormal basis. The specific basis we constructed, $\{|b_1\rangle,
+  |b_2\rangle, |b_3\rangle\}$, was deliberately chosen to be the eigenbasis of
+  the subsequent observables $B$ and $C$ within that subspace. This ``top-down''
+  approach is what resolves the degeneracy and minimizes the uncertainties. If
+  we had chosen a different basis (like the computational basis $\{|1\rangle,
+  |2\rangle, |3\rangle\}$), a state like $|1\rangle$ would still have $\Delta A
+  = 0$, but it would not be an eigenstate of $B$ or $C$, leading to non-zero
+  uncertainties for both.
+
+  \section{Verification of Postulates}
+  The system constructed and analysed in this document serves as a concrete
+  model to illustrate several of the fundamental postulates of quantum
+  mechanics.
+
+  \subsection{The Measurement Postulate and Collapse to Subspaces}
+  The measurement postulate states that a measurement of an observable collapses
+  the system's state to an eigenstate of the corresponding operator. Our system
+  demonstrates a crucial facet of this postulate: the collapse to a
+  degenerate eigenspace.
+
+  When the observable $A$ is measured on a general state $|\psi\rangle$ and the
+  result $\alpha$ is obtained, the state does not collapse to a single vector,
+  since the eigenspace $V_{\alpha}$ is three-dimensional. Instead, the state of
+  the system collapses to the normalized projection onto this subspace:
+  \begin{equation*}
+    |\psi'\rangle_{\alpha} = \frac{P_{\alpha}|\psi\rangle}{\|P_{\alpha}|\psi\rangle\|}
+  \end{equation*}
+  This state $|\psi'\rangle_{\alpha}$ still lives in a 3D space, and therefore,
+  the information about the system is not complete. Uncertainty still exists
+  with respect to other observables like $B$ and $C$. Only the subsequent
+  measurements of $B$ and $C$ force the system to finally collapse to a unique
+  vector (a simultaneous eigenstate), removing all degeneracy and uniquely
+  determining the state.
+
+  \subsection{The Necessity of Orthonormal Bases (Gram-Schmidt)}
+  The postulates and formalism of quantum mechanics critically depend on the use
+  of orthonormal bases. The expansion of a state vector, the
+  construction of projectors like $P = \sum_i |e_i\rangle\langle e_i|$, and the
+  Born rule for probabilities all presuppose that the basis vectors are mutually
+  orthogonal and normalized.
+
+  The document explicitly acknowledges this necessity when discussing the
+  Gram-Schmidt process. It is noted that, when solving the eigenvalue
+  problem for an operator with a degenerate eigenspace (like $V_{\alpha}$), one
+  initially obtains a set of eigenvectors that is only guaranteed to be linearly
+  independent, not necessarily orthogonal. The Gram-Schmidt algorithm is the
+  standard procedure for converting such a basis into an orthonormal one.
+
+  In our case, a ``top-down construction'' was employed where orthonormality was
+  imposed by definition from the outset (e.g., by postulating that the V-basis
+  $\{|v_i\rangle\}$ was orthonormal). This approach bypasses the manual
+  application of the process but underscores its conceptual importance as a
+  fundamental requirement of the theoretical framework.
+
+  \subsection{Consistency between Probabilities, Projectors, and Expectation Values}
+  The analysis demonstrates the mathematical coherence between the different
+  components of the quantum formalism:
+  \begin{enumerate}
+    \item Projectors as the Foundation: The projection operators
+      ($P_{\alpha}, P_{\beta}, P_{\gamma}$, etc.) are the fundamental tools that
+      represent the question ``is the system in this subspace?''. They are
+      constructed directly from the eigenspaces of the observables.
+
+    \item Probabilities from Projectors: The probabilities of obtaining
+      any measurement result are calculated directly from these projectors using
+      the Born rule, $\mathcal{P}(\lambda) =
+      \langle\psi|P_{\lambda}|\psi\rangle$. The explicit calculations in the
+      document for the joint probabilities (e.g., $\mathcal{P}(\alpha, \gamma,
+      \zeta)$) show that the total probability sums to 1, confirming the model's
+      consistency.
+
+    \item Expectation Values from Probabilities: The expectation value,
+      $\langle O \rangle$, is defined as the average of the eigenvalues weighted
+      by their probabilities: $\langle O \rangle = \sum_i \lambda_i
+      \mathcal{P}(\lambda_i)$. This directly connects the statistical outcomes
+      (expectation values) with the probabilities calculated from the
+      projectors. For instance, the value $\langle A \rangle = \alpha P(\alpha)
+      + \beta P(\beta)$ is a direct manifestation of this consistency, where
+      $P(\alpha)$ and $P(\beta)$ were determined using $P_{\alpha}$ and
+      $P_{\beta}$.
+  \end{enumerate}
+  This logical flow, from operators to probabilities and expectation values,
+  illustrates the robust and self-consistent mathematical structure of quantum
+  mechanics
+
+  \section{The Role of Artificial Intelligence as a Computational Collaborator}
+
+  The use of Artificial Intelligence (AI) in the analysis of quantum systems,
+  such as the one explored here, redefines the dynamics of learning and
+  problem-solving. The AI positions itself as a powerful ``computational
+  collaborator'', handling intensive and error-prone algorithmic operations
+  like matrix diagonalizations, basis changes, and the symbolic application of
+  projectors. By delegating these tasks, the student is freed from a significant
+  computational burden, allowing them to focus on the most fundamental aspect of
+  the problem: the physical analysis and mathematical interpretation. For
+  instance, while an AI can instantly construct the operators $B$ and $C$, it is
+  the student who must provide the physical guidance, ensuring the operators
+  commute ($[A,B]=0$, etc.) to properly resolve the system's degeneracy.
+
+  This highlights a crucial aspect of the human-AI collaboration: the need for
+  explicit and well-defined instructions. Leaving a prompt open to
+  interpretation can lead to undesired results. In preliminary stages of this
+  work, vague prompts caused the AI to generate a redundant observable
+  that, while mathematically valid, did not contribute to resolving the system's
+  degeneracy, failing to illustrate the primary physical objective. Therefore,
+  the student's role is not just to ask a question, but to frame it with
+  precision, transforming a physical goal into a specific computational task.
+
+  This exercise provides a practical illustration of how successive measurements
+  can define the state of a system. Starting with an observable $A$ with a
+  degenerate spectrum, a first measurement only allows us to confine the state
+  to a subspace (in this case, the 3-dimensional $V_{\alpha}$). It is through
+  the application of additional compatible observables, $B$ and $C$, that the
+  degeneracy is sequentially broken or ``lifted,'' until the system's state is
+  uniquely determined by a set of eigenvalues (e.g., $(\alpha, \gamma,
+  \kappa)$), collapsing to a single eigenvector like $|b_{1}\rangle$.
+
+  Furthermore, the development highlights the deep relationship between
+  projection operators and the calculation of probabilities. The probability of
+  measuring a specific eigenvalue is calculated by applying the projector
+  associated with its subspace onto the system's state, for example, $P(\alpha)
+  = \|P_{\alpha}|\psi\rangle\|^2$. This connection is not merely computational;
+  it is a cornerstone of the postulates of quantum mechanics that links the
+  algebraic structure of observables (through their projectors) with the
+  statistical outcomes of experiments (the measurement probabilities). The AI
+  can construct the projector and compute the norm, but interpreting this value
+  as a probability is a conceptual task that falls entirely on the student.
+
+  This collaborative model extends seamlessly from the static measurement
+  problem to the analysis of the system's dynamics, governed by the
+  Schrödinger equation. The AI can efficiently compute the energy
+  spectrum and determine the time evolution of any initial state by applying the
+  corresponding phase factors $e^{-iE_nt/\hbar}$. In both the static case
+  (resolving degeneracy) and the dynamic case (time evolution), the AI provides
+  the final mathematical expression, but the student is responsible for
+  interpreting its physical meaning: understanding it as a collapse to a
+  subspace, a coherent rotation in Hilbert space, or recognizing that energy
+  measurement probabilities remain constant.
+
+  In conclusion, the synergy between the student and the AI is powerful and
+  multifaceted. The AI acts as a computational engine, flawlessly executing
+  complex tasks. The student, in turn, acts as the project director and
+  physical interpreter. This role involves translating physical objectives into
+  precise, unambiguous instructions and, most importantly, interpreting the
+  final mathematical results. The AI accelerates the journey to the solution,
+  but it does not provide a shortcut to understanding; the conceptual grasp of
+  quantum postulates and physical intuition remain the exclusive and essential
+  domain of the human learner.
+
+  \end{document}
