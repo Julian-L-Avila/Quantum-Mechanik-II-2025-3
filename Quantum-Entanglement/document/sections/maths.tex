@@ -1,7 +1,116 @@
-\section{Mathematical Model for Quantum Entanglement}%
-\label{sec:Mathematical Model for Quantum Entanglement}
+\section{Mathematical Framework for Entanglement}
+\label{sec:math_framework}
 
-\subsection{Departure from Classical Mechanics}%
-\label{sub:Departure from Classical Mechanics}
+Although quantum entanglement first emerged as a mathematical feature of the
+early formulations of quantum mechanics, subsequent experimental confirmations
+and theoretical advancements have enabled a more rigorous description.
+The core of this description lies in how we represent the state of a
+composite quantum system. While the framework is well-established, its
+physical interpretation---a common theme in quantum theory---remains a
+subject of active debate.
 
+\subsection{Departure from Classical State Spaces}
+\label{sub:departure_classical}
 
+In any formalism of classical mechanics (e.g., Hamiltonian), the state of a
+composite system is constructed from the states of its individual parts.
+For a two-particle system, $A$ and $B$, the total state is a point
+$(x_A, x_B)$ in the Cartesian product of the individual
+phase spaces, $\Gamma_{AB} = \Gamma_A \times \Gamma_B$.
+Here, $x_i = (q_i, p_i)$ represents the generalized coordinates and
+momenta for particle $i$. This structure implies that specifying the state of
+each subsystem completely specifies the state of the whole.
+
+A naive extrapolation to quantum mechanics would suggest that the state space
+of a two-particle system is the Cartesian product of the individual Hilbert
+spaces, $\mathcal{H}_{AB} = \mathcal{H}_A \times \mathcal{H}_B$. However, this
+structure is insufficient because it fails to incorporate the
+superposition principle correctly. A state in
+$\mathcal{H}_A \times \mathcal{H}_B$ is an ordered pair $(\ket{\psi_A},
+\ket{\phi_B})$, but this framework does not naturally accommodate the
+linear combinations of such pairs that are physically essential.
+
+To resolve this, the state space for a composite quantum system is
+constructed using the \emph{tensor product} of the individual Hilbert
+spaces:
+\begin{equation}
+	\mathcal{H}_{AB} = \mathcal{H}_A \otimes \mathcal{H}_B.
+\end{equation}
+A general pure state $\ket{\Psi}$ in this composite space is a superposition
+of basis states:
+\begin{equation}
+	\ket{\Psi} = \sum_{i,j} c_{ij} (\ket{a_i} \otimes \ket{b_j}),
+	\label{eq:general_state}
+\end{equation}
+where $\{\ket{a_i}\}$ and $\{\ket{b_j}\}$ are orthonormal bases for
+$\mathcal{H}_A$ and $\mathcal{H}_B$, respectively. The dimension of this new
+space is the product of the dimensions of the constituent spaces,
+$\dim(\mathcal{H}_{AB}) = \dim(\mathcal{H}_A) \cdot \dim(\mathcal{H}_B)$.
+
+\subsection{Separable and Entangled States}
+\label{sub:separable_entangled}
+
+The structure of the tensor product space $\mathcal{H}_{AB}$ allows for two
+fundamentally different classes of states.
+
+\paragraph{Separable States.}
+A state is called \emph{separable} (or a product state) if it
+can be written as a single tensor product of states from the subsystems,
+i.e.,
+\begin{equation}
+	\ket{\Psi}_{\text{sep}} = \ket{\psi_A} \otimes \ket{\psi_B},
+\end{equation}
+where $\ket{\psi_A} \in \mathcal{H}_A$ and $\ket{\psi_B} \in \mathcal{H}_B$.
+For these states, the subsystems have definite individual properties,
+independent of one another, analogous to the classical case.
+
+\paragraph{Entangled States.}
+If a state $\ket{\Psi} \in \mathcal{H}_{AB}$ cannot be written in the
+separable form above, it is called an \emph{entangled state}. These states
+represent a uniquely quantum-mechanical correlation between subsystems.
+Measuring a property of subsystem $A$ instantaneously influences the
+properties of subsystem $B$, regardless of the physical distance
+separating them.
+
+\subsection{Operators and the Density Matrix Formalism}
+\label{sub:operators_density}
+
+An operator $O_A$ acting only on subsystem $A$ is represented on the
+composite space as $O_A \otimes I_B$, where $I_B$ is the
+identity operator on $\mathcal{H}_B$. Such operators are called
+local operators. A general operator on $\mathcal{H}_{AB}$ is a
+linear combination of tensor products of local operators.
+
+The inner product on $\mathcal{H}_{AB}$ is defined by extending the inner
+products of the subsystems linearly:
+\begin{equation}
+	(\bra{\phi_A} \otimes \bra{\phi_B}) (\ket{\psi_A} \otimes \ket{\psi_B})
+	= \braket{\phi_A | \psi_A}_{\mathcal{H}_A} \braket{\phi_B | \psi_B}_{\mathcal{H}_B}.
+\end{equation}
+
+While pure states $\ket{\Psi}$ describe systems with maximal information,
+entanglement forces us to consider situations of incomplete information,
+especially when looking at only one part of an entangled pair. The
+density matrix (or density operator), $\rho$, provides the necessary
+formalism.
+
+For a pure state $\ket{\Psi}$, the density matrix is the projection operator:
+\begin{equation}
+	\rho_{\text{pure}} = \ket{\Psi}\bra{\Psi}.
+\end{equation}
+A key property of a pure state's density matrix is that it is a projector,
+meaning $\rho^2 = \rho$. This leads to a simple test for purity:
+\begin{equation}
+	\mathrm{Tr}(\rho^2) = 1,
+\end{equation}
+where the value $\mathrm{Tr}(\rho^2)$ is known as the \textit{purity} of the
+state.
+
+If we have statistical knowledge of a system (an ensemble of pure states
+$\{\ket{\psi_i}\}$ with probabilities $\{p_i\}$), the state is a
+\emph{mixed state}, described by the density matrix:
+\begin{equation}
+	\rho_{\text{mixed}} = \sum_i p_i \ket{\psi_i}\bra{\psi_i}.
+\end{equation}
+For any mixed state, the purity is less than one:
+$\mathrm{Tr}(\rho_{\text{mixed}}^2) < 1$.
