@@ -31,7 +31,7 @@ $\mathcal{H}_A \times \mathcal{H}_B$ is an ordered pair $(\ket{\psi_A},
 linear combinations of such pairs that are physically essential.
 
 To resolve this, the state space for a composite quantum system is
-constructed using the \emph{tensor product} of the individual Hilbert
+constructed using the tensor product of the individual Hilbert
 spaces:
 \begin{equation}
 	\mathcal{H}_{AB} = \mathcal{H}_A \otimes \mathcal{H}_B.
@@ -54,7 +54,7 @@ The structure of the tensor product space $\mathcal{H}_{AB}$ allows for two
 fundamentally different classes of states.
 
 \paragraph{Separable States.}
-A state is called \emph{separable} (or a product state) if it
+A state is called separable (or a product state) if it
 can be written as a single tensor product of states from the subsystems,
 i.e.,
 \begin{equation}
@@ -66,7 +66,7 @@ independent of one another, analogous to the classical case.
 
 \paragraph{Entangled States.}
 If a state $\ket{\Psi} \in \mathcal{H}_{AB}$ cannot be written in the
-separable form above, it is called an \emph{entangled state}. These states
+separable form above, it is called an entangled state. These states
 represent a uniquely quantum-mechanical correlation between subsystems.
 Measuring a property of subsystem $A$ instantaneously influences the
 properties of subsystem $B$, regardless of the physical distance
@@ -108,9 +108,185 @@ state.
 
 If we have statistical knowledge of a system (an ensemble of pure states
 $\{\ket{\psi_i}\}$ with probabilities $\{p_i\}$), the state is a
-\emph{mixed state}, described by the density matrix:
+mixed state, described by the density matrix:
 \begin{equation}
 	\rho_{\text{mixed}} = \sum_i p_i \ket{\psi_i}\bra{\psi_i}.
 \end{equation}
 For any mixed state, the purity is less than one:
 $\mathrm{Tr}(\rho_{\text{mixed}}^2) < 1$.
+
+\subsection{Quantifying Uncertainty: Von Neumann Entropy}
+\label{sub:von_neumann_entropy}
+
+The density matrix allows us to assign a single number to quantify the
+degree of uncertainty or ``mixedness'' of a quantum state. This measure is the
+Von Neumann entropy, defined as:
+\begin{equation}
+	S(\rho) = - \mathrm{Tr}(\rho \ln \rho).
+\end{equation}
+This is the quantum mechanical analogue of the Gibbs entropy in statistical
+mechanics. If the eigenvalues of $\rho$ are $\lambda_i$, the entropy can be
+calculated as $S = - \sum_i \lambda_i \ln \lambda_i$.
+
+The Von Neumann entropy has several key properties:
+\begin{itemize}
+	\item For any pure state, $\rho = \ket{\psi}\bra{\psi}$, the
+		entropy is zero, $S(\rho) = 0$. This corresponds to a state of
+		maximal knowledge or zero uncertainty.
+	\item For a maximally mixed state in a $d$-dimensional Hilbert
+		space, where $\rho = I/d$, the entropy is maximal,
+		$S(\rho) = \ln d$. This corresponds to a state of minimal knowledge.
+\end{itemize}
+
+The true power of this measure becomes apparent when applied to entangled
+systems. Consider a composite system $AB$ in a pure state
+$\ket{\Psi}_{AB}$, for which $S(\rho_{AB})=0$. If we are interested only in
+subsystem $A$, its state is described by the reduced density matrix,
+$\rho_A$, obtained by tracing over subsystem $B$:
+\begin{equation}
+	\rho_A = \mathrm{Tr}_B(\rho_{AB}) = \mathrm{Tr}_B(\ket{\Psi}_{AB}\bra{\Psi}_{AB}).
+\end{equation}
+If the global state $\ket{\Psi}_{AB}$ is entangled, the local state $\rho_A$
+will be a mixed state, and its entropy $S(\rho_A)$ will be greater than zero.
+This non-zero entropy of a subsystem, despite the global system being in a
+pure state, is a fundamental signature of entanglement. For any pure
+bipartite state, $S(\rho_A) = S(\rho_B)$, and this value is used as the
+entropy of entanglement.
+
+\section{Quantifying and Detecting Entanglement}
+\label{sec:quantifying_detecting}
+
+With the mathematical framework established, we need tools to answer two
+practical questions: How much entanglement does a state possess? And how can
+we experimentally detect it, especially in mixed states?
+
+\subsection{Pure States: Schmidt Decomposition and Entropy of Entanglement}
+\label{sub:pure_state_measures}
+
+For pure bipartite states, a powerful theorem known as the
+Schmidt decomposition provides a canonical form. Any state
+$\ket{\Psi}_{AB}$ can be written as a single sum:
+\begin{equation}
+	\ket{\Psi}_{AB} = \sum_{k=1}^{r_S} \sqrt{\lambda_k} \ket{k}_A \otimes \ket{k}_B,
+\end{equation}
+where $\{\ket{k}_A\}$ and $\{\ket{k}_B\}$ are orthonormal bases for their
+respective subsystems, and $\lambda_k > 0$ with $\sum_k \lambda_k = 1$. The
+number of terms, $r_S$, is the Schmidt rank. A state is separable if
+and only if its Schmidt rank is 1.
+
+The degree of entanglement is uniquely quantified by the
+entropy of entanglement. This is simply the Von Neumann entropy of
+the reduced density matrix of either subsystem:
+\begin{equation}
+	E(\ket{\Psi}) = S(\rho_A) = -\mathrm{Tr}(\rho_A \ln \rho_A) = -\sum_{k=1}^{r_S} \lambda_k \ln \lambda_k.
+\end{equation}
+The Schmidt coefficients $\sqrt{\lambda_k}$ are directly related to the
+eigenvalues of the reduced density matrix, elegantly connecting the
+state's structure to its entanglement content.
+
+\subsection{Mixed States: A Zoo of Measures}
+\label{sub:mixed_state_measures}
+Quantifying entanglement in mixed states is far more complex, as they lack
+a unique decomposition. Several measures exist, each with a different
+operational or geometric motivation.
+
+\paragraph{Entanglement of Formation ($E_F$).}
+This measure asks: what is the minimum average entanglement (of pure states)
+required to create a given mixed state $\rho$? It is defined via a
+``convex roof'' construction:
+\begin{equation}
+	E_F(\rho) = \min_{\{p_i, \ket{\psi_i}\}} \sum_i p_i E(\ket{\psi_i}),
+\end{equation}
+where the minimization is over all possible pure-state ensembles
+$\{p_i, \ket{\psi_i}\}$ that decompose $\rho$.
+
+\paragraph{Concurrence ($C$).}
+For the specific case of two-qubit systems, the Concurrence is a widely
+used measure computationally related to $E_F$. It has the great advantage
+of having a closed-form analytical solution, making it highly practical.
+
+\paragraph{Relative Entropy of Entanglement ($E_R$).}
+This measure takes a geometric approach, defining the entanglement of a
+state $\rho$ as its ``distance'' to the set of all separable states (SEP):
+\begin{equation}
+	E_R(\rho) = \min_{\sigma \in \text{SEP}} S(\rho || \sigma),
+\end{equation}
+where $S(\rho || \sigma) = \mathrm{Tr}(\rho \ln \rho - \rho \ln \sigma)$ is
+the quantum relative entropy.
+
+\subsection{Detecting Mixed-State Entanglement}
+\label{sub:detecting_entanglement}
+Distinguishing a separable mixed state from an entangled one is a major
+challenge. Several criteria have been developed.
+
+\paragraph{The PPT Criterion.}
+A simple but powerful test is the Positive Partial Transpose (PPT)
+criterion. If a state $\rho_{AB}$ is separable, then its partial transpose
+with respect to one subsystem, $\rho^{T_B}$, must be a valid (positive
+semidefinite) density matrix. While this is a necessary condition for
+separability in all dimensions, it is only a sufficient one for
+$2 \times 2$ and $2 \times 3$ systems. The degree to which a state fails
+this test can be quantified by a measure called Negativity.
+
+\paragraph{Worked Example: The Werner State.}
+To make this concrete, let's analyse a two-qubit Werner state, a mixture
+of a maximally entangled Bell state and a maximally mixed state. Using the
+singlet state $\ket{\Psi^-} = \frac{1}{\sqrt{2}}(\ket{01}-\ket{10})$, the
+Werner state is defined for $p \in [0, 1]$ as:
+\begin{equation}
+	\rho_W = p \ket{\Psi^-}\bra{\Psi^-} + \frac{1-p}{4} \mathbb{I}_4.
+\end{equation}
+In the computational basis $\{\ket{00}, \ket{01}, \ket{10}, \ket{11}\}$, this is:
+\begin{equation}
+	\rho_W = \frac{1}{4}
+	\begin{pmatrix}
+		1-p & 0 & 0 & 0 \\
+		0 & 1+p & -2p & 0 \\
+		0 & -2p & 1+p & 0 \\
+		0 & 0 & 0 & 1-p
+	\end{pmatrix}.
+\end{equation}
+We apply the partial transpose to the second qubit (subsystem B):
+\begin{equation}
+	\rho_W^{T_B} = \frac{1}{4}
+	\begin{pmatrix}
+		1-p & 0 & 0 & -2p \\
+		0 & 1+p & 0 & 0 \\
+		0 & 0 & 1+p & 0 \\
+		-2p & 0 & 0 & 1-p
+	\end{pmatrix}.
+\end{equation}
+The state is entangled if this matrix has a negative eigenvalue. The four
+eigenvalues of $\rho_W^{T_B}$ are found to be:
+\begin{equation}
+	\lambda_{1,2,3} = \frac{1+p}{4}, \quad \lambda_4 = \frac{1-3p}{4}.
+\end{equation}
+The first three are always non-negative for $p \in [0,1]$. However,
+$\lambda_4$ becomes negative if $1-3p < 0$, which means $p > 1/3$.
+Therefore, the Werner state is entangled for $p > 1/3$. The Negativity for
+this state is the absolute value of the single negative eigenvalue:
+\begin{equation}
+	\mathcal{N}(\rho_W) = \max\left(0, -\lambda_4\right) = \max\left(0, \frac{3p-1}{4}\right).
+\end{equation}
+
+\paragraph{Entanglement Witnesses.}
+An entanglement witness is a Hermitian operator $W$ that acts as a
+detector. It is constructed such that its expectation value is non-negative
+for all separable states but can be negative for at least one entangled state:
+\begin{itemize}
+	\item $\mathrm{Tr}(W \rho_{\text{sep}}) \ge 0$ for all $\rho_{\text{sep}} \in \text{SEP}$.
+	\item If one measures $\mathrm{Tr}(W \rho) < 0$, the state $\rho$ is certified as entangled.
+\end{itemize}
+Geometrically, $W$ defines a hyperplane that separates a specific entangled
+state from the convex set of separable states, making it a targeted tool for
+experimental detection.
+
+\section{Alternative Perspectives}
+\label{sec:alternative_perspectives}
+
+While the Hilbert space formalism is the standard, alternative mathematical
+frameworks offer different physical insights. One such approach is through
+Geometric Algebra, which interprets entanglement not as an intrinsic
+property of a state, but as a relationship between reference frames, described
+by a superposition of relative rotations. This shifts the focus from analysing
+states to analysing the fundamental transformation operators themselves.
