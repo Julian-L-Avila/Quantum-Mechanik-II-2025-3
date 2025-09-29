@@ -1,0 +1,377 @@
+\section{Mathematical Framework for Entanglement}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Motivation: From Feature to Formalism}
+  \begin{block}{Recap of the Origin of Entanglement}
+    Quantum entanglement first emerged as a mathematical feature of early
+    quantum mechanics.
+    \pause
+
+    Subsequent experimental confirmations and theoretical advancements have
+    enabled a more rigorous description.
+    \pause
+
+    The core of this description lies in how we represent the state of a
+    \emph{composite quantum system}.
+  \end{block}
+  \pause
+
+  \begin{alertblock}{A Note on Interpretation}
+    While the mathematical framework is well-established, its physical
+    interpretation remains a subject of active debate---a common theme in
+    quantum theory.
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Departure from Classical State Spaces}
+  \begin{block}{Classical Composite Systems}
+    The state of a composite system is built from its parts. For a two-particle
+    system, the total state is a point $(x_A, x_B)$ in the \alert{Cartesian
+    product} of individual phase spaces:
+    \[
+      \Gamma_{AB} = \Gamma_A \times \Gamma_B
+    \]
+    Specifying the state of each subsystem completely specifies the state of the
+    whole.
+  \end{block}
+  \pause
+  \begin{alertblock}{A Naive Quantum Extrapolation}
+    One might guess the quantum state space is $\mathcal{H}_{AB} = \mathcal{H}_A
+    \times \mathcal{H}_B$.
+    \pause
+
+    \textbf{This is incorrect.} It fails to incorporate the \emph{superposition
+    principle} for combined states. An ordered pair $(\ket{\psi_A},
+    \ket{\phi_B})$ doesn't accommodate linear combinations.
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{The Tensor Product Structure}
+  \begin{block}{The Correct Postulate}
+    The state space for a composite quantum system is constructed using the
+    \emph{tensor product} of the individual Hilbert spaces:
+    \begin{equation}
+      \mathcal{H}_{AB} = \mathcal{H}_A \otimes \mathcal{H}_B
+    \end{equation}
+  \end{block}
+  \pause
+  \vspace{-1em}
+  \begin{block}{General Pure State}
+    A general pure state $\ket{\Psi}$ in this composite space is a superposition of basis states:
+    \begin{equation}
+      \ket{\Psi} = \sum_{i,j} c_{ij} (\ket{a_i} \otimes \ket{b_j})
+    \end{equation}
+    where $\{\ket{a_i}\}$ and $\{\ket{b_j}\}$ are orthonormal bases for
+    $\mathcal{H}_A$ and $\mathcal{H}_B$.
+    \pause
+
+    The dimension of the new space is the product of the constituent dimensions:
+    \(
+      \dim(\mathcal{H}_{AB}) = \dim(\mathcal{H}_A) \cdot \dim(\mathcal{H}_B)
+    \)
+  \end{block}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Two Fundamental Classes of States}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Separable (Product) States}
+        A state is \emph{separable} if it can be written as a single tensor product:
+        \begin{equation}
+          \ket{\Psi}_{\text{sep}} = \ket{\psi_A} \otimes \ket{\psi_B}
+        \end{equation}
+        Subsystems have definite, independent properties, analogous to the classical case.
+      \end{block}
+    \end{column}
+    \pause
+    \begin{column}{0.5\textwidth}
+      \begin{alertblock}{Entangled States}
+        A state $\ket{\Psi} \in \mathcal{H}_{AB}$ that \emph{cannot} be written
+        in the separable form is called \emph{entangled}.
+
+        These states represent a uniquely quantum-mechanical correlation.
+        Measurement on subsystem A instantaneously influences subsystem B,
+        regardless of distance.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Formalism: Operators and the Density Matrix}
+  \begin{block}{Operators and Inner Product}
+    \begin{itemize}
+      \item An operator $O_A$ on subsystem $A$ is represented on
+        $\mathcal{H}_{AB}$ as a \alert{local operator}: $O_A \otimes I_B$.
+        \pause
+      \item The inner product is defined by linear extension:
+        \[
+          (\bra{\phi_A} \otimes \bra{\phi_B}) (\ket{\psi_A} \otimes
+          \ket{\psi_B}) = \braket{\phi_A | \psi_A} \braket{\phi_B | \psi_B}
+        \]
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{alertblock}{Why We Need the Density Matrix ($\rho$)}
+    Entanglement forces us to consider situations of incomplete information,
+    especially when looking at only one part of an entangled pair.
+
+    The density matrix formalism is essential for this.
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{The Density Matrix: Pure vs. Mixed States}
+  \begin{block}{Pure States}
+    For a pure state $\ket{\Psi}$, the density matrix is a projection operator:
+    \begin{equation}
+      \rho_{\text{pure}} = \ket{\Psi}\bra{\Psi}
+    \end{equation}
+    It is a projector ($\rho^2 = \rho$), leading to a simple test for purity:
+    \[
+      \alert{\Tr(\rho^2) = 1}
+    \]
+  \end{block}
+  \pause
+  \vspace{-1em}
+  \begin{block}{Mixed States}
+    For a statistical ensemble of pure states $\{\ket{\psi_i}\}$ with
+    probabilities $\{p_i\}$, the state is mixed:
+    \begin{equation}
+      \rho_{\text{mixed}} = \sum_i p_i \ket{\psi_i}\bra{\psi_i}
+    \end{equation}
+    For any mixed state, the purity is less than one:
+    $\alert{\Tr(\rho_{\text{mixed}}^2) < 1}$.
+  \end{block}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Quantifying Uncertainty: Von Neumann Entropy}
+  \begin{block}{Definition}
+    The degree of uncertainty or ``mixedness'' is quantified by the Von Neumann
+    entropy:
+    \begin{equation}
+      S(\rho) = - \Tr(\rho \ln \rho) = - \sum_i \lambda_i \ln \lambda_i
+    \end{equation}
+    where $\lambda_i$ are the eigenvalues of $\rho$.
+    \begin{itemize}[<+->]
+      \item For a pure state, $S(\rho) = 0$ (maximal knowledge).
+      \item For a maximally mixed state ($\rho=I/d$), $S(\rho) = \ln d$ (minimal knowledge).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{alertblock}{Entropy as a Signature of Entanglement}
+    Consider a composite system $AB$ in a pure state $\ket{\Psi}_{AB}$, so
+    $S(\rho_{AB})=0$.
+
+    \pause
+
+    The state of subsystem A is the \emph{reduced density matrix}:
+    \[ \rho_A = \Tr_B(\rho_{AB}) \]
+    If $\ket{\Psi}_{AB}$ is entangled, $\rho_A$ will be a mixed state, and its
+    entropy \alert{$S(\rho_A) > 0$}.
+
+    \pause
+
+    This is the \emph{entropy of entanglement}.
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\section{Quantifying and Detecting Entanglement}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Pure States: Schmidt Decomposition}
+  \begin{block}{The Schmidt Decomposition Theorem}
+    Any pure bipartite state $\ket{\Psi}_{AB}$ can be written in a canonical form:
+    \begin{equation}
+      \ket{\Psi}_{AB} = \sum_{k=1}^{r_S} \sqrt{\lambda_k} \ket{k}_A \otimes \ket{k}_B
+    \end{equation}
+    \begin{itemize}
+      \item $\{\ket{k}_A\}$ and $\{\ket{k}_B\}$ are orthonormal bases.
+      \item The number of terms, $r_S$, is the \emph{Schmidt rank}.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{alertblock}{Schmidt Rank and Entanglement}
+    A state is \emph{separable if and only if its Schmidt rank is 1}.
+
+    The degree of entanglement is uniquely quantified by the \emph{entropy of entanglement}:
+    \begin{equation}
+      E(\ket{\Psi}) = S(\rho_A) = -\sum_{k=1}^{r_S} \lambda_k \ln \lambda_k
+    \end{equation}
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Mixed States: A Zoo of Measures}
+  Quantifying entanglement in mixed states is far more complex as they lack a
+  unique decomposition. Several measures exist.
+  \pause
+  \begin{block}{Entanglement of Formation (\texorpdfstring{$E_F$}{E\_F})}
+    What is the minimum average pure-state entanglement required to create $\rho$?
+    \[ E_F(\rho) = \min_{\{p_i, \ket{\psi_i}\}} \sum_i p_i E(\ket{\psi_i}) \]
+  \end{block}
+  \pause
+  \begin{block}{Relative Entropy of Entanglement (\texorpdfstring{$E_R$}{E\_R})}
+    A geometric approach: how "distant" is $\rho$ from the set of all separable
+    states (SEP)?
+    \[ E_R(\rho) = \min_{\sigma \in \text{SEP}} S(\rho || \sigma) = \min_{\sigma
+    \in \text{SEP}} \Tr(\rho \ln \rho - \rho \ln \sigma) \]
+  \end{block}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Detecting Mixed-State Entanglement: The PPT Criterion}
+  \begin{block}{The Positive Partial Transpose (PPT) Criterion}
+    A simple but powerful test based on a necessary condition for separability.
+    \begin{enumerate}
+      \item<1-> Start with a state $\rho_{AB}$.
+        \pause
+      \item<2-> Compute the \emph{partial transpose} with respect to one
+        subsystem, e.g., B: $\rho^{T_B}$.
+        \pause
+      \item<3-> Check if $\rho^{T_B}$ is a valid density matrix (i.e., it is
+        positive semidefinite, meaning all its eigenvalues are non-negative).
+    \end{enumerate}
+  \end{block}
+  \pause
+  \begin{alertblock}{Conclusion}
+    If $\rho_{AB}$ is separable, then $\rho^{T_B}$ \emph{must be} positive semidefinite.
+
+    Therefore, if $\rho^{T_B}$ has any \emph{negative eigenvalues}, the state
+    $\rho_{AB}$ is certified as \emph{entangled}.
+
+    \footnotesize{(This condition is necessary and sufficient only for
+    $2\times2$ and $2\times3$ systems.)}
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Worked Example: The Werner State}
+  \begin{block}{Definition}
+    A mixture of a maximally entangled Bell state and a maximally mixed state ($p \in [0, 1]$):
+    \[ \rho_W = p \ket{\Psi^-}\bra{\Psi^-} + \frac{1-p}{4} \mathbb{I}_4 \]
+    where $\ket{\Psi^-} = \frac{1}{\sqrt{2}}(\ket{01}-\ket{10})$. In the computational basis:
+    \[
+      \rho_W = \frac{1}{4}
+      \begin{pmatrix}
+        1-p & 0 & 0 & 0 \\
+        0 & 1+p & -2p & 0 \\
+        0 & -2p & 1+p & 0 \\
+        0 & 0 & 0 & 1-p
+      \end{pmatrix}
+    \]
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Applying the PPT Criterion}
+    The partial transpose with respect to the second qubit is:
+    \[
+      \rho_W^{T_B} = \frac{1}{4}
+      \begin{pmatrix}
+        1-p & 0 & 0 & \alert{-2p} \\
+        0 & 1+p & 0 & 0 \\
+        0 & 0 & 1+p & 0 \\
+        \alert{-2p} & 0 & 0 & 1-p
+      \end{pmatrix}
+    \]
+  \end{block}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Worked Example: The Werner State (Conclusion)}
+  \begin{block}{Eigenvalues of the Partial Transpose}
+    The eigenvalues of $\rho_W^{T_B}$ are found to be:
+    \begin{align*}
+      \lambda_{1,2,3} &= \frac{1+p}{4} \quad (\text{always } \ge 0) \\
+      \lambda_4 &= \frac{1-3p}{4}
+    \end{align*}
+  \end{block}
+  \vspace{-2em}
+  \pause
+  \begin{alertblock}{Result}
+    The fourth eigenvalue $\lambda_4$ becomes negative if $1-3p < 0$, which means:
+    \( p > 1/3 \)
+    Therefore, the Werner state is \emph{entangled for $p > 1/3$}.
+  \pause
+
+    A measure of entanglement can be defined from the negative eigenvalue:
+    \(
+      \mathcal{N}(\rho_W) = \max\left(0, -\lambda_4\right) = \max\left(0,
+      \frac{3p-1}{4}\right)
+    \)
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Detecting Entanglement: Witnesses}
+  \begin{block}{Entanglement Witness}
+    An \emph{entanglement witness} is a Hermitian operator $W$ that acts as a
+    detector. It is constructed to satisfy:
+    \begin{itemize}
+      \item $\Tr(W \rho_{\text{sep}}) \ge 0$ for \emph{all} separable states
+        $\rho_{\text{sep}}$.
+        \pause
+      \item There exists at least one entangled state $\rho_{\text{ent}}$ such
+        that $\Tr(W \rho_{\text{ent}}) < 0$.
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{alertblock}{Experimental Implication}
+    If an experiment measures an expectation value $\braket{W} = \Tr(W \rho) <
+    0$, the state $\rho$ is \emph{certified as entangled}.
+    \vspace{1em}
+    Geometrically, $W$ defines a hyperplane that separates a specific entangled
+    state from the convex set of separable states.
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\section{Alternative Perspectives}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Beyond Hilbert Space: Geometric Algebra}
+  \begin{block}{An Alternative View}
+    While the Hilbert space formalism is the standard, alternative mathematical
+    frameworks can offer different physical insights.
+  \end{block}
+  \pause
+  \begin{alertblock}{Entanglement in Geometric Algebra}
+    \begin{itemize}
+      \item This approach interprets entanglement not as an intrinsic property
+        of a state, but as a relationship between reference frames.
+        \pause
+      \item It is described by a superposition of \emph{relative rotations}.
+        \pause
+      \item This shifts the focus from analysing abstract states to analysing
+        the fundamental transformation operators themselves.
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------

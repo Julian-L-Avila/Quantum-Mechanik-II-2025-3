@@ -10,7 +10,7 @@
 \usepackage{bookmark}
 \usepackage{siunitx}
 \usepackage{mhchem}
-\usepackage[spanish]{babel}
+\usepackage{braket}
 
 \addbibresource{../references.bib}
 
@@ -34,6 +34,8 @@
 \setmainfont{Fira Sans}
 \setmathfont{TeX Gyre Pagella Math}
 
+\newcommand{\Tr}{\mathrm{Tr}}
+
 \title{Quantum Entanglement}
 \subtitle{}
 \author{Avila, Herrera, Rodríguez}
@@ -46,7 +48,9 @@
 	\titlepage
 \end{frame}
 
-\section{Referencias}
+\input{./sections/maths.tex}
+
+\section{References}
 \begin{frame}[allowframebreaks]{References}
 	\printbibliography
 	\nocite{*}
@@ -55,8 +59,8 @@
 \begin{frame}[plain]
 	\centering
 	\vspace{1cm}
-	{\Huge \textbf{Gracias!}}\\[1cm]
-	{\large Preguntas o comentarios?}
+	{\Huge \textbf{Thank you!}}\\[1cm]
+	{\large Questions or Comments?}
 \end{frame}
 
 \end{document}
