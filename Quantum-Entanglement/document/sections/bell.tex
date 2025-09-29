@@ -1,0 +1,254 @@
+
+\section{Hidden Variables and Bell's Proof}
+\label{sec:Hidden Variables}
+
+The first part of the debate about quantum entanglement began in 1935, an important year that defined
+the conceptual framework of the problem. The EPR paper questioned whether the description of physical reality could be
+considered complete. This argument was supported with a thought experiment: two systems, after an 
+interaction, are separated from each other, and the measurement of one of them allows one to predict with absolute certainty 
+a property of the other without physically disturbing the unmeasured partner.
+
+Introducing the concepts of "physical reality" and "elements of reality," EPR argued that Quantum Mechanics is not a complete theory and violates locality. In the thought experiment, physical reality, composed of all the elements of reality, allows both the position and the momentum of the system to belong to the same element of reality. Consequently, both properties should simultaneously exist in reality, which is not permitted by Heisenberg's uncertainty principle. 
+
+In response, Bohr argued that the concept of "element of reality" is ambiguous, defending the completeness of Quantum Mechanics with his principle of complementarity. In the same year, Erwin Schrödinger introduced for the first time the term "entanglement" to describe these correlated systems, which can never be described independently.
+
+
+During the following two decades, the discussion remained mostly at a conceptual level. A fundamental step toward experimental verification came in 1957 with the work of David Bohm and Yakir Aharonov. By simplifying the EPR argument to the case of a spin-zero molecule decaying into two spin-1/2 particles, they proposed that the correlation in the polarization of photons emitted in the annihilation of a positron–electron pair could serve as an empirical test of the phenomenon. 
+Their proposal showed that an already existing experiment was able to distinguish between the “puzzling correlations” predicted by Quantum Mechanics and alternative theories—such as Furry’s hypothesis—in which systems, once separated, adopt definite states even if only statistically correlated. In this way, the conceptual works of EPR, Bohr, and Schrödinger, together with Bohm and Aharonov’s experimental proposal, established the essential theoretical and empirical groundwork.
+ This framework opened the path to the second stage of the debate, which would be strongly influenced by Bohm’s 1952 hidden-variable interpretation and would eventually culminate in the development of experimental inequalities.
+
+ To arrive the concepts that concern to the Bell Test, it is necessary to review the work done by Bohm over the hidden Variables interpretation of the Quantum Theory
+
+ \subsection{Von Neumann's Impossibility Theorem (1932)}
+
+John von Neumann’s 1932 work, presented in \textit{Mathematische Grundlagen der Quantenmechanik}, provided the first rigorous and axiomatic formulation of Quantum Mechanics. By establishing the theory on the solid basis of Hilbert space and operator calculus, von Neumann addressed one of the era’s fundamental questions: \textbf{is the quantum description of reality complete?}
+
+At the time, quantum mechanics—developed by Heisenberg, Schrödinger, Born, and Jordan—was extremely successful but mathematically heterogeneous. Von Neumann unified the matrix and wave formulations, showing they were merely different representations of the same underlying Hilbert space structure. This allowed precise questions about completeness and determinism: could there exist \textit{hidden variables} that, if known, would fully determine the outcome of any measurement, making quantum statistics analogous to classical statistical ignorance?
+
+Within his axiomatic framework, von Neumann concluded that \textbf{no hidden-variable theory can reproduce all quantum statistical predictions} if it satisfies certain general assumptions. The most crucial assumption was the linearity of expectation values: the expectation of a sum of observables must equal the sum of their expectations, even for non-commuting operators. From this, he showed that every statistical state can be uniquely represented by a density operator, and all observables follow $E(S) = \mathrm{Tr}(US)$. In this framework, no state exists in which all observables have simultaneously well-defined values.
+
+
+
+ \subsection{Hidden Variables by Bohm} 
+
+\subsubsection{Historical Context and Motivation}
+In 1952, David Bohm introduced a deterministic and causal interpretation of Quantum Mechanics by postulating the existence of \textit{hidden variables}. His work provided a concrete theoretical 
+framework that addressed the concerns raised by the EPR argument, showing that quantum phenomena could, in principle, be explained by underlying variables determining the outcomes of individual
+ measurements. Bohm’s approach built upon earlier ideas proposed by Louis de Broglie, notably the concept of a ``pilot wave,'' and extended them to provide a consistent description of quantum 
+ systems, including the measurement process.Importantly, Bohm’s results demonstrated that it was indeed possible to construct a hidden-variable theory that reproduces all the statistical predictions
+  of Quantum Mechanics. This stood in contrast to the conclusion of Newman’s theorem, formulated 20  years earlier, which suggested constraints on such hidden-variable constructions.
+
+\subsubsection{The Pilot-Wave Theory and Key Results}
+
+Bohm’s proposal is a reformulation of the non-relativistic Schrödinger equation. It begins by writing the complex wave function, $\Psi$, in polar form, using two real functions $R$ and $S$:
+
+\[
+\Psi(x,t) = R(x,t) e^{iS(x,t)/\hbar}
+\]
+
+Substituting this form into the Schrödinger equation produces two real equations with clear physical interpretations:
+
+\begin{enumerate}
+    \item \textbf{The Guidance Equation.} Bohm postulated that, in addition to the wave function $\Psi$, there exists a \textbf{real particle with a definite position} at all times, even if it is ``hidden'' from us. The trajectory of this particle is not random but determined by the phase $S$ of the pilot wave through the \textbf{guidance equation}:
+    \[
+    v = \frac{p}{m} = \frac{\nabla S}{m}
+    \]
+    This equation establishes that the velocity of the particle can be calculated directly from the gradient of the wave phase. Therefore, if the initial position of the particle (the hidden variable) is known, its future trajectory is completely determined, thus restoring \textbf{determinism}.
+    
+    \item \textbf{The Quantum Potential.} The second equation that emerges is a modified version of the classical Hamilton–Jacobi equation, describing the system’s energy. This equation includes, in addition to the classical potential $V(x)$, a new term that Bohm called the \textbf{quantum potential}:
+    \[
+    U(x) = - \frac{\hbar^2}{2m}\frac{\nabla^2 R}{R}
+    \]
+    This \textbf{quantum potential} is the key ingredient of the theory. It does not depend on the intensity of the wave (the amplitude $R$), but rather on its \textit{form} (its second derivative). It is responsible for all non-classical phenomena such as interference in the double-slit experiment or tunneling. In the double-slit case, the quantum potential depends on the configuration of both slits, influencing the particle and guiding it toward regions of constructive interference, even if it only passes through one slit.
+\end{enumerate}
+
+\subsubsection{Nonlocality and the EPR Problem}
+
+The most radical and profound aspect of Bohm’s theory appears in many-particle systems. For a two-particle system, the wave function $\Psi(x_1, x_2, t)$ and the quantum potential $U(x_1, x_2)$ exist in a \textbf{six-dimensional configuration space}. The striking consequence is that the quantum potential acting on one particle at position $x_1$ depends instantaneously on the position $x_2$ of the other particle, no matter how far apart they are.
+
+\textbf{This is the explicit manifestation of nonlocality.} In the context of the EPR experiment, Bohm’s theory provides a causal description: when a measurement is performed on particle 1, the global wave function $\Psi$ changes. Through the nonlocal quantum potential, this change is transmitted \textit{instantaneously} to particle 2, altering the quantum force acting on it and fixing its measurement outcome so that the predicted correlation is maintained.
+
+It is important to note that in his 1952 papers, Bohm dealt with the EPR paradox in its original formulation, involving continuous variables such as position and momentum. The reformulation of the problem in terms of \textbf{entangled spins}, conceptually simpler and experimentally much more accessible, was proposed by \textbf{Bohm and Aharonov in 1957}. This version became the basis for later experimental tests.
+
+\subsubsection{The Central Consequence: Bohm’s Legacy}
+
+Bohm’s 1952 work demonstrated that it was indeed possible to construct a hidden-variable (in response to Newman) theory that is \textbf{deterministic and reproduces exactly all statistical predictions of Quantum Mechanics}. The price to pay, however, was the acceptance of an explicit \textbf{nonlocality}: influences propagate instantaneously between distant systems.
+
+The central consequence of his work was to transform the EPR debate. It was no longer just a philosophical question about ``completeness'' or ``reality,'' but a physical dilemma with a clear disjunction: \textbf{one cannot have a deterministic theory that is also local.} Any attempt to ``complete'' Quantum Mechanics with hidden variables, as Einstein wished, must sacrifice locality. This fundamental disjunction inspired John S. Bell a decade later to formulate his famous theorem, which formalized the incompatibility and turned it into an experimentally testable prediction. Thus, Bohm’s theory, although not widely accepted, laid the conceptual foundations for the era of experimental tests of the fundamentals of Quantum Mechanics.
+
+\subsection{John Bell}
+The test proposed by John Bell was motivated by the possibility of a hidden variables theory. Building on Bohm’s demonstration that such a theory is indeed possible, Bell, in 1966, addressed von Neumann’s impossibility theorem in his paper “On the Problem of Hidden Variables in Quantum Mechanics.” He showed that the condition imposed by von Neumann—linearity of expectation values—was not a universal requirement for observables. This opened the door for hidden variable theories capable of reproducing the predictions of quantum mechanics.
+
+
+John S. Bell's 1964 paper, ``On the Einstein Podolsky Rosen Paradox,'' provides a rigorous mathematical formulation demonstrating a fundamental incompatibility between the predictions of quantum mechanics and a broad class of alternative theories based on classical intuitions. Bell translated two philosophical assumptions—\textbf{realism and locality}—into a precise mathematical constraint, known as the \textit{Bell inequality}, which can be tested experimentally.
+
+\subsubsection{Fundamental Assumptions: Realism and Locality}
+
+Bell's argument relies on two central assumptions defining a class of theories called \textit{local hidden-variable theories}.
+
+* \textbf{Realism:} Measurement outcomes correspond to intrinsic properties of particles, existing independently of whether they are measured. These pre-existing properties, not described by quantum mechanics, are the ``hidden variables,'' denoted by the parameter $\lambda$. The outcome of a spin measurement along direction $\mathbf{a}$ on one particle is fully determined by $\lambda$.
+
+* \textbf{Locality:} The result of a measurement on one particle cannot be influenced by the settings or outcomes of a measurement on a distant particle with which it interacted in the past. If two measurements occur in remote locations, the orientation of one apparatus does not affect the result obtained at the other location.
+
+\subsubsection{Probabilistic Formulation of Correlations}
+
+To formalize these assumptions, Bell considers a two-spin-1/2 particle system in a singlet state, moving in opposite directions.
+
+* \textbf{Hidden Variables ($\lambda$):} The complete state of the particle pair is specified by $\lambda$, distributed according to a probability density $\rho(\lambda)$ that characterizes the source emitting the particles.
+
+* \textbf{Measurement Outcomes:} 
+    * The result of measuring the spin of particle 1 along direction $\mathbf{a}$ is $A(\mathbf{a},\lambda)$, taking values $+1$ or $-1$.  
+    * Similarly, for particle 2 along direction $\mathbf{b}$, the result is $B(\mathbf{b},\lambda)$, also $+1$ or $-1$.  
+    * Locality implies $A$ depends only on $\mathbf{a}$ and $\lambda$, and $B$ depends only on $\mathbf{b}$ and $\lambda$.
+
+* \textbf{Correlation $P(\mathbf{a},\mathbf{b})$:} The expected value of the product of measurement outcomes, representing the correlation, is averaged over all hidden variables:
+\[
+P(\mathbf{a},\mathbf{b}) = \int A(\mathbf{a},\lambda) B(\mathbf{b},\lambda) \rho(\lambda) \, d\lambda
+\]
+
+\subsubsection{Derivation of Bell's Inequality}
+
+Bell shows that any theory satisfying realism and locality is constrained in the correlations it can predict.
+
+* For a singlet state, measuring the same spin component on both particles yields perfectly anti-correlated results: $A(\mathbf{a},\lambda) = -B(\mathbf{a},\lambda)$.  
+* The correlation can then be written as: $P(\mathbf{a},\mathbf{b}) = - \int A(\mathbf{a},\lambda) A(\mathbf{b},\lambda) \rho(\lambda) d\lambda$.  
+* Considering three orientations $\mathbf{a},\mathbf{b},\mathbf{c}$, the difference between correlations gives:
+\[
+P(\mathbf{a},\mathbf{b}) - P(\mathbf{a},\mathbf{c}) = - \int [A(\mathbf{a},\lambda)A(\mathbf{b},\lambda) - A(\mathbf{a},\lambda)A(\mathbf{c},\lambda)] \rho(\lambda) d\lambda
+\]  
+* Using $A^2 = 1$, this becomes:
+\[
+|P(\mathbf{a},\mathbf{b}) - P(\mathbf{a},\mathbf{c})| \le \int [1 - A(\mathbf{b},\lambda)A(\mathbf{c},\lambda)] \rho(\lambda) d\lambda
+\]  
+* After integrating and using normalization $\int \rho(\lambda)d\lambda = 1$, we arrive at Bell's inequality:
+\[
+|P(\mathbf{a},\mathbf{b}) - P(\mathbf{a},\mathbf{c})| \le 1 + P(\mathbf{b},\mathbf{c})
+\]
+
+\subsubsection{Violation of the Inequality by Quantum Mechanics}
+
+Quantum mechanics predicts $P(\mathbf{a},\mathbf{b}) = -\mathbf{a}\cdot\mathbf{b} = -\cos(\theta_{ab})$ for the singlet state.  
+For example, choosing three coplanar orientations:
+\[
+\mathbf{a} = 0^\circ, \quad \mathbf{b} = 45^\circ, \quad \mathbf{c} = 90^\circ
+\]  
+y calculating:
+\[
+P(\mathbf{a},\mathbf{b}) = -\frac{1}{\sqrt{2}},\quad P(\mathbf{a},\mathbf{c}) = 0,\quad P(\mathbf{b},\mathbf{c}) = -\frac{1}{\sqrt{2}}
+\]  
+y substituting into the inequality:
+\[
+|P(\mathbf{a},\mathbf{b}) - P(\mathbf{a},\mathbf{c})| = \frac{1}{\sqrt{2}} \nleq 1 + P(\mathbf{b},\mathbf{c}) = 0.293
+\]  
+which clearly violates the inequality. Quantum mechanics systematically breaks the constraints imposed by local realism.
+
+\subsubsection{Key Implications}
+
+* \textbf{Fundamental Incompatibility:} No local hidden-variable theory can reproduce all statistical predictions of quantum mechanics.  
+* \textbf{From Philosophy to Experiment:} Bell transformed the completeness debate into an experimentally testable question. Violations imply the local realistic worldview must be abandoned.  
+* \textbf{The Dilemma—Nonlocality or Nonrealism:} Experiments confirming violations force us to give up either:
+    * \textbf{Locality:} Accepting instantaneous influences between distant systems.  
+    * \textbf{Realism:} Accepting that physical properties are undefined until measured.
+
+In summary, Bell's 1964 work rigorously shows that Einstein's intuitive vision of a separable world with predetermined properties is incompatible with quantum mechanics, paving the way for experimental tests and the modern era of quantum technologies.
+
+\subsection{Key Tests of Quantum Entanglement: A Detailed Analysis}
+
+Here we present four of the most important tests designed to confront the predictions of quantum mechanics with the worldview of \textbf{local realism}. Each of these tests refines and extends Bell’s original work, turning a fundamentally philosophical debate into an empirical question that can be resolved in the laboratory.
+
+\subsubsection{Wigner's Inequality (1970): The Intuitive Probabilistic Approach}
+
+(Note: The provided sources do not include Eugene Wigner's 1970 paper. The following summary is based on the inequality provided and general principles of local realism from our discussion history and sources on Bell and CHSH.)
+
+Wigner's test is a particularly elegant and simple Bell-type inequality. Its main strength is conceptual clarity: it avoids expectation values and works directly with probabilities of measurement outcomes, making the conflict with quantum mechanics exceptionally clear.
+
+\textbf{Core Idea}
+
+* \textbf{Central Concept:} Two entangled particles (e.g., in a spin singlet) are sent to two distant detectors. Each detector can measure spin along three possible directions, labeled $a$, $b$, and $c$.
+* \textbf{Assumptions (Local Realism):}
+    1. \textbf{Realism:} Each particle carries a set of "instructions" or hidden variables $\lambda$ that predetermine the outcome of any spin measurement. For example: ``up along $a$, down along $b$, up along $c$.''
+    2. \textbf{Locality:} The outcome at detector 1 cannot depend on the orientation chosen at detector 2, and vice versa.
+    3. \textbf{Perfect Correlation:} For the singlet state, if both detectors are aligned, outcomes are perfectly anti-correlated: if particle 1 gives ``up'' along $a$, particle 2 gives ``down'' along $a$.
+
+\textbf{Key Result: Wigner's Inequality}
+
+Let $P(a+, b+)$ denote the probability that particle 1 is up along $a$ and particle 2 is up along $b$. Wigner's inequality states:
+
+\[
+P(a+, c+) \le P(a+, b+) + P(b+, c+)
+\]
+
+This can be understood by classifying hidden variables $\lambda$ into 8 classes according to the results (+ or -) for directions $(a,b,c)$ of particle 1. Due to anti-correlation, particle 2's outcomes are fixed. The inequality reflects that the set contributing to $P(a+, c+)$ is contained in the union of sets contributing to $P(a+, b+)$ and $P(b+, c+)$.
+
+\textbf{Quantum Violation}
+
+For the singlet: $P(a+, b+) = \frac14(1-\cos\theta_{ab})$. Example:
+
+* $a=0^\circ$, $b=45^\circ$, $c=90^\circ$  
+* $P(a+, c+) = 0.25$, $P(a+, b+) \approx 0.073$, $P(b+, c+) \approx 0.073$  
+* Substituting: $0.25 \le 0.146$ → violation.
+
+\textbf{Takeaway:} Simple probabilistic argument shows that local hidden variables cannot reproduce quantum predictions.
+
+\subsubsection{ CHSH Inequality (1969): Making Bell Testable in the Lab}
+
+Clauser, Horne, Shimony, and Holt generalized Bell's theorem for real experiments, accounting for imperfect detectors and polarizers.
+
+\textbf{Core Idea}
+
+* Two correlated particles sent to two apparatuses with adjustable settings ($a$ and $b$). Outcomes $A(a,\lambda), B(b,\lambda) = \pm 1$.  
+* Assumptions: realism (hidden variables $\lambda$), locality, and independent probability distribution $\rho(\lambda)$.
+
+\textbf{Key Result: CHSH Inequality}
+
+\[
+|E(a,b) - E(a,b')| + |E(a',b) + E(a',b')| \le 2
+\]
+
+Where $E(a,b)$ is the expectation value of $A \cdot B$.
+
+\textbf{Quantum Violation}
+
+For singlet: $E(a,b)=-\cos\theta_{ab}$. Choosing angles for maximal violation: $a=0^\circ$, $b=22.5^\circ$, $a'=45^\circ$, $b'=67.5^\circ$. Substituting yields $2.389 > 2$, violating the classical bound (max quantum value $2\sqrt2 \approx 2.828$).
+
+\textbf{Takeaway:} First inequality directly testable in lab; confirmed by Freedman-Clauser 1972.
+
+\subsubsection{ Clauser-Horne (CH) Inequality (1974): Closing the Detection Loophole}
+
+CH refined the CHSH argument to eliminate the "detection loophole," allowing for imperfect detectors.
+
+\textbf{Core Idea}
+
+* Defines Objective Local Theories (OLT): detection probabilities $p_1(\lambda,a)$, $p_2(\lambda,b)$, with joint probability factorizing $p_{12}(\lambda,a,b) = p_1 p_2$.  
+* Probabilities can be any value between 0 and 1 (detector inefficiency).  
+* Assumptions: objectivism/realism, locality, no-conspiracy (source independent of detector settings).
+
+\textbf{Key Result: CH Inequality}
+
+\[
+-1 \le P_{12}(a,b) - P_{12}(a,b') + P_{12}(a',b) + P_{12}(a',b') - P_1(a') - P_2(b) \le 0
+\]
+
+\textbf{Takeaway:} Provides a framework for Bell tests that are immune to detection loophole; applicable with realistic sources and detectors.
+
+\subsubsection{ Hardy's Test (1992): Contradiction Without Inequalities}
+
+Hardy's test demonstrates a direct logical contradiction rather than a statistical one. Certain outcomes predicted by quantum mechanics cannot occur under local realism, but quantum mechanics predicts they occur with nonzero probability (~9%).
+
+\textbf{Core Idea}
+
+* Entangled pair, non-maximally entangled. Measurements: L1/L2 (left), R1/R2 (right).  
+* Local realism: each particle carries predetermined instructions $\lambda$ ; locality applies.
+
+\textbf{Key Result: Logical Contradiction}
+
+QM predicts:
+
+1. (L1,R1): (-,-) never occurs  
+2. (L1,R2): (+,+) never occurs  
+3. (L2,R1): (+,+) never occurs  
+4. (L2,R2): (+,+) occurs ~9%
+
+Using local realism and the first three "never" outcomes, one deduces that (+,+) for (L2,R2) is impossible. Yet QM predicts it occurs, creating a direct contradiction.
+
+\textbf{Takeaway:} The cleanest refutation of local realism; no inequalities needed, highlighting the fundamental non-locality of quantum mechanics.
