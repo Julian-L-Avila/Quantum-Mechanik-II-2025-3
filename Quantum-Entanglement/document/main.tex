@@ -1,0 +1,75 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs,bookmark}
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{siunitx}
+\usepackage{derivative}
+\usepackage{braket}
+
+\renewcommand{\arraystretch}{1.2}
+\sisetup{group-digits=true,
+  group-separator={\,},
+  separate-uncertainty
+}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={Quantum Entanglement - Outline},
+  pdfauthor={Avila, Herrera, Rodríguez},
+  pdfsubject={Quantum Mechanics II},
+  pdfkeywords={Quantum Entanglement}
+}
+\urlstyle{same}
+
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+\newtheorem{proposition}[theorem]{Proposition}%
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+
+\begin{document}
+
+\title[Quantum Entanglement]{\textbf{Quantum Entanglement Lecture}
+}
+\author[1]{\fnm{Julian} \sur{Avila}}
+\author[1]{\fnm{Sebastian} \sur{Garcia}}
+\author[1]{\fnm{Laura} \sur{Herrera}}
+\affil[1]{\orgname{Universidad Distrital Francisco José de Caldas}}
+
+\abstract{
+}
+\keywords{
+}
+
+\maketitle
+
+\input{./sections/maths.tex}
+
+\bibliography{../references.bib}
+
+\end{document}

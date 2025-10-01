@@ -1,0 +1,66 @@
+\documentclass[aspectratio=169,sn-mathphys-num]{beamer}
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[sorting=none]{biblatex}
+\usepackage{ragged2e}
+\usepackage{setspace}
+\usepackage{bookmark}
+\usepackage{siunitx}
+\usepackage{mhchem}
+\usepackage{braket}
+
+\addbibresource{../references.bib}
+
+\usetheme[numbering=counter, progressbar=frametitle, background=light]{metropolis}
+
+\usecolortheme{dove}
+\definecolor{primary}{RGB}{88, 24, 124}
+\definecolor{secondary}{RGB}{0, 168, 150}
+
+\setbeamercovered{transparent}
+\setbeamercolor{frametitle}{fg=white, bg=primary}
+\setbeamercolor{progress bar}{fg=secondary}
+\setbeamerfont{frametitle}{size=\large, series=\bfseries}
+\setbeamerfont{title}{size=\LARGE, series=\bfseries}
+\setbeamercolor{alerted text}{fg=secondary}
+\setbeamercolor{block title}{fg=primary}
+\setbeamercolor{block body}{bg=white}
+
+\setstretch{1.1}
+
+\setmainfont{Fira Sans}
+\setmathfont{TeX Gyre Pagella Math}
+
+\newcommand{\Tr}{\mathrm{Tr}}
+
+\title{Quantum Entanglement}
+\subtitle{}
+\author{Avila, Herrera, Rodríguez}
+\institute{Universidad Distrital Francisco José de Caldas}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\input{./sections/maths.tex}
+
+\section{References}
+\begin{frame}[allowframebreaks]{References}
+	\printbibliography
+	\nocite{*}
+\end{frame}
+
+\begin{frame}[plain]
+	\centering
+	\vspace{1cm}
+	{\Huge \textbf{Thank you!}}\\[1cm]
+	{\large Questions or Comments?}
+\end{frame}
+
+\end{document}
