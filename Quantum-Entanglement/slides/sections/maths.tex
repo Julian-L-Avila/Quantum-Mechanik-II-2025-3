@@ -106,6 +106,94 @@
 
 %------------------------------------------------------------------------------
 
+\begin{frame}{A Fundamental Complication: Identical Particles}
+  \begin{block}{The Symmetrization Postulate}
+    The tensor product formalism $\mathcal{H}_{AB} = \mathcal{H}_A \otimes
+    \mathcal{H}_B$ implicitly assumes particles are distinguishable.
+    \pause
+
+    However, for a system of identical particles, quantum mechanics imposes the
+    \alert{symmetrization postulate}:
+    \begin{itemize}[<+->]
+      \item The total wave function must be \textbf{symmetric} under particle exchange for \textbf{bosons}.
+      \item The total wave function must be \textbf{antisymmetric} under particle exchange for \textbf{fermions}.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{alertblock}{Consequence for Fermions}
+    The physically allowed states do not live in the full tensor product space
+    $\mathcal{H} \otimes \mathcal{H}$, but in its \emph{antisymmetric subspace}
+    $\mathcal{H} \wedge \mathcal{H}$.
+
+    The standard definition of separability, which relies on particle labels,
+    becomes inapplicable.
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Redefining Entanglement for Fermions}
+  \begin{block}{Mode Entanglement and Slater Rank}
+    For identical particles, entanglement is reformulated based on correlations
+    between different degrees of freedom (e.g., spatial and spin) or between
+    modes.
+    \pause
+    \begin{itemize}
+      \item The role of a separable state is now played by a single
+        \alert{Slater determinant}. For two fermions in single-particle states
+        $\ket{\phi_1}$ and $\ket{\phi_2}$:
+        \[
+          \ket{\Psi}_{\text{Slater}} = \frac{1}{\sqrt{2}}
+          \left( \ket{\phi_1}_1 \otimes \ket{\phi_2}_2 -
+          \ket{\phi_2}_1 \otimes \ket{\phi_1}_2 \right)
+        \]
+        \pause
+      \item A pure fermionic state is considered \alert{entangled if and only if
+        its Slater rank is greater than one} (i.e., it requires a superposition
+        of multiple Slater determinants to be described).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Example: Pauli Exclusion \emph{Forces} Entanglement}
+  \begin{block}{Two Electrons in the Same Spatial Orbital}
+    Consider two electrons (spin-1/2 fermions) occupying the same spatial
+    orbital. The total wave function $\ket{\Psi}_{\text{total}} =
+    \ket{\psi}_{\text{spatial}} \otimes \ket{\chi}_{\text{spin}}$ must be
+    antisymmetric.
+    \begin{enumerate}[<+->]
+      \item \textbf{Spatial State:} Since both electrons are in the same
+        orbital, their spatial wave function $\ket{\psi}_{\text{spatial}}$ is
+        necessarily \emph{symmetric} under particle exchange.
+      \item \textbf{Spin State:} To ensure the total wave function is
+        antisymmetric, the spin part $\ket{\chi}_{\text{spin}}$ \emph{must be
+        antisymmetric}.
+      \item \textbf{Result:} The unique antisymmetric spin state for two
+        spin-1/2 particles is the maximally entangled \alert{spin-singlet
+        state}:
+        \[
+          \ket{\Psi^-} = \frac{1}{\sqrt{2}} (\ket{\uparrow}_1 \otimes
+          \ket{\downarrow}_2 - \ket{\downarrow}_1 \otimes \ket{\uparrow}_2)
+        \]
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{alertblock}{Conclusion}
+    The Pauli exclusion principle \emph{forces} the two electrons into a
+    maximally entangled Bell state. For indistinguishable particles,
+    entanglement is not just a possibility but can be a necessity imposed by
+    fundamental symmetries.
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
 \begin{frame}{Formalism: Operators and the Density Matrix}
   \begin{block}{Operators and Inner Product}
     \begin{itemize}
@@ -231,7 +319,7 @@
   \end{block}
   \pause
   \begin{block}{Relative Entropy of Entanglement (\texorpdfstring{$E_R$}{E\_R})}
-    A geometric approach: how "distant" is $\rho$ from the set of all separable
+    A geometric approach: how ``distant'' is $\rho$ from the set of all separable
     states (SEP)?
     \[ E_R(\rho) = \min_{\sigma \in \text{SEP}} S(\rho || \sigma) = \min_{\sigma
     \in \text{SEP}} \Tr(\rho \ln \rho - \rho \ln \sigma) \]
@@ -315,12 +403,12 @@
     The fourth eigenvalue $\lambda_4$ becomes negative if $1-3p < 0$, which means:
     \( p > 1/3 \)
     Therefore, the Werner state is \emph{entangled for $p > 1/3$}.
-  \pause
+    \pause
 
     A measure of entanglement can be defined from the negative eigenvalue:
     \(
-      \mathcal{N}(\rho_W) = \max\left(0, -\lambda_4\right) = \max\left(0,
-      \frac{3p-1}{4}\right)
+    \mathcal{N}(\rho_W) = \max\left(0, -\lambda_4\right) = \max\left(0,
+    \frac{3p-1}{4}\right)
     \)
   \end{alertblock}
 \end{frame}
@@ -351,6 +439,83 @@
 
 %------------------------------------------------------------------------------
 
+\section{Dynamics of Entanglement}
+
+%------------------------------------------------------------------------------
+
+\begin{frame}{Entanglement in Motion}
+  \begin{block}{Why Study Entanglement Dynamics?}
+    Beyond static characterization, we must understand how entanglement evolves
+    in time. This is governed by the system's Hamiltonian and its interaction
+    with the environment.
+    \pause
+
+    Understanding these dynamics is paramount for quantum information
+    processing, where entangled states must be:
+    \begin{itemize}
+      \item Generated
+      \item Manipulated
+      \item Protected from decoherence
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{alertblock}{Propagation in Closed Systems}
+    In many-body systems with local interactions, entanglement is not static; it
+    propagates. The \alert{Lieb-Robinson bounds} establish a finite maximum
+    speed for information propagation, implying a linear ``light cone'' for
+    correlations.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Non-Equilibrium Dynamics: Quantum Quenches}
+  \begin{block}{Quantum Quench}
+    A \emph{quantum quench}—a sudden change in a system's Hamiltonian ($H_0 \to
+    H_1$)—drives the system far from equilibrium, revealing universal
+    entanglement dynamics.
+  \end{block}
+  \pause
+  \begin{alertblock}{The Quasiparticle Picture}
+    For a subsystem of length $\ell$, the von Neumann entropy $S_A(t)$ shows a
+    characteristic pattern:
+    \begin{enumerate}
+      \item An initial \alert{linear growth} in time: $S_A(t) \propto t$.
+      \item \alert{Saturation} to a value proportional to the block size:
+        $S_A(t) \to \text{const} \cdot \ell$.
+    \end{enumerate}
+    \pause
+    This is explained by a quasiparticle picture: the quench creates entangled
+    pairs of quasiparticles that propagate freely.
+    A block becomes entangled as one particle enters while its partner does not.
+    Saturation occurs when quasiparticles from the block's center can escape, at
+    $t^* \approx \ell/(2v)$.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Entanglement in Open Systems: Fragility}
+  \begin{block}{Decoherence}
+    When a quantum system interacts with an external environment, its coherence
+    and entanglement degrade over time—a process called decoherence.
+    \pause
+
+    Entanglement is typically far more fragile than the coherence of individual
+    subsystems.
+  \end{block}
+  \pause
+  \begin{alertblock}{Entanglement Sudden Death (ESD)}
+    A striking feature of this decay is \alert{Entanglement Sudden Death}.
+    \begin{itemize}
+      \item Unlike the asymptotic decay of local properties, the entanglement
+        between subsystems can \textbf{vanish completely at a finite time}.
+      \item After this point, the system evolves in a purely separable state,
+        even though individual subsystems may still possess quantum coherence.
+    \end{itemize}
+    This non-classical decay highlights the unique fragility of quantum
+    correlations.
+  \end{alertblock}
+\end{frame}
+
+%------------------------------------------------------------------------------
+
 \section{Alternative Perspectives}
 
 %------------------------------------------------------------------------------
@@ -374,4 +539,46 @@
   \end{alertblock}
 \end{frame}
 
-%------------------------------------------------------------------------------
+\begin{frame}{The Entanglor Operator}
+  \begin{block}{The Algebra of Physical Space (APS)}
+    The mathematical language is Geometric Algebra, a powerful tool for
+    expressing geometric relationships. In this framework, spin states are
+    represented as \emph{rotors} (operators that perform rotations).
+  \end{block}
+  \pause
+  \begin{alertblock}{Entanglement as a Transformation}
+    The central thesis: entanglement is encoded within a transformation
+    operator, the \alert{entanglor}, not in the state itself.
+    \begin{itemize}
+      \item An entangled state is the result of an entanglor acting on a
+        separable state.
+      \item The entanglor contains all the geometric information describing the
+        superposition of relative rotations between the reference frames of the
+        constituent particles.
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Relativistic Context and Conceptual Implications}
+  \begin{block}{Entangling Eigenspinors}
+    A key advantage of APS is its natural compatibility with special
+    relativity.
+    This allows a Lorentz boost (describing relative velocity) to be combined
+    with an entanglor (describing relative rotation).
+    \pause
+    The result is a composite operator, the \alert{entangling eigenspinor}
+    $\Lambda_{AB}$, which contains the complete information about both relative
+    motion and entanglement between the subsystems' reference frames.
+  \end{block}
+  \pause
+  \begin{alertblock}{Shift in Perspective}
+    This reinterpretation has profound conceptual implications:
+    \begin{itemize}
+      \item The ``weirdness'' of quantum mechanics is shifted from the state to
+        the \emph{transformation process}.
+      \item Wave function collapse is not a physical change to a spooky object,
+        but the \textbf{revelation of which specific geometric transformation}
+        described the relationship between the particles all along.
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
