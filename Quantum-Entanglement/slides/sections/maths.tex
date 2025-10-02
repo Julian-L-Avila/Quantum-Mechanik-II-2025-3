@@ -1,84 +1,76 @@
+%==============================================================================
 \section{Mathematical Framework for Entanglement}
+%==============================================================================
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{Motivation: From Feature to Formalism}
-  \begin{block}{Recap of the Origin of Entanglement}
-    Quantum entanglement first emerged as a mathematical feature of early
-    quantum mechanics.
-    \pause
-
-    Subsequent experimental confirmations and theoretical advancements have
-    enabled a more rigorous description.
-    \pause
-
-    The core of this description lies in how we represent the state of a
-    \emph{composite quantum system}.
+  \begin{block}{The Origin of Entanglement}
+    \begin{itemize}
+      \item Emerged as a mathematical feature of early quantum mechanics.
+      \pause
+      \item Now rigorously described via experiment and theory.
+      \pause
+      \item Core Idea: How to represent states of \emph{composite quantum
+        systems}.
+    \end{itemize}
   \end{block}
   \pause
 
   \begin{alertblock}{A Note on Interpretation}
-    While the mathematical framework is well-established, its physical
-    interpretation remains a subject of active debate---a common theme in
-    quantum theory.
+    While the math is well-established, its physical interpretation remains a
+    subject of active debate---a common theme in quantum theory.
   \end{alertblock}
 \end{frame}
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{Departure from Classical State Spaces}
   \begin{block}{Classical Composite Systems}
-    The state of a composite system is built from its parts. For a two-particle
-    system, the total state is a point $(x_A, x_B)$ in the \alert{Cartesian
-    product} of individual phase spaces:
+    For a two-particle system, the total state space is the
+    \alert{Cartesian product} of individual phase spaces:
     \[
       \Gamma_{AB} = \Gamma_A \times \Gamma_B
     \]
-    Specifying the state of each subsystem completely specifies the state of the
-    whole.
+    The state $(x_A, x_B)$ of the parts completely defines the whole.
   \end{block}
   \pause
   \begin{alertblock}{A Naive Quantum Extrapolation}
-    One might guess the quantum state space is $\mathcal{H}_{AB} = \mathcal{H}_A
-    \times \mathcal{H}_B$.
-    \pause
-
-    \textbf{This is incorrect.} It fails to incorporate the \emph{superposition
-    principle} for combined states. An ordered pair $(\ket{\psi_A},
-    \ket{\phi_B})$ doesn't accommodate linear combinations.
+    A simple guess might be $\mathcal{H}_{AB} = \mathcal{H}_A \times
+    \mathcal{H}_B$. \pause \textbf{This is incorrect.}
+    \begin{itemize}
+      \item It fails to incorporate the \emph{superposition principle} for
+        combined states.
+      \item An ordered pair $(\ket{\psi_A}, \ket{\phi_B})$ cannot represent
+        linear combinations.
+    \end{itemize}
   \end{alertblock}
 \end{frame}
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{The Tensor Product Structure}
   \begin{block}{The Correct Postulate}
-    The state space for a composite quantum system is constructed using the
+    The state space for a composite quantum system is the
     \emph{tensor product} of the individual Hilbert spaces:
     \begin{equation}
       \mathcal{H}_{AB} = \mathcal{H}_A \otimes \mathcal{H}_B
     \end{equation}
   \end{block}
   \pause
-  \vspace{-1em}
   \begin{block}{General Pure State}
-    A general pure state $\ket{\Psi}$ in this composite space is a superposition of basis states:
+    A general pure state $\ket{\Psi} \in \mathcal{H}_{AB}$ is a superposition:
     \begin{equation}
       \ket{\Psi} = \sum_{i,j} c_{ij} (\ket{a_i} \otimes \ket{b_j})
     \end{equation}
     where $\{\ket{a_i}\}$ and $\{\ket{b_j}\}$ are orthonormal bases for
     $\mathcal{H}_A$ and $\mathcal{H}_B$.
     \pause
-
-    The dimension of the new space is the product of the constituent dimensions:
-    \(
-      \dim(\mathcal{H}_{AB}) = \dim(\mathcal{H}_A) \cdot \dim(\mathcal{H}_B)
-    \)
+    \begin{center}
+      Dimension:
+      \( \dim(\mathcal{H}_{AB}) = \dim(\mathcal{H}_A) \cdot \dim(\mathcal{H}_B) \)
+    \end{center}
   \end{block}
 \end{frame}
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{Two Fundamental Classes of States}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
@@ -87,94 +79,103 @@
         \begin{equation}
           \ket{\Psi}_{\text{sep}} = \ket{\psi_A} \otimes \ket{\psi_B}
         \end{equation}
-        Subsystems have definite, independent properties, analogous to the classical case.
+        Subsystems have definite, independent properties (classical analogue).
       \end{block}
     \end{column}
     \pause
     \begin{column}{0.5\textwidth}
       \begin{alertblock}{Entangled States}
-        A state $\ket{\Psi} \in \mathcal{H}_{AB}$ that \emph{cannot} be written
-        in the separable form is called \emph{entangled}.
-
-        These states represent a uniquely quantum-mechanical correlation.
-        Measurement on subsystem A instantaneously influences subsystem B,
-        regardless of distance.
+        A state is \emph{entangled} if it \emph{cannot} be written in the
+        separable form.
+        \begin{itemize}
+          \item Uniquely quantum-mechanical correlation.
+          \item Measurement on A instantly affects B.
+        \end{itemize}
       \end{alertblock}
     \end{column}
   \end{columns}
 \end{frame}
 
 %------------------------------------------------------------------------------
-
-\begin{frame}{A Fundamental Complication: Identical Particles}
+\begin{frame}{A Complication: Identical Particles}
   \begin{block}{The Symmetrization Postulate}
-    The tensor product formalism $\mathcal{H}_{AB} = \mathcal{H}_A \otimes
-    \mathcal{H}_B$ implicitly assumes particles are distinguishable.
+    The formalism $\mathcal{H}_{AB} = \mathcal{H}_A \otimes \mathcal{H}_B$
+    implicitly assumes particles are distinguishable.
     \pause
 
-    However, for a system of identical particles, quantum mechanics imposes the
+    For identical particles, quantum mechanics imposes the
     \alert{symmetrization postulate}:
     \begin{itemize}[<+->]
-      \item The total wave function must be \textbf{symmetric} under particle exchange for \textbf{bosons}.
-      \item The total wave function must be \textbf{antisymmetric} under particle exchange for \textbf{fermions}.
+      \item Total wave function must be \textbf{symmetric} under particle
+        exchange for \textbf{bosons}.
+      \item Total wave function must be \textbf{antisymmetric} under particle
+        exchange for \textbf{fermions}.
     \end{itemize}
   \end{block}
 \end{frame}
 
-\begin{frame}
-  \begin{alertblock}{Consequence for Fermions}
-    The physically allowed states do not live in the full tensor product space
-    $\mathcal{H} \otimes \mathcal{H}$, but in its \emph{antisymmetric subspace}
-    $\mathcal{H} \wedge \mathcal{H}$.
-
-    The standard definition of separability, which relies on particle labels,
-    becomes inapplicable.
+%------------------------------------------------------------------------------
+\begin{frame}{Consequence for Fermions}
+  \begin{alertblock}{A Restricted State Space}
+    \begin{itemize}
+      \item Physically allowed states live in the \emph{antisymmetric
+        subspace} $\mathcal{H} \wedge \mathcal{H}$, not the full tensor
+        product space $\mathcal{H} \otimes \mathcal{H}$.
+      \pause
+      \item The standard definition of separability, which relies on particle
+        labels (`particle A' vs `particle B'), becomes inapplicable.
+    \end{itemize}
   \end{alertblock}
 \end{frame}
 
 %------------------------------------------------------------------------------
-
-\begin{frame}{Redefining Entanglement for Fermions}
-  \begin{block}{Mode Entanglement and Slater Rank}
-    For identical particles, entanglement is reformulated based on correlations
-    between different degrees of freedom (e.g., spatial and spin) or between
-    modes.
+\begin{frame}{Entanglement for Identical Particles}
+  \begin{block}{A New Paradigm: Mode Entanglement}
+    Entanglement is reformulated based on correlations between modes (e.g.,
+    spatial vs. spin), not between labeled particles.
     \pause
     \begin{itemize}
       \item The role of a separable state is now played by a single
-        \alert{Slater determinant}. For two fermions in single-particle states
-        $\ket{\phi_1}$ and $\ket{\phi_2}$:
-        \[
-          \ket{\Psi}_{\text{Slater}} = \frac{1}{\sqrt{2}}
-          \left( \ket{\phi_1}_1 \otimes \ket{\phi_2}_2 -
-          \ket{\phi_2}_1 \otimes \ket{\phi_1}_2 \right)
-        \]
-        \pause
-      \item A pure fermionic state is considered \alert{entangled if and only if
-        its Slater rank is greater than one} (i.e., it requires a superposition
-        of multiple Slater determinants to be described).
+        \alert{Slater determinant}.
     \end{itemize}
+    \pause
+    For two fermions in single-particle states $\ket{\phi_1}, \ket{\phi_2}$:
+    \[
+      \ket{\Psi}_{\text{Slater}} = \frac{1}{\sqrt{2}}
+      \left( \ket{\phi_1}_1 \otimes \ket{\phi_2}_2 -
+      \ket{\phi_2}_1 \otimes \ket{\phi_1}_2 \right)
+    \]
   \end{block}
 \end{frame}
 
 %------------------------------------------------------------------------------
+\begin{frame}{Defining Fermionic Entanglement: Slater Rank}
+  \begin{alertblock}{Condition for Entanglement}
+    A pure fermionic state is considered \alert{entangled if and only if
+    its Slater rank is greater than one}.
+    \pause
+    \begin{itemize}
+      \item This means it requires a superposition of multiple Slater
+        determinants to be described.
+      \item Slater Rank 1 $\iff$ ``Separable'' (unentangled)
+      \item Slater Rank $>$ 1 $\iff$ Entangled
+    \end{itemize}
+  \end{alertblock}
+\end{frame}
 
+%------------------------------------------------------------------------------
 \begin{frame}{Example: Pauli Exclusion \emph{Forces} Entanglement}
   \begin{block}{Two Electrons in the Same Spatial Orbital}
-    Consider two electrons (spin-1/2 fermions) occupying the same spatial
-    orbital. The total wave function $\ket{\Psi}_{\text{total}} =
+    The total wave function $\ket{\Psi}_{\text{total}} =
     \ket{\psi}_{\text{spatial}} \otimes \ket{\chi}_{\text{spin}}$ must be
     antisymmetric.
     \begin{enumerate}[<+->]
-      \item \textbf{Spatial State:} Since both electrons are in the same
-        orbital, their spatial wave function $\ket{\psi}_{\text{spatial}}$ is
-        necessarily \emph{symmetric} under particle exchange.
-      \item \textbf{Spin State:} To ensure the total wave function is
-        antisymmetric, the spin part $\ket{\chi}_{\text{spin}}$ \emph{must be
-        antisymmetric}.
+      \item \textbf{Spatial State:} $\ket{\psi}_{\text{spatial}}$ is
+        \emph{symmetric} (same orbital).
+      \item \textbf{Spin State:} To ensure total antisymmetry,
+        $\ket{\chi}_{\text{spin}}$ \emph{must be antisymmetric}.
       \item \textbf{Result:} The unique antisymmetric spin state for two
-        spin-1/2 particles is the maximally entangled \alert{spin-singlet
-        state}:
+        spin-1/2 particles is the maximally entangled \alert{spin-singlet}:
         \[
           \ket{\Psi^-} = \frac{1}{\sqrt{2}} (\ket{\uparrow}_1 \otimes
           \ket{\downarrow}_2 - \ket{\downarrow}_1 \otimes \ket{\uparrow}_2)
@@ -183,48 +184,62 @@
   \end{block}
 \end{frame}
 
-\begin{frame}
+%------------------------------------------------------------------------------
+\begin{frame}{Example: Pauli Exclusion (Conclusion)}
   \begin{alertblock}{Conclusion}
     The Pauli exclusion principle \emph{forces} the two electrons into a
-    maximally entangled Bell state. For indistinguishable particles,
-    entanglement is not just a possibility but can be a necessity imposed by
-    fundamental symmetries.
+    maximally entangled Bell state.
+    \pause
+    \begin{center}
+    For indistinguishable particles, entanglement is not just a possibility
+    but can be a \textbf{necessity} imposed by fundamental symmetries.
+    \end{center}
   \end{alertblock}
 \end{frame}
 
 %------------------------------------------------------------------------------
+\begin{frame}{Formalism: Operators on Composite Systems}
+    \begin{block}{Local Operators}
+      An operator $O_A$ on subsystem $A$ is represented on
+      $\mathcal{H}_{AB}$ as a \alert{local operator}:
+      \[
+        O_A \to O_A \otimes I_B
+      \]
+    \end{block}
+    \pause
+    \begin{block}{Inner Product}
+      The inner product is defined by linear extension:
+      \[
+        (\bra{\phi_A} \otimes \bra{\phi_B}) (\ket{\psi_A} \otimes
+        \ket{\psi_B}) = \braket{\phi_A}{\psi_A} \braket{\phi_B}{\psi_B}
+      \]
+    \end{block}
+\end{frame}
 
-\begin{frame}{Formalism: Operators and the Density Matrix}
-  \begin{block}{Operators and Inner Product}
+%------------------------------------------------------------------------------
+\begin{frame}{Why We Need the Density Matrix ($\rho$)}
+  \begin{alertblock}{Handling Incomplete Information}
     \begin{itemize}
-      \item An operator $O_A$ on subsystem $A$ is represented on
-        $\mathcal{H}_{AB}$ as a \alert{local operator}: $O_A \otimes I_B$.
-        \pause
-      \item The inner product is defined by linear extension:
-        \[
-          (\bra{\phi_A} \otimes \bra{\phi_B}) (\ket{\psi_A} \otimes
-          \ket{\psi_B}) = \braket{\phi_A | \psi_A} \braket{\phi_B | \psi_B}
-        \]
+      \item When we look at only one part of an entangled pair, we have
+        incomplete information about it.
+      \pause
+      \item The state of such a subsystem cannot be described by a state
+        vector.
+      \pause
+      \item The density matrix formalism is essential for describing these
+        subsystems.
     \end{itemize}
-  \end{block}
-  \pause
-  \begin{alertblock}{Why We Need the Density Matrix ($\rho$)}
-    Entanglement forces us to consider situations of incomplete information,
-    especially when looking at only one part of an entangled pair.
-
-    The density matrix formalism is essential for this.
   \end{alertblock}
 \end{frame}
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{The Density Matrix: Pure vs. Mixed States}
   \begin{block}{Pure States}
     For a pure state $\ket{\Psi}$, the density matrix is a projection operator:
     \begin{equation}
       \rho_{\text{pure}} = \ket{\Psi}\bra{\Psi}
     \end{equation}
-    It is a projector ($\rho^2 = \rho$), leading to a simple test for purity:
+    It is a projector ($\rho^2 = \rho$), so purity can be tested:
     \[
       \alert{\Tr(\rho^2) = 1}
     \]
@@ -232,8 +247,7 @@
   \pause
   \vspace{-1em}
   \begin{block}{Mixed States}
-    For a statistical ensemble of pure states $\{\ket{\psi_i}\}$ with
-    probabilities $\{p_i\}$, the state is mixed:
+    For a statistical ensemble of pure states $\{p_i, \ket{\psi_i}\}$:
     \begin{equation}
       \rho_{\text{mixed}} = \sum_i p_i \ket{\psi_i}\bra{\psi_i}
     \end{equation}
@@ -243,123 +257,130 @@
 \end{frame}
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{Quantifying Uncertainty: Von Neumann Entropy}
   \begin{block}{Definition}
-    The degree of uncertainty or ``mixedness'' is quantified by the Von Neumann
-    entropy:
+    The degree of uncertainty or ``mixedness'' is quantified by the Von
+    Neumann entropy:
     \begin{equation}
       S(\rho) = - \Tr(\rho \ln \rho) = - \sum_i \lambda_i \ln \lambda_i
     \end{equation}
     where $\lambda_i$ are the eigenvalues of $\rho$.
     \begin{itemize}[<+->]
-      \item For a pure state, $S(\rho) = 0$ (maximal knowledge).
-      \item For a maximally mixed state ($\rho=I/d$), $S(\rho) = \ln d$ (minimal knowledge).
+      \item Pure state ($\rho = \ket{\psi}\bra{\psi}$): $S(\rho) = 0$
+        (maximal knowledge).
+      \item Maximally mixed state ($\rho=I/d$): $S(\rho) = \ln d$
+        (minimal knowledge).
     \end{itemize}
   \end{block}
 \end{frame}
 
-\begin{frame}
-  \begin{alertblock}{Entropy as a Signature of Entanglement}
+%------------------------------------------------------------------------------
+\begin{frame}{Entropy as a Signature of Entanglement}
+  \begin{alertblock}{The Entropy of Entanglement}
     Consider a composite system $AB$ in a pure state $\ket{\Psi}_{AB}$, so
     $S(\rho_{AB})=0$.
-
     \pause
 
-    The state of subsystem A is the \emph{reduced density matrix}:
+    The state of subsystem A is found via the \emph{reduced density matrix}:
     \[ \rho_A = \Tr_B(\rho_{AB}) \]
+    \pause
     If $\ket{\Psi}_{AB}$ is entangled, $\rho_A$ will be a mixed state, and its
     entropy \alert{$S(\rho_A) > 0$}.
-
     \pause
 
-    This is the \emph{entropy of entanglement}.
+    This quantity, $S(\rho_A)$, is the \emph{entropy of entanglement}.
   \end{alertblock}
 \end{frame}
 
-%------------------------------------------------------------------------------
-
+%==============================================================================
 \section{Quantifying and Detecting Entanglement}
+%==============================================================================
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{Pure States: Schmidt Decomposition}
   \begin{block}{The Schmidt Decomposition Theorem}
-    Any pure bipartite state $\ket{\Psi}_{AB}$ can be written in a canonical form:
+    Any pure bipartite state $\ket{\Psi}_{AB}$ can be written in a special
+    orthonormal basis:
     \begin{equation}
       \ket{\Psi}_{AB} = \sum_{k=1}^{r_S} \sqrt{\lambda_k} \ket{k}_A \otimes \ket{k}_B
     \end{equation}
     \begin{itemize}
-      \item $\{\ket{k}_A\}$ and $\{\ket{k}_B\}$ are orthonormal bases.
-      \item The number of terms, $r_S$, is the \emph{Schmidt rank}.
+      \item $\{\ket{k}_A\}$ and $\{\ket{k}_B\}$ are orthonormal bases (the
+        Schmidt bases).
+      \item The number of non-zero terms, $r_S$, is the \emph{Schmidt rank}.
     \end{itemize}
   \end{block}
 \end{frame}
 
-\begin{frame}
-  \begin{alertblock}{Schmidt Rank and Entanglement}
+%------------------------------------------------------------------------------
+\begin{frame}{Schmidt Rank and Entanglement}
+  \begin{alertblock}{A Simple Criterion}
     A state is \emph{separable if and only if its Schmidt rank is 1}.
+    \pause
 
-    The degree of entanglement is uniquely quantified by the \emph{entropy of entanglement}:
+    For pure states, the degree of entanglement is uniquely quantified by the
+    \emph{entropy of entanglement}:
     \begin{equation}
       E(\ket{\Psi}) = S(\rho_A) = -\sum_{k=1}^{r_S} \lambda_k \ln \lambda_k
     \end{equation}
+    (where $\lambda_k$ are the squares of the Schmidt coefficients).
   \end{alertblock}
 \end{frame}
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{Mixed States: A Zoo of Measures}
-  Quantifying entanglement in mixed states is far more complex as they lack a
-  unique decomposition. Several measures exist.
+  Quantifying mixed-state entanglement is complex; no single measure exists.
   \pause
   \begin{block}{Entanglement of Formation (\texorpdfstring{$E_F$}{E\_F})}
-    What is the minimum average pure-state entanglement required to create $\rho$?
+    \textit{Question:} What is the minimum average pure-state entanglement
+    needed to create $\rho$?
     \[ E_F(\rho) = \min_{\{p_i, \ket{\psi_i}\}} \sum_i p_i E(\ket{\psi_i}) \]
   \end{block}
   \pause
   \begin{block}{Relative Entropy of Entanglement (\texorpdfstring{$E_R$}{E\_R})}
-    A geometric approach: how ``distant'' is $\rho$ from the set of all separable
-    states (SEP)?
+    \textit{Question:} How ``distant'' is $\rho$ from the set of separable states
+    (SEP)?
     \[ E_R(\rho) = \min_{\sigma \in \text{SEP}} S(\rho || \sigma) = \min_{\sigma
     \in \text{SEP}} \Tr(\rho \ln \rho - \rho \ln \sigma) \]
   \end{block}
 \end{frame}
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{Detecting Mixed-State Entanglement: The PPT Criterion}
-  \begin{block}{The Positive Partial Transpose (PPT) Criterion}
-    A simple but powerful test based on a necessary condition for separability.
+  \begin{block}{The Positive Partial Transpose (PPT) Test}
+    A simple but powerful necessary condition for separability.
     \begin{enumerate}
       \item<1-> Start with a state $\rho_{AB}$.
-        \pause
-      \item<2-> Compute the \emph{partial transpose} with respect to one
-        subsystem, e.g., B: $\rho^{T_B}$.
-        \pause
-      \item<3-> Check if $\rho^{T_B}$ is a valid density matrix (i.e., it is
-        positive semidefinite, meaning all its eigenvalues are non-negative).
+      \pause
+      \item<2-> Compute the \emph{partial transpose} on one subsystem, e.g., B:
+        $\rho^{T_B}$.
+      \pause
+      \item<3-> Check if $\rho^{T_B}$ is positive semidefinite (all
+        eigenvalues $\ge 0$).
     \end{enumerate}
   \end{block}
   \pause
-  \begin{alertblock}{Conclusion}
-    If $\rho_{AB}$ is separable, then $\rho^{T_B}$ \emph{must be} positive semidefinite.
-
-    Therefore, if $\rho^{T_B}$ has any \emph{negative eigenvalues}, the state
-    $\rho_{AB}$ is certified as \emph{entangled}.
-
-    \footnotesize{(This condition is necessary and sufficient only for
-    $2\times2$ and $2\times3$ systems.)}
+  \begin{alertblock}{The Punchline}
+    \begin{itemize}
+        \item If $\rho_{AB}$ is separable $\implies \rho^{T_B}$ is positive.
+        \pause
+        \item Therefore, if $\rho^{T_B}$ has any \alert{negative eigenvalues},
+        the state $\rho_{AB}$ is certified as \textbf{entangled}.
+    \end{itemize}
+    \footnotesize{(This condition is also sufficient only for $2\times2$ and
+    $2\times3$ systems.)}
   \end{alertblock}
 \end{frame}
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{Worked Example: The Werner State}
   \begin{block}{Definition}
-    A mixture of a maximally entangled Bell state and a maximally mixed state ($p \in [0, 1]$):
+    A mixture of a Bell state and a maximally mixed state ($p \in [0, 1]$):
     \[ \rho_W = p \ket{\Psi^-}\bra{\Psi^-} + \frac{1-p}{4} \mathbb{I}_4 \]
-    where $\ket{\Psi^-} = \frac{1}{\sqrt{2}}(\ket{01}-\ket{10})$. In the computational basis:
+    where $\ket{\Psi^-} = \frac{1}{\sqrt{2}}(\ket{01}-\ket{10})$.
+    \pause
+
+    In the computational basis $\{\ket{00}, \ket{01}, \ket{10}, \ket{11}\}$:
     \[
       \rho_W = \frac{1}{4}
       \begin{pmatrix}
@@ -372,9 +393,11 @@
   \end{block}
 \end{frame}
 
-\begin{frame}
-  \begin{block}{Applying the PPT Criterion}
-    The partial transpose with respect to the second qubit is:
+%------------------------------------------------------------------------------
+\begin{frame}{Worked Example: Applying the PPT Criterion}
+  \begin{block}{The Partial Transpose}
+    We apply the transpose operation only to the second qubit's subspace.
+    This swaps the $\ket{01}\bra{10}$ and $\ket{10}\bra{01}$ matrix elements.
     \[
       \rho_W^{T_B} = \frac{1}{4}
       \begin{pmatrix}
@@ -388,197 +411,183 @@
 \end{frame}
 
 %------------------------------------------------------------------------------
-
-\begin{frame}{Worked Example: The Werner State (Conclusion)}
+\begin{frame}{Worked Example: Werner State (Conclusion)}
   \begin{block}{Eigenvalues of the Partial Transpose}
-    The eigenvalues of $\rho_W^{T_B}$ are found to be:
-    \begin{align*}
-      \lambda_{1,2,3} &= \frac{1+p}{4} \quad (\text{always } \ge 0) \\
-      \lambda_4 &= \frac{1-3p}{4}
-    \end{align*}
+    The eigenvalues of $\rho_W^{T_B}$ are:
+    \begin{equation}
+      \lambda_{1,2,3} = \frac{1+p}{4} \quad \lambda_4 = \frac{1-3p}{4}
+    \end{equation}
   \end{block}
-  \vspace{-2em}
+  \vspace{-1em}
   \pause
   \begin{alertblock}{Result}
-    The fourth eigenvalue $\lambda_4$ becomes negative if $1-3p < 0$, which means:
-    \( p > 1/3 \)
-    Therefore, the Werner state is \emph{entangled for $p > 1/3$}.
+    The eigenvalue $\lambda_4$ becomes negative if $1-3p < 0$:
+    \[ \alert{p > 1/3} \]
+    Therefore, the Werner state is \textbf{entangled for $p > 1/3$}.
     \pause
 
-    A measure of entanglement can be defined from the negative eigenvalue:
-    \(
-    \mathcal{N}(\rho_W) = \max\left(0, -\lambda_4\right) = \max\left(0,
-    \frac{3p-1}{4}\right)
-    \)
+    The magnitude of the negative eigenvalue is a measure of entanglement
+    (a ``negativity''):
+    \( \mathcal{N}(\rho_W) = \max\left(0, -\lambda_4\right) \)
   \end{alertblock}
 \end{frame}
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{Detecting Entanglement: Witnesses}
   \begin{block}{Entanglement Witness}
-    An \emph{entanglement witness} is a Hermitian operator $W$ that acts as a
-    detector. It is constructed to satisfy:
+    An entanglement witness is a Hermitian operator $W$ designed such that:
     \begin{itemize}
-      \item $\Tr(W \rho_{\text{sep}}) \ge 0$ for \emph{all} separable states
-        $\rho_{\text{sep}}$.
-        \pause
-      \item There exists at least one entangled state $\rho_{\text{ent}}$ such
-        that $\Tr(W \rho_{\text{ent}}) < 0$.
+      \item $\Tr(W \rho_{\text{sep}}) \ge 0$ for \emph{all} separable states.
+      \pause
+      \item There exists at least one entangled state $\rho_{\text{ent}}$ with
+        $\Tr(W \rho_{\text{ent}}) < 0$.
     \end{itemize}
   \end{block}
   \pause
   \begin{alertblock}{Experimental Implication}
     If an experiment measures an expectation value $\braket{W} = \Tr(W \rho) <
-    0$, the state $\rho$ is \emph{certified as entangled}.
-    \vspace{1em}
-    Geometrically, $W$ defines a hyperplane that separates a specific entangled
-    state from the convex set of separable states.
+    0$, the state $\rho$ is \textbf{certified as entangled}.
+    \pause
+    \begin{center}
+    Geometrically, $W$ is a hyperplane separating $\rho_{\text{ent}}$ from
+    the convex set of separable states.
+    \end{center}
   \end{alertblock}
 \end{frame}
 
-%------------------------------------------------------------------------------
-
+%==============================================================================
 \section{Dynamics of Entanglement}
+%==============================================================================
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{Entanglement in Motion}
   \begin{block}{Why Study Entanglement Dynamics?}
-    Beyond static characterization, we must understand how entanglement evolves
-    in time. This is governed by the system's Hamiltonian and its interaction
-    with the environment.
-    \pause
-
-    Understanding these dynamics is paramount for quantum information
-    processing, where entangled states must be:
+    We must understand how entanglement evolves under the influence of:
     \begin{itemize}
-      \item Generated
-      \item Manipulated
-      \item Protected from decoherence
+      \item The system's Hamiltonian (internal dynamics).
+      \item Interaction with an environment (open system dynamics).
     \end{itemize}
+    \pause
+    This is crucial for quantum information, where we must \textbf{generate},
+    \textbf{manipulate}, and \textbf{protect} entangled states.
   \end{block}
   \pause
   \begin{alertblock}{Propagation in Closed Systems}
-    In many-body systems with local interactions, entanglement is not static; it
-    propagates. The \alert{Lieb-Robinson bounds} establish a finite maximum
-    speed for information propagation, implying a linear ``light cone'' for
-    correlations.
+    In many-body systems with local interactions, entanglement propagates.
+    The \alert{Lieb-Robinson bounds} establish a finite maximum speed for
+    information, creating a linear ``light cone'' for correlations.
   \end{alertblock}
 \end{frame}
 
+%------------------------------------------------------------------------------
 \begin{frame}{Non-Equilibrium Dynamics: Quantum Quenches}
   \begin{block}{Quantum Quench}
-    A \emph{quantum quench}—a sudden change in a system's Hamiltonian ($H_0 \to
-    H_1$)—drives the system far from equilibrium, revealing universal
-    entanglement dynamics.
+    A sudden change in a system's Hamiltonian ($H_0 \to H_1$) drives the
+    system out of equilibrium, revealing universal entanglement dynamics.
   \end{block}
   \pause
   \begin{alertblock}{The Quasiparticle Picture}
-    For a subsystem of length $\ell$, the von Neumann entropy $S_A(t)$ shows a
-    characteristic pattern:
+    For a subsystem of length $\ell$, the entropy $S_A(t)$ shows a universal
+    pattern:
     \begin{enumerate}
-      \item An initial \alert{linear growth} in time: $S_A(t) \propto t$.
-      \item \alert{Saturation} to a value proportional to the block size:
-        $S_A(t) \to \text{const} \cdot \ell$.
+      \item Initial \alert{linear growth}: $S_A(t) \propto t$.
+      \item \alert{Saturation} to a volume-law: $S_A(t) \to \text{const} \cdot \ell$.
     \end{enumerate}
     \pause
-    This is explained by a quasiparticle picture: the quench creates entangled
-    pairs of quasiparticles that propagate freely.
-    A block becomes entangled as one particle enters while its partner does not.
-    Saturation occurs when quasiparticles from the block's center can escape, at
-    $t^* \approx \ell/(2v)$.
+    \textit{Explanation:} The quench creates entangled quasiparticle pairs.
+    Entanglement grows as pairs are split by the subsystem boundary.
   \end{alertblock}
 \end{frame}
 
+%------------------------------------------------------------------------------
 \begin{frame}{Entanglement in Open Systems: Fragility}
   \begin{block}{Decoherence}
-    When a quantum system interacts with an external environment, its coherence
-    and entanglement degrade over time—a process called decoherence.
+    Interaction with an external environment degrades a system's coherence
+    and entanglement over time.
     \pause
 
-    Entanglement is typically far more fragile than the coherence of individual
-    subsystems.
+    Entanglement is typically far more fragile than the coherence of
+    individual subsystems.
   \end{block}
   \pause
   \begin{alertblock}{Entanglement Sudden Death (ESD)}
-    A striking feature of this decay is \alert{Entanglement Sudden Death}.
+    A striking feature of entanglement decay.
     \begin{itemize}
-      \item Unlike the asymptotic decay of local properties, the entanglement
-        between subsystems can \textbf{vanish completely at a finite time}.
-      \item After this point, the system evolves in a purely separable state,
-        even though individual subsystems may still possess quantum coherence.
+      \item Unlike local coherence (which decays asymptotically), entanglement
+        can \textbf{vanish completely at a finite time}.
+      \pause
+      \item After this time, the global state is separable, even if
+        subsystems remain coherent.
     \end{itemize}
-    This non-classical decay highlights the unique fragility of quantum
-    correlations.
   \end{alertblock}
 \end{frame}
 
-%------------------------------------------------------------------------------
-
+%==============================================================================
 \section{Alternative Perspectives}
+%==============================================================================
 
 %------------------------------------------------------------------------------
-
 \begin{frame}{Beyond Hilbert Space: Geometric Algebra}
   \begin{block}{An Alternative View}
-    While the Hilbert space formalism is the standard, alternative mathematical
-    frameworks can offer different physical insights.
+    Alternative mathematical frameworks can offer different physical insights
+    beyond the standard Hilbert space formalism.
   \end{block}
   \pause
   \begin{alertblock}{Entanglement in Geometric Algebra}
     \begin{itemize}
-      \item This approach interprets entanglement not as an intrinsic property
-        of a state, but as a relationship between reference frames.
-        \pause
+      \item Entanglement is not an intrinsic property of a state, but a
+        relationship between reference frames.
+      \pause
       \item It is described by a superposition of \emph{relative rotations}.
-        \pause
-      \item This shifts the focus from analysing abstract states to analysing
-        the fundamental transformation operators themselves.
+      \pause
+      \item The focus shifts from abstract states to the transformation
+        operators themselves.
     \end{itemize}
   \end{alertblock}
 \end{frame}
 
+%------------------------------------------------------------------------------
 \begin{frame}{The Entanglor Operator}
   \begin{block}{The Algebra of Physical Space (APS)}
-    The mathematical language is Geometric Algebra, a powerful tool for
-    expressing geometric relationships. In this framework, spin states are
-    represented as \emph{rotors} (operators that perform rotations).
+    \begin{itemize}
+      \item The language is Geometric Algebra, a powerful tool for describing
+        geometric relationships.
+      \item In this framework, spin states are represented as \emph{rotors}
+        (operators that perform rotations).
+    \end{itemize}
   \end{block}
   \pause
   \begin{alertblock}{Entanglement as a Transformation}
-    The central thesis: entanglement is encoded within a transformation
+    \textbf{Central Thesis:} Entanglement is encoded within a transformation
     operator, the \alert{entanglor}, not in the state itself.
     \begin{itemize}
-      \item An entangled state is the result of an entanglor acting on a
-        separable state.
-      \item The entanglor contains all the geometric information describing the
-        superposition of relative rotations between the reference frames of the
-        constituent particles.
+      \item Entangled State = (Entanglor) acting on a (Separable State).
+      \item The entanglor contains the geometric info of the superposition of
+        relative rotations between particle reference frames.
     \end{itemize}
   \end{alertblock}
 \end{frame}
 
+%------------------------------------------------------------------------------
 \begin{frame}{Relativistic Context and Conceptual Implications}
   \begin{block}{Entangling Eigenspinors}
     A key advantage of APS is its natural compatibility with special
     relativity.
-    This allows a Lorentz boost (describing relative velocity) to be combined
-    with an entanglor (describing relative rotation).
     \pause
-    The result is a composite operator, the \alert{entangling eigenspinor}
-    $\Lambda_{AB}$, which contains the complete information about both relative
-    motion and entanglement between the subsystems' reference frames.
+    A Lorentz boost (relative velocity) can be combined with an entanglor
+    (relative rotation) into a single composite operator: the
+    \alert{entangling eigenspinor} $\Lambda_{AB}$.
   \end{block}
   \pause
   \begin{alertblock}{Shift in Perspective}
     This reinterpretation has profound conceptual implications:
     \begin{itemize}
-      \item The ``weirdness'' of quantum mechanics is shifted from the state to
-        the \emph{transformation process}.
-      \item Wave function collapse is not a physical change to a spooky object,
-        but the \textbf{revelation of which specific geometric transformation}
-        described the relationship between the particles all along.
+      \item The ``weirdness'' of QM is shifted from the state to the
+        \emph{transformation process}.
+      \pause
+      \item Wave function collapse is not a physical change, but the
+        \textbf{revelation of the specific geometric transformation} that
+        was present all along.
     \end{itemize}
   \end{alertblock}
 \end{frame}
