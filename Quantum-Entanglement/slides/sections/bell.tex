@@ -74,21 +74,21 @@
 \begin{frame}{Von Neumann's Axioms (Section IV.1)}
   Von Neumann does not start from the quantum formalism itself, 
   but rather establishes general axioms for the mean value of any 
-  physical magnitude $R$ in a statistical ensemble, denoted as $Vm(R)$.  
+  physical magnitude $R$ in a statistical ensemble, denoted as $V_m(R)$.  
 
   \pause
   \begin{itemize}
     \item[A'.] \textbf{Positivity:}  
     If a magnitude $R$ is intrinsically non-negative (e.g. the square of another quantity), then  
     \[
-    Vm(R) \geq 0
+    V_m(R) \geq 0
     \]
 
     \pause
     \item[B'.] \textbf{Linearity:}  
     For arbitrary magnitudes $R, S, \dots$ and real numbers $a, b, \dots$:  
     \[
-    Vm(aR + bS + \dots) = aVm(R) + bVm(S) + \dots
+    V_m(aR + bS + \dots) = aV_m(R) + bV_m(S) + \dots
     \]
   \end{itemize}
 \end{frame}
@@ -99,13 +99,13 @@
   Von Neumann proves a fundamental theorem:  
 
   \pause
-  Any expectation value function $Vm(R)$ that satisfies axioms A' and B' 
+  Any expectation value function $V_m(R)$ that satisfies axioms A' and B' 
   can be uniquely represented by a Hermitian, positive operator $U$, 
   called the \textit{statistical operator} (today: density matrix), via the trace formula:
 
   \pause
   \[
-    Vm(R) = \mathrm{Tr}(UR)
+    V_m(R) = \mathrm{Tr}(UR)
   \]
 \end{frame}
 
@@ -118,14 +118,14 @@
     \item \textbf{Eigenvalue Condition:}  
     The expectation value of any magnitude $R$ must coincide with one of its possible values (eigenvalues).  
     \[
-      Vm(R) \in \{\text{eigenvalues of } R\}
+      V_m(R) \in \{\text{eigenvalues of } R\}
     \]
 
     \pause
     \item \textbf{Dispersion-Free Condition:}  
     The variance of any magnitude $R$ must vanish, i.e.  
     \[
-      Vm(R^2) = [Vm(R)]^2
+      V_m(R^2) = [V_m(R)]^2
     \]
   \end{enumerate}
 \end{frame}
