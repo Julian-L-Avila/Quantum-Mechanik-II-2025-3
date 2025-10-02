@@ -26,7 +26,6 @@
         \item Heisenberg's Matrix Mechanics
         \item Schrödinger's Wave Mechanics
         \item Hilbert Space Formalism (von Neumann)
-        \item Density Matrix Formalism
         \item Bohmian Mechanics (Wave function decomposition: $R$ and $S$)
       \end{itemize}
     \end{block}
@@ -423,22 +422,226 @@ U(x_1, \dots, x_n) \;=\; -\frac{\hbar^2}{2m} \, \frac{\sum_i \nabla_i^2 R}{R}
   \item \textbf{Physical interpretation:} No local realistic theory can produce correlations stronger than this bound. \pause
   \item Violation of this inequality by quantum predictions implies:
     \begin{itemize}
-      \item Realism and locality cannot both hold simultaneously. \pause
+      \item Realism and locality cannot both hold simultaneously. 
       \item Measurement outcomes are correlated in a nonlocal manner via entanglement.
     \end{itemize}
 \end{itemize}
 
 \end{frame}
 
+\begin{frame}{Violation of Bell Inequality: Quantum Prediction}
+
+\textbf{Quantum mechanics prediction for entangled particles:}
+
+\vspace{-0.3cm}
+
+\[
+P_\text{QM}(\mathbf{a}, \mathbf{b}) = - \mathbf{a} \cdot \mathbf{b}
+\]
+\vspace{-0.3cm}
+
+\pause
+
+\textbf{Bell inequality :}
+
+\vspace{-0.3cm}
+
+\[
+|P(\mathbf{a},\mathbf{b}) - P(\mathbf{a},\mathbf{c})| \le 1 + P(\mathbf{b},\mathbf{c})
+\]
+
+\vspace{-0.3cm}
+
+\pause
+
+\textbf{Specific setup:}  
+\begin{itemize}
+  \item Take a vector $\mathbf{c}$ “halfway” between $\mathbf{a}$ and $\mathbf{b}$.  
+  \item Define angles: 
+  \(\theta = \angle(\mathbf{a},\mathbf{c}) = \angle(\mathbf{c},-\mathbf{b})\)
+\end{itemize}
+
+\pause
+
+\textbf{Substituting the quantum prediction:}
+
+\vspace{-0.3cm}
+
+\[
+|- \mathbf{a} \cdot \mathbf{b} - (- \mathbf{a} \cdot \mathbf{c})| 
+\le 1 - \mathbf{c} \cdot \mathbf{b} 
+\quad \Rightarrow \quad 
+|\cos(2\theta) - \cos(\theta)| \le 1 - \cos(\theta)
+\]
+
+\end{frame}
+
+
+
+\begin{frame}{Explicit Violation for Small Angles}
+
+\textbf{Approximations for small angles $\theta \ll 1$:}
+\[
+\cos(\theta) \approx 1 - \frac{\theta^2}{2}, \quad 
+\cos(2\theta) \approx 1 - 2\theta^2
+\]
+
+\pause
+
+\textbf{Bell inequality becomes:}
+\[
+| \cos(2\theta) - \cos(\theta) | \le 1 - \cos(\theta)
+\quad \Rightarrow \quad
+|(1 - 2\theta^2) - (1 - \frac{\theta^2}{2})| \le \frac{\theta^2}{2}
+\]
+
+\pause
+
+\textbf{Simplifying:}
+\[
+\frac{3}{2}\theta^2 \le \frac{1}{2} \theta^2
+\]
+
+\pause
+
+\textbf{Conclusion:}  
+This inequality is \textbf{false} for any $\theta \neq 0$, demonstrating that 
+\textbf{quantum mechanics predictions violate Bell’s inequality}.  
+
+\end{frame}
+
+
+\begin{frame}{Bell’s Refutation of von Neumann (1966)}
+
+\begin{minipage}{0.65\textwidth}
+\textbf{Bell’s Conceptual Criticism:}
+\begin{itemize}
+  \item Von Neumann’s \textbf{linearity assumption}: 
+   \vspace{-0.4cm}
+
+  \[
+    V_m(aR+bS) = aV_m(R) + bV_m(S)
+  \]
+
+  \vspace{-0.3cm}
+  \pause
+  \item Imposed even on dispersion-free states.  
+  \pause
+  \item Bell argued this is \textbf{unjustified for non-commuting observables}.  
+  \pause
+  \item Example: measuring $\sigma_x + \sigma_y$ is not the same as separately measuring $\sigma_x$ and $\sigma_y$.  
+  \pause
+  \item Therefore, von Neumann’s proof excludes only a very restrictive class of hidden-variable theories.  
+  \pause
+  \item Bohm’s 1952 theory escapes because it is \textbf{contextual}.  
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}{0.33\textwidth}
+  \centering
+
+  \includegraphics[width=\textwidth]{figures/bell1966.png} \\
+  \vspace{0.2cm}
+  {\footnotesize Bell, J.S. \\
+  \emph{On the problem of hidden variables in QM} (1966)}
+\end{minipage}
+
+\end{frame}
 
 
 
 
+\begin{frame}{The CHSH Inequality}
+
+\begin{minipage}{0.58\textwidth}
+
+\textbf{Defining the correlation function:}
+
+\vspace{-0.5cm}
+
+\[
+E(a,b) = \langle A(a) \, B(b) \rangle, 
+\quad A, B = \pm 1
+\]
+
+\pause
+
+\vspace{-0.2cm}
+
+\textbf{The CHSH combination:}
+
+\vspace{-0.6cm}
+
+\[
+S = E(a, b) - E(a, b') + E(a', b) + E(a', b')
+\]
+
+\pause
+
+\vspace{-0.3cm}
+
+\textbf{Local realism constraint:}
+
+\vspace{-0.5cm}
+
+\[
+-2 \leq S \leq 2
+\]
+
+\pause
+
+\vspace{-0.3cm}
+
+\textbf{Quantum mechanics prediction:}
+
+\vspace{-0.6cm}
+
+\[
+|S| \leq 2\sqrt{2} \quad \Rightarrow \quad \text{Violation of local realism}
+\]
+
+\pause
+
+\vspace{-0.3cm}
+
+
+\textbf{Impact:}
+\begin{itemize}
+  \item The CHSH form was \textbf{experimentally testable}.  
+  \item Enabled landmark tests (e.g. Aspect, 1982).  
+\end{itemize}
+
+\end{minipage}
+\hfill
+\begin{minipage}{0.36\textwidth}
+
+\textbf{Why correlations matter:}
+
+\begin{itemize}
+  \item The values $E(a,b)$ come from \textbf{statistical counts} of coincident detections.  
+  \item Individual outcomes are random, but correlations reveal hidden structure.  
+  \item The strength of violation depends entirely on these \textbf{count-based correlations}.  
+\end{itemize}
+
+\end{minipage}
+
+\end{frame}
 
 
 
+\begin{frame}{Conclusions on Quantum Entanglement}
 
+\begin{itemize}
+  \item EPR raised the dilemma about the \textbf{completeness} of quantum mechanics.  
+  \pause
+  \item Bell turned the \textbf{philosophical} debate into \textbf{mathematical and experimental predictions}.  
+  \pause
 
+  \item Entanglement reveals \textbf{nonlocal correlations}.  
+  \pause
+  \item Incompatible with classical \textbf{realism} and \textbf{locality}.  
+\end{itemize}
 
+\end{frame}
 
 
