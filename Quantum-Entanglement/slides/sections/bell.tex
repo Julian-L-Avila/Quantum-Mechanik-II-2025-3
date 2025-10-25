@@ -56,7 +56,7 @@
     };
     \par\vspace{0.2cm}
     \small \textit{First German edition (1932)}
- 
+
   \end{minipage}
   \hfill
   \begin{minipage}{0.44\textwidth}
@@ -72,21 +72,21 @@
 
 % Slide 1: Axioms
 \begin{frame}{Von Neumann's Axioms (Section IV.1)}
-  Von Neumann does not start from the quantum formalism itself, 
-  but rather establishes general axioms for the mean value of any 
-  physical magnitude $R$ in a statistical ensemble, denoted as $V_m(R)$.  
+  Von Neumann does not start from the quantum formalism itself,
+  but rather establishes general axioms for the mean value of any
+  physical magnitude $R$ in a statistical ensemble, denoted as $V_m(R)$.
 
   \pause
   \begin{itemize}
-    \item[A'.] \textbf{Positivity:}  
-    If a magnitude $R$ is intrinsically non-negative (e.g. the square of another quantity), then  
+    \item[A'.] \textbf{Positivity:}
+    If a magnitude $R$ is intrinsically non-negative (e.g. the square of another quantity), then
     \[
     V_m(R) \geq 0
     \]
 
     \pause
-    \item[B'.] \textbf{Linearity:}  
-    For arbitrary magnitudes $R, S, \dots$ and real numbers $a, b, \dots$:  
+    \item[B'.] \textbf{Linearity:}
+    For arbitrary magnitudes $R, S, \dots$ and real numbers $a, b, \dots$:
     \[
     V_m(aR + bS + \dots) = aV_m(R) + bV_m(S) + \dots
     \]
@@ -95,12 +95,12 @@
 
 % Slide 2: Statistical Operator
 \begin{frame}{Statistical Operator and Impossibility Result (Section IV.2)}
- 
-  Von Neumann proves a fundamental theorem:  
+
+  Von Neumann proves a fundamental theorem:
 
   \pause
-  Any expectation value function $V_m(R)$ that satisfies axioms A' and B' 
-  can be uniquely represented by a Hermitian, positive operator $U$, 
+  Any expectation value function $V_m(R)$ that satisfies axioms A' and B'
+  can be uniquely represented by a Hermitian, positive operator $U$,
   called the \textit{statistical operator} (today: density matrix), via the trace formula:
 
   \pause
@@ -110,20 +110,20 @@
 \end{frame}
 
 \begin{frame}{Conditions for a Hidden-Variable System}
-  In the hidden-variable hypothesis, any physical magnitude $R$ 
+  In the hidden-variable hypothesis, any physical magnitude $R$
   must satisfy the following conditions:
 
   \pause
   \begin{enumerate}
-    \item \textbf{Eigenvalue Condition:}  
-    The expectation value of any magnitude $R$ must coincide with one of its possible values (eigenvalues).  
+    \item \textbf{Eigenvalue Condition:}
+    The expectation value of any magnitude $R$ must coincide with one of its possible values (eigenvalues).
     \[
       V_m(R) \in \{\text{eigenvalues of } R\}
     \]
 
     \pause
-    \item \textbf{Dispersion-Free Condition:}  
-    The variance of any magnitude $R$ must vanish, i.e.  
+    \item \textbf{Dispersion-Free Condition:}
+    The variance of any magnitude $R$ must vanish, i.e.
     \[
       V_m(R^2) = [V_m(R)]^2
     \]
@@ -131,8 +131,8 @@
 \end{frame}
 
 \begin{frame}{Von Neumann's Impossibility Proof}
-  The core of von Neumann's argument is to show that there is no statistical operator $U$ 
-  (and therefore no expectation-value function $V_m(R)$) that can simultaneously satisfy 
+  The core of von Neumann's argument is to show that there is no statistical operator $U$
+  (and therefore no expectation-value function $V_m(R)$) that can simultaneously satisfy
   the linearity hypothesis (B') and the condition of absence of dispersion for all observables.
 
   \vspace{0.5cm}
@@ -143,7 +143,7 @@
 
   \vspace{0.5cm}
 
-  For non-commuting observables ($[R,S]\neq 0$), there is in general no assignment 
+  For non-commuting observables ($[R,S]\neq 0$), there is in general no assignment
   of values $V_m(\cdot)$ that can satisfy this for all operators.
 \end{frame}
 
@@ -175,7 +175,7 @@
     };
     \par\vspace{0.2cm}
     \small \textit{Hidden Variable I (1951)}
- 
+
   \end{minipage}
   \hfill
   \begin{minipage}{0.49\textwidth}
@@ -194,7 +194,7 @@
 
   \textbf{Starting Point: Time-Dependent Schrödinger Equation}
   \[
-    i\hbar \frac{\partial \psi}{\partial t} 
+    i\hbar \frac{\partial \psi}{\partial t}
       = -\frac{\hbar^2}{2m}\nabla^2\psi + V(\mathbf{x},t)\psi
   \]
 
@@ -202,14 +202,14 @@
 
   \textbf{Polar Decomposition of the Wave Function}
   \[
-    \psi(\mathbf{x},t) = R(\mathbf{x},t)\,e^{\tfrac{i}{\hbar}S(\mathbf{x},t)}, 
+    \psi(\mathbf{x},t) = R(\mathbf{x},t)\,e^{\tfrac{i}{\hbar}S(\mathbf{x},t)},
     \quad R \geq 0,\; S\in \mathbb{R}
   \]
 
   \pause
 
-  This representation will split Schrödinger’s equation into two coupled \emph{real} equations:  
-  a continuity equation and a Hamilton–Jacobi–like equation.  
+  This representation will split Schrödinger’s equation into two coupled \emph{real} equations:
+  a continuity equation and a Hamilton–Jacobi–like equation.
 
 \end{frame}
 
@@ -218,8 +218,8 @@
 
   \textbf{Continuity Equation (Probability Conservation)}
   \[
-    \frac{\partial P}{\partial t} 
-      + \nabla\!\cdot\!\big(P\,\tfrac{\nabla S}{m}\big) = 0, 
+    \frac{\partial P}{\partial t}
+      + \nabla\!\cdot\!\big(P\,\tfrac{\nabla S}{m}\big) = 0,
     \qquad P = R^2
   \]
 
@@ -227,13 +227,13 @@
 
   \textbf{Modified Hamilton–Jacobi Equation}
   \[
-    \frac{\partial S}{\partial t} 
-      + \frac{(\nabla S)^2}{2m} 
-      + V(\mathbf{x},t) 
+    \frac{\partial S}{\partial t}
+      + \frac{(\nabla S)^2}{2m}
+      + V(\mathbf{x},t)
       + U(\mathbf{x},t) = 0
   \]
 \end{frame}
-  
+
 
 \begin{frame}{Bohmian Mechanics: Continuity, Quantum Potential and Motion}
 
@@ -246,7 +246,7 @@
 
   \textbf{Guidance Equation (Deterministic Trajectories)}
   \[
-    \mathbf{p} = \nabla S(\mathbf{x},t), 
+    \mathbf{p} = \nabla S(\mathbf{x},t),
     \qquad \mathbf{v} = \frac{\nabla S}{m}
   \]
 
@@ -267,17 +267,17 @@
   \textbf{Determinism vs. Statistics}
 
 
-  Although Bohm’s theory is deterministic for single systems,  
-  it reproduces all statistical predictions of standard quantum mechanics  
+  Although Bohm’s theory is deterministic for single systems,
+  it reproduces all statistical predictions of standard quantum mechanics
   under three key assumptions:
 
   \pause
   \begin{enumerate}
-    \item The field $\psi$ satisfies the Schrödinger equation.  
+    \item The field $\psi$ satisfies the Schrödinger equation.
     \pause
-    \item The particle’s momentum is always given by $p = \nabla S(\mathbf{x})$.  
+    \item The particle’s momentum is always given by $p = \nabla S(\mathbf{x})$.
     \pause
-    \item In practice, we cannot predict or control the exact initial position,  
+    \item In practice, we cannot predict or control the exact initial position,
           so we work with an ensemble with probability density:
           \[
             P(\mathbf{x}) = R^2 = |\psi(\mathbf{x})|^2
@@ -299,14 +299,14 @@
   \]
 
   \pause
-  This guarantees that if $P(\mathbf{x},t_0) = |\psi(\mathbf{x},t_0)|^2$  
-  at one instant, then $P(\mathbf{x},t) = |\psi(\mathbf{x},t)|^2$  
+  This guarantees that if $P(\mathbf{x},t_0) = |\psi(\mathbf{x},t_0)|^2$
+  at one instant, then $P(\mathbf{x},t) = |\psi(\mathbf{x},t)|^2$
   for all later times.
 
   \pause
-  \textbf{Interpretation:}  
-  Probability is not fundamental but reflects ignorance of initial conditions,  
-  just as in classical statistical mechanics.  
+  \textbf{Interpretation:}
+  Probability is not fundamental but reflects ignorance of initial conditions,
+  just as in classical statistical mechanics.
 
 \end{frame}
 
@@ -329,7 +329,7 @@ U(x_1, \dots, x_n) \;=\; -\frac{\hbar^2}{2m} \, \frac{\sum_i \nabla_i^2 R}{R}
 \]
 
 \pause
-\textbf{Key feature:} $U$ depends on the coordinates of \emph{all} particles simultaneously.  
+\textbf{Key feature:} $U$ depends on the coordinates of \emph{all} particles simultaneously.
 
 \end{frame}
 
@@ -346,10 +346,10 @@ U(x_1, \dots, x_n) \;=\; -\frac{\hbar^2}{2m} \, \frac{\sum_i \nabla_i^2 R}{R}
   \]
   depends instantaneously on the positions of all other particles.
   \pause
-  \item This represents an effective "many-body force" that is inherently \textbf{nonlocal}.
-  
+  \item This represents an effective ``many-body force'' that is inherently \textbf{nonlocal}.
+
   \item In entangled states, the correlations predicted by quantum mechanics emerge naturally from this nonlocal potential.
-  
+
   \item Thus, Bohm’s theory is \textbf{causal but nonlocal}, consistent with the EPR scenario.
 \end{itemize}
 
@@ -373,7 +373,7 @@ U(x_1, \dots, x_n) \;=\; -\frac{\hbar^2}{2m} \, \frac{\sum_i \nabla_i^2 R}{R}
   \item \textbf{Hidden variables:} Each particle pair has a set of parameters $\lambda$ that determines measurement outcomes locally. \pause
   \item \textbf{Measurement results:} $A(a,\lambda), B(b,\lambda) \in \{+1,-1\}$ represent outcomes along directions $a$ and $b$. \pause
   \item \textbf{Perfect anticorrelation:} If $a=b$, then $A(a,\lambda) = -B(a,\lambda)$, consistent with quantum prediction $P(a,a)=-1$. \pause
-  \item \textbf{Local correlation:} 
+  \item \textbf{Local correlation:}
   \[
     P(a,b) = \int d\lambda\, \rho(\lambda)\, A(a,\lambda) B(b,\lambda)
   \]
@@ -388,20 +388,20 @@ U(x_1, \dots, x_n) \;=\; -\frac{\hbar^2}{2m} \, \frac{\sum_i \nabla_i^2 R}{R}
 \begin{frame}{Bell Derivation: Key Intermediate Steps}
 
 \begin{enumerate}
-  \item \textbf{Rewrite using anticorrelation:}  
+  \item \textbf{Rewrite using anticorrelation:}
   \[
     P(a,b) = - \int d\lambda\, \rho(\lambda) A(a,\lambda) A(b,\lambda)
   \]
 
-  \item \textbf{Comparing three directions:}  
+  \item \textbf{Comparing three directions:}
   \[
     P(a,b)-P(a,c) = - \int d\lambda\, \rho(\lambda) \big[ A(a)A(b) - A(a)A(c) \big]
   \] \pause
 
-  \item \textbf{Regroup using $A(b)^2=1$:}  
+  \item \textbf{Regroup using $A(b)^2=1$:}
   \[
     P(a,b)-P(a,c) = - \int d\lambda\, \rho(\lambda) A(a)A(b) \big[ 1 - A(b)A(c) \big]
-  \] 
+  \]
   \textit{The difference in correlations depends on how particle 2’s “instructions” change between $b$ and $c$.}
 \end{enumerate}
 
@@ -422,7 +422,7 @@ U(x_1, \dots, x_n) \;=\; -\frac{\hbar^2}{2m} \, \frac{\sum_i \nabla_i^2 R}{R}
   \item \textbf{Physical interpretation:} No local realistic theory can produce correlations stronger than this bound. \pause
   \item Violation of this inequality by quantum predictions implies:
     \begin{itemize}
-      \item Realism and locality cannot both hold simultaneously. 
+      \item Realism and locality cannot both hold simultaneously.
       \item Measurement outcomes are correlated in a nonlocal manner via entanglement.
     \end{itemize}
 \end{itemize}
@@ -454,10 +454,10 @@ P_\text{QM}(\mathbf{a}, \mathbf{b}) = - \mathbf{a} \cdot \mathbf{b}
 
 \pause
 
-\textbf{Specific setup:}  
+\textbf{Specific setup:}
 \begin{itemize}
-  \item Take a vector $\mathbf{c}$ “halfway” between $\mathbf{a}$ and $\mathbf{b}$.  
-  \item Define angles: 
+  \item Take a vector $\mathbf{c}$ “halfway” between $\mathbf{a}$ and $\mathbf{b}$.
+  \item Define angles:
   \(\theta = \angle(\mathbf{a},\mathbf{c}) = \angle(\mathbf{c},-\mathbf{b})\)
 \end{itemize}
 
@@ -468,9 +468,9 @@ P_\text{QM}(\mathbf{a}, \mathbf{b}) = - \mathbf{a} \cdot \mathbf{b}
 \vspace{-0.3cm}
 
 \[
-|- \mathbf{a} \cdot \mathbf{b} - (- \mathbf{a} \cdot \mathbf{c})| 
-\le 1 - \mathbf{c} \cdot \mathbf{b} 
-\quad \Rightarrow \quad 
+|- \mathbf{a} \cdot \mathbf{b} - (- \mathbf{a} \cdot \mathbf{c})|
+\le 1 - \mathbf{c} \cdot \mathbf{b}
+\quad \Rightarrow \quad
 |\cos(2\theta) - \cos(\theta)| \le 1 - \cos(\theta)
 \]
 
@@ -482,7 +482,7 @@ P_\text{QM}(\mathbf{a}, \mathbf{b}) = - \mathbf{a} \cdot \mathbf{b}
 
 \textbf{Approximations for small angles $\theta \ll 1$:}
 \[
-\cos(\theta) \approx 1 - \frac{\theta^2}{2}, \quad 
+\cos(\theta) \approx 1 - \frac{\theta^2}{2}, \quad
 \cos(2\theta) \approx 1 - 2\theta^2
 \]
 
@@ -504,9 +504,9 @@ P_\text{QM}(\mathbf{a}, \mathbf{b}) = - \mathbf{a} \cdot \mathbf{b}
 
 \pause
 
-\textbf{Conclusion:}  
-This inequality is \textbf{false} for any $\theta \neq 0$, demonstrating that 
-\textbf{quantum mechanics predictions violate Bell’s inequality}.  
+\textbf{Conclusion:}
+This inequality is \textbf{false} for any $\theta \neq 0$, demonstrating that
+\textbf{quantum mechanics predictions violate Bell’s inequality}.
 
 \end{frame}
 
@@ -516,7 +516,7 @@ This inequality is \textbf{false} for any $\theta \neq 0$, demonstrating that
 \begin{minipage}{0.65\textwidth}
 \textbf{Bell’s Conceptual Criticism:}
 \begin{itemize}
-  \item Von Neumann’s \textbf{linearity assumption}: 
+  \item Von Neumann’s \textbf{linearity assumption}:
    \vspace{-0.4cm}
 
   \[
@@ -525,15 +525,15 @@ This inequality is \textbf{false} for any $\theta \neq 0$, demonstrating that
 
   \vspace{-0.3cm}
   \pause
-  \item Imposed even on dispersion-free states.  
+  \item Imposed even on dispersion-free states.
   \pause
-  \item Bell argued this is \textbf{unjustified for non-commuting observables}.  
+  \item Bell argued this is \textbf{unjustified for non-commuting observables}.
   \pause
-  \item Example: measuring $\sigma_x + \sigma_y$ is not the same as separately measuring $\sigma_x$ and $\sigma_y$.  
+  \item Example: measuring $\sigma_x + \sigma_y$ is not the same as separately measuring $\sigma_x$ and $\sigma_y$.
   \pause
-  \item Therefore, von Neumann’s proof excludes only a very restrictive class of hidden-variable theories.  
+  \item Therefore, von Neumann’s proof excludes only a very restrictive class of hidden-variable theories.
   \pause
-  \item Bohm’s 1952 theory escapes because it is \textbf{contextual}.  
+  \item Bohm’s 1952 theory escapes because it is \textbf{contextual}.
 \end{itemize}
 \end{minipage}
 \hfill
@@ -560,7 +560,7 @@ This inequality is \textbf{false} for any $\theta \neq 0$, demonstrating that
 \vspace{-0.5cm}
 
 \[
-E(a,b) = \langle A(a) \, B(b) \rangle, 
+E(a,b) = \langle A(a) \, B(b) \rangle,
 \quad A, B = \pm 1
 \]
 
@@ -607,8 +607,8 @@ S = E(a, b) - E(a, b') + E(a', b) + E(a', b')
 
 \textbf{Impact:}
 \begin{itemize}
-  \item The CHSH form was \textbf{experimentally testable}.  
-  \item Enabled landmark tests (e.g. Aspect, 1982).  
+  \item The CHSH form was \textbf{experimentally testable}.
+  \item Enabled landmark tests (e.g. Aspect, 1982).
 \end{itemize}
 
 \end{minipage}
@@ -618,9 +618,9 @@ S = E(a, b) - E(a, b') + E(a', b) + E(a', b')
 \textbf{Why correlations matter:}
 
 \begin{itemize}
-  \item The values $E(a,b)$ come from \textbf{statistical counts} of coincident detections.  
-  \item Individual outcomes are random, but correlations reveal hidden structure.  
-  \item The strength of violation depends entirely on these \textbf{count-based correlations}.  
+  \item The values $E(a,b)$ come from \textbf{statistical counts} of coincident detections.
+  \item Individual outcomes are random, but correlations reveal hidden structure.
+  \item The strength of violation depends entirely on these \textbf{count-based correlations}.
 \end{itemize}
 
 \end{minipage}
@@ -632,14 +632,14 @@ S = E(a, b) - E(a, b') + E(a', b) + E(a', b')
 \begin{frame}{Conclusions on Quantum Entanglement}
 
 \begin{itemize}
-  \item EPR raised the dilemma about the \textbf{completeness} of quantum mechanics.  
+  \item EPR raised the dilemma about the \textbf{completeness} of quantum mechanics.
   \pause
-  \item Bell turned the \textbf{philosophical} debate into \textbf{mathematical and experimental predictions}.  
+  \item Bell turned the \textbf{philosophical} debate into \textbf{mathematical and experimental predictions}.
   \pause
 
-  \item Entanglement reveals \textbf{nonlocal correlations}.  
+  \item Entanglement reveals \textbf{nonlocal correlations}.
   \pause
-  \item Incompatible with classical \textbf{realism} and \textbf{locality}.  
+  \item Incompatible with classical \textbf{realism} and \textbf{locality}.
 \end{itemize}
 
 \end{frame}
