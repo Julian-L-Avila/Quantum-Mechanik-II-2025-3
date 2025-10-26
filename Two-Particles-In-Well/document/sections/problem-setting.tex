@@ -1,0 +1,92 @@
+\section{Problem Setting} \label{sec:problem}
+
+We consider two indistinguishable particles, each confined to a
+one-dimensional infinite potential well of length $L$.
+The single-particle Hilbert space is $\mathcal{H}_i \cong L^2([0, L])$.
+The total Hilbert space for the non-relativistic system is the tensor
+product of the individual spaces:
+\begin{equation}
+	\mathcal{H} = \mathcal{H}_1 \otimes \mathcal{H}_2.
+\end{equation}
+The configuration space is $(x_1, x_2) \in [0, L] \times [0, L]$.
+The potential imposes Dirichlet boundary conditions,
+requiring the wavefunction $\Psi(x_1, x_2)$ to vanish at the boundaries.
+
+The system's dynamics are governed by the Hamiltonian $\hat{H}$,
+which we decompose into kinetic, external potential, and interaction terms:
+\begin{equation}
+	\hat{H} = \hat{T} + \hat{V}_{\text{ext}} + \hat{V}_{\text{int}}.
+\end{equation}
+The total kinetic energy $\hat{T} = \hat{T}_1 + \hat{T}_2$ is the sum
+of the single-particle operators,
+\begin{align}
+	\hat{T}_1 &= \frac{\hat{p}_1^2}{2m} \otimes \hat{I}, \\
+	\hat{T}_2 &= \hat{I} \otimes \frac{\hat{p}_2^2}{2m},
+\end{align}
+where $\hat{I}$ is the identity operator on the single-particle space.
+
+The external potential $\hat{V}_{\text{ext}}$ is zero within the well and
+infinite otherwise, a constraint already enforced by the boundary
+conditions. The particles interact via a contact potential
+$\hat{V}_{\text{int}}$, which is proportional to a Dirac delta function:
+\begin{equation}
+	\hat{V}_{\text{int}}(x_1, x_2) = g\,\delta(x_1 - x_2).
+\end{equation}
+Here, $g$ represents the coupling strength of the interaction.
+
+In the position representation, the Hamiltonian operator acts on
+the wavefunction as
+\begin{equation} \label{eq:hamiltonian}
+	\hat{H} = -\frac{\hbar^2}{2m}\left(\frac{\partial^2}{\partial x_1^2} +
+	\frac{\partial^2}{\partial x_2^2}\right) + g\,\delta(x_1 - x_2).
+\end{equation}
+The configuration space is the square $[0, L] \times [0, L]$,
+and the interaction $\hat{V}_{\text{int}}$ is active only along
+the diagonal $x_1 = x_2$.
+
+\section{Symmetry and Indistinguishability} \label{sec:symmetry}
+
+The indistinguishability of the particles implies a fundamental symmetry.
+We introduce the particle exchange operator $\hat{P}_{12}$,
+whose action on the two-particle wavefunction is defined as
+\begin{equation}
+	\hat{P}_{12}\Psi(x_1, x_2) = \Psi(x_2, x_1).
+\end{equation}
+This operator commutes with the Hamiltonian, $[\hat{P}_{12}, \hat{H}] = 0$,
+as both the kinetic term and the interaction term are symmetric
+under the exchange $x_1 \leftrightarrow x_2$.
+This commutation is a crucial property: it ensures that the
+exchange symmetry of a state is conserved over time.
+Consequently, eigenstates of $\hat{H}$ can be chosen as simultaneous eigenstates
+of $\hat{P}_{12}$ with eigenvalues $p_{12} = \pm 1$.
+\begin{itemize}
+	\item \textbf{Bosons (Symmetric):} $p_{12} = +1$.
+		$\Psi_S(x_1, x_2) = \Psi_S(x_2, x_1)$.
+	\item \textbf{Fermions (Antisymmetric):} $p_{12} = -1$.
+		$\Psi_A(x_1, x_2) = -\Psi_A(x_2, x_1)$.
+\end{itemize}
+The Spin-Statistics Theorem connects this symmetry to the particle's
+intrinsic spin. In this work, we restrict our analysis to the fermionic
+case, requiring the total wavefunction to be antisymmetric under
+particle exchange.
+
+The state vector must therefore belong to the antisymmetric subspace
+$\mathcal{H}_A \subset \mathcal{H}$.
+For a state constructed from two distinct single-particle orbitals,
+$\ket{\phi_a}$ and $\ket{\phi_b}$, the normalized antisymmetric state is
+\begin{equation} \label{eq:slater_ket}
+	\ket{\Psi_A} = \frac{1}{\sqrt{2}} \left( \ket{\phi_a} \otimes \ket{\phi_b}
+	- \ket{\phi_b} \otimes \ket{\phi_a} \right).
+\end{equation}
+In this notation, the first ket in each product refers to particle 1
+and the second to particle 2.
+
+Projecting \cref{eq:slater_ket} into the position basis
+($\Psi_A(x_1, x_2) = \braket{x_1, x_2 | \Psi_A}$) yields the
+Slater determinant for the wavefunction:
+\begin{equation}
+	\Psi_A(x_1, x_2) = \frac{1}{\sqrt{2}} \left( \phi_a(x_1)\phi_b(x_2)
+	- \phi_b(x_1)\phi_a(x_2) \right).
+\end{equation}
+Note that if $\ket{\phi_a} = \ket{\phi_b}$, the state vanishes,
+in accordance with the Pauli Exclusion Principle.

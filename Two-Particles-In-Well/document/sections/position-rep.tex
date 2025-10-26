@@ -1,0 +1,111 @@
+\section{Position Representation of Schr\"odinger Equation}
+
+The dynamics of the fermionic system are described by the time-dependent
+Schr"odinger equation. In the position representation, the equation reads:
+\begin{equation}
+	i\hbar\frac{\partial}{\partial t}\Psi_A(x_1, x_2, t) = \left[
+	-\frac{\hbar^2}{2m}(\nabla_1^2 + \nabla_2^2) + g,\delta(x_1 - x_2) \right]
+	\Psi_A(x_1, x_2, t).
+\end{equation}
+
+\section*{5. Separation of Variables and Ansatz}
+
+We look for separable solutions in space and time as our first ansatz, of the form:
+\begin{equation}
+	\Psi(x_1, x_2, t) = \Psi_{n,\kappa}(x_1, x_2),\phi_t(t).
+\end{equation}
+
+To construct an antisymmetric spatial function for fermions, we use two single-particle eigenfunctions, $\phi_n(x)$ and $\phi_\kappa(x)$, and combine them as follows:
+\begin{equation}
+	\Psi_F(x_1, x_2, t) = \frac{1}{\sqrt{2}}\left[\phi_n(x_1)\phi_\kappa(x_2) - \phi_n(x_2)\phi_\kappa(x_1)\right]\phi_t(t),
+\end{equation}
+which correctly satisfies the antisymmetry condition required for fermionic states.
+where the single-particle functions (our second ansatz) are given by:
+\begin{equation}
+	\phi_n(x_i) = \sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x_i}{L}\right),
+\end{equation}
+and the temporal factor corresponds to the usual energy eigenstate exponential, a result of the separable form of the time-dependent Schrödinger equation:
+\begin{equation}
+	\phi_t(t) = e^{-iEt/\hbar}.
+\end{equation}
+
+Substituting both expressions into the fermionic ansatz, we obtain the complete wavefunction:
+\begin{align}
+	\Psi_F(x_1, x_2, t) = \sqrt{\frac{1}{2}}\left[\sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x_1}{L}\right)\sqrt{\frac{2}{L}}\sin\left(\frac{\kappa\pi x_2}{L}\right)
+	- \sqrt{\frac{2}{L}}\sin\left(\frac{\kappa\pi x_1}{L}\right)\sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x_2}{L}\right)\right] e^{-iEt/\hbar}.
+\end{align}
+
+Simplifying the prefactors, the final normalized antisymmetric fermionic wavefunction becomes:
+\begin{equation}
+	\Psi_F(x_1, x_2, t) =
+	\frac{1}{\sqrt{L^2}}
+	\left[
+		\sin\left(\frac{n\pi x_1}{L}\right)\sin\left(\frac{\kappa\pi x_2}{L}\right)
+		- \sin\left(\frac{\kappa\pi x_1}{L}\right)\sin\left(\frac{n\pi x_2}{L}\right)
+	\right]
+	e^{-iEt/\hbar},
+\end{equation}
+
+\subsection*{4. Expectation Value of the Interaction for Fermions}
+
+The expectation value of the interaction potential $V = g\,\delta(x_1 - x_2)$ in a fermionic state is:
+\begin{equation}
+	\langle \psi_F | V | \psi_F \rangle = g\int_{0}^{L}\int_{0}^{L} \psi_F^{*}(x_1, x_2)\,\psi_F(x_1, x_2)\,\delta(x_1 - x_2)\,dx_1\,dx_2.
+\end{equation}
+
+Because $\psi_F(x,x)=0$ for all $x$ in $[0,L]$, the integrand vanishes on the support of the delta distribution and therefore:
+\begin{equation}
+	\langle \psi_F | V | \psi_F \rangle = 0.
+\end{equation}
+
+\subsection*{5. Determination of the Energy}
+
+Substituting the ansatz into the Schr\"odinger equation and separating space and time yields:
+\begin{align}
+	-\frac{\hbar^{2}}{2m}\left(\frac{\partial^{2}\Psi_{n,\kappa}}{\partial x_1^{2}} + \frac{\partial^{2}\Psi_{n,\kappa}}{\partial x_2^{2}}\right) &= E\,\Psi_{n,\kappa}, \\
+	i\hbar \frac{1}{\phi_t}\frac{d\phi_t}{dt} &= E.
+\end{align}
+
+Thus the spatial energy eigenvalue reads:
+\begin{equation}
+	E = -\frac{\hbar^{2}}{2m}\frac{\left(\partial_{x_1}^{2}\Psi_{n,\kappa} + \partial_{x_2}^{2}\Psi_{n,\kappa}\right)}{\Psi_{n,\kappa}}.
+\end{equation}
+
+Using that for the single-particle eigenfunctions $\partial_{x_i}^{2}\phi_n(x_i) = -n^{2}\omega^{2}\phi_n(x_i)$ with $\omega = \pi/L$, one obtains:
+\begin{equation}
+	\partial_{x_1}^{2}\Psi_{n,\kappa} + \partial_{x_2}^{2}\Psi_{n,\kappa} = -\omega^{2}(n^{2} + \kappa^{2})\Psi_{n,\kappa}.
+\end{equation}
+
+Hence the energy associated with the two-particle antisymmetric state is:
+\begin{equation}
+	E = \frac{\hbar^{2}\omega^{2}}{2m}(n^{2} + \kappa^{2}) = \frac{\pi^{2}\hbar^{2}}{2mL^{2}}(n^{2} + \kappa^{2}).
+\end{equation}
+
+\subsection*{6. Final Form of the Wavefunction}
+
+The complete fermionic wavefunction for the considered state is therefore:
+
+
+\begin{equation}
+	\Psi_F(x_1, x_2, t) = \frac{1}{\sqrt{2}}
+	\left[
+		\sin\left(\frac{n\pi x_1}{L}\right)\sin\left(\frac{\kappa\pi x_2}{L}\right)
+		- \sin\left(\frac{\kappa\pi x_1}{L}\right)\sin\left(\frac{n\pi x_2}{L}\right)
+	\right]
+	e^{-iEt/\hbar},
+\end{equation}
+with $E$ given above.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{ figures/fermions_3D_collage-1.pdf}
+	\caption{Probability density $|\Psi_F(x_1, x_2)|^2$ for six antisymmetric two-fermion configurations
+		$(n,\kappa) = (1,2), (1,3), (2,3), (2,4), (3,4), (1,4)$.
+	The antisymmetric nature of the wavefunction enforces $\Psi_F(x_1 = x_2) = 0$, reflecting the Pauli exclusion principle.}
+	\label{fig:fermion_3D_collage}
+\end{figure}
+
+
+\section{Remarks and Validity}
+
+The derivation above is valid for the antisymmetric spatial sector (fermions) and for the idealized contact interaction represented by the delta potential. For bosonic states, the delta interaction generally yields nontrivial corrections to energy eigenvalues and must be treated using either regularization methods or matching conditions across the line $x_1=x_2$. The present fermionic ansatz trivially nullifies the delta contribution because of the vanishing of the wavefunction at coincidence points.
