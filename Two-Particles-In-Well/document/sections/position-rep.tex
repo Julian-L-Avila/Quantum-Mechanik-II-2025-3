@@ -125,3 +125,51 @@ total energy of the system as the sum of the single-particle energies:
 The prefactor $1/\sqrt{2}$ in \cref{eq:spatial_wavefunction} ensures
 the state is normalized ($\braket{\psi | \psi} = 1$) due to the
 orthonormality of the single-particle orbitals ${\phi}_n$.
+
+\subsection{Visualization and Discussion}
+
+To conclude the analysis in the position representation,
+we visualize the probability density $|\psi(x_1, x_2)|^2$
+for several low-energy stationary states.
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./figures/fermions_3D_collage-1.pdf}
+	\caption{Probability density $|\psi(x_1, x_2)|^2$ for six antisymmetric
+		two-fermion configurations $\{n_1,n_2\} = \{1,2\}, \{1,3\}, \{2,3\},
+	\{2,4\}, \{3,4\}, \{1,4\}$.}
+	\label{fig:fermion_3D_collage}
+\end{figure}
+
+\Cref{fig:fermion_3D_collage} illustrates the spatial characteristics of
+the fermionic states. Although the phase information is lost when
+taking the modulus squared, a ``nodal line'' is clearly visible along
+the diagonal $x_1 = x_2$, where the probability density is
+identically zero.
+
+As these are stationary states, the time evolution
+$\Psi(x_1,x_2,t) = \psi(x_1,x_2)e^{-iEt/\hbar}$ introduces only a
+global phase. The probability density is therefore static:
+$|\Psi(x_1,x_2,t)|^2 = |\psi(x_1,x_2)|^2$.
+
+It is crucial to contrast this result with the bosonic case.
+The derivation above, which led to the vanishing of the interaction,
+is valid only for the antisymmetric spatial sector (fermions).
+For bosons, the spatial wavefunction $\psi_S(x_1, x_2)$ is symmetric,
+so $\psi_S(x, x) \neq 0$. The delta interaction would therefore be
+non-trivial, yielding corrections to the energy eigenvalues.
+
+This fermionic solution trivially nullifies the delta contribution
+only because we have assumed a spatially antisymmetric wavefunction.
+This implies the fermions are either spinless (a theoretical construct)
+or are in a spin-symmetric state (a triplet state),
+which forces the spatial part to be antisymmetric.
+
+If, however, the two fermions (e.g., electrons) were in a
+spin-antisymmetric (singlet) state, the total wavefunction
+$\ket{\Psi}_{\text{total}} = \ket{\psi}_{\text{spatial}}
+\otimes \ket{\chi}_{\text{spin}}$
+would require a spatially symmetric wavefunction $\psi_S(x_1, x_2)$
+to maintain total antisymmetry. In that scenario,
+$\psi_S(x, x) \neq 0$, the delta-function interaction would apply,
+and the problem would become non-trivial.
