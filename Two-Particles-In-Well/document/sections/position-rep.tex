@@ -5,7 +5,7 @@ In the position representation, using the Hamiltonian from
 \cref{eq:hamiltonian}, this reads:
 \begin{equation} \label{eq:tdse}
 	i\hbar\partial_t\Psi(x_1, x_2, t) = \left(
-		-\frac{\hbar^2}{2m}(\partial_{x_1}^2 + \partial_{x_2}^2) + g\delta(x_1 - x_2)
+		-\frac{\hbar^2}{2m}(\partial_{1}^2 + \partial_{2}^2) + g\delta(x_1 - x_2)
 	\right) \Psi(x_1, x_2, t).
 \end{equation}
 
@@ -39,7 +39,7 @@ behaves as two non-interacting identical particles in an infinite well,
 and the governing equation reduces to
 \begin{equation} \label{eq:tdse_free}
 	i\hbar\partial_t\Psi(x_1, x_2, t) =
-	-\frac{\hbar^2}{2m}\left(\partial_{x_1}^2 + \partial_{x_2}^2\right)
+	-\frac{\hbar^2}{2m}\left(\partial_{1}^2 + \partial_{2}^2\right)
 	\Psi(x_1, x_2, t).
 \end{equation}
 We seek stationary-state solutions by applying the separation of variables,
@@ -51,7 +51,7 @@ Substituting this into \cref{eq:tdse_free} and dividing by
 $\Psi(x_1, x_2, t)$ separates the spatial and temporal components:
 \begin{equation}
 	\frac{1}{\psi(x_1, x_2)} \left[
-		-\frac{\hbar^2}{2m}(\partial_{x_1}^2 + \partial_{x_2}^2)
+		-\frac{\hbar^2}{2m}(\partial_{1}^2 + \partial_{2}^2)
 	\right] \psi(x_1, x_2)
 	= i\hbar \frac{1}{\varphi(t)} \mdv{t}!_{\varphi}.
 \end{equation}
@@ -60,7 +60,7 @@ so both must equal a separation constant, which we identify as the
 total energy $E$. This yields two independent equations: the
 Time-Independent Schrödinger Equation (TISE)
 \begin{equation} \label{eq:tise}
-	\left[ -\frac{\hbar^2}{2m} (\partial_{x_1}^2 + \partial_{x_2}^2) \right]
+	\left[ -\frac{\hbar^2}{2m} (\partial_{1}^2 + \partial_{2}^2) \right]
 	\psi(x_1, x_2) = E \psi(x_1, x_2),
 \end{equation}
 and the temporal equation
