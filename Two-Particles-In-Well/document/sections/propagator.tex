@@ -1,0 +1,157 @@
+\section{Constructing the Propagator} \label{sec:propagator}
+
+We now calculate the propagator (or kernel), $K$, for the system.
+The propagator is the matrix element of the time-evolution operator
+in the position basis. For this two-particle system, it is defined as
+\begin{equation}
+  K(x_1, x_2, t; x'_1, x'_2, t') =
+  \bra{x_1, x_2} e^{-i\hat{H}(t-t')/\hbar} \ket{x'_1, x'_2},
+\end{equation}
+where $\hat{H}$ is the full system Hamiltonian. We define the
+elapsed time as $\tau = t-t'$.
+
+\subsection{Spectral Decomposition}
+
+The propagator is computed via its spectral decomposition. This is
+achieved by inserting a complete set of energy eigenstates.
+For our fermionic system, the complete set for the antisymmetric
+subspace is $\hat{I}_A = \sum_{n_1 < n_2} \ket{\Psi_{n_1, n_2}}
+\bra{\Psi_{n_1, n_2}}$.
+
+The sum is restricted to $n_1 < n_2$ (or $n_1 > n_2$) to count each
+distinct eigenstate exactly once. Inserting this identity, we find
+\begin{align} \label{eq:propagator_spectral_sum}
+  K(x_f; x_i, \tau)
+    &= \bra{x_f} e^{-i\hat{H}\tau/\hbar} \hat{I}_A \ket{x_i} \nonumber \\
+    &= \sum_{n_1 < n_2} \bra{x_f} e^{-i\hat{H}\tau/\hbar}
+    \ket{\Psi_{n_1, n_2}} \braket{\Psi_{n_1, n_2} | x_i} \nonumber \\
+    &= \sum_{n_1 < n_2} e^{-iE_{n_1, n_2}\tau/\hbar}
+    \braket{x_f | \Psi_{n_1, n_2}} \braket{\Psi_{n_1, n_2} | x_i}
+    \nonumber \\
+    &= \sum_{n_1 < n_2} \Psi_{n_1, n_2}(x_1, x_2) \,
+    \Psi_{n_1, n_2}^*(x'_1, x'_2) \, e^{-iE_{n_1, n_2}\tau/\hbar},
+\end{align}
+where $x_f \equiv (x_1, x_2)$, $x_i \equiv (x'_1, x'_2)$,
+and $E_{n_1, n_2} = E_{n_1} + E_{n_2}$.
+We have used $\braket{\Psi | x} = \braket{x | \Psi}^* = \Psi^*(x)$.
+
+This spectral decomposition is exact. As established previously,
+our eigenfunctions $\Psi_{n_1, n_2}$ are the true eigenstates of
+the full Hamiltonian $\hat{H} = \hat{H}_0 + g\,\delta(x_1 - x_2)$,
+because the interaction term $\hat{V}_{\text{int}}$ vanishes
+when applied to any antisymmetric wavefunction.
+
+\subsection{Simplification via Unrestricted Sum}
+
+We now substitute the explicit Slater determinant form for
+$\Psi_{n_1, n_2}$. The single-particle states $\phi_n(x)$ are real,
+so $\phi_n^* = \phi_n$.
+\begin{align}
+  K = \sum_{n_1>n_2}
+    & \left[ \frac{1}{\sqrt{2}}(\phi_{n_1}(x_1)\phi_{n_2}(x_2) -
+    \phi_{n_2}(x_1)\phi_{n_1}(x_2)) \right] \nonumber \\
+    & \left[ \frac{1}{\sqrt{2}}(\phi_{n_1}(x'_1)\phi_{n_2}(x'_2) -
+    \phi_{n_2}(x'_1)\phi_{n_1}(x'_2)) \right]
+    e^{-i(E_{n_1}+E_{n_2})\tau/\hbar}.
+\end{align}
+The normalization factors combine to give a prefactor of $\frac{1}{2}$.
+Let us define $T(n_1, n_2)$ as the unnormalized summand:
+\begin{align}
+  T(n_1, n_2) =
+    & (\phi_{n_1}(x_1)\phi_{n_2}(x_2) - \phi_{n_2}(x_1)\phi_{n_1}(x_2))
+    \nonumber \\
+    & (\phi_{n_1}(x'_1)\phi_{n_2}(x'_2) - \phi_{n_2}(x'_1)\phi_{n_1}(x'_2))
+    \, e^{-i(E_{n_1}+E_{n_2})\tau/\hbar}.
+\end{align}
+The propagator, as derived from \cref{eq:propagator_spectral_sum}, is
+thus written as a restricted sum:
+\begin{equation} \label{eq:prop_restricted_sum}
+  K = \frac{1}{2} \sum_{n_1>n_2} T(n_1, n_2).
+\end{equation}
+Our goal is to convert this restricted sum into an unrestricted sum
+over all $(n_1, n_2)$, which is separable and easier to evaluate.
+The summand $T(n_1, n_2)$ has two key properties:
+\begin{enumerate}
+  \item \textbf{Vanishing Diagonal:} $T(n, n) = 0$, since the
+    determinants become zero.
+  \item \textbf{Exchange Symmetry:} $T(n_1, n_2) = T(n_2, n_1)$, since
+    swapping $n_1 \leftrightarrow n_2$ negates both determinants
+    and $E_{n_1}+E_{n_2}$ is symmetric.
+\end{enumerate}
+Using these properties, we decompose the full, unrestricted sum:
+\begin{align}
+  \sum_{n_1, n_2} T(n_1, n_2)
+    &= \sum_{n_1 > n_2} T(n_1, n_2) + \sum_{n_1 < n_2} T(n_1, n_2)
+    + \sum_{n_1 = n_2} T(n_1, n_2) \nonumber \\
+    &= \sum_{n_1 > n_2} T(n_1, n_2) + \sum_{n_1 > n_2} T(n_1, n_2) + 0
+    \nonumber \\
+    &= 2 \sum_{n_1 > n_2} T(n_1, n_2).
+\end{align}
+This gives the identity we need:
+$\sum_{n_1 > n_2} T(n_1, n_2) = \frac{1}{2} \sum_{n_1, n_2} T(n_1, n_2)$.
+
+Substituting this identity back into our expression for $K$
+in \cref{eq:prop_restricted_sum}:
+\begin{equation}
+  K = \frac{1}{2} \left[ \frac{1}{2} \sum_{n_1, n_2} T(n_1, n_2) \right]
+  = \frac{1}{4} \sum_{n_1, n_2} T(n_1, n_2).
+\end{equation}
+We now expand $T(n_1, n_2)$ into its four constituent terms within this
+unrestricted sum:
+\begin{align} \label{eq:prop_sum_full_expanded}
+  K = \frac{1}{4} \sum_{n_1, n_2} e^{-iE_{n_1}\tau/\hbar} e^{-iE_{n_2}\tau/\hbar}
+  \bigg[
+      & \phantom{+} \phi_{n_1}(x_1)\phi_{n_2}(x_2)
+      \phi_{n_1}(x'_1)\phi_{n_2}(x'_2) \nonumber \\
+      & - \phi_{n_1}(x_1)\phi_{n_2}(x_2)
+      \phi_{n_2}(x'_1)\phi_{n_1}(x'_2) \nonumber \\
+      & - \phi_{n_2}(x_1)\phi_{n_1}(x_2)
+      \phi_{n_1}(x'_1)\phi_{n_2}(x'_2) \nonumber \\
+      & + \phi_{n_2}(x_1)\phi_{n_1}(x_2)
+      \phi_{n_2}(x'_1)\phi_{n_1}(x'_2)
+    \bigg].
+\end{align}
+Let us define the single-particle propagator $K_0$ for the
+non-interacting particle in the well:
+\begin{equation}
+  K_0(x, x', \tau) = \sum_{n=1}^{\infty} \phi_n(x) \phi_n(x')
+  e^{-iE_n\tau/\hbar}.
+\end{equation}
+Each of the four terms in \cref{eq:prop_sum_full_expanded} is a
+product of separable sums. For example, the first term is:
+\begin{align}
+  \text{Term 1} = \frac{1}{4}
+    & \left( \sum_{n_1} \phi_{n_1}(x_1)\phi_{n_1}(x'_1)
+    e^{-iE_{n_1}\tau/\hbar} \right) \nonumber \\
+    & \left( \sum_{n_2} \phi_{n_2}(x_2)\phi_{n_2}(x'_2)
+    e^{-iE_{n_2}\tau/\hbar} \right) \nonumber \\
+    = \frac{1}{4}
+    & K_0(x_1, x'_1, \tau) K_0(x_2, x'_2, \tau).
+\end{align}
+Applying this separation to all four terms yields:
+\begin{align}
+  K = \frac{1}{4} \bigg[
+      & K_0(x_1, x'_1, \tau) K_0(x_2, x'_2, \tau)
+      - K_0(x_1, x'_2, \tau) K_0(x_2, x'_1, \tau) \nonumber \\
+  - & K_0(x_2, x'_1, \tau) K_0(x_1, x'_2, \tau)
+  + K_0(x_2, x'_2, \tau) K_0(x_1, x'_1, \tau)
+\bigg].
+\end{align}
+The first and fourth terms are identical, as are the second and third.
+Combining these terms, we arrive at the final expression:
+\begin{align}
+  K &= \frac{1}{4} \bigg[ 2 K_0(x_1, x'_1, \tau) K_0(x_2, x'_2, \tau)
+  - 2 K_0(x_1, x'_2, \tau) K_0(x_2, x'_1, \tau) \bigg] \nonumber \\
+    &= \frac{1}{2} \bigg[ K_0(x_1, x'_1, \tau) K_0(x_2, x'_2, \tau)
+    - K_0(x_1, x'_2, \tau) K_0(x_2, x'_1, \tau) \bigg].
+  \end{align}
+  This is the correct propagator for two indistinguishable (anti-symmetric)
+  particles, expressed as half the Slater determinant of the
+  single-particle propagators:
+  \begin{equation} \label{eq:propagator_slater_det}
+    K(x_1, x_2, t; x'_1, x'_2, t') = \frac{1}{2} \det
+    \begin{vmatrix}
+      K_0(x_1, x'_1, \tau) & K_0(x_1, x'_2, \tau) \\
+      K_0(x_2, x'_1, \tau) & K_0(x_2, x'_2, \tau)
+    \end{vmatrix}.
+  \end{equation}

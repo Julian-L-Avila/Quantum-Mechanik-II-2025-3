@@ -1,0 +1,111 @@
+\section{Momentum-Space Wavefunction}
+
+We now explicitly construct the momentum-space wavefunction,
+$\tilde{\Psi}_{n_1, n_2}(p_1, p_2, t)$, by applying the
+Fourier transform defined in \cref{sec:momentum} to our
+position-space solution.
+
+For a stationary state, the time evolution is separable.
+The position-space solution (with total energy $E \equiv E_{n_1, n_2}$) is
+\begin{equation}
+  \Psi(x_1, x_2, t) = \psi_{n_1, n_2}(x_1, x_2) \, e^{-iEt/\hbar},
+\end{equation}
+where $\psi_{n_1, n_2}$ is the spatial eigenfunction from
+\cref{eq:spatial_wavefunction}.
+The temporal factor $e^{-iEt/\hbar}$ is independent of the spatial
+integration and passes directly through the transform.
+The task thus reduces to transforming the spatial component.
+The full time-dependent momentum-space wavefunction will be
+\begin{equation}
+  \tilde{\Psi}_{n_1, n_2}(p_1, p_2, t) = \tilde{\psi}_{n_1, n_2}(p_1, p_2)
+  e^{-iEt/\hbar}.
+\end{equation}
+
+\subsection{Transformation of the Antisymmetric State}
+
+We apply the 2D transform to the fermionic spatial wavefunction
+$\psi_{n_1, n_2}(x_1, x_2)$:
+\begin{align}
+  \tilde{\psi}_{n_1, n_2}(p_1, p_2) &= \mathcal{F}\left[
+    \psi_{n_1, n_2}(x_1, x_2) \right] \\
+    &= \mathcal{F}\left[ \frac{1}{\sqrt{2}}\left(
+    \phi_{n_1}(x_1)\phi_{n_2}(x_2) -
+    \phi_{n_2}(x_1)\phi_{n_1}(x_2)\right) \right].
+\end{align}
+By the linearity of the transform and its separable property,
+$\mathcal{F}\{f(x_1)g(x_2)\} = \mathcal{F}_1\{f(x_1)\} \mathcal{F}_2\{g(x_2)\}$,
+this calculation simplifies. Let us define
+$\tilde{\phi}_{n}(p_i) = \mathcal{F}_i\{\phi_{n}(x_i)\}$ as the 1D
+Fourier transform of a single-particle eigenfunction $\phi_n(x)$.
+The transform of each term is:
+\begin{align}
+  \mathcal{F}\{\phi_{n_1}(x_1)\phi_{n_2}(x_2)\} &=
+    \tilde{\phi}_{n_1}(p_1) \tilde{\phi}_{n_2}(p_2), \\
+  \mathcal{F}\{\phi_{n_2}(x_1)\phi_{n_1}(x_2)\} &=
+    \tilde{\phi}_{n_2}(p_1) \tilde{\phi}_{n_1}(p_2).
+\end{align}
+Substituting these back establishes the structure of the
+momentum-space wavefunction:
+\begin{equation}
+  \tilde{\psi}_{n_1, n_2}(p_1, p_2) = \frac{1}{\sqrt{2}} \left(
+  \tilde{\phi}_{n_1}(p_1) \tilde{\phi}_{n_2}(p_2) -
+  \tilde{\phi}_{n_2}(p_1) \tilde{\phi}_{n_1}(p_2) \right).
+  \label{eq:momentum_wavefunction_structure}
+\end{equation}
+This derivation confirms that the antisymmetry of the state is
+preserved in the momentum representation. The remaining task
+is to find the explicit form of $\tilde{\phi}_n(p)$.
+
+\subsection{Single-Particle Momentum Eigenfunction}
+
+The component $\tilde{\phi}_n(p)$ is the 1D transform of the
+normalized single-particle eigenfunction.
+We proceed with the explicit calculation:
+\begin{align} \label{eq:1d_ft_setup}
+  \tilde{\phi}_n(p) &= \frac{1}{\sqrt{2\pi\hbar}} \int_{0}^{L}
+    e^{-ipx/\hbar} \phi_n(x) \,\mathrm{d}x \nonumber \\
+    &= \frac{1}{\sqrt{2\pi\hbar}} \int_{0}^{L} e^{-ipx/\hbar}
+    \sqrt{\frac{2}{L}} \sin\left(\frac{n\pi x}{L}\right)
+    \,\mathrm{d}x \nonumber \\
+    &= \frac{1}{\sqrt{\pi\hbar L}} \int_{0}^{L} e^{-ipx/\hbar}
+    \left[ \frac{e^{i n\pi x/L} - e^{-i n\pi x/L}}{2i} \right]
+    \,\mathrm{d}x \nonumber \\
+    &= \frac{1}{2i\sqrt{\pi\hbar L}} \left[
+    \int_{0}^{L} e^{-i(p/\hbar - n\pi/L)x} \,\mathrm{d}x \right. \nonumber \\
+    & \qquad \left. - \int_{0}^{L} e^{-i(p/\hbar + n\pi/L)x} \,\mathrm{d}x
+    \right].
+\end{align}
+Defining $k_p = p/\hbar$ (the free-particle wavenumber) and
+$k_n = n\pi/L$ (the quantized state wavenumber), the integrals evaluate to:
+\begin{align}
+  \tilde{\phi}_n(p) &= \frac{1}{2i\sqrt{\pi\hbar L}} \left[
+    \frac{1 - e^{-i(k_p - k_n)L}}{i(k_p - k_n)} -
+    \frac{1 - e^{-i(k_p + k_n)L}}{i(k_p + k_n)} \right] \nonumber \\
+    &= \frac{1}{2\sqrt{\pi\hbar L}} \left[
+    \frac{1 - e^{-i(k_p - k_n)L}}{k_p - k_n} -
+    \frac{1 - e^{-i(k_p + k_n)L}}{k_p + k_n} \right].
+\end{align}
+We use the property $k_n L = (n\pi/L)L = n\pi$, which implies
+$e^{\pm i k_n L} = e^{\pm i n\pi} = (-1)^n$.
+The numerators in both terms are therefore identical:
+\begin{equation}
+  1 - e^{-i(k_p \mp k_n)L} = 1 - e^{-ik_p L} e^{\pm i k_n L}
+  = 1 - e^{-ipL/\hbar} (-1)^n.
+\end{equation}
+Substituting this common numerator and combining the fractions:
+\begin{align}
+  \tilde{\phi}_n(p) &= \frac{1 - (-1)^n e^{-ipL/\hbar}}{2\sqrt{\pi\hbar L}}
+    \left[ \frac{1}{k_p - k_n} - \frac{1}{k_p + k_n} \right] \nonumber \\
+    &= \frac{1 - (-1)^n e^{-ipL/\hbar}}{2\sqrt{\pi\hbar L}}
+    \left[ \frac{(k_p + k_n) - (k_p - k_n)}{k_p^2 - k_n^2} \right] \nonumber \\
+    &= \frac{1 - (-1)^n e^{-ipL/\hbar}}{2\sqrt{\pi\hbar L}}
+    \left[ \frac{2k_n}{k_p^2 - k_n^2} \right].
+\end{align}
+Simplifying and re-inserting the definitions of $k_n$ and $k_p$,
+we obtain the final form:
+\begin{equation}
+  \tilde{\phi}_n(p) = \frac{1}{\sqrt{\pi\hbar L}}
+  \left( \frac{n\pi/L}{(p/\hbar)^2 - (n\pi/L)^2} \right)
+  \left[ 1 - (-1)^n e^{-ipL/\hbar} \right].
+  \label{eq:single_particle_momentum_wf}
+\end{equation}

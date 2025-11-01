@@ -1,0 +1,105 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+
+\usepackage{graphicx}
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs,bookmark}
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{siunitx}
+\usepackage{derivative}
+\usepackage{braket}
+
+\renewcommand{\arraystretch}{1.2}
+\sisetup{group-digits=true,
+  group-separator={\,},
+  separate-uncertainty
+}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={Identical Particles in Infinite Well},
+  pdfauthor={Avila, Herrera, Rodríguez},
+  pdfsubject={Quantum Mechanics II},
+  pdfkeywords={Homework 7}
+}
+\urlstyle{same}
+
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+\newtheorem{proposition}[theorem]{Proposition}%
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+
+\begin{document}
+
+\title[Two Particles in an Infinite Well]{\textbf{Two Particles in an Infinite Well Potential}}
+\author[]{\fnm{Julian} \sur{Avila}}
+\author[]{\fnm{Laura} \sur{Herrera}}
+\author[]{\fnm{Sebastian} \sur{Rodríguez}}
+\affil[]{\orgname{Universidad Distrital Francisco José de Caldas}}
+
+\abstract{
+We analyze two indistinguishable fermions in a 1D infinite well
+with a $g\delta(x_1 - x_2)$ contact potential. We demonstrate that the
+required spatial antisymmetry forces the wavefunction to vanish at
+particle coincidence ($\Psi(x,x)=0$), rendering the interaction inert.
+The system is then solved as two non-interacting particles.
+We derive the position-space eigenfunctions, the momentum-space
+wavefunctions via Fourier transform, and the two-particle propagator,
+which takes the form of a Slater determinant.
+
+We establish a general theorem for single-particle operator expectation
+values, $\langle \hat{A}_1 \rangle = \frac{1}{2}(\langle \hat{a}
+\rangle_{n_1} + \langle \hat{a} \rangle_{n_2})$, using it to
+calculate uncertainties and verify the Heisenberg principle.
+Finally, we construct generalized, $n$-dependent ladder operators,
+showing the system admits a deformed Heisenberg algebra consistent
+with its non-linear spectrum.
+}
+\keywords{
+  Identical Particles, Infinite Potential Well, Contact Interaction
+}
+
+\maketitle
+
+\input{./sections/problem-setting.tex}
+
+\input{./sections/position-rep.tex}
+
+\input{./sections/momentum-rep.tex}
+
+\input{./sections/fourier-transform.tex}
+
+\input{./sections/propagator.tex}
+
+\input{./sections/expected-values.tex}
+
+\input{./sections/algebraic.tex}
+
+\bibliography{./references.bib}
+\nocite{*}
+
+\end{document}
