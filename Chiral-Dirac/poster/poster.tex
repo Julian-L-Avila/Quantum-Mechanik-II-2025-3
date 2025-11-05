@@ -1,0 +1,174 @@
+% https://github.com/andiac/gemini-cam
+% a fork of https://github.com/anishathalye/gemini
+% also refer to https://github.com/k4rtik/uchicago-poster
+
+\documentclass[final]{beamer}
+
+% ====================
+% Packages
+% ====================
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[orientation=portrait,size=a0,scale=1.15]{beamerposter}
+\usetheme{gemini}
+\usecolortheme{nott}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{svg}
+\usepackage{cleveref}
+\pgfplotsset{compat=1.14}
+\usepackage{anyfontsize}
+\usepackage{biblatex}
+
+\addbibresource{../chiral-references.bib}
+
+% ====================
+% Lengths
+% ====================
+
+% If you have N columns, choose \sepwidth and \colwidth such that
+% (N+1)*\sepwidth + N*\colwidth = \paperwidth
+\newlength{\sepwidth}
+\newlength{\colwidth}
+\setlength{\sepwidth}{0.025\paperwidth}
+\setlength{\colwidth}{0.45\paperwidth}
+
+\newcommand{\separatorcolumn}{\begin{column}{\sepwidth}\end{column}}
+
+% ====================
+% Title
+% ====================
+
+\title{A Chiral Symmetric Dirac Equation \\
+Watson \& Musielak (Int. J. Mod. Phys. A, 2020)}
+\author{Julian L. Avila-Martinez \and Laura Y. Herrera-Martinez \and Sebastian
+Rodriguez-Garcia}
+
+\institute[shortinst]{F\'isica, Universidad Distrital Francisco Jos\'e de Caldas}
+
+\footercontent{
+  \href{https://github.com/Julian-L-Avila/Quantum-Mechanik-II-2025-3}{github.com/Julian-L-Avila/Quantum-Mechanik-II-2025-3}
+}
+
+% ====================
+% Logo (optional)
+% ====================
+
+% use this to include logos on the left and/or right side of the header:
+\logoleft{\hspace{8ex}
+  \includesvg[height=8.5cm]{./figures/Logo_Escudo_invertido.svg}
+}
+
+% ====================
+% Body
+% ====================
+
+\begin{document}
+
+\begin{frame}[t]
+\begin{columns}[t]
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{block}{What is Chirality?}
+
+  \end{block}
+
+  \begin{alertblock}{Chiral Symmetric Dirac Equation}
+
+    \begin{equation}\label{eq:decs}
+      \left( i \gamma^\mu \partial_\mu - m e^{- i 2 \alpha \gamma^5} \right)
+      \psi = 0
+    \end{equation}
+
+  \end{alertblock}
+
+  \begin{block}{Chiral Angle and Mass}
+
+    \heading{What is the Chiral Angle?}
+    The DECS can be re-written (\cref{eq:decs}):
+
+    \begin{equation}
+      \left( i \gamma^\mu \partial_\mu - M - \tilde{M} \gamma^5 \right) \psi = 0
+    \end{equation}
+
+    Where:
+    \begin{itemize}
+      \item \( M = m \cos{2\alpha}\) is the standard \textbf{scalar mass}.
+      \item \( \tilde{M} = - i m \sin{2\alpha} \) is a \textbf{pseudoscalar
+        mass}. The chiral angle α mixes the scalar and pseudoscalar mass terms.
+    \end{itemize}
+
+    \heading{Generating Mass: A Two-Field Higgs Model}
+    These \( M \) and \( \tilde{M} \) terms can arise from Yukawa couplings to
+    two Higgs-like fields:
+    a scalar \( \phi_{1} \) and a pseudoscalar \( \phi_{2} \).
+
+    \begin{equation}\label{eq:yukawa-lagrangian}
+      \mathcal{L}_{Y} \approx  - \frac{\lambda_{1} v_{1}}{\sqrt{2}} \bar{\psi}
+      \psi - \frac{\lambda_{2} v_{2}}{\sqrt{2}} \bar{\psi} \gamma^5 \psi
+    \end{equation}
+
+  This \emph{fixes} the parameters \( m \) and \( \alpha \):
+  \begin{gather}
+    m = \sqrt{\frac{\lambda_{1}^2 v_{1}^2 - \lambda_{2}^2 v_{2}^2}{2} } \\
+    \alpha = \frac{i}{4} \ln{\left( \frac{\lambda_{1} v_{1} + \lambda_{2}
+    v_{2}}{\lambda_{1} v_{1} - \lambda_{2} v_{2}} \right)}
+  \end{gather}
+
+  \end{block}
+
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{block}{Neutrinos and Dark Matter}
+  
+    \heading{Neutrino Failure}
+    The paper proposes its main application in explaining ``anomalously small''
+    neutrino masses. It suggests the scalar (\( M \) and the pseudoscalar \(
+    \tilde{M} \) mass contributions, which arise form \(\phi_{1} \) and \(
+    \phi_{2} \) respectively, nearly cancel each other out.
+
+    \begin{equation}
+      m_{\nu} = \frac{1}{2 \sqrt{2}} \left( \lambda_{1} v_1 - \lambda_{2} v_2 \right)
+    \end{equation}
+
+    However, the paper's derivation contains a fundamental contradiction. It
+    states that the neutrino field has no right-chiral component (Eq. 26: \(
+    \frac{1}{2}( 1 + \gamma^5) \nu = 0 \)). As is well-known, a Dirac mass term
+    (both scalar and pseudoscalar) requires both chiral components to be
+    non-zero.
+
+    \heading{Dark Matter Candidate}
+    \begin{itemize}
+      \item The pseudoscalar Higgs field, \( \phi_2 \), is proposed as a Dark
+        Matter candidate.
+      \item It couples to Standard Model particles only via this pseudoscalar
+        Yukawa coupling, primarily interacting with neutrinos.
+      \item This makes it massive, long-lived, and ``dark,'' satisfying the
+        requirements for a WIMP-like particle.
+    \end{itemize}
+    
+  \end{block}
+
+  \begin{block}{References}
+
+    \nocite{*}
+    \footnotesize{\printbibliography}
+
+  \end{block}
+
+\end{column}
+\separatorcolumn
+
+\end{columns}
+\end{frame}
+
+\end{document}
