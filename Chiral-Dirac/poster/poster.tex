@@ -75,17 +75,117 @@ Rodriguez-Garcia}
 \begin{column}{\colwidth}
 
   \begin{block}{What is Chirality?}
+  Chirality is a Lorentz-invariant property of spinor fields that distinguishes how their left- and right-handed components transform under Lorentz transformations.
 
-  \end{block}
 
-  \begin{alertblock}{Chiral Symmetric Dirac Equation}
+  
+  
+  %It is defined as the eigenvalue of the
+  %pseudoscalar (volume) element of the underlying Clifford algebra,
+  %which in 3+1D spacetime is the \gamma^5 operator.
+\begin{equation}
+\psi =  
+\begin{pmatrix}  
+\chi_L \  
+\chi_R  
+\end{pmatrix},  
+\qquad  
+\chi_L \to \Lambda_L \chi_L, \quad  
+\chi_R \to \Lambda_R \chi_R  
+\end{equation}
 
-    \begin{equation}\label{eq:decs}
+
+The two chiral components transform with inequivalent representations of the Lorentz group:  
+left-handed spinors with $((\tfrac{1}{2}, 0)$), and right-handed spinors with $((0, \tfrac{1}{2}))$.
+
+
+\begin{alertblock}{Chiral Symmetric Dirac Equation}
+
+\begin{equation}\label{eq:decs}
       \left( i \gamma^\mu \partial_\mu - m e^{- i 2 \alpha \gamma^5} \right)
       \psi = 0
     \end{equation}
 
+  \heading{The properties that the DECS must satisfy}
+
+      In the theory of irreducible representations of the Poincaré group \cite{wigner-1939}, 
+each irreducible representation is defined by how the objects it describes 
+transform under $\mathcal{P}$.
+
+\begin{itemize}
+
+  \item \textbf{Poincaré Principle:}  
+  Physics is unchanged under Lorentz transformations and translations.
+
+  \item \textbf{Gauge Invariance:}  
+ Interactions emerge from requiring local symmetry of the Lagrangian.
+  \item \textbf{Locality:}  Locality: Fields interact only at the same space–time point.
+  
+
+
+\end{itemize}
+
+
+
   \end{alertblock}
+
+  \heading{The DECS drivation:}
+
+When this operator acts on an individual state, defined as $ P_{\mu} \equiv i\,\partial_{\mu}
+$ and the following eigenvalue equation is obtained:
+
+
+\begin{equation}
+ i\,\partial_{\mu} \phi = k _{\mu} \phi.
+\end{equation}
+
+Starting from the translational eigenvalue relation, Lorentz invariance is imposed to determine the operator structure of the relativistic wave equation.
+This requirement constrains the possible tensorial forms of the matrices involved, leading to the most general Lorentz-invariant first-order equation for a bispinor field.
+
+
+\begin{equation}\label{eq:pro}
+\Big[
+i\gamma^{\mu}\partial_{\mu}
++ i\!\left(
+\dfrac{y_L}{x_R}P_L
++ \dfrac{y_R}{x_L}P_R
+\right)
+\Big]\psi = 0.
+\end{equation}
+
+
+which represents the most general Lorentz-invariant first-order equation 
+for a bispinor field and shows that there are only two independent degrees of freedom 
+in the derived equation.  
+The squared Hamiltonian derived from (\cref{eq:pro}) reads:
+
+\begin{equation}
+H^2\psi =
+\left(
+\partial_k\partial^k -
+\dfrac{y_L y_R}{x_L x_R}
+\right)\psi
+\end{equation}
+
+so that the propagation mass term naturally emerges and the remaining degree of freedom is identified with the choice 
+of chiral basis, introducing the chiral angle $\alpha$ defined by
+
+\begin{equation}
+m \equiv \pm i
+\sqrt{\dfrac{y_L y_R}{x_L x_R}}
+\quad
+\alpha \equiv -\dfrac{i}{2}
+\ln\!\left(
+\mp\sqrt{\dfrac{x_L y_L}{x_R y_R}}
+\right)
+\end{equation}
+
+The final compact form of our Dirac equation with chiral symmetry is (\cref{eq:decs}), 
+\end{block}
+
+
+
+  
 
   \begin{block}{Chiral Angle and Mass}
 
@@ -102,6 +202,19 @@ Rodriguez-Garcia}
       \item \( \tilde{M} = - i m \sin{2\alpha} \) is a \textbf{pseudoscalar
         mass}. The chiral angle α mixes the scalar and pseudoscalar mass terms.
     \end{itemize}
+  \end{block}
+
+  
+
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{block}{Chiral Angle and Mass}
+
+    
 
     \heading{Generating Mass: A Two-Field Higgs Model}
     These \( M \) and \( \tilde{M} \) terms can arise from Yukawa couplings to
@@ -121,12 +234,6 @@ Rodriguez-Garcia}
   \end{gather}
 
   \end{block}
-
-\end{column}
-
-\separatorcolumn
-
-\begin{column}{\colwidth}
 
   \begin{block}{Neutrinos and Dark Matter}
   
@@ -159,12 +266,41 @@ Rodriguez-Garcia}
     
   \end{block}
 
+  \begin{alertblock}{Knowledge Gap}
+\begin{itemize}
+    \item Hermiticity of the Chiral Symmetric Hamiltonian
+    \item A Chiral Equation for higher spins (Proca, Rarita-Schwinger-like equations)
+    \item Detection and measurement of the free parameters that specify the model
+    \item Validity of the proposed neutrino mass as a Dirac mass
+\end{itemize}
+\end{alertblock}
+
+\begin{block}{Conclusions}
+\begin{itemize}
+    \item The Chiral Symmetric Dirac Equation as a valid physical description of reality.
+    \item The existence of both scalar and pseudoscalar mass.
+    \item A new proposal for the origin of a pseudoscalar Higgs as dark matter.
+\end{itemize}
+\end{block}
+
+
+
+
+
   \begin{block}{References}
 
     \nocite{*}
     \footnotesize{\printbibliography}
 
   \end{block}
+
+
+
+
+
+
+
+  
 
 \end{column}
 \separatorcolumn
