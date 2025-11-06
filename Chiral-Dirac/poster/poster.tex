@@ -75,137 +75,115 @@ Rodriguez-Garcia}
 \begin{column}{\colwidth}
 
   \begin{block}{What is Chirality?}
-  Chirality is a Lorentz-invariant property of spinor fields that distinguishes how their left- and right-handed components transform under Lorentz transformations.
+    A Lorentz-invariant property distinguishing how spinor components transform
+    under boosts $\Lambda$:
+
+    \begin{gather}
+      \psi = \psi_L + \psi_R \\
+      \psi_L \to \Lambda \psi_L \quad , \quad \psi_R \to \Lambda^{-1} \psi_R
+    \end{gather}
+
+    The components transform under inequivalent Lorentz group representations:
+    \begin{itemize}
+      \item \textbf{Left-handed ($\psi_L$):} $(\frac{1}{2}, 0)$
+      \item \textbf{Right-handed ($\psi_R$):} $(0, \frac{1}{2})$
+    \end{itemize}
+  \end{block}
 
 
-  
-  
-  %It is defined as the eigenvalue of the
-  %pseudoscalar (volume) element of the underlying Clifford algebra,
-  %which in 3+1D spacetime is the \gamma^5 operator.
-\begin{equation}
-\psi =  
-\begin{pmatrix}  
-\chi_L \  
-\chi_R  
-\end{pmatrix},  
-\qquad  
-\chi_L \to \Lambda_L \chi_L, \quad  
-\chi_R \to \Lambda_R \chi_R  
-\end{equation}
+  \begin{alertblock}{Chiral Symmetric Dirac Equation}
 
-
-The two chiral components transform with inequivalent representations of the Lorentz group:  
-left-handed spinors with $((\tfrac{1}{2}, 0)$), and right-handed spinors with $((0, \tfrac{1}{2}))$.
-
-
-\begin{alertblock}{Chiral Symmetric Dirac Equation}
-
-\begin{equation}\label{eq:decs}
+    \begin{equation}\label{eq:decs}
       \left( i \gamma^\mu \partial_\mu - m e^{- i 2 \alpha \gamma^5} \right)
       \psi = 0
     \end{equation}
 
-  \heading{The properties that the DECS must satisfy}
+    \heading{The properties that the DECS must satisfy}
 
-      In the theory of irreducible representations of the Poincaré group \cite{wigner-1939}, 
-each irreducible representation is defined by how the objects it describes 
-transform under $\mathcal{P}$.
+    In the theory of irreducible representations of the Poincaré group,
+    each irreducible representation is defined by how the objects it describes
+    transform under $\mathcal{P}$.
 
-\begin{itemize}
+    \begin{itemize}
 
-  \item \textbf{Poincaré Principle:}  
-  Physics is unchanged under Lorentz transformations and translations.
+      \item \textbf{Poincaré Principle:}
+        Physics is unchanged under Lorentz transformations and translations.
 
-  \item \textbf{Gauge Invariance:}  
- Interactions emerge from requiring local symmetry of the Lagrangian.
-  \item \textbf{Locality:}  Locality: Fields interact only at the same space–time point.
-  
-
-
-\end{itemize}
-
-
-
+      \item \textbf{Gauge Invariance:}
+        Interactions emerge from requiring local symmetry of the Lagrangian.
+      \item \textbf{Locality:}  Locality: Fields interact only at the same space–time point.
+    \end{itemize}
   \end{alertblock}
 
-  \heading{The DECS drivation:}
+  \begin{block}{DECS derivation}
 
-When this operator acts on an individual state, defined as $ P_{\mu} \equiv i\,\partial_{\mu}
-$ and the following eigenvalue equation is obtained:
+    \heading{1. Start with the translation operator eigenvalue equation:}
+    Given that $ P_\mu = i \partial_\mu $:
 
+    \begin{equation}
+      i\,\partial_{\mu} \phi = k _{\mu} \phi \quad \longmapsto \quad X^\mu \partial_\mu
+      \mathbf{\psi} = - Y \mathbf{\psi}
+    \end{equation}
 
-\begin{equation}
- i\,\partial_{\mu} \phi = k _{\mu} \phi.
-\end{equation}
+    \heading{2. Impose Lorentz invariance:}
 
-Starting from the translational eigenvalue relation, Lorentz invariance is imposed to determine the operator structure of the relativistic wave equation.
-This requirement constrains the possible tensorial forms of the matrices involved, leading to the most general Lorentz-invariant first-order equation for a bispinor field.
+    This yields the most general first-order equation with two degrees of
+    freedom ($y_L/x_R$, $y_R/x_L$):
 
+    \begin{equation}\label{eq:pro}
+      \left[
+        i\gamma^{\mu}\partial_{\mu}
+        + i\!\left(
+          \dfrac{y_L}{x_R}P_L
+          + \dfrac{y_R}{x_L}P_R
+        \right)
+      \right]\psi = 0
+    \end{equation}
 
-\begin{equation}\label{eq:pro}
-\Big[
-i\gamma^{\mu}\partial_{\mu}
-+ i\!\left(
-\dfrac{y_L}{x_R}P_L
-+ \dfrac{y_R}{x_L}P_R
-\right)
-\Big]\psi = 0.
-\end{equation}
+    \heading{3. Squaring the Hamiltonian reveals the mass term:}
 
+    The squared Hamiltonian derived from \cref{eq:pro} reads:
 
-which represents the most general Lorentz-invariant first-order equation 
-for a bispinor field and shows that there are only two independent degrees of freedom 
-in the derived equation.  
-The squared Hamiltonian derived from (\cref{eq:pro}) reads:
+    \begin{equation}
+      H^2\psi =
+      \left(
+        \partial_k\partial^k -
+        \dfrac{y_L y_R}{x_L x_R}
+      \right)\psi
+    \end{equation}
 
-\begin{equation}
-H^2\psi =
-\left(
-\partial_k\partial^k -
-\dfrac{y_L y_R}{x_L x_R}
-\right)\psi
-\end{equation}
+    \heading{4. Identify the mass $m$ and chiral angle $\alpha$:}
+    The remaining degrees of freedom are identified as:
 
-so that the propagation mass term naturally emerges and the remaining degree of freedom is identified with the choice 
-of chiral basis, introducing the chiral angle $\alpha$ defined by
+    \begin{equation}
+      m \equiv \pm i
+      \sqrt{\dfrac{y_L y_R}{x_L x_R}}
+      \quad
+      \alpha \equiv -\dfrac{i}{2}
+      \ln\!\left(
+        \mp\sqrt{\dfrac{x_L y_L}{x_R y_R}}
+      \right)
+    \end{equation}
 
-\begin{equation}
-m \equiv \pm i
-\sqrt{\dfrac{y_L y_R}{x_L x_R}}
-\quad
-\alpha \equiv -\dfrac{i}{2}
-\ln\!\left(
-\mp\sqrt{\dfrac{x_L y_L}{x_R y_R}}
-\right)
-\end{equation}
-
-The final compact form of our Dirac equation with chiral symmetry is (\cref{eq:decs}), 
-\end{block}
-
-
-
-  
+    Substituting these into \cref{eq:pro} gives the DECS \cref{eq:decs}.
+  \end{block}
 
   \begin{block}{Chiral Angle and Mass}
 
     \heading{What is the Chiral Angle?}
-    The DECS can be re-written (\cref{eq:decs}):
+    Rewriting the DECS \cref{eq:decs} reveals scalar and pseudoscalar mass terms:
 
     \begin{equation}
       \left( i \gamma^\mu \partial_\mu - M - \tilde{M} \gamma^5 \right) \psi = 0
     \end{equation}
 
-    Where:
+    Where $\alpha$ mixes the \textbf{scalar mass $M$} and \textbf{pseudoscalar
+    mass $\tilde{M}$}:
     \begin{itemize}
-      \item \( M = m \cos{2\alpha}\) is the standard \textbf{scalar mass}.
-      \item \( \tilde{M} = - i m \sin{2\alpha} \) is a \textbf{pseudoscalar
-        mass}. The chiral angle α mixes the scalar and pseudoscalar mass terms.
+      \item \( M = m \cos{2\alpha}\) (Scalar)
+      \item \( \tilde{M} = - i m \sin{2\alpha} \) (Pseudoscalar)
     \end{itemize}
   \end{block}
-
-  
-
 \end{column}
 
 \separatorcolumn
@@ -213,8 +191,6 @@ The final compact form of our Dirac equation with chiral symmetry is (\cref{eq:d
 \begin{column}{\colwidth}
 
   \begin{block}{Chiral Angle and Mass}
-
-    
 
     \heading{Generating Mass: A Two-Field Higgs Model}
     These \( M \) and \( \tilde{M} \) terms can arise from Yukawa couplings to
@@ -226,66 +202,55 @@ The final compact form of our Dirac equation with chiral symmetry is (\cref{eq:d
       \psi - \frac{\lambda_{2} v_{2}}{\sqrt{2}} \bar{\psi} \gamma^5 \psi
     \end{equation}
 
-  This \emph{fixes} the parameters \( m \) and \( \alpha \):
-  \begin{gather}
-    m = \sqrt{\frac{\lambda_{1}^2 v_{1}^2 - \lambda_{2}^2 v_{2}^2}{2} } \\
-    \alpha = \frac{i}{4} \ln{\left( \frac{\lambda_{1} v_{1} + \lambda_{2}
-    v_{2}}{\lambda_{1} v_{1} - \lambda_{2} v_{2}} \right)}
-  \end{gather}
+    This \emph{fixes} the parameters \( m \) and \( \alpha \):
+    \begin{gather}
+      m = \sqrt{\frac{\lambda_{1}^2 v_{1}^2 - \lambda_{2}^2 v_{2}^2}{2} } \\
+      \alpha = \frac{i}{4} \ln{\left( \frac{\lambda_{1} v_{1} + \lambda_{2}
+      v_{2}}{\lambda_{1} v_{1} - \lambda_{2} v_{2}} \right)}
+    \end{gather}
 
   \end{block}
 
   \begin{block}{Neutrinos and Dark Matter}
-  
-    \heading{Neutrino Failure}
-    The paper proposes its main application in explaining ``anomalously small''
-    neutrino masses. It suggests the scalar (\( M \) and the pseudoscalar \(
-    \tilde{M} \) mass contributions, which arise form \(\phi_{1} \) and \(
-    \phi_{2} \) respectively, nearly cancel each other out.
-
-    \begin{equation}
-      m_{\nu} = \frac{1}{2 \sqrt{2}} \left( \lambda_{1} v_1 - \lambda_{2} v_2 \right)
-    \end{equation}
-
-    However, the paper's derivation contains a \textbf{fundamental
-    contradiction}. It
-    states that the neutrino field has no right-chiral component (Eq. 26: \(
-    \frac{1}{2}( 1 + \gamma^5) \nu = 0 \)). As is well-known, a Dirac mass term
-    (both scalar and pseudoscalar) requires both chiral components to be
-    non-zero.
+    \heading{Neutrino Mass Proposal (and its flaw)}
+    \begin{itemize}
+      \item \textbf{Paper's Goal:} Explain small $\nu$ mass by cancellation between $M$ and $\tilde{M}$:
+        \begin{equation}
+          m_{\nu} = \frac{1}{2 \sqrt{2}} \left( \lambda_{1} v_1 - \lambda_{2} v_2 \right)
+        \end{equation}
+      \item \textbf{Fundamental Contradiction:}
+      \item The paper \textbf{states} $\nu$ has no right-chiral component
+        ($\frac{1}{2}( 1 + \gamma^5) \nu = 0$).
+      \item \emph{But...} Dirac mass terms (both $M$ and $\tilde{M}$) \textbf{require}
+        both left and right chiral components to be non-zero.
+    \end{itemize}
 
     \heading{Dark Matter Candidate}
+    Despite the neutrino flaw, the model offers a DM candidate:
     \begin{itemize}
-      \item The pseudoscalar Higgs field, \( \phi_2 \), is proposed as a Dark
-        Matter candidate.
-      \item It couples to Standard Model particles only via this pseudoscalar
-        Yukawa coupling, primarily interacting with neutrinos.
-      \item This makes it massive, long-lived, and ``dark,'' satisfying the
-        requirements for a WIMP-like particle.
+      \item The \textbf{pseudoscalar Higgs $\phi_2$} is proposed as Dark Matter.
+      \item It couples to the SM only via the pseudoscalar Yukawa (primarily to neutrinos).
+      \item This makes it massive, long-lived, and ``dark''—a viable WIMP-like particle.
     \end{itemize}
-    
   \end{block}
 
   \begin{alertblock}{Knowledge Gap}
-\begin{itemize}
-    \item Hermiticity of the Chiral Symmetric Hamiltonian
-    \item A Chiral Equation for higher spins (Proca, Rarita-Schwinger-like equations)
-    \item Detection and measurement of the free parameters that specify the model
-    \item Validity of the proposed neutrino mass as a Dirac mass
-\end{itemize}
-\end{alertblock}
+    \begin{itemize}
+      \item Hermiticity of the Chiral Symmetric Hamiltonian
+      \item A Chiral Equation for higher spins (Proca, Rarita-Schwinger-like equations)
+      \item Detection and measurement of the free parameters that specify the model
+      \item Validity of the proposed neutrino mass as a Dirac mass
+    \end{itemize}
+  \end{alertblock}
 
-\begin{block}{Conclusions}
-\begin{itemize}
-    \item The Chiral Symmetric Dirac Equation as a valid physical description of reality.
-    \item The existence of both scalar and pseudoscalar mass.
-    \item A new proposal for the origin of a pseudoscalar Higgs as dark matter.
-\end{itemize}
-\end{block}
-
-
-
-
+  \begin{block}{Conclusions}
+    \begin{itemize}
+      \item The DECS is a valid generalization of the Dirac equation, formally introducing scalar ($M$) and pseudoscalar ($\tilde{M}$) mass terms mixed by a chiral angle $\alpha$.
+      \item A two-field Higgs model ($\phi_1, \phi_2$) can generate these mass terms.
+      \item \textbf{Key Flaw:} The paper's application of this model to neutrinos is contradictory, as Dirac mass terms cannot apply to a purely left-chiral field.
+      \item The pseudoscalar Higgs ($\phi_2$) remains a viable WIMP-like Dark Matter candidate.
+    \end{itemize}
+  \end{block}
 
   \begin{block}{References}
 
@@ -300,7 +265,7 @@ The final compact form of our Dirac equation with chiral symmetry is (\cref{eq:d
 
 
 
-  
+
 
 \end{column}
 \separatorcolumn
