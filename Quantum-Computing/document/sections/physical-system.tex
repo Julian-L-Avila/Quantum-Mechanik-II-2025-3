@@ -1,0 +1,117 @@
+\section{Planteamiento del problema}
+
+Se considera una partícula de masa $m$, carga $q$ y espín $s = \frac{1}{2}$
+confinada en un pozo unidimensional de longitud $L$:
+
+El potencial $V(x)$ es:
+\[
+  V(x) = \begin{cases}
+    0, & 0 < x < L \\
+    \infty, & \text{en otro caso.}
+  \end{cases}
+\]
+
+El estado físico de la partícula satisface la ecuación de Schrödinger
+dependiente del tiempo:
+\[
+  i\hbar \pdv{\Psi(x,t)}!{t} = \hat{H}\Psi(x(t))
+  \quad \text{con} \quad
+  \hat{H}=-\frac{\hbar^{2}}{2m} \odv[2]{}!{x} +V(x)
+\]
+
+Las soluciones estacionarias son:
+\[
+  \psi_{n}(x)=\sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x}{L}\right), \quad
+  E_{n}=\frac{n^{2}\pi^{2}\hbar^{2}}{2mL^{2}}, \quad n=1,2,3,\ldots
+\]
+
+Se sabe que la partícula puede estar en una superposición lineal de
+estos estados estacionarios antes de ser medida:
+\[
+  \ket{\psi} = \alpha \ket{n=1} + \beta \ket{n=2},
+\]
+donde $|\alpha|^{2}+|\beta|^{2}=1$.
+
+A partir de este punto, se pide construir de manera progresiva la descripción
+lógica y computacional cuántica de este sistema.
+
+\section{Revisión conceptual del sistema físico}
+
+\subsection{Funciones de onda normalizadas}
+
+Las funciones de onda normalizadas para los dos primeros estados estacionarios
+($n=1$ y $n=2$) son:
+\[
+  \psi_{1}(x) = \sqrt{\frac{2}{L}}\sin\left(\frac{\pi x}{L}\right)
+\]
+\[
+  \psi_{2}(x) = \sqrt{\frac{2}{L}}\sin\left(\frac{2\pi x}{L}\right)
+\]
+
+Comprobamos que las funciones de onda $\psi_n(x)$ están normalizadas dentro del
+dominio $[0, L]$.
+\begin{align*}
+  \langle\psi_{n}|\psi_{n}\rangle &= \int_{0}^{L}\psi_{n}^{*}(x)\psi_{n}(x)dx
+  = \int_{0}^{L}\left(\sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x}{L}\right)\right)^{2} dx \\
+                                  &= \frac{2}{L}\int_{0}^{L}\sin^{2}\left(\frac{n\pi x}{L}\right)dx
+\end{align*}
+Recordando la identidad trigonométrica $\sin^{2}\theta=\frac{1}{2}(1-\cos(2\theta))$:
+\begin{align*}
+  \langle\psi_{n}|\psi_{n}\rangle &= \frac{2}{L}\int_{0}^{L}\frac{1}{2}\left[1-\cos\left(\frac{2n\pi x}{L}\right)\right]dx \\
+                                  &= \frac{1}{L}\left[\int_{0}^{L}dx - \int_{0}^{L}\cos\left(\frac{2n\pi x}{L}\right)dx\right] \\
+                                  &= \frac{1}{L}\left[ [x]_{0}^{L} - \left[\frac{L}{2n\pi}\sin\left(\frac{2n\pi x}{L}\right)\right]_{0}^{L} \right] \\
+                                  &= \frac{1}{L}\left[ (L-0) - \left(\frac{L}{2n\pi}\sin(2n\pi) - \frac{L}{2n\pi}\sin(0)\right) \right] \\
+                                  &= \frac{1}{L}\left[ L - (0 - 0) \right] = 1
+\end{align*}
+Por ende, las funciones $\psi_n(x)$ están normalizadas.
+
+\subsection{Verificación de Ortogonalidad}
+
+Verificamos la ortogonalidad para dos estados distintos $n \neq m$. En
+particular, para $n=1$ y $m=2$.
+\begin{align*}
+  \langle\psi_{n}|\psi_{m}\rangle &= \int_{0}^{L}\psi_{n}^{*}(x)\psi_{m}(x)dx
+  = \frac{2}{L}\int_{0}^{L}\sin\left(\frac{n\pi x}{L}\right)\sin\left(\frac{m\pi x}{L}\right)dx
+\end{align*}
+Usando la identidad $\sin(a)\sin(b) = \frac{1}{2}[\cos(a-b)-\cos(a+b)]$:
+\begin{align*}
+  \langle\psi_{n}|\psi_{m}\rangle &= \frac{2}{L} \int_{0}^{L} \frac{1}{2}\left[ \cos\left(\frac{\pi x}{L}(n-m)\right) - \cos\left(\frac{\pi x}{L}(n+m)\right) \right]dx \\
+                                  &= \frac{1}{L} \left[ \frac{L}{\pi(n-m)}\sin\left(\frac{\pi x}{L}(n-m)\right) - \frac{L}{\pi(n+m)}\sin\left(\frac{\pi x}{L}(n+m)\right) \right]_{0}^{L} \\
+                                  &= \frac{1}{\pi(n-m)}\left[\sin(\pi(n-m)) - \sin(0)\right] - \frac{1}{\pi(n+m)}\left[\sin(\pi(n+m)) - \sin(0)\right]
+\end{align*}
+Dado que $n$ y $m$ son enteros distintos, $(n-m)$ y $(n+m)$ son enteros. El seno de cualquier múltiplo entero de $\pi$ (como $\sin(\pi(n-m))$) es cero.
+\[
+  \langle\psi_{n}|\psi_{m}\rangle = 0 - 0 = 0 \quad (\text{para } n \neq m)
+\]
+Específicamente para $n=1$ y $m=2$:
+\[
+  \langle\psi_{1}|\psi_{2}\rangle = 0
+\]
+
+\subsection{Interpretación física de la Ortogonalidad}
+
+La ortogonalidad $\langle\psi_1|\psi_2\rangle = 0$ implica consecuencias físicas
+fundamentales para la medición:
+\begin{itemize}
+  \item \textbf{Distinguibilidad Perfecta:} Los estados ortogonales son
+    perfectamente distinguibles. Si preparamos un estado que es $\psi_1$ o
+    $\psi_2$, una sola medición de un observable apropiado (como la energía)
+    puede determinar con certeza cuál de los dos estados era.
+
+  \item \textbf{Proyectores de Medida:} Estos estados ortogonales definen
+    proyectores de medida asociados a cada autoestado, dados por $P_n =
+    |\psi_n\rangle\langle\psi_n|$. Estos proyectores cumplen la propiedad $P_n
+    P_m = 0$ para $n \neq m$, lo que matemáticamente refuerza la idea de que los
+    resultados son mutuamente excluyentes.
+
+  \item \textbf{Mediciones Mutuamente Excluyentes:} Si el sistema está en el
+    estado $\psi_1$, la probabilidad de medir el valor de energía $E_2$
+    (asociado a $\psi_2$) es cero, y viceversa. La ortogonalidad implica que
+    estos resultados son mutuamente excluyentes.
+
+  \item \textbf{Base para Codificar Información:} Esta estructura ortogonal es
+    óptima para la codificación de información binaria. Al elegir $\psi_1$ y
+    $\psi_2$ como nuestros estados base, podemos representar los dos posibles
+    estados de un sistema binario. La ventaja es que el sistema permite
+    mediciones sin ambigüedad (100\% distinguibles).
+\end{itemize}

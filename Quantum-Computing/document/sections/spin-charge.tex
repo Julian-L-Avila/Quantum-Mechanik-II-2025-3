@@ -1,0 +1,103 @@
+\section{Inclusión del espín y carga}
+
+\subsection{Espacio de estados total (Producto Tensorial)}
+
+El estado de la partícula no solo se describe por su posición (o nivel de
+energía), sino también por su espín. Para describir el estado completo, debemos
+combinar el espacio de estados de la parte espacial (nuestro qubit lógico) con
+el espacio de estados del espín.
+
+El espacio de estados total $\mathcal{H}_{total}$ es el producto tensorial del
+subespacio lógico $\mathcal{H}_L$ (al que nos hemos restringido) y el espacio de
+espín $\mathcal{H}_{spin}$:
+\[
+  \mathcal{H}_{total} = \mathcal{H}_{L} \otimes \mathcal{H}_{spin}
+\]
+Donde:
+\begin{itemize}
+  \item $\mathcal{H}_L = \text{span}\{|0_L\rangle, |1_L\rangle\}$ es el espacio
+    de 2 dimensiones del qubit lógico (energía).
+  \item $\mathcal{H}_{spin} = \text{span}\{|\uparrow\rangle,
+    |\downarrow\rangle\}$ es el espacio de 2 dimensiones del espín $s=1/2$.
+\end{itemize}
+El espacio total resultante $\mathcal{H}_{total}$ es, por lo tanto, un espacio
+de $2 \times 2 = 4$ dimensiones. La base de este espacio está formada por todas
+las combinaciones posibles:
+\[
+  \{ |0_L\rangle \otimes |\uparrow\rangle, \quad |0_L\rangle \otimes
+    |\downarrow\rangle, \quad |1_L\rangle \otimes |\uparrow\rangle, \quad
+  |1_L\rangle \otimes |\downarrow\rangle \}
+\]
+
+A menudo, esto se abrevia como $\{ |0_L \uparrow\rangle, |0_L \downarrow\rangle,
+|1_L \uparrow\rangle, |1_L \downarrow\rangle \}$
+
+\subsection{Significado físico del Producto Tensorial}
+
+El producto tensorial $\otimes$ es la herramienta matemática que nos permite
+describir estados de sistemas compuestos o de un solo sistema con múltiples
+grados de libertad (como en este caso, posición y espín).
+
+\textbf{Significado Físico:} Un estado en $\mathcal{H}_{total}$ debe especificar
+\textit{simultáneamente} la información de ambas partes. El producto tensorial
+nos dice que el estado de la partícula es una combinación (ya sea separable o
+entrelazada) de un estado en $\mathcal{H}_L$ y un estado en
+$\mathcal{H}_{spin}$.
+
+\textbf{Ejemplo Explícito:}
+El estado que se propone es:
+\[
+  |\Psi\rangle = |0_L\rangle \otimes | \uparrow\rangle
+\]
+Este es un \textit{estado separable}. Su interpretación física es clara:
+\begin{itemize}
+  \item La partícula se encuentra en el estado de energía $E_1$ (correspondiente
+    al estado lógico $|0_L\rangle$).
+  \item Y, al mismo tiempo, su espín está en el estado ``arriba''
+    ($|\uparrow\rangle$).
+\end{itemize}
+Un estado general en este espacio será una superposición de los 4 estados base,
+lo que permite también la existencia de \textit{estados entrelazados} (no
+separables) entre el espacio y el espín, como por ejemplo
+$\frac{1}{\sqrt{2}}(|0_L \uparrow\rangle + |1_L \downarrow\rangle)$.
+
+\subsection{Nuevos grados de libertad y efectos de la carga}
+
+\subsubsection*{Nuevos Grados de Libertad (Espín)}
+El espín añade un nuevo grado de libertad binario. Antes, nuestro sistema (el
+qubit lógico $\mathcal{H}_L$) era un sistema de 2 niveles. Al incluir el espín,
+el sistema completo $\mathcal{H}_{total}$ se convierte en un sistema de 4
+niveles.
+
+Esta inclusión tiene implicaciones físicas significativas:
+\begin{enumerate}
+  \item \textbf{Más información:} El sistema ahora puede almacenar dos qubits de
+    información (uno en la energía/posición y otro en el espín).
+  \item \textbf{Nuevas interacciones:} Se pueden diseñar interacciones que
+    actúen selectivamente sobre la parte espacial o sobre la parte de espín.
+  \item \textbf{Entrelazamiento:} Como se mencionó, permite la creación de
+    entrelazamiento entre las propiedades espaciales y de espín de la
+    \textit{misma} partícula.
+\end{enumerate}
+
+\subsubsection*{Efectos de la Carga Eléctrica ($q$)}
+La carga y el espín hacen que la partícula sea sensible a los campos
+electromagnéticos, lo cual es fundamental para su \textit{control}:
+\begin{itemize}
+  \item \textbf{Efecto de un Campo Eléctrico ($\vec{E}$):} La carga $q$
+    interactuará con un campo eléctrico (p.ej., $\hat{V}_{E} =
+    -q\vec{E}\cdot\vec{x}$). Un campo eléctrico puede usarse para modular el
+    potencial del pozo $V(x)$, por ejemplo, ``inclinándolo''. Esto modificaría
+    las funciones de onda $\psi_1, \psi_2$ y sus energías $E_1, E_2$. Un campo
+    eléctrico permitiría, por tanto, controlar el qubit lógico espacial (p.ej.,
+    inducir transiciones entre $|0_L\rangle$ y $|1_L\rangle$).
+
+  \item \textbf{Efecto de un Campo Magnético ($\vec{B}$):} La partícula, al
+    tener espín $s=1/2$, posee un momento dipolar magnético $\vec{\mu}$. Este
+    momento magnético interactuará con un campo magnético externo $\vec{B}$ a
+    través del término de Zeeman ($\hat{H}_{Z} \approx -\vec{\mu} \cdot
+    \vec{B}$). Esta interacción afecta principalmente a los estados de espín
+    ($|\uparrow\rangle$ y $|\downarrow\rangle$), rompiendo su degeneración en
+    energía. Por lo tanto, un campo magnético (especialmente uno oscilante)
+    permitiría controlar el qubit de espín.
+\end{itemize}

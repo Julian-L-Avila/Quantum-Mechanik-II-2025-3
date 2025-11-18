@@ -1,0 +1,164 @@
+\section{Conexión con la Ecuación de Schrödinger y Dinámica de Puertas}
+
+\subsection{Ecuación de Schrödinger en el Subespacio Lógico}
+
+La dinámica de cualquier estado cuántico $\ket{\psi(t)}$ está gobernada por
+la ecuación de Schrödinger dependiente del tiempo:
+%
+$$
+i\hbar \pdv_{t}\ket{\psi(t)} = \hat{H} \ket{\psi(t)}
+$$
+%
+donde $\hat{H}$ es el Hamiltoniano total del sistema.
+
+Nos interesa la dinámica \emph{restringida} al subespacio lógico
+$\mathcal{H}_L = \text{span}\{\ket{0_L}, \ket{1_L}\}$.
+Suponiendo que el sistema permanece confinado a este subespacio (es
+decir, ignorando la fuga (leakage) a estados $n \ge 3$ ),
+podemos proyectar el Hamiltoniano físico sobre esta base.
+
+El Hamiltoniano de la partícula libre (sin perturbaciones externas) en el
+pozo es $\hat{H}_0 = -\frac{\hbar^2}{2m}D_x^2 + V(x)$.
+Los estados $\ket{0_L}$ y $\ket{1_L}$ son, por definición, autoestados
+de $\hat{H}_0$ con autovalores $E_1$ y $E_2$ respectivamente
+.
+
+El Hamiltoniano efectivo para el sistema libre, $\hat{H}_{\text{free}}$,
+actuando solo dentro de $\mathcal{H}_L$, se obtiene proyectando $\hat{H}_0$:
+%
+$$
+\hat{H}_{\text{free}} = \hat{P}_L \hat{H}_0 \hat{P}_L
+$$
+%
+donde $\hat{P}_L = \dyad{0_L} + \dyad{1_L}$ es el proyector sobre
+$\mathcal{H}_L$. Los elementos de matriz de este Hamiltoniano son:
+%
+$$
+\mel{j_L}{\hat{H}_0}{k_L} = E_k \braket{j_L}{k_L} = E_k \delta_{jk}
+\quad \text{para } j,k \in \{0, 1\}
+$$
+%
+Esto se debe a la ortonormalidad de la base. Por lo
+tanto, el Hamiltoniano efectivo es diagonal en la base lógica:
+%
+$$
+\hat{H}_{\text{free}} = E_1 \dyad{0_L} + E_2 \dyad{1_L}
+$$
+%
+Y la ecuación de Schrödinger para un estado $\ket{\psi(t)} \in \mathcal{H}_L$
+se convierte en:
+%
+$$
+i\hbar \pdv{t}\ket{\psi(t)} = (E_1 \dyad{0_L} + E_2 \dyad{1_L}) \ket{\psi(t)}
+$$
+
+\subsection{Hamiltoniano Efectivo y Rotación en la Esfera de Bloch}
+
+Podemos reescribir $\hat{H}_{\text{free}}$ en términos de los operadores
+de Pauli $Z_L$ e $I_L$, usando las definiciones $Z_L = \dyad{0_L} - \dyad{1_L}$
+ y $I_L = \dyad{0_L} + \dyad{1_L}$.
+%
+$$
+\dyad{0_L} = \frac{1}{2}(I_L + Z_L) \quad \text{y} \quad
+\dyad{1_L} = \frac{1}{2}(I_L - Z_L)
+$$
+%
+Sustituyendo en $\hat{H}_{\text{free}}$:
+%
+$$
+\hat{H}_{\text{free}} = E_1 \frac{1}{2}(I_L + Z_L) + E_2 \frac{1}{2}(I_L - Z_L)
+$$
+$$
+\hat{H}_{\text{free}} = \frac{E_1 + E_2}{2} I_L + \frac{E_1 - E_2}{2} Z_L
+$$
+%
+El operador de evolución temporal $U(t) = \exp(-i \hat{H}_{\text{free}} t / \hbar)$
+es:
+%
+$$
+U(t) = \exp\left( \frac{-i (E_1 + E_2) t}{2\hbar} \right) I_L 
+       \exp\left( \frac{-i (E_1 - E_2) t}{2\hbar} Z_L \right)
+$$
+%
+El primer término, $\exp(-i (E_1 + E_2) t / 2\hbar) I_L$, es una
+\textbf{fase global}. No tiene consecuencias físicas medibles, ya que
+el vector de estado en la esfera de Bloch es invariante bajo fases
+globales.
+
+El término físicamente relevante es el segundo. Definiendo la frecuencia
+de transición (o frecuencia de Larmor del qubit) como
+$\omega_{12} = (E_2 - E_1) / \hbar$, podemos reescribir el Hamiltoniano
+físicamente relevante (ignorando la fase global) como:
+%
+$$
+\hat{H}_{\text{eff}} = \frac{E_1 - E_2}{2} Z_L = -\frac{\hbar \omega_{12}}{2} Z_L
+$$
+%
+El operador de evolución temporal (sin fase global) es:
+%
+$$
+U_{\text{eff}}(t) = \exp\left( -i \hat{H}_{\text{eff}} t / \hbar \right) =
+\exp\left( i \frac{\omega_{12} t}{2} Z_L \right)
+$$
+%
+Este operador es, por definición, el operador de rotación alrededor
+del eje $z$ de la esfera de Bloch por un ángulo $\theta_Z(t) = -\omega_{12} t$.
+%
+$$
+U_{\text{eff}}(t) = R_Z(-\omega_{12} t)
+$$
+%
+Esto demuestra que la \textbf{evolución libre} del qubit (cuando se deja
+sin perturbar) es simplemente una rotación continua alrededor del eje $z$
+a una velocidad constante $\omega_{12}$. Las poblaciones $|\alpha|^2$ y
+$|\beta|^2$ (probabilidades de medir $E_1$ o $E_2$) permanecen constantes,
+mientras que la fase relativa entre los dos estados evoluciona en el
+tiempo. Esto es coherente con el hecho de que $\ket{0_L}$ y $\ket{1_L}$
+son estados estacionarios (autoestados de energía).
+
+\subsection{Interpretación como Puerta Cuántica}
+
+La dinámica descrita por $U_{\text{eff}}(t)$ es en sí misma una
+\textbf{puerta cuántica}. Si dejamos el sistema evolucionar libremente
+durante un tiempo $t = \phi / (-\omega_{12})$, implementamos la
+puerta $R_Z(\phi)$. Esta es una puerta de fase.
+
+Sin embargo, para la computación cuántica universal, se requiere la
+capacidad de implementar \emph{rotaciones arbitrarias} en la esfera de
+Bloch, no solo rotaciones $R_Z$. Específicamente, se necesita control
+sobre al menos un eje de rotación adicional (por ejemplo, $X_L$).
+
+Esto se logra aplicando un Hamiltoniano de interacción externo
+dependiente del tiempo, $\hat{H}_{\text{int}}(t)$. Como se discutió
+previamente, la carga $q$ y el espín $s$ de la partícula proporcionan
+los ``manejadores'' para este control.
+
+Por ejemplo, la aplicación de un campo eléctrico externo $\vec{E}(t)$
+ puede modular el potencial $V(x)$. Si este campo oscila a una
+frecuencia $\omega$ cercana a la frecuencia de resonancia $\omega_{12}$,
+inducirá transiciones entre $\ket{0_L}$ y $\ket{1_L}$. En el marco de la
+aproximación de onda rotante (RWA), este Hamiltoniano de interacción,
+visto en el marco giratorio, puede tomar la forma de:
+%
+$$
+\hat{H}_{\text{RWA}} \propto \Omega X_L
+$$
+%
+donde $\Omega$ es la frecuencia de Rabi, que es proporcional a la
+amplitud del campo $\vec{E}$ aplicado.
+
+La evolución bajo este Hamiltoniano, $U_X(t) = \exp(-i (\Omega' t) X_L)$,
+corresponde a una \textbf{rotación alrededor del eje $x$}
+(una puerta $R_X$).
+
+Al tener la capacidad de generar rotaciones $R_Z$ (mediante la evolución
+libre controlada por tiempos de espera) y rotaciones $R_X$ (mediante la
+aplicación de campos resonantes), se puede construir cualquier
+operación unitaria $U \in SU(2)$ (cualquier puerta de un solo qubit)
+mediante la composición de estas rotaciones (por ejemplo, $U = R_Z(\phi_1)
+R_X(\theta) R_Z(\phi_2)$).
+
+Por lo tanto, la ``dinámica de puertas'' es la implementación de
+operaciones $SU(2)$ deseadas mediante la conmutación controlada y
+temporizada de Hamiltonianos de evolución libre ($\propto Z_L$) e
+interacción ($\propto X_L$ o $Y_L$).

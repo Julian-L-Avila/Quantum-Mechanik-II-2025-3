@@ -1,0 +1,104 @@
+\section{Observables de Pauli en el subespacio lógico}
+\label{sec:observables_pauli}
+
+En esta sección, se definen los operadores análogos a las matrices de Pauli,
+pero que actúan exclusivamente dentro del subespacio lógico de 2D,
+$\mathcal{H}_L$.
+
+\subsection{Definición y Representación Matricial}
+
+Los operadores de Pauli en la base lógica $\{|0_L\rangle, |1_L\rangle\}$ se
+definen como:
+\begin{align*}
+  X_L &= |0_L\rangle\langle 1_L| + |1_L\rangle\langle 0_L| \\
+  Y_L &= -i|0_L\rangle\langle 1_L| + i|1_L\rangle\langle 0_L| \\
+  Z_L &= |0_L\rangle\langle 0_L| - |1_L\rangle\langle 1_L|
+\end{align*}
+
+Para encontrar sus representaciones matriciales, usamos la correspondencia de
+los vectores base:
+\[
+  |0_L\rangle \to \begin{pmatrix} 1 \\ 0 \end{pmatrix} \quad \text{y} \quad |1_L\rangle \to \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\]
+Y los operadores (proyectores externos) correspondientes:
+\begin{align*}
+  |0_L\rangle\langle 0_L| &\to \begin{pmatrix} 1 \\ 0 \end{pmatrix} \begin{pmatrix} 1 & 0 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} \\
+  |1_L\rangle\langle 1_L| &\to \begin{pmatrix} 0 \\ 1 \end{pmatrix} \begin{pmatrix} 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \\
+  |0_L\rangle\langle 1_L| &\to \begin{pmatrix} 1 \\ 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \\
+  |1_L\rangle\langle 0_L| &\to \begin{pmatrix} 0 \\ 1 \end{pmatrix} \begin{pmatrix} 1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
+\end{align*}
+
+Sustituyendo estos en las definiciones, obtenemos las representaciones
+matriciales (que coinciden con las matrices de Pauli estándar, $\sigma_x,
+\sigma_y, \sigma_z$):
+
+\[
+  X_L \to \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} + \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+\]
+\[
+  Y_L \to -i\begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} + i\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+\]
+\[
+  Z_L \to \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} - \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+\]
+
+\subsection{Verificación de la Relación de Conmutación}
+
+Verificamos la relación $[X_L, Y_L] = 2iZ_L$ usando las matrices obtenidas. El
+conmutador se define como $[X_L, Y_L] = X_L Y_L - Y_L X_L$.
+
+Primero, calculamos los productos:
+\begin{align*}
+  X_L Y_L &= \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}
+  = \begin{pmatrix} (0)(0) + (1)(i) & (0)(-i) + (1)(0) \\ (1)(0) + (0)(i) & (1)(-i) + (0)(0) \end{pmatrix}
+  = \begin{pmatrix} i & 0 \\ 0 & -i \end{pmatrix} \\
+  Y_L X_L &= \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+  = \begin{pmatrix} (0)(0) + (-i)(1) & (0)(1) + (-i)(0) \\ (i)(0) + (0)(1) & (i)(1) + (0)(0) \end{pmatrix}
+  = \begin{pmatrix} -i & 0 \\ 0 & i \end{pmatrix}
+\end{align*}
+
+Ahora, calculamos el conmutador:
+\[
+  [X_L, Y_L] = X_L Y_L - Y_L X_L = \begin{pmatrix} i & 0 \\ 0 & -i \end{pmatrix} - \begin{pmatrix} -i & 0 \\ 0 & i \end{pmatrix}
+  = \begin{pmatrix} i - (-i) & 0 \\ 0 & -i - i \end{pmatrix}
+  = \begin{pmatrix} 2i & 0 \\ 0 & -2i \end{pmatrix}
+\]
+
+Finalmente, comparamos con el lado derecho de la ecuación, $2iZ_L$:
+\[
+  2iZ_L = 2i \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} = \begin{pmatrix} 2i & 0 \\ 0 & -2i \end{pmatrix}
+\]
+Ambos resultados son idénticos, con lo que se verifica la relación de
+conmutación.
+
+\subsection{Significado como Observables Físicos}
+
+Estos operadores son hermíticos, lo que significa que corresponden a observables
+físicos medibles.
+
+\begin{itemize}
+  \item \textbf{Observable $Z_L$:} El operador $Z_L$ es diagonal en la base
+    lógica. Sus autoestados son $|0_L\rangle$ (con autovalor $+1$) y
+    $|1_L\rangle$ (con autovalor $-1$). Como vimos en la Sección 3, medir en
+    esta base $\{|0_L\rangle, |1_L\rangle\}$ equivale a medir la energía del
+    sistema (distinguiendo entre $E_1$ y $E_2$).
+  \item \textbf{Observable $X_L$:} El operador $X_L$ no es diagonal.
+    Físicamente, representa transiciones (o ``bit-flips'') entre los estados
+    base ($X_L|0_L\rangle = |1_L\rangle$). Como observable, sus autoestados son
+    los estados de superposición $|+_L\rangle = \frac{1}{\sqrt{2}}(|0_L\rangle +
+    |1_L\rangle)$ y $|-_L\rangle = \frac{1}{\sqrt{2}}(|0_L\rangle -
+    |1_L\rangle)$. Medir $X_L$ significa medir en esta base de superposición, lo
+    cual es físicamente distinto a medir la energía.
+  \item \textbf{Observable $Y_L$:} Similarmente, $Y_L$ representa transiciones
+    con un desfase. Como observable, sus autoestados son
+    $\frac{1}{\sqrt{2}}(|0_L\rangle + i|1_L\rangle)$ y
+    $\frac{1}{\sqrt{2}}(|0_L\rangle - i|1_L\rangle)$. Medir $Y_L$ es medir en
+    una base diferente a $Z_L$ y $X_L$.
+\end{itemize}
+
+El hecho de que no conmuten (ej. $[X_L, Y_L] \neq 0$) es la manifestación
+matemática del Principio de Incertidumbre de Heisenberg: no es posible conocer
+simultáneamente con precisión el valor de $X_L$ y $Y_L$. Si se mide $Z_L$
+(energía) con certeza, el sistema está en $|0_L\rangle$ o $|1_L\rangle$, estados
+en los que $X_L$ y $Y_L$ están en completa incertidumbre (tienen 50\% de
+probabilidad para cada resultado).

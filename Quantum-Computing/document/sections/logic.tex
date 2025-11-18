@@ -1,0 +1,79 @@
+\section{Definición de la base lógica}
+
+Aquí se formaliza la elección de los estados estacionarios como la base lógica
+(o computacional) de un qubit, basándose en lo encontrado en la sección
+anterior.
+
+\subsection{Definición de estados lógicos}
+
+Se definen los estados de la base computacional (o lógica) utilizando los dos
+primeros autoestados de energía del sistema:
+\[
+  |0_L\rangle \equiv |\psi_1\rangle
+\]
+\[
+  |1_L\rangle \equiv |\psi_2\rangle
+\]
+Se denota $\mathcal{H}_L$ al subespacio de Hilbert generado por estos dos
+vectores base:
+\[
+  \mathcal{H}_L = \text{span}\{|\psi_1\rangle, |\psi_2\rangle\} = \text{span}\{|0_L\rangle, |1_L\rangle\}
+\]
+
+\subsection{Demostración de Base Ortonormal}
+
+Para demostrar que el conjunto $\{|0_L\rangle, |1_L\rangle\}$ forma una base
+ortonormal para el subespacio $\mathcal{H}_L$, debemos probar dos condiciones:
+ortonormalidad e independencia lineal.
+
+\subsubsection*{Ortonormalidad}
+Como se demostró en la Sección 1, los estados $\psi_1$ y $\psi_2$ son
+ortonormales. Por lo tanto, por definición:
+\begin{itemize}
+  \item Normalidad: $\langle 0_L|0_L\rangle = \langle\psi_1|\psi_1\rangle = 1$ y $\langle 1_L|1_L\rangle = \langle\psi_2|\psi_2\rangle = 1$.
+  \item Ortogonalidad: $\langle 0_L|1_L\rangle = \langle\psi_1|\psi_2\rangle = 0$.
+\end{itemize}
+El conjunto es ortonormal.
+
+\subsubsection*{Independencia Lineal}
+Para probar la independencia lineal, tomamos una combinación lineal de los vectores base igualada al vector cero:
+\[
+  a|0_L\rangle + b|1_L\rangle = 0 \quad \text{donde } a, b \in \mathbb{C}
+\]
+Para que sean linealmente independientes, debemos demostrar que la única solución es $a=0$ y $b=0$.
+
+Aplicamos el bra $\langle 0_L|$ por la izquierda:
+\begin{align*}
+  \langle 0_L| (a|0_L\rangle + b|1_L\rangle) &= \langle 0_L|0\rangle \\
+  a\langle 0_L|0_L\rangle + b\langle 0_L|1_L\rangle &= 0 \\
+  a(1) + b(0) &= 0 \\
+  a &= 0
+\end{align*}
+Ahora, aplicamos el bra $\langle 1_L|$ por la izquierda:
+\begin{align*}
+  \langle 1_L| (a|0_L\rangle + b|1_L\rangle) &= \langle 1_L|0\rangle \\
+  a\langle 1_L|0_L\rangle + b\langle 1_L|1_L\rangle &= 0 \\
+  a(0) + b(1) &= 0 \\
+  b &= 0
+\end{align*}
+Dado que la única solución es $a=0$ y $b=0$, los vectores son linealmente independientes.
+
+Al ser un conjunto de dos vectores linealmente independientes y ortonormales, forman una base para el subespacio de dimensión 2 que generan ($\mathcal{H}_L$).
+
+\subsection{Interpretación como Qubit Lógico e Implicaciones}
+
+Interpretar esta base como la de un qubit lógico es el paso fundamental que conecta la mecánica cuántica del pozo con la computación cuántica. Las implicaciones de esta elección son:
+
+\begin{itemize}
+  \item \textbf{Sistema Efectivo de 2 Niveles (Qubit):} Al restringir el análisis al subespacio $\mathcal{H}_L$, el sistema físico (que tiene infinitos niveles) se trata como un sistema binario efectivo. Esta es la unidad básica de información cuántica, el qubit lógico. Un estado general del qubit es una superposición $|\psi\rangle = \alpha|0_L\rangle + \beta|1_L\rangle$.
+
+  \item \textbf{Medición y Regla de Born:} El postulado de la medida se aplica a esta base. Si el sistema está en el estado $|\psi\rangle$, al medir en la base lógica (que físicamente corresponde a medir la energía), la probabilidad de obtener el resultado $E_1$ (estado $|0_L\rangle$) es $P(0) = |\langle 0_L|\psi\rangle|^2 = |\alpha|^2$, y la probabilidad de obtener $E_2$ (estado $|1_L\rangle$) es $P(1) = |\langle 1_L|\psi\rangle|^2 = |\beta|^2$.
+
+  \item \textbf{Limitaciones Físicas (Fuga):} Esta es una idealización. El
+    sistema físico real posee otros niveles ($n=3, 4, \dots$). Una implicación
+    crucial es que cualquier operación física sobre el qubit debe diseñarse
+    cuidadosamente para no ``excitar'' la partícula a estos niveles superiores,
+    lo que se conoce como \emph{fuga} (leakage). El sistema debe permanecer dentro del subespacio $\mathcal{H}_L$.
+
+  \item \textbf{Operaciones Unitarias (Puertas Lógicas):} La dinámica del qubit (las puertas lógicas) debe ser implementada mediante operaciones unitarias $U$ que dejen el subespacio $\mathcal{H}_L$ invariante ($U: \mathcal{H}_L \to \mathcal{H}_L$). Físicamente, esto exige la construcción de campos o perturbaciones externas que provoquen transiciones controladas solo entre $|\psi_1\rangle$ y $|\psi_2\rangle$, sin afectar a otros estados.
+\end{itemize}

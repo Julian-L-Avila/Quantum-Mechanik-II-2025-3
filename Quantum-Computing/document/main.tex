@@ -1,0 +1,85 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs,bookmark}
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage[spanish]{cleveref}
+\usepackage{siunitx}
+\usepackage{derivative}
+\usepackage{physics}
+\usepackage[spanish]{babel}
+\usepackage{tikz}
+\usetikzlibrary{calc, decorations.pathmorphing, decorations.pathreplacing}
+
+\renewcommand{\arraystretch}{1.2}
+\sisetup{group-digits=true,
+  group-separator={\,},
+  separate-uncertainty
+}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={Qubit},
+  pdfauthor={Herrera, Rodríguez},
+  pdfsubject={Quantum Mechanics II},
+  pdfkeywords={Homework 8}
+}
+\urlstyle{same}
+
+\DeclareDerivative{\odv}{\mathrm{D}}
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Ejemplo}%
+\newtheorem{remark}{Observaci\'on}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definici\'on}%
+
+\raggedbottom
+
+\begin{document}
+
+\title[Qubit Particle in Well]{Qubit a Partir de Part\'icula en Pozo de Potencial}
+\author[]{\fnm{Sebastian} \sur{Rodríguez}}
+\author[]{\fnm{Laura} \sur{Herrera}}
+\author[]{\fnm{Julian} \sur{Avila}}
+\affil[]{\orgname{Universidad Distrital Francisco José de Caldas}}
+
+\maketitle
+
+\input{./sections/physical-system.tex}
+
+\input{./sections/logic.tex}
+
+\input{./sections/measurement.tex}
+
+\input{./sections/spin-charge.tex}
+
+\input{./sections/pauli-observables.tex}
+
+\input{./sections/computational-measurement.tex}
+
+\input{./sections/connection.tex}
+
+\input{./sections/glossary.tex}
+
+\bibliography{./references.bib}
+\nocite{*}
+
+\end{document}
