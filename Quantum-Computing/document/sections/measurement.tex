@@ -1,0 +1,86 @@
+\section{Estado antes de la medición}
+
+\subsection{Estado en la representación de posición}
+
+El estado general del qubit en el subespacio lógico $\mathcal{H}_L$ es:
+\[
+  |\psi\rangle = \alpha|0_L\rangle + \beta|1_L\rangle
+\]
+Usando la definición de la base lógica ($|0_L\rangle \equiv |\psi_1\rangle$ y
+$|1_L\rangle \equiv |\psi_2\rangle$), reescribimos el estado en términos de los
+autoestados de energía:
+\[
+  |\psi\rangle = \alpha|\psi_1\rangle + \beta|\psi_2\rangle
+\]
+La representación en la base de posición $\Psi(x)$ se obtiene proyectando este
+estado sobre el bra $\langle x|$:
+\begin{align*}
+  \Psi(x) &= \langle x | \psi \rangle \\
+          &= \langle x | (\alpha|\psi_1\rangle + \beta|\psi_2\rangle) \\
+          &= \alpha\langle x|\psi_1\rangle + \beta\langle x|\psi_2\rangle \\
+          &= \alpha\psi_1(x) + \beta\psi_2(x)
+\end{align*}
+Sustituyendo explícitamente las funciones de onda normalizadas:
+\[
+  \Psi(x) = \alpha\sqrt{\frac{2}{L}}\sin\left(\frac{\pi x}{L}\right) +
+  \beta\sqrt{\frac{2}{L}}\sin\left(\frac{2\pi x}{L}\right)
+\]
+
+\subsection{Cálculo de \texorpdfstring{$|\Psi(x)|^2$}{|Ψ(x)|²} y Términos de Interferencia}
+
+La densidad de probabilidad de encontrar la partícula en la posición $x$ se
+calcula como $|\Psi(x)|^2 = \Psi^*(x)\Psi(x)$. Asumiendo que las funciones de
+onda $\psi_n(x)$ son reales, pero los coeficientes $\alpha$ y $\beta$ pueden ser
+complejos:
+\begin{align*}
+  |\Psi(x)|^2 &= (\alpha^*\psi_1(x) + \beta^*\psi_2(x)) (\alpha\psi_1(x) + \beta\psi_2(x)) \\
+              &= \alpha^*\alpha \psi_1(x)^2 + \beta^*\beta \psi_2(x)^2 + \alpha^*\beta \psi_1(x)\psi_2(x) + \beta^*\alpha \psi_1(x)\psi_2(x) \\
+              &= |\alpha|^2 \psi_1(x)^2 + |\beta|^2 \psi_2(x)^2 + (\alpha^*\beta + \beta^*\alpha) \psi_1(x)\psi_2(x)
+\end{align*}
+El término $(\alpha^*\beta + \beta^*\alpha)$ es igual a $2 \text{Re}(\alpha^*\beta)$. Por lo tanto:
+\[
+  |\Psi(x)|^2 = \underbrace{|\alpha|^2 |\psi_1(x)|^2}_{\text{Prob. estado 1}} +
+  \underbrace{|\beta|^2 |\psi_2(x)|^2}_{\text{Prob. estado 2}} + \underbrace{2
+  \text{Re}(\alpha^*\beta) \psi_1(x)\psi_2(x)}_{\textbf{Término de
+Interferencia}}
+\]
+
+\textbf{Discusión de la interferencia:}
+
+Al analizar la densidad de probabilidad $|\Psi(x)|^2$, se observa que los dos
+primeros términos representan la suma de las densidades de probabilidad
+individuales para cada estado, ponderadas por sus respectivas probabilidades
+($|\alpha|^2$ y $|\beta|^2$). Sin embargo, a diferencia de lo que ocurriría en
+un sistema no cuántico, aparece un tercer término, conocido como el ``término de
+interferencia cuántica'', el cual es un resultado directo del principio de
+superposición. El valor de este término depende crucialmente tanto del producto
+de \textit{ambas} funciones de onda, $\psi_1(x)\psi_2(x)$, como de la relación
+de fase relativa entre los coeficientes $\alpha$ y $\beta$ (contenida en la
+expresión $\text{Re}(\alpha^*\beta)$). Dependiendo de la posición $x$ y de esta
+fase, el término de interferencia puede ser positivo (interferencia
+constructiva) o negativo (interferencia destructiva), modificando la densidad de
+probabilidad total de formas no clásicas.
+
+\subsection{Observable físico de la base lógica}
+
+Se analiza a continuación qué observable físico corresponde a una medición en la
+base lógica $\{|0_L\rangle, |1_L\rangle\}$. Por definición, esta base se ha
+construido a partir de los estados estacionarios del pozo de potencial:
+$|0_L\rangle \equiv |\psi_1\rangle$ y $|1_L\rangle \equiv |\psi_2\rangle$. Los
+estados estacionarios $\psi_n$ son, por definición, los autoestados
+(eigenstates) del operador Hamiltoniano $\hat{H}$ del sistema. Esto implica que
+los estados de nuestra base lógica tienen autovalores (eigenvalues) de energía
+definidos, tal como lo muestran las ecuaciones:
+\[
+  \hat{H}|0_L\rangle = \hat{H}|\psi_1\rangle = E_1|\psi_1\rangle = E_1|0_L\rangle
+\]
+\[
+  \hat{H}|1_L\rangle = \hat{H}|\psi_2\rangle = E_2|\psi_2\rangle = E_2|1_L\rangle
+\]
+Por lo tanto, el observable físico que corresponde a una medición en la base
+computacional $\{|0_L\rangle, |1_L\rangle\}$ es la energía del sistema. Realizar
+una ``medición computacional'' en este qubit es físicamente equivalente a medir
+la energía de la partícula. Si el resultado de la medición es $E_1$ (lo cual
+ocurre con probabilidad $|\alpha|^2$), el estado ha colapsado a $|0_L\rangle$;
+si el resultado es $E_2$ (con probabilidad $|\beta|^2$), el estado ha colapsado
+a $|1_L\rangle$.

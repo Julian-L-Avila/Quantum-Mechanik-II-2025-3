@@ -1,0 +1,164 @@
+\section{Glosario}
+
+A continuación, se definen los conceptos clave introducidos en el desarrollo del
+trabajo.
+
+\begin{description}
+  \item[\textbf{Espacio de Hilbert ($\mathcal{H}$):}]
+    Es un espacio vectorial complejo (donde viven los kets, $|\psi\rangle$)
+    dotado de un producto interno, que además es completo. En mecánica cuántica,
+    el conjunto de todos los posibles estados de un sistema físico forma un
+    espacio de Hilbert.
+
+  \item[\textbf{Producto Interno:}]
+    Es una función (denotada $\langle \cdot, \cdot \rangle$) que toma dos
+    vectores de un espacio vectorial $V$ y devuelve un escalar en el campo $F$
+    sobre el cual $V$ está definido (usualmente $\mathbb{R}$ o $\mathbb{C}$).
+    Esta función debe satisfacer propiedades específicas: ser positiva-definida,
+    tener simetría conjugada ($\langle v, w \rangle = \langle w, v \rangle^*$) y
+    ser lineal en uno de sus argumentos (en mecánica cuántica, por convención,
+    es lineal en el segundo argumento, el ket). En el contexto de un espacio de
+    Hilbert complejo ($\mathbb{C}$), el producto interno
+    $\langle\phi|\psi\rangle$ devuelve un número complejo. Su propósito es
+    definir la geometría del espacio, permitiendo calcular normas ($\|\psi\|^2 =
+    \langle\psi|\psi\rangle$), probabilidades y verificar la ortogonalidad
+    ($\langle\phi|\psi\rangle = 0$).
+
+  \item[\textbf{Estado Propio (Autoestado):}]
+    Un vector $|\psi\rangle$ (distinto de cero) que, al ser actuado por un
+    operador $\hat{A}$, no cambia su ``dirección'' en el espacio de Hilbert,
+    sino que solo es multiplicado por un escalar $a$, llamado autovalor.
+    Satisface la ecuación de autovalores $\hat{A}|\psi\rangle = a|\psi\rangle$.
+    Los estados estacionarios $\psi_n$ son autoestados del Hamiltoniano
+    $\hat{H}$.
+
+  \item[\textbf{Superposición Lineal:}]
+    Matemáticamente, es un sinónimo de combinación lineal. Es una expresión
+    formada por la suma de vectores de un espacio vectorial (como los kets
+    $|\psi_1\rangle, |\psi_2\rangle$), donde cada vector es multiplicado por un
+    coeficiente escalar (como $\alpha, \beta \in \mathbb{C}$). La forma general
+    es $|\Psi\rangle = \alpha|\psi_1\rangle + \beta|\psi_2\rangle$. El Principio
+    de Superposición es el postulado fundamental de la mecánica cuántica que
+    establece que si $|\psi_1\rangle$ y $|\psi_2\rangle$ son estados válidos de
+    un sistema, cualquier superposición lineal de ellos (con $|\alpha|^2 +
+    |\beta|^2 = 1$) también es un estado físico válido, que existe como una
+    combinación de ambos hasta que se realiza una medición.
+
+  \item[\textbf{Base Lógica:}]
+    Un conjunto de estados ortonormales ($\{|0_L\rangle, |1_L\rangle\}$)
+    elegidos de un espacio de Hilbert para representar bits de información. Se
+    les llama ``lógicos'' o ``computacionales'' porque abstraen la física
+    subyacente (en este caso, los niveles de energía) a los conceptos de 0 y 1.
+
+  \item[\textbf{Qubit (Qubit Lógico):}]
+    La unidad básica de información cuántica. Es un sistema cuántico de dos
+    niveles (como los dos estados de energía $\psi_1, \psi_2$) cuya base lógica
+    es $|0_L\rangle$ y $|1_L\rangle$. Su estado general es una superposición
+    lineal $|\psi\rangle = \alpha|0_L\rangle + \beta|1_L\rangle$.
+
+  \item[\textbf{Observable:}]
+    Cualquier propiedad física de un sistema que, en principio, puede ser medida
+    (ej. energía, posición, momento, espín). En el formalismo cuántico, cada
+    observable está representado por un operador hermítico. Los resultados de
+    una medición solo pueden ser los autovalores de dicho operador.
+
+  \item[\textbf{Operador Hermítico:}]
+    Un operador $\hat{A}$ que es igual a su propio adjunto (conjugado
+    transpuesto), es decir, $\hat{A} = \hat{A}^\dagger$. Son fundamentales
+    porque garantizan dos cosas: 1) Sus autovalores son siempre números reales
+    (lo cual es necesario, ya que las mediciones dan resultados reales). 2) Sus
+    autoestados forman una base ortonormal para el espacio de Hilbert.
+
+  \item[\textbf{Producto Tensorial ($\otimes$):}]
+    Es una operación algebraica que construye un nuevo espacio vectorial
+    $\mathcal{H}_{AB} = \mathcal{H}_A \otimes \mathcal{H}_B$ a partir de dos
+    espacios $\mathcal{H}_A$ y $\mathcal{H}_B$. Si $\dim(\mathcal{H}_A) = n$ y
+    $\dim(\mathcal{H}_B) = m$, entonces $\dim(\mathcal{H}_{AB}) = n \times m$.
+    Físicamente, es la operación matemática que permite construir el espacio de
+    Hilbert de un sistema compuesto a partir de los espacios de sus subsistemas
+    (ej. $\mathcal{H}_{total} = \mathcal{H}_L \otimes \mathcal{H}_{spin}$). Un
+    estado en este espacio combinado especifica el estado de todas sus partes
+    simultáneamente y permite la existencia del entrelazamiento.
+
+  \item[\textbf{Espín:}]
+    Una forma intrínseca de momento angular que posee una partícula (como el
+    electrón). Es una propiedad puramente cuántica, sin un análogo clásico
+    directo, que se describe como un grado de libertad interno de la partícula
+    (ej. ``arriba'' $|\uparrow\rangle$ y ``abajo'' $|\downarrow\rangle$ para una
+    partícula de espín $s=1/2$).
+
+  \item[\textbf{Operadores de Pauli:}]
+    Un conjunto de tres operadores hermíticos ($X_L, Y_L, Z_L$) que son
+    fundamentales para describir la dinámica y los observables de un sistema de
+    dos niveles (qubit). Físicamente, están relacionados con las mediciones del
+    espín en las tres direcciones espaciales (x, y, z) y matemáticamente forman
+    una base para los operadores del qubit.
+
+  \item[\textbf{Entrelazamiento:}]
+    Un fenómeno puramente cuántico que describe una correlación entre dos o más
+    sistemas (como qubits) que no puede existir en la física clásica. Un sistema
+    compuesto se dice entrelazado si su estado cuántico total no puede ser
+    factorizado o descrito como una simple combinación de los estados
+    individuales de sus subsistemas (es decir, no es un estado separable). Como
+    resultado, una medición realizada sobre uno de los sistemas parece influir
+    instantáneamente en el resultado de la medición sobre el otro, sin importar
+    la distancia que los separe.
+
+  \item[\textbf{Regla de Born:}] Postulado fundamental que conecta el formalismo
+    matemático del vector de estado $\ket{\psi}$ con los resultados de una
+    medición. Si un sistema se mide en una base ortonormal $\{\ket{\phi_i}\}$,
+    la probabilidad de obtener el resultado asociado al autoestado $\ket{\phi_i}$
+    es $P(i) = |\braket{\phi_i}{\psi}|^2$.
+
+  \item[\textbf{Esfera de Bloch:}] Representación geométrica del espacio de estados
+    puros de un qubit (un sistema de dos niveles) $\mathcal{H}_L$. Cada
+    estado $\ket{\psi} = \cos(\theta/2)\ket{0_L} + e^{i\phi}\sin(\theta/2)\ket{1_L}$
+    se mapea a un punto único en la superficie de una esfera de radio unidad
+    mediante los ángulos $(\theta, \phi)$. Los estados ortogonales ocupan puntos
+    antipodales.
+
+  \item[\textbf{Puerta cuántica:}] Operación fundamental que transforma el estado de
+    un qubit. Matemáticamente, se describe como una \emph{rotación unitaria} $U$
+    (un operador en $SU(2)$) que actúa sobre el vector de estado en la esfera
+    de Bloch. Físicamente, se implementa mediante la evolución temporal
+    $U(t) = \exp(-i\hat{H}_{\text{eff}}t/\hbar)$ bajo un Hamiltoniano efectivo
+    $\hat{H}_{\text{eff}}$ aplicado de forma controlada.
+
+  \item[\textbf{Medida computacional:}] Proceso de medición de un qubit en la base
+    lógica (o computacional) $\{\ket{0_L}, \ket{1_L}\}$. Corresponde a medir el
+    observable $Z_L = \dyad{0_L} - \dyad{1_L}$. En el sistema físico del pozo
+    de potencial, esta medición es físicamente equivalente a medir la energía
+    (distinguiendo entre $E_1$ y $E_2$).
+
+  \item[\textbf{Hamiltoniano efectivo:}] Operador que describe la dinámica de un
+    sistema restringido a un subespacio de interés (como el subespacio lógico
+    $\mathcal{H}_L$). Se obtiene proyectando el Hamiltoniano físico completo
+    $\hat{H}$ sobre dicho subespacio ($\hat{H}_{\text{eff}} =
+    \hat{P}_L \hat{H} \hat{P}_L$) y, comúnmente, omitiendo términos que solo
+    contribuyen a una fase global, como los proporcionales al operador
+    identidad $I_L$.
+
+  \item[\textbf{Rotación unitaria:}] Transformación lineal $U$ en un espacio de Hilbert
+    que preserva el producto interno (y, por tanto, la norma de los vectores y
+    la probabilidad total). Satisface la condición $U^\dagger U = I$. Según la
+    ecuación de Schrödinger, la evolución temporal de cualquier sistema cuántico
+    cerrado es una rotación unitaria. Las puertas cuánticas son
+    implementaciones físicas de rotaciones unitarias específicas.
+
+  \item[\textbf{Subespacio invariante:}] Subespacio vectorial
+    $\mathcal{S} \subseteq \mathcal{H}$ tal que, al aplicar un operador $\hat{A}$,
+    todos los vectores de $\mathcal{S}$ se transforman en vectores que también
+    pertenecen a $\mathcal{S}$ (es decir, $\hat{A}\ket{\psi} \in \mathcal{S}$
+    para todo $\ket{\psi} \in \mathcal{S}$). En el diseño de un qubit lógico,
+    el objetivo es que el subespacio $\mathcal{H}_L$ sea invariante bajo la
+    evolución temporal $U(t)$ de las puertas, evitando la fuga (leakage) a
+    estados fuera del subespacio computacional.
+
+  \item[\textbf{Coherencia cuántica:}] Propiedad de un sistema cuántico para mantener
+    una superposición de estados con una relación de fase relativa definida,
+    como en $\ket{\psi} = \alpha\ket{0_L} + \beta\ket{1_L}$.
+    La coherencia es la responsable de los términos de interferencia.
+    Matemáticamente, la coherencia se cuantifica por los elementos fuera de la
+    diagonal de la matriz de densidad $\rho$. La pérdida de esta relación de fase
+    (decoherencia) destruye la superposición y la interferencia.
+\end{description}
