@@ -1,0 +1,151 @@
+\section{Introducción y Teoría de Grupos}
+
+La teoría de grupos en QFT (Wigner) permite clasificar las partículas elementales como representaciones irreducibles (irreps) del grupo de Poincaré.
+La estructura del grupo de Poincaré $\mathcal{P}$ está dada por el producto semidirecto:
+\begin{equation}
+    \mathcal{P} = SO(3,1) \otimes_s T(3+1)
+\end{equation}
+Donde $SO(3,1)$ es el grupo de Lorentz (rotaciones y boosts) y $T(3+1)$ es el grupo de traslaciones espacio-temporales.
+
+\subsection{Generadores y Álgebra de Lie}
+Los generadores del grupo satisfacen las relaciones de conmutación:
+\begin{align}
+    [J_i, J_j] &= i \epsilon_{ijk} J_k \\
+    [J_i, K_j] &= i \epsilon_{ijk} K_k \\
+    [K_i, K_j] &= -i \epsilon_{ijk} J_k
+\end{align}
+El álgebra se puede desacoplar introduciendo los generadores quirales:
+\begin{equation}
+    A_i = \frac{1}{2}(J_i + i K_i), \quad B_i = \frac{1}{2}(J_i - i K_i)
+\end{equation}
+Lo que lleva a la estructura $SU(2)_L \otimes SU(2)_R$.
+
+\subsection{Quiralidad vs. Helicidad}
+\begin{itemize}
+    \item \textbf{Helicidad ($h$):} Proyección del espín sobre la dirección del momentum.
+    \begin{equation}
+        h = \frac{\vec{S} \cdot \vec{p}}{|\vec{p}|}
+    \end{equation}
+    No es invariante de Lorentz para partículas masivas.
+    \item \textbf{Quiralidad ($\gamma^5$):} Propiedad intrínseca de transformación bajo el grupo de Lorentz.
+    \begin{equation}
+        \gamma^5 \psi_L = -\psi_L, \quad \gamma^5 \psi_R = +\psi_R
+    \end{equation}
+\end{itemize}
+
+\section{Ecuación de Valores Propios}
+
+Partiendo de la condición para una función de onda escalar $i\partial_\mu \phi = k_\mu \phi$, generalizamos para bispinores de 4 componentes:
+\begin{equation}
+    i A^\mu \partial_\mu \psi = A^\mu k_\mu \psi
+\end{equation}
+Definiendo $X^\mu = -i A^\mu$ y $Y = A^\mu k_\mu$, obtenemos la ecuación fundamental:
+\begin{equation}
+    (X^\mu \partial_\mu + Y)\psi = 0
+\end{equation}
+Donde el bispinor se descompone en sus partes quiral izquierda ($L$) y derecha ($R$):
+\begin{equation}
+    \psi = \begin{pmatrix} \chi_L \\ \chi_R \end{pmatrix}
+\end{equation}
+La transformación de Lorentz para el bispinor es $\psi' = \Lambda \psi$, con:
+\begin{equation}
+    \Lambda = \begin{pmatrix} \Lambda_L & 0 \\ 0 & \Lambda_R \end{pmatrix} = \begin{pmatrix} \exp\left(\frac{i\vec{\sigma}\cdot(\vec{\theta}-i\vec{\phi})}{2}\right) & 0 \\ 0 & \exp\left(\frac{i\vec{\sigma}\cdot(\vec{\theta}+i\vec{\phi})}{2}\right) \end{pmatrix}
+\end{equation}
+
+\section{Invariancia Lorentz y Determinación de $X^\mu$ e $Y$}
+
+Para que la ecuación $(X^\mu \partial_\mu + Y)\psi = 0$ sea invariante Lorentz, al transformar al sistema primado $(\Lambda^{-1} \hat{\Lambda}^\nu_\mu X^\mu \Lambda \partial_\nu + \Lambda^{-1} Y \Lambda)\psi = 0$, se requieren las condiciones:
+\begin{align}
+    \hat{\Lambda}^\nu_\mu X^\mu &= \Lambda X^\nu \Lambda^{-1} \quad \text{(X transforma como vector)} \\
+    Y &= \Lambda Y \Lambda^{-1} \quad \text{(Y transforma como escalar)}
+\end{align}
+
+\subsection{Resolviendo para $Y$}
+Como $Y$ debe conmutar con $\Lambda$ (que es diagonal por bloques con generadores distintos), $Y$ debe ser diagonal:
+\begin{equation}
+    Y = \begin{pmatrix} y_L \sigma^0 & 0 \\ 0 & y_R \sigma^0 \end{pmatrix}
+\end{equation}
+
+\subsection{Resolviendo para $X^\mu$}
+La condición vectorial implica que los bloques diagonales de $X$ deben ser nulos (para evitar contradicciones con la invariancia escalar de los bloques individuales). Los bloques fuera de la diagonal deben conectar las representaciones $L$ y $R$. Usando las matrices de Pauli $\sigma^\mu = (I, \vec{\sigma})$ y $\bar{\sigma}^\mu = (I, -\vec{\sigma})$:
+\begin{equation}
+    X^\mu = \begin{pmatrix} 0 & x_R \sigma^\mu \\ x_L \bar{\sigma}^\mu & 0 \end{pmatrix}
+\end{equation}
+Donde $x_L, x_R, y_L, y_R$ son parámetros libres.
+
+\section{Derivación de la Ecuación de Dirac con Simetría Quiral}
+
+Sustituyendo las matrices en la ecuación maestra y usando los proyectores $P_L, P_R$:
+\begin{equation}
+    ((x_L P_R + x_R P_L)\gamma^\mu \partial_\mu + (y_L P_L + y_R P_R))\psi = 0
+\end{equation}
+Multiplicamos por la izquierda por la inversa del término cinético $i(x_L P_R + x_R P_L)^{-1}$:
+\begin{equation}
+    \left( i\gamma^\mu \partial_\mu + i \left( \frac{y_L}{x_R} P_L + \frac{y_R}{x_L} P_R \right) \right)\psi = 0
+\end{equation}
+
+\subsection{Factorización de Klein-Gordon}
+Para recuperar la relación de energía-momento relativista ($E^2 = p^2 + m^2$), elevamos el operador al cuadrado ("Hamiltoniano cuadrado"):
+\begin{equation}
+    \mathcal{H}^2 \psi = (\partial^\mu \partial_\mu - \frac{y_L y_R}{x_L x_R})\psi = 0
+\end{equation}
+Identificamos la masa de propagación $m$:
+\begin{equation}
+    m^2 = - \frac{y_L y_R}{x_L x_R} \implies m = \pm i \sqrt{\frac{y_L y_R}{x_L x_R}}
+\end{equation}
+Esto implica relaciones entre los coeficientes: $\frac{y_R}{x_L} \cdot \frac{y_L}{x_R} = -m^2$.
+
+\subsection{Ángulo Quiral $\alpha$}
+Definimos el ángulo quiral $\alpha$ para parametrizar la libertad de fase:
+\begin{equation}
+    \alpha \equiv -\frac{i}{2} \ln\left( \mp \sqrt{\frac{x_L y_L}{x_R y_R}} \right)
+\end{equation}
+Lo que nos permite escribir los coeficientes como:
+\begin{equation}
+    \frac{y_L}{x_R} = i m e^{-i2\alpha}, \quad \frac{y_R}{x_L} = i m e^{+i2\alpha}
+\end{equation}
+Sustituyendo en la ecuación (13):
+\begin{equation}
+    (i\gamma^\mu \partial_\mu - m e^{-2i\alpha \gamma^5})\psi = 0
+\end{equation}
+Expadiendo la exponencial con $\gamma^5$:
+\begin{equation}
+    (i\gamma^\mu \partial_\mu - m(\cos(2\alpha) + i \sin(2\alpha)\gamma^5))\psi = 0 \quad \text{(Nota: signo de sin depende de convención)}
+\end{equation}
+
+\section{Masa Pseudoescalar e Implicaciones Físicas}
+
+Podemos reescribir la masa compleja como una suma de una masa escalar $M$ y una masa pseudoescalar $\tilde{M}$:
+\begin{equation}
+    (i\gamma^\mu \partial_\mu - M - \tilde{M}\gamma^5)\psi = 0
+\end{equation}
+Donde:
+\begin{align}
+    M &= m \cos(2\alpha) \\
+    \tilde{M} &= -i m \sin(2\alpha) \quad \text{(o real dependiendo de la definición de } \alpha \text{)}
+\end{align}
+
+\subsection{Generación de Masa por Yukawa}
+Interpretamos estos términos como acoplamientos a dos campos escalares reales $\phi_1$ y $\phi_2$ con valores de expectación de vacío (VEVs) $v_1, v_2$:
+\begin{equation}
+    \mathcal{L}_Y = -\lambda_1 \overline{\psi} \phi_1 \psi - \lambda_2 \overline{\psi} \phi_2 \gamma^5 \psi
+\end{equation}
+Expandiendo alrededor del vacío ($\phi_i = \frac{v_i + h_i}{\sqrt{2}}$):
+\begin{equation}
+    M = \frac{\lambda_1 v_1}{\sqrt{2}}, \quad \tilde{M} = \frac{\lambda_2 v_2}{\sqrt{2}}
+\end{equation}
+Esto relaciona el ángulo quiral con los parámetros del modelo:
+\begin{equation}
+    \alpha = \frac{i}{4} \ln\left( \frac{\lambda_1 v_1 + \lambda_2 v_2}{\lambda_1 v_1 - \lambda_2 v_2} \right)
+\end{equation}
+
+\subsection{Neutrinos y Materia Oscura}
+Para neutrinos (asumiendo ausencia de neutrinos derechos $V_R$):
+\begin{equation}
+    P_L \nu = \nu, \quad P_R \nu = 0
+\end{equation}
+El término de masa de Dirac usual $\overline{\nu}\nu$ se anula porque requiere acoplar $L$ con $R$. Sin embargo, la presencia de $\tilde{M}$ permite mecanismos de supresión o interpretaciones novedosas si se considera una interacción con un campo pseudoescalar oscuro $\phi_2$.
+\begin{itemize}
+    \item Si el acoplamiento es exclusivo a $V_L$, el término lineal de Yukawa podría ser inefectivo.
+    \item El campo $\phi_2$ es un candidato a materia oscura (DM) debido a su acoplamiento débil (dark sector).
+\end{itemize}

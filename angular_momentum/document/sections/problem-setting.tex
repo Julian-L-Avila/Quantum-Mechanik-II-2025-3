@@ -1,0 +1,79 @@
+
+\section{Problem Setting}
+
+The purpose of this project is to construct a complete and self-contained formulation of the
+angular-momentum representation for a nonrelativistic free particle. 
+The central objective is to solve the time-dependent Schr\"odinger equation (TDSE)
+\[
+i\hbar \frac{\partial}{\partial t}\ket{\psi(t)} 
+= \hat{H} \ket{\psi(t)}, 
+\qquad 
+\hat{H} = \frac{\hat{\mathbf{p}}^{\,2}}{2m},
+\]
+in a basis that diagonalizes simultaneously the free Hamiltonian $\hat{H}$ and the angular-momentum
+operators $\hat{L}^2$ and $\hat{L}_z$.
+
+\vspace{0.3cm}
+The motivation for this construction is threefold:
+\begin{enumerate}
+    \item To reveal the role of rotational symmetry in quantum mechanics through the generators of the group SO(3).
+    \item To establish a clear connection between spatial symmetries and conservation laws.
+    \item To demonstrate how angular-momentum eigenstates provide a natural separation of variables for free-particle dynamics in spherical coordinates.
+\end{enumerate}
+
+\subsection{Physical Scenario}
+
+We consider a single spinless particle of mass $m$ moving freely in three-dimensional space.
+No external forces act on the system, so the Hamiltonian contains only kinetic energy:
+\[
+\hat{H} = \frac{\hat{\mathbf{p}}^{\,2}}{2m}.
+\]
+
+Because the dynamics is invariant under translations and rotations, the corresponding generators
+$\hat{\mathbf{p}}$ and $\hat{\mathbf{L}}$ play a central role. In particular:
+\[
+[\hat{H}, \hat{\mathbf{L}}] = 0,
+\]
+which implies that $\hat{H}$, $\hat{L}^2$ and $\hat{L}_z$ admit simultaneous eigenstates.
+
+\subsection{Goal of the Construction}
+
+We aim to:
+\begin{itemize}
+    \item Construct the operators $\hat{\mathbf{L}} = \hat{\mathbf{r}} \times \hat{\mathbf{p}}$ from the canonical commutation relations.
+    \item Express $\hat{\mathbf{L}}$ in both Cartesian and spherical coordinates.
+    \item Establish the commutation relations that define the Lie algebra of SO(3):
+    \[
+    [\hat{L}_i, \hat{L}_j] = i\hbar\, \epsilon_{ijk}\hat{L}_k.
+    \]
+    \item Solve the eigenvalue problems for $\hat{L}_z$ and $\hat{L}^2$, obtaining the spherical harmonics $Y_{\ell m}(\theta, \phi)$.
+    \item Expand the free-particle wavefunction in the basis $\ket{k,\ell,m}$.
+    \item Solve the TDSE in this basis and reconstruct the wavefunction in position, momentum, and energy representations.
+\end{itemize}
+
+\subsection{Mathematical Background Assumed}
+
+The development assumes familiarity with:
+\begin{itemize}
+    \item Hilbert-space formalism: kets, operators, inner products.
+    \item Canonical commutators $[\hat{x}_i, \hat{p}_j]=i\hbar\,\delta_{ij}$.
+    \item Fourier transforms and the relation between position and momentum representations.
+    \item Basic knowledge of spherical coordinates and special functions (Legendre polynomials).
+\end{itemize}
+
+\subsection{Expected Outcome}
+
+The final result of this construction is the full decomposition
+\[
+\ket{\psi(t)} 
+= \sum_{\ell,m}\int_0^\infty \!\! dk\, k^2\,
+\psi_{k\ell m}(0)\,
+e^{-i\hbar k^2 t/(2m)}
+\ket{k,\ell,m},
+\]
+along with the corresponding integral transforms
+that yield the wavefunction in position-, momentum-, and energy-space representations.
+This framework encapsulates the full rotational structure of the free particle and sets the stage
+for generalizations to interacting systems, spin, and relativistic dynamics.
+
+

@@ -1,0 +1,200 @@
+\section{Expected Values and Uncertainties}
+
+\subsection{A General Property of Single-Particle Operators}
+
+We now derive a general property for the expectation value of any
+single-particle operator, which will greatly simplify all
+subsequent calculations.
+Let $\hat{A}$ be an operator that acts only on particle 1:
+\begin{equation}
+  \hat{A} = \hat{a}_1 \otimes \hat{I}_2,
+\end{equation}
+where $\hat{a}$ is the corresponding single-particle operator.
+We calculate the expectation value using the fully normalized
+antisymmetric state $\ket{\psi_{n_1, n_2}}$ from \cref{eq:slater_ket}
+and the normalized single-particle orbitals $\ket{{\phi}_n}$
+(where $\braket{{\phi}_n | {\phi}_m} = \delta_{nm}$).
+
+The expectation value is $\langle \hat{A} \rangle =
+\bra{\psi_{n_1, n_2}} \hat{A} \ket{\psi_{n_1, n_2}}$.
+Substituting the state definition:
+\begin{align}
+  \langle \hat{A} \rangle = \frac{1}{2}
+    & \left( \bra{{\phi}_{n_1}(1){\phi}_{n_2}(2)} -
+      \bra{{\phi}_{n_2}(1){\phi}_{n_1}(2)} \right)
+      (\hat{a}_1 \otimes \hat{I}_2) \nonumber \\
+    & \left( \ket{{\phi}_{n_1}(1){\phi}_{n_2}(2)} -
+      \ket{{\phi}_{n_2}(1){\phi}_{n_1}(2)} \right).
+\end{align}
+This product expands into four terms. The operator $\hat{a}_1$ acts
+only on the first particle in the tensor product, and $\hat{I}_2$ acts
+on the second.
+\begin{align}
+  \langle \hat{A} \rangle = \frac{1}{2}
+    \bigg[
+      & \bra{{\phi}_{n_1}}\hat{a}_1\ket{{\phi}_{n_1}}
+        \braket{{\phi}_{n_2} | {\phi}_{n_2}}
+      - \bra{{\phi}_{n_1}}\hat{a}_1\ket{{\phi}_{n_2}}
+        \braket{{\phi}_{n_2} | {\phi}_{n_1}} \nonumber \\
+    - & \bra{{\phi}_{n_2}}\hat{a}_1\ket{{\phi}_{n_1}}
+        \braket{{\phi}_{n_1} | {\phi}_{n_2}}
+      + \bra{{\phi}_{n_2}}\hat{a}_1\ket{{\phi}_{n_2}}
+        \braket{{\phi}_{n_1} | {\phi}_{n_1}}
+    \bigg].
+\end{align}
+We now use orthonormality. The single-particle expectation value
+is $\langle \hat{a} \rangle_n = \bra{{\phi}_n}\hat{a}\ket{{\phi}_n}$.
+The inner products are $\braket{{\phi}_n | {\phi}_m} =
+\delta_{nm}$. Since $n_1 \neq n_2$, the cross-terms vanish:
+\begin{equation}
+  \langle \hat{A} \rangle = \frac{1}{2}
+    \bigg[ \langle \hat{a} \rangle_{n_1} + \langle \hat{a} \rangle_{n_2} \bigg].
+\end{equation}
+This yields the central result for any single-particle operator:
+\begin{equation} \label{eq:general_property}
+  \langle \hat{A} \rangle = \frac{1}{2} \left(
+  \langle \hat{a} \rangle_{n_1} + \langle \hat{a} \rangle_{n_2} \right).
+\end{equation}
+This confirms that for this indistinguishable two-particle state,
+the expectation value for a single-particle operator is the
+simple average of the single-particle expectation values
+for the two occupied orbitals.
+
+\subsection{Position $\langle \hat{x}_i \rangle$}
+We first find the single-particle expectation value,
+$\langle \hat{x} \rangle_n = \bra{{\phi}_n} \hat{x}
+\ket{{\phi}_n}$:
+\begin{equation}
+  \langle \hat{x} \rangle_n = \frac{2}{L}
+  \int_0^L x \sin^2\left(\frac{n\pi x}{L}\right) \,\mathrm{d}x.
+\end{equation}
+The integrand is symmetric about $x = L/2$. Therefore, the
+integral must evaluate to $L/2$ for all $n$.
+Applying our general property from \cref{eq:general_property}:
+\begin{equation}
+  \langle \hat{x}_1 \rangle = \frac{1}{2}
+  \left( \langle \hat{x} \rangle_{n_1} +
+  \langle \hat{x} \rangle_{n_2} \right) =
+  \frac{1}{2} \left( \frac{L}{2} + \frac{L}{2} \right) = \frac{L}{2}.
+\end{equation}
+By symmetry, $\langle \hat{x}_2 \rangle = L/2$.
+
+\subsection{Momentum $\langle \hat{p}_i \rangle$}
+The single-particle states $\ket{{\phi}_n}$ are stationary
+states (real-valued standing waves). They represent an equal
+superposition of momentum $+k_n$ and $-k_n$, where
+$k_n = n\pi/L$. This symmetry ensures that the expectation
+value of momentum is zero for all $n$:
+\begin{equation}
+  \langle \hat{p} \rangle_n = 0.
+\end{equation}
+Applying our general property:
+\begin{equation}
+  \langle \hat{p}_1 \rangle = \frac{1}{2}
+  \left( \langle \hat{p} \rangle_{n_1} +
+  \langle \hat{p} \rangle_{n_2} \right) =
+  \frac{1}{2} (0 + 0) = 0.
+\end{equation}
+By symmetry, $\langle \hat{p}_2 \rangle = 0$.
+
+\subsection{Position Uncertainty $\Delta x_i$}
+The variance is defined as $(\Delta A)^2 = \langle \hat{A}^2 \rangle
+- \langle \hat{A} \rangle^2$.
+
+We first require $\langle \hat{x}^2 \rangle_n$:
+\begin{equation}
+  \langle \hat{x}^2 \rangle_n = \frac{2}{L}
+  \int_0^L x^2 \sin^2\left(\frac{n\pi x}{L}\right) \,\mathrm{d}x.
+\end{equation}
+The standard integral evaluates to
+$\int_0^L x^2 \sin^2(k_n x) \, \mathrm{d}x =
+\frac{L^3}{6} - \frac{L^3}{4n^2\pi^2}$.
+This gives the single-particle expectation value:
+\begin{equation}
+  \langle \hat{x}^2 \rangle_n =
+  \frac{2}{L} \left( \frac{L^3}{6} - \frac{L^3}{4n^2\pi^2} \right)
+  = L^2 \left( \frac{1}{3} - \frac{1}{2n^2\pi^2} \right).
+\end{equation}
+Using \cref{eq:general_property} for the two-particle state:
+\begin{align}
+  \langle \hat{x}_1^2 \rangle &= \frac{1}{2}
+  \left( \langle \hat{x}^2 \rangle_{n_1} +
+  \langle \hat{x}^2 \rangle_{n_2} \right) \nonumber \\
+  &= \frac{1}{2} \left[ L^2 \left( \frac{1}{3} -
+  \frac{1}{2n_1^2\pi^2} \right) +
+  L^2 \left( \frac{1}{3} - \frac{1}{2n_2^2\pi^2} \right) \right] \nonumber \\
+  &= L^2 \left[ \frac{1}{3} - \frac{1}{4\pi^2}
+  \left( \frac{1}{n_1^2} + \frac{1}{n_2^2} \right) \right].
+\end{align}
+The variance $(\Delta x_1)^2 = \langle \hat{x}_1^2 \rangle
+- \langle \hat{x}_1 \rangle^2$ is then
+\begin{align}
+  (\Delta x_1)^2 &= L^2 \left[ \frac{1}{3} - \frac{1}{4\pi^2}
+  \left( \frac{1}{n_1^2} + \frac{1}{n_2^2} \right) \right]
+  - \left( \frac{L}{2} \right)^2 \nonumber \\
+  &= L^2 \left[ \frac{1}{12} - \frac{1}{4\pi^2}
+  \left( \frac{1}{n_1^2} + \frac{1}{n_2^2} \right) \right].
+\end{align}
+
+\subsection{Momentum Uncertainty $\Delta p_i$}
+We need $\langle \hat{p}^2 \rangle_n$. The states $\ket{{\phi}_n}$
+are eigenfunctions of the single-particle Hamiltonian
+$\hat{H}_0 = \hat{p}^2/(2m)$. Therefore,
+$\langle \hat{p}^2 \rangle_n = 2m \langle \hat{H}_0 \rangle_n = 2mE_n$.
+\begin{equation}
+  \langle \hat{p}^2 \rangle_n = 2m
+  \left( \frac{n^2 \pi^2 \hbar^2}{2mL^2} \right)
+  = \left( \frac{n\pi\hbar}{L} \right)^2.
+\end{equation}
+Applying the general property to find $\langle \hat{p}_1^2 \rangle$:
+\begin{align}
+  \langle \hat{p}_1^2 \rangle &= \frac{1}{2}
+  \left( \langle \hat{p}^2 \rangle_{n_1} +
+  \langle \hat{p}^2 \rangle_{n_2} \right) \nonumber \\
+  &= \frac{1}{2} \left[ \left( \frac{n_1\pi\hbar}{L} \right)^2 +
+  \left( \frac{n_2\pi\hbar}{L} \right)^2 \right] \nonumber \\
+  &= \frac{\pi^2 \hbar^2}{2L^2} (n_1^2 + n_2^2).
+\end{align}
+Since $\langle \hat{p}_1 \rangle = 0$, the variance is
+$(\Delta p_1)^2 = \langle \hat{p}_1^2 \rangle$:
+\begin{equation}
+  (\Delta p_1)^2 = \frac{\pi^2 \hbar^2 (n_1^2 + n_2^2)}{2L^2}.
+\end{equation}
+By symmetry, $(\Delta x_2)^2 = (\Delta x_1)^2$ and
+$(\Delta p_2)^2 = (\Delta p_1)^2$.
+
+\section{Verification of the Uncertainty Principle}
+
+We now verify that the product of these uncertainties,
+$\Pi^2 = (\Delta x_1)^2 (\Delta p_1)^2$,
+satisfies the Heisenberg principle, $\Pi^2 \ge \hbar^2/4$.
+\begin{align}
+  \Pi^2 &= \left( L^2 \left[ \frac{1}{12} - \frac{1}{4\pi^2}
+    \left( \frac{1}{n_1^2} + \frac{1}{n_2^2} \right) \right] \right)
+    \left( \frac{\pi^2 \hbar^2 (n_1^2 + n_2^2)}{2L^2} \right) \nonumber \\
+  &= \frac{\pi^2 \hbar^2 (n_1^2 + n_2^2)}{2}
+    \left[ \frac{1}{12} - \frac{1}{4\pi^2}
+    \left( \frac{n_1^2 + n_2^2}{n_1^2 n_2^2} \right) \right] \nonumber \\
+  &= \hbar^2 \left[ \frac{\pi^2 (n_1^2 + n_2^2)}{24} -
+    \frac{(n_1^2 + n_2^2)^2}{8 n_1^2 n_2^2} \right].
+\end{align}
+We test this for the fermionic ground state,
+$\{n_1, n_2\} = \{1, 2\}$. This yields $n_1^2 + n_2^2 = 5$
+and $n_1^2 n_2^2 = 4$. Substituting these values:
+\begin{equation}
+  \Pi^2 = \hbar^2 \left[ \frac{5\pi^2}{24} - \frac{5^2}{8(4)} \right]
+  = \hbar^2 \left( \frac{5\pi^2}{24} - \frac{25}{32} \right).
+\end{equation}
+We check this against the Heisenberg limit $\hbar^2/4$:
+\begin{equation}
+  \frac{5\pi^2}{24} - \frac{25}{32} \ge \frac{1}{4}.
+\end{equation}
+Multiplying by the common denominator (96):
+\begin{align*}
+  (4 \cdot 5\pi^2) - (3 \cdot 25) &\ge (24 \cdot 1) \\
+  20\pi^2 - 75 &\ge 24 \\
+  20\pi^2 &\ge 99 \\
+  \pi^2 &\ge 4.95.
+\end{align*}
+Since $\pi^2 \approx 9.87$, the inequality $9.87 \ge 4.95$ holds.
+The uncertainty principle is sustained.

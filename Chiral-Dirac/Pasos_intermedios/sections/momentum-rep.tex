@@ -1,0 +1,53 @@
+\section{Momentum Representation of the Schr\"odinger Equation} \label{sec:momentum}
+
+It is well-known that transforming problems with hard-wall boundaries
+to the momentum representation is inherently challenging.
+The difficulty arises not from the potential, but from the
+kinetic operator.
+
+We seek the TISE by applying the 2D Fourier transform,
+defined over the finite domain $x_i \in [0, L]$:
+\begin{equation} \label{eq:fourier-transform}
+	\tilde{\psi}(p_1, p_2) = \frac{1}{2\pi \hbar} \int_0^L \int_0^L \psi(x_1, x_2)
+	e^{-i (p_1 x_1 + p_2 x_2)/ \hbar} \, \mathrm{d}x_1 \mathrm{d}x_2.
+\end{equation}
+As in the position-space analysis (\cref{eq:V_int_expectation}),
+the fermionic antisymmetry ensures $\psi(x, x) = 0$. Consequently,
+the interaction term $\hat{V}_{\text{int}} = g\delta(x_1 - x_2)$
+has a null contribution, and the TISE in momentum space simplifies to
+$\mathcal{F}[\hat{T}\psi] = E \tilde{\psi}$.
+
+The primary challenge is the kinetic operator. The Fourier transform
+of a second derivative over a finite domain, $\mathcal{F}[\partial_x^2 \psi]$,
+does not simply map to $-(p^2/\hbar^2) \tilde{\psi}(p)$.
+Instead, integration by parts introduces boundary terms.
+For simplicity, consider the 1D kinetic operator $\hat{T} =
+-\frac{\hbar^2}{2m}\partial_x^2$. Its Fourier transform is
+\begin{equation} \label{eq:ft_kinetic_1d}
+	\mathcal{F}[\hat{T}\psi](p) = \frac{p^2}{2m} \tilde{\psi}(p)
+	- \frac{\hbar^2}{2m} \left( e^{-i p L/\hbar} \psi'(L) - \psi'(0) \right),
+\end{equation}
+where $\psi'(x) \equiv \partial_x \psi(x)$ and we have used the
+Dirichlet conditions $\psi(0) = \psi(L) = 0$.
+
+Generalizing to our 2D system, the TISE in momentum space
+becomes a complex integral equation. The transform of the kinetic term
+$\mathcal{F}[(\hat{T}_1 + \hat{T}_2)\psi]$ introduces terms dependent
+on the (unknown) derivatives of the wavefunction at all four boundaries
+($x_1=0, x_1=L, x_2=0, x_2=L$).
+\begin{equation}
+	\begin{split}
+		\mathcal{F}[(\hat{T}_1 + \hat{T}_2)\psi] = \frac{1}{2m}(p_1^2 + p_2^2)
+		\tilde{\psi}(p_1, p_2) &- \frac{\hbar^2}{2m} \left( e^{-i p_1 L / \hbar} \partial_1 \psi(L, x_2) -
+		\partial_2 \psi(0, x_2) \right) - \\
+													 &- \frac{\hbar^2}{2m} \left(e^{-i p_2 L / \hbar} \partial_2 \psi(x_1, L) - \partial_2 \psi(x_1, 0) \right)
+		\end{split}
+\end{equation}
+
+This TISE becomes an integral equation whose kernel depends on these
+unknown boundary values (e.g., $\partial_{1}\psi(L, x_2)$).
+Solving this is notoriously difficult and requires advanced techniques,
+such as Green's functions or treating the infinite well as the
+limit of a finite potential. Given these complexities, which
+obscure the simple physics derived in the position representation,
+we will not pursue the momentum-space solution further.
