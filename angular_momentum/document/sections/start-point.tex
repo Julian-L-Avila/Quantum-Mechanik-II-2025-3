@@ -1,281 +1,111 @@
+\section{Starting Point: Known Results}
 
+In this section, we summarize the fundamental elements of the quantum mechanical formalism for a free particle of mass $m$. These results are assumed to be known and serve as the foundation for constructing the angular momentum representation. Proofs are omitted; only the necessary definitions and operational relations are presented.
 
-\section{start point: Known Results and Preliminary Derivations}
+\subsection{Free Particle Solution in Different Representations}
 
-This section summarizes---and where necessary proves---the fundamental results that serve as the starting point for the construction of the angular-momentum representation of the free nonrelativistic particle. Although these results are standard, we provide complete derivations to ensure that the document is self-contained.
+The free particle Hamiltonian is given by $\hat{H} = \frac{\hat{\mathbf{p}}^2}{2m}$. The wavefunctions in the various representations evolve as follows:
 
-\subsection{Wavefunction Representations for the Free Particle}
+\begin{itemize}
+    \item \textbf{Position Representation ($\psi(\mathbf{r}, t)$):}
+    Satisfies the time-dependent Schrödinger equation:
+    \begin{equation}
+        i\hbar \frac{\partial}{\partial t}\psi(\mathbf{r},t) = -\frac{\hbar^2}{2m}\nabla^2\psi(\mathbf{r},t).
+    \end{equation}
+    
+    \item \textbf{Momentum Representation ($\psi(\mathbf{p}, t)$):}
+    Since $\hat{\mathbf{p}}$ commutes with $\hat{H}$ for the free particle, the evolution is a multiplicative phase:
+    \begin{equation}
+        \psi(\mathbf{p},t) = \psi(\mathbf{p},0) \exp\left(-\frac{i}{\hbar}\frac{p^2}{2m}t\right).
+    \end{equation}
+    
+    \item \textbf{Energy Representation ($\psi(E, t)$):}
+    For an energy eigenstate with $E = p^2/2m$:
+    \begin{equation}
+        \psi(E,t) = \psi(E,0) \exp\left(-\frac{i}{\hbar}Et\right).
+    \end{equation}
+\end{itemize}
 
-\subsubsection{Position Representation}
-For a single particle of mass $m$, the free Hamiltonian is
-\[
-\hat{H} = \frac{\hat{p}^2}{2m}.
-\]
-The time-dependent Schr\"odinger equation in the position representation is
-\[
-i\hbar \frac{\partial}{\partial t}\psi(\mathbf{x},t)
-= -\frac{\hbar^2}{2m}\nabla^2\psi(\mathbf{x},t).
-\]
+\subsection{Integral Transformations Between Representations}
 
-To show this, recall that in the position basis,
-\[
-\hat{\mathbf{p}} = -i\hbar \nabla_{\mathbf{x}},
-\]
-so that
-\[
-\frac{\hat{p}^2}{2m} \psi(\mathbf{x},t)
-= \frac{1}{2m}(-i\hbar)^2 \nabla^2 \psi(\mathbf{x},t)
-= -\frac{\hbar^2}{2m}\nabla^2\psi(\mathbf{x},t).
-\]
+The connection between different bases is established through integral transformations defined by the inner products (kernels) of the basis states.
 
-\subsubsection{Momentum Representation}
-Define the momentum-space wavefunction
-\[
-\psi(\mathbf{p},t)=\langle \mathbf{p}\vert \psi(t)\rangle.
-\]
-Using $\hat{H}\vert \mathbf{p}\rangle 
-= \frac{p^2}{2m}\vert \mathbf{p}\rangle$, the Schr\"odinger equation becomes
-\[
-i\hbar \frac{\partial}{\partial t}\psi(\mathbf{p},t)
-= \frac{p^2}{2m} \psi(\mathbf{p},t),
-\]
-which integrates to the general solution
-\[
-\psi(\mathbf{p},t)=\psi(\mathbf{p},0)e^{-i p^2 t/(2m\hbar)}.
-\]
+\subsubsection{Fourier Transform ($\mathbf{r} \leftrightarrow \mathbf{p}$)}
+The wavefunctions are related by:
+\begin{align}
+    \psi(\mathbf{r},t) &= \frac{1}{(2\pi\hbar)^{3/2}} \int d^3p \, e^{i\mathbf{p}\cdot\mathbf{r}/\hbar} \psi(\mathbf{p},t), \\
+    \psi(\mathbf{p},t) &= \frac{1}{(2\pi\hbar)^{3/2}} \int d^3r \, e^{-i\mathbf{p}\cdot\mathbf{r}/\hbar} \psi(\mathbf{r},t).
+\end{align}
 
-\subsubsection{Energy Representation}
-Energy eigenstates satisfy
-\[
-\hat{H}\vert E\rangle = E\vert E\rangle.
-\]
-In the free case $E = p^2/(2m)$, and the time-dependent coefficient satisfies
-\[
-i\hbar \frac{\partial}{\partial t}\psi(E,t)=E\psi(E,t),
-\]
-with the formal solution
-\[
-\psi(E,t)=\psi(E,0)e^{-iEt/\hbar}.
-\]
+\subsubsection{Momentum-Energy Transformation ($\mathbf{p} \leftrightarrow E$)}
+Using the dispersion relation $E = p^2/2m$ and the properties of the deformed Dirac delta:
+\begin{equation}
+    \delta\left(E - \frac{p^2}{2m}\right) = \frac{m}{p}\delta(p - \sqrt{2mE}).
+\end{equation}
+This allows expressing integrals over momentum as integrals over energy, facilitating the transition from $\psi(\mathbf{p})$ to spectral energy densities.
 
-\subsection{Integral Transforms Between Representations}
+\subsection{Eigenvalue Equations and Basic Operators}
 
-\subsubsection{Fourier Transform: $\psi(\mathbf{x},t)\leftrightarrow\psi(\mathbf{p},t)$}
-Position and momentum eigenstates satisfy
-\[
-\langle \mathbf{x}\vert \mathbf{p}\rangle
-= \frac{1}{(2\pi\hbar)^{3/2}} e^{i\mathbf{p}\cdot \mathbf{x}/\hbar}.
-\]
-To verify orthonormality, compute
-\begin{align*}
-\langle \mathbf{p}'\vert \mathbf{p}\rangle 
-&= \int d^3x\, \langle \mathbf{p}'\vert \mathbf{x}\rangle
-\langle \mathbf{x}\vert \mathbf{p}\rangle \\
-&=\frac{1}{(2\pi\hbar)^3}
-\int d^3x\, e^{-i\mathbf{p}'\cdot \mathbf{x}/\hbar}
-e^{i\mathbf{p}\cdot \mathbf{x}/\hbar} \\
-&=\delta^{(3)}(\mathbf{p}-\mathbf{p}').
-\end{align*}
+We define the fundamental operators and their eigenstates, which form complete and orthonormal bases.
 
-Thus,
-\[
-\psi(\mathbf{x},t)=
-\frac{1}{(2\pi\hbar)^{3/2}}
-\int d^3p\, e^{i\mathbf{p}\cdot\mathbf{x}/\hbar}\psi(\mathbf{p},t),
-\]
-\[
-\psi(\mathbf{p},t)=
-\frac{1}{(2\pi\hbar)^{3/2}}
-\int d^3x\, e^{-i\mathbf{p}\cdot\mathbf{x}/\hbar}\psi(\mathbf{x},t).
-\]
+\begin{itemize}
+    \item \textbf{Position Operator $\hat{\mathbf{r}}$:} 
+    \begin{equation}
+        \hat{\mathbf{r}}|\mathbf{r}\rangle = \mathbf{r}|\mathbf{r}\rangle, \quad \int d^3r |\mathbf{r}\rangle\langle\mathbf{r}| = \hat{\mathbb{I}}.
+    \end{equation}
+    
+    \item \textbf{Momentum Operator $\hat{\mathbf{p}}$:}
+    \begin{equation}
+        \hat{\mathbf{p}}|\mathbf{p}\rangle = \mathbf{p}|\mathbf{p}\rangle, \quad \int d^3p |\mathbf{p}\rangle\langle\mathbf{p}| = \hat{\mathbb{I}}.
+    \end{equation}
+    In the position basis, the momentum operator acts as the generator of translations: $\hat{\mathbf{p}} = -i\hbar\nabla_\mathbf{r}$.
+    
+    \item \textbf{Free Hamiltonian $\hat{H}$:}
+    Its eigenstates $|E\rangle$ coincide (with degeneracy) with the momentum states:
+    \begin{equation}
+        \hat{H}|\mathbf{p}\rangle = \frac{p^2}{2m}|\mathbf{p}\rangle.
+    \end{equation}
+    
+    \item \textbf{Inner Products (Transformation Kernels):}
+    \begin{equation}
+        \langle \mathbf{r} | \mathbf{p} \rangle = \frac{1}{(2\pi\hbar)^{3/2}}e^{i\mathbf{p}\cdot\mathbf{r}/\hbar}, \quad \langle \mathbf{p} | E \rangle \propto \delta(E - p^2/2m).
+    \end{equation}
+\end{itemize}
 
-\subsubsection{Transform Between Momentum and Energy Spaces}
+\subsection{Symmetry Operators and Ehrenfest's Theorem}
 
-Let
-\[
-E=\frac{p^2}{2m}.
-\]
-Then for any function $f(p)$ we may write
-\[
-\int_0^\infty dp\, p^2 f(p)
-= \int_0^\infty dE\, \frac{p(E)}{\sqrt{2mE}}\, (2m) f\!\left(\sqrt{2mE}\right),
-\]
-using the relation
-\[
-\delta\!\left(E-\frac{p^2}{2m}\right)
-= \frac{m}{p}\delta(p-\sqrt{2mE}).
-\]
+The following unitary operators generate the continuous transformations relevant to the system.
 
-\subsection{Eigenvalue Equations for Basic Operators}
+\subsubsection{Translation and Evolution Operators}
 
-\subsubsection{Position Operator}
-Position eigenkets satisfy
-\[
-\hat{\mathbf{x}}\vert \mathbf{x}\rangle=\mathbf{x}\vert \mathbf{x}\rangle.
-\]
-Completeness:
-\[
-\int d^3x\, \vert \mathbf{x}\rangle\langle \mathbf{x}\vert = \hat{1}.
-\]
+\begin{itemize}
+    \item \textbf{Spatial Translation:} Generated by the momentum operator $\hat{\mathbf{p}}$. For a finite vector $\mathbf{a}$ and an infinitesimal one $d\mathbf{a}$:
+    \begin{equation}
+        \hat{T}(\mathbf{a}) = \exp\left(-\frac{i}{\hbar}\mathbf{a}\cdot\hat{\mathbf{p}}\right), \quad \hat{T}(d\mathbf{a}) \approx \hat{\mathbb{I}} - \frac{i}{\hbar}d\mathbf{a}\cdot\hat{\mathbf{p}}.
+    \end{equation}
+    
+    \item \textbf{Time Evolution:} Generated by the Hamiltonian $\hat{H}$.
+    \begin{equation}
+        \hat{U}(t) = \exp\left(-\frac{i}{\hbar}\hat{H}t\right), \quad \hat{U}(dt) \approx \hat{\mathbb{I}} - \frac{i}{\hbar}\hat{H}dt.
+    \end{equation}
+    
+    \item \textbf{Momentum Space Translation:} Analogous to spatial translation, the position operator $\hat{\mathbf{r}}$ generates displacements in momentum space (boosts). For a momentum displacement $\mathbf{q}$:
+    \begin{equation}
+        \hat{T}_{\mathbf{p}}(\mathbf{q}) = \exp\left(\frac{i}{\hbar}\mathbf{q}\cdot\hat{\mathbf{r}}\right).
+    \end{equation}
+    The action of these operators defines the change of basis between the Hilbert spaces associated with the observables.
+\end{itemize}
 
-\subsubsection{Momentum Operator}
-Momentum eigenstates satisfy
-\[
-\hat{\mathbf{p}}\vert \mathbf{p}\rangle=\mathbf{p}\vert \mathbf{p}\rangle,
-\]
-and the canonical commutation relation
-\[
-[\hat{x}_i,\hat{p}_j]=i\hbar \delta_{ij}
-\]
-implies that in the position representation,
-\[
-\hat{p}_i=-i\hbar\frac{\partial}{\partial x_i}.
-\]
+\subsubsection{Correspondence Principle and Ehrenfest's Theorem}
 
-\subsubsection{Free Hamiltonian Eigenstates}
-Energy eigenstates satisfy
-\[
-\hat{H}\vert E\rangle=E\vert E\rangle.
-\]
-Since $\hat{H}$ is a function of $\hat{\mathbf{p}}$, momentum eigenstates are also energy eigenstates:
-\[
-\hat{H}\vert \mathbf{p}\rangle
-= \frac{p^2}{2m}\vert \mathbf{p}\rangle.
-\]
+The connection to classical mechanics is formally established via Ehrenfest's Theorem, which governs the time evolution of expectation values. For an operator $\hat{A}$ with no explicit time dependence:
+\begin{equation}
+    \frac{d}{dt}\langle \hat{A} \rangle = \frac{1}{i\hbar}\langle [\hat{A}, \hat{H}] \rangle.
+\end{equation}
 
-\subsection{Operators of Symmetry: Translations and Time Evolution}
-
-\subsubsection{Spatial Translations}
-Define the translation operator
-\[
-\hat{T}(\mathbf{a})=\exp\!\left(-\frac{i}{\hbar}\mathbf{a}\cdot\hat{\mathbf{p}}\right).
-\]
-To show that it acts as expected, compute
-\begin{align*}
-\hat{T}(\mathbf{a})\ket{\mathbf{x}}
-&= \exp\!\left(-\frac{i}{\hbar}\mathbf{a}\cdot\hat{\mathbf{p}}\right)\ket{\mathbf{x}},\\
-\bra{\mathbf{x}'}\hat{T}(\mathbf{a})\ket{\mathbf{x}}
-&= \frac{1}{(2\pi\hbar)^{3}}
-\int d^3p\, 
-e^{-i\mathbf{a}\cdot \mathbf{p}/\hbar}
-e^{i\mathbf{p}\cdot(\mathbf{x}'-\mathbf{x})/\hbar}\\
-&= \delta^{(3)}(\mathbf{x}'-(\mathbf{x}+\mathbf{a})),
-\end{align*}
-so that
-\[
-\hat{T}(\mathbf{a})\ket{\mathbf{x}} = \ket{\mathbf{x}+\mathbf{a}}.
-\]
-
-\subsubsection{Time Evolution}
-The unitary time-evolution operator is
-\[
-\hat{U}(t)=\exp\!\left(-\frac{i}{\hbar}\hat{H}t\right).
-\]
-Expanding for infinitesimal $\delta t$,
-\[
-\hat{U}(\delta t)
-=1-\frac{i}{\hbar}\hat{H}\,\delta t + O(\delta t^2).
-\]
-Acting on a state $\ket{\psi(t)}$ gives
-\[
-\ket{\psi(t+\delta t)}
-= \left(1-\frac{i}{\hbar}\hat{H}\delta t\right)\ket{\psi(t)},
-\]
-which leads directly to the Schr\"odinger equation.
-
-\subsection{Correspondence Principle and Ehrenfest's Theorem}
-
-\subsubsection{General Ehrenfest Theorem}
-Let $\hat{A}=\hat{A}(t)$ be an operator (possibly explicitly time-dependent) with expectation value
-\[
-\langle \hat{A}\rangle_t = \langle \psi(t)\vert \hat{A}(t)\vert \psi(t)\rangle.
-\]
-Differentiate with respect to time:
-\[
-\frac{d}{dt}\langle \hat{A}\rangle_t
-= \left\langle \frac{\partial\hat{A}}{\partial t}\right\rangle_t
-+ \left\langle \frac{d\hat{A}}{dt}\right\rangle_{\text{state}}.
-\]
-The contribution from the time evolution of the state is
-\[
-\left\langle \frac{d\hat{A}}{dt}\right\rangle_{\text{state}}
-= \left\langle \frac{1}{i\hbar}[\hat{A},\hat{H}]\right\rangle_t,
-\]
-which follows from using the Schr\"odinger equation $i\hbar \partial_t\ket{\psi}=\hat{H}\ket{\psi}$ and its adjoint.  Combining both contributions yields the Ehrenfest theorem:
-\[
-\boxed{\;\frac{d}{dt}\langle \hat{A}\rangle_t
-= \frac{1}{i\hbar}\langle [\hat{A},\hat{H}]\rangle_t
-+ \left\langle \frac{\partial\hat{A}}{\partial t}\right\rangle_t\; }.
-\]
-
-\paragraph{Proof.}
-Compute directly:
-\begin{align*}
-\frac{d}{dt}\langle \hat{A}\rangle_t
-&= \frac{d}{dt}\bra{\psi}\hat{A}\ket{\psi} \\
-&= \bra{\dot\psi}\hat{A}\ket{\psi} + \bra{\psi}\dot{\hat{A}}\ket{\psi} + \bra{\psi}\hat{A}\ket{\dot\psi}.
-\end{align*}
-Using $i\hbar\ket{\dot\psi}=\hat{H}\ket{\psi}$ and its adjoint $-i\hbar\bra{\dot\psi}=\bra{\psi}\hat{H}$, we have
-\begin{align*}
-\bra{\dot\psi}\hat{A}\ket{\psi} + \bra{\psi}\hat{A}\ket{\dot\psi}
-&= \frac{1}{i\hbar}\bra{\psi}[\hat{A},\hat{H}]\ket{\psi}.
-\end{align*}
-Hence the result.
-
-\subsubsection{Application to Position and Momentum}
-Let $\hat{A}=\hat{\mathbf{x}}$. Since $\partial\hat{\mathbf{x}}/\partial t=0$ (in the Schr\"odinger picture),
-\[
-\frac{d}{dt}\langle \hat{\mathbf{x}}\rangle_t
-= \frac{1}{i\hbar}\langle [\hat{\mathbf{x}},\hat{H}]\rangle_t.
-\]
-For the free Hamiltonian $\hat{H}=\hat{\mathbf{p}}^2/(2m)$, using the canonical commutator $[\hat{x}_i,\hat{p}_j]=i\hbar\delta_{ij}$,
-\[
-[\hat{x}_i,\hat{H}] = \frac{1}{2m}([\hat{x}_i,\hat{p}_j]\hat{p}_j + \hat{p}_j[\hat{x}_i,\hat{p}_j])
-= \frac{i\hbar}{m}\hat{p}_i,
-\]
-so that
-\[
-\frac{d}{dt}\langle \hat{\mathbf{x}}\rangle_t
-= \frac{\langle \hat{\mathbf{p}}\rangle_t}{m}.
-\]
-
-Now take $\hat{A}=\hat{\mathbf{p}}$. Again $\partial\hat{\mathbf{p}}/\partial t=0$ in the Schr\"odinger picture and
-\[
-\frac{d}{dt}\langle \hat{\mathbf{p}}\rangle_t
-= \frac{1}{i\hbar}\langle [\hat{\mathbf{p}},\hat{H}]\rangle_t.
-\]
-For a free particle $[\hat{\mathbf{p}},\hat{H}]=0$, hence
-\[
-\frac{d}{dt}\langle \hat{\mathbf{p}}\rangle_t = 0.
-\]
-
-Combining both results yields
-\[
-m\frac{d^2}{dt^2}\langle \hat{\mathbf{x}}\rangle_t = 0,
-\]
-which is precisely the classical equation of motion for a free particle.  This exemplifies the correspondence principle: expectation values of quantum observables follow classical equations when the operators are identified with classical dynamical variables and when fluctuations are negligible.
-
-\subsubsection{Ehrenfest Theorem for a General Potential}
-For completeness, consider a particle subject to a scalar potential $V(\hat{\mathbf{x}})$. Then $\hat{H}=\hat{\mathbf{p}}^2/(2m)+V(\hat{\mathbf{x}})$. The commutator
-\[
-[\hat{p}_i, V(\hat{\mathbf{x}})] = -i\hbar \frac{\partial V}{\partial x_i}(\hat{\mathbf{x}}),
-\]
-so Ehrenfest's theorem gives
-\[
-\frac{d}{dt}\langle \hat{p}_i\rangle_t = -\left\langle \frac{\partial V}{\partial x_i}(\hat{\mathbf{x}})\right\rangle_t.
-\]
-Thus
-\[
-m\frac{d^2}{dt^2}\langle \hat{\mathbf{x}}\rangle_t
-= -\left\langle \nabla V(\hat{\mathbf{x}})\right\rangle_t,
-\]
-which mirrors Newton's second law, $m\ddot{\mathbf{x}} = -\nabla V(\mathbf{x})$, up to the replacement of forces by expectation values.
-
-\subsubsection{Discussion: Correspondence Principle}
-The correspondence principle, in the present context, asserts that the quantum-mechanical expectation values obey equations that reproduce classical mechanics in the limit where quantum fluctuations around the expectation values are negligible (for example, for sufficiently localized wave packets with small spread compared to scale variations of the potential). The Ehrenfest relations derived above make this statement precise: quantum expectation values obey the classical equations of motion with the classical variables replaced by corresponding expectation values. Deviations from classical trajectories arise from the terms involving higher moments (fluctuations) of the quantum state, which are not captured by a closed set of equations for the first moments alone unless the potential is at most quadratic.
-
-\bigskip
-
-\noindent\textbf{Remark.} The Ehrenfest theorem does not imply that individual quantum particles follow deterministic classical trajectories; it only guarantees that the first moments of suitably prepared states evolve classically under the conditions discussed.
-
-\end{document}
+Applied to the free particle ($\hat{H} = \hat{p}^2/2m$):
+\begin{itemize}
+    \item \textbf{Position:} $\frac{d}{dt}\langle \hat{\mathbf{r}} \rangle = \frac{1}{m}\langle \hat{\mathbf{p}} \rangle$ (Velocity-Momentum relation).
+    \item \textbf{Momentum:} $\frac{d}{dt}\langle \hat{\mathbf{p}} \rangle = 0$ (Conservation of linear momentum due to translational invariance).
+\end{itemize}
+These results ensure that wave packets follow classical trajectories in the macroscopic limit, satisfying the correspondence principle.

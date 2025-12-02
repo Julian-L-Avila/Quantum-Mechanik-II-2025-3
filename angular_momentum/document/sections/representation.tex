@@ -1,0 +1,132 @@
+\section{Representation of $\hat{L}$ in Position Space}
+
+In the position representation, the Hilbert space is spanned by the eigenkets $|\mathbf{r}\rangle$. The position operator acts multiplicatively, $\hat{\mathbf{r}} \to \mathbf{r}$, and the linear momentum operator acts as the gradient generator.
+
+\subsection{Representation in Cartesian Coordinates}
+
+\subsubsection{Derivation from Fundamental Operators}
+Using the position representation of the momentum operator[cite: 42]:
+\begin{equation}
+    \hat{\mathbf{p}} = -i\hbar \nabla_\mathbf{r},
+\end{equation}
+we substitute this into the definition of angular momentum derived in the previous section ($\hat{\mathbf{L}} = \hat{\mathbf{r}} \times \hat{\mathbf{p}}$):
+\begin{equation}
+    \hat{\mathbf{L}} = \hat{\mathbf{r}} \times (-i\hbar \nabla) = -i\hbar (\mathbf{r} \times \nabla).
+\end{equation}
+
+\subsubsection{Explicit Components}
+Expanding the cross product in Cartesian coordinates using the determinant mnemonic (or the Levi-Civita definition):
+\begin{equation}
+    \mathbf{r} \times \nabla = 
+    \begin{vmatrix} 
+    \hat{\mathbf{e}}_x & \hat{\mathbf{e}}_y & \hat{\mathbf{e}}_z \\ 
+    x & y & z \\ 
+    \partial_x & \partial_y & \partial_z 
+    \end{vmatrix} 
+    = \hat{\mathbf{e}}_x (y\partial_z - z\partial_y) - \hat{\mathbf{e}}_y (x\partial_z - z\partial_x) + \hat{\mathbf{e}}_z (x\partial_y - y\partial_x).
+\end{equation}
+Multiplying by the factor $-i\hbar$, we obtain the explicit components[cite: 45]:
+\begin{align}
+    \hat{L}_x &= -i\hbar \left( y \frac{\partial}{\partial z} - z \frac{\partial}{\partial y} \right), \\
+    \hat{L}_y &= -i\hbar \left( z \frac{\partial}{\partial x} - x \frac{\partial}{\partial z} \right), \\
+    \hat{L}_z &= -i\hbar \left( x \frac{\partial}{\partial y} - y \frac{\partial}{\partial x} \right). \label{eq:Lz_cartesian}
+\end{align}
+
+\subsection{Representation in Spherical Coordinates}
+
+We now transform these operators to spherical coordinates $(r, \theta, \phi)$ defined by:
+\begin{align*}
+    x &= r \sin\theta \cos\phi, \\
+    y &= r \sin\theta \sin\phi, \\
+    z &= r \cos\theta.
+\end{align*}
+
+\subsubsection{Derivation of $\hat{L}_z$}
+To find the expression for $\hat{L}_z$ in spherical coordinates, we apply the Chain Rule to the partial derivative with respect to $\phi$. 
+Let $\psi(x,y,z)$ be a function of position. The derivative with respect to $\phi$ is:
+\begin{equation}
+    \frac{\partial}{\partial \phi} = \frac{\partial x}{\partial \phi}\frac{\partial}{\partial x} + \frac{\partial y}{\partial \phi}\frac{\partial}{\partial y} + \frac{\partial z}{\partial \phi}\frac{\partial}{\partial z}.
+\end{equation}
+Calculating the partial derivatives of the coordinates:
+\begin{itemize}
+    \item $\frac{\partial x}{\partial \phi} = \frac{\partial}{\partial \phi}(r \sin\theta \cos\phi) = -r \sin\theta \sin\phi = -y$.
+    \item $\frac{\partial y}{\partial \phi} = \frac{\partial}{\partial \phi}(r \sin\theta \sin\phi) = r \sin\theta \cos\phi = x$.
+    \item $\frac{\partial z}{\partial \phi} = 0$ (since $z$ does not depend on $\phi$).
+\end{itemize}
+Substituting these back into the chain rule expression:
+\begin{equation}
+    \frac{\partial}{\partial \phi} = (-y)\frac{\partial}{\partial x} + (x)\frac{\partial}{\partial y} = x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x}.
+\end{equation}
+Comparing this result with Eq. (\ref{eq:Lz_cartesian}), we immediately identify the term in parentheses. Thus:
+\begin{equation}
+    \hat{L}_z = -i\hbar \left( x \frac{\partial}{\partial y} - y \frac{\partial}{\partial x} \right) = -i\hbar \frac{\partial}{\partial \phi}.
+\end{equation}
+
+\subsubsection{Derivation of $\hat{L}^2$}
+To derive the squared total angular momentum $\hat{L}^2 = \hat{\mathbf{L}} \cdot \hat{\mathbf{L}}$, we avoid the tedious squaring of Cartesian components and instead use the vector properties of the Gradient in spherical coordinates.
+
+\textbf{Step 1: The Gradient in Spherical Coordinates}
+The gradient operator $\nabla$ is expressed in the spherical orthonormal basis $(\hat{\mathbf{e}}_r, \hat{\mathbf{e}}_\theta, \hat{\mathbf{e}}_\phi)$ as:
+\begin{equation}
+    \nabla = \hat{\mathbf{e}}_r \frac{\partial}{\partial r} + \hat{\mathbf{e}}_\theta \frac{1}{r} \frac{\partial}{\partial \theta} + \hat{\mathbf{e}}_\phi \frac{1}{r \sin\theta} \frac{\partial}{\partial \phi}.
+\end{equation}
+
+\textbf{Step 2: The Vector $\hat{\mathbf{L}}$ in Spherical Basis}
+Using $\mathbf{r} = r \hat{\mathbf{e}}_r$ and calculating the cross product $\hat{\mathbf{L}} = -i\hbar (\mathbf{r} \times \nabla)$:
+\begin{equation}
+    \hat{\mathbf{L}} = -i\hbar \left[ r\hat{\mathbf{e}}_r \times \left( \hat{\mathbf{e}}_r \frac{\partial}{\partial r} + \hat{\mathbf{e}}_\theta \frac{1}{r} \frac{\partial}{\partial \theta} + \hat{\mathbf{e}}_\phi \frac{1}{r \sin\theta} \frac{\partial}{\partial \phi} \right) \right].
+\end{equation}
+Using the orthogonality relations $\hat{\mathbf{e}}_r \times \hat{\mathbf{e}}_r = 0$, $\hat{\mathbf{e}}_r \times \hat{\mathbf{e}}_\theta = \hat{\mathbf{e}}_\phi$, and $\hat{\mathbf{e}}_r \times \hat{\mathbf{e}}_\phi = -\hat{\mathbf{e}}_\theta$:
+\begin{align}
+    \hat{\mathbf{L}} &= -i\hbar \left[ \left( r \frac{1}{r} \right) (\hat{\mathbf{e}}_r \times \hat{\mathbf{e}}_\theta) \frac{\partial}{\partial \theta} + \left( r \frac{1}{r \sin\theta} \right) (\hat{\mathbf{e}}_r \times \hat{\mathbf{e}}_\phi) \frac{\partial}{\partial \phi} \right] \nonumber \\
+    &= -i\hbar \left( \hat{\mathbf{e}}_\phi \frac{\partial}{\partial \theta} - \hat{\mathbf{e}}_\theta \frac{1}{\sin\theta} \frac{\partial}{\partial \phi} \right). \label{eq:L_vector_spherical}
+\end{align}
+
+\textbf{Step 3: Calculating $\hat{L}^2 = \hat{\mathbf{L}} \cdot \hat{\mathbf{L}}$}
+We apply the vector operator $\hat{\mathbf{L}}$ from Eq. (\ref{eq:L_vector_spherical}) to itself. Extreme care must be taken because the unit vectors $\hat{\mathbf{e}}_\theta$ and $\hat{\mathbf{e}}_\phi$ depend on the coordinates, so derivatives acting on them are non-zero.
+\begin{equation}
+    \hat{L}^2 = (-i\hbar)^2 \left( \hat{\mathbf{e}}_\phi \frac{\partial}{\partial \theta} - \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \frac{\partial}{\partial \phi} \right) \cdot \left( \hat{\mathbf{e}}_\phi \frac{\partial}{\partial \theta} - \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \frac{\partial}{\partial \phi} \right).
+\end{equation}
+Expanding the dot product (remembering that the first operator acts on everything to its right, including unit vectors):
+\begin{equation}
+    \frac{\hat{L}^2}{-\hbar^2} = \underbrace{\hat{\mathbf{e}}_\phi \cdot \frac{\partial}{\partial \theta} \left( \hat{\mathbf{e}}_\phi \frac{\partial}{\partial \theta} \right)}_{\text{Term 1}} 
+    - \underbrace{\hat{\mathbf{e}}_\phi \cdot \frac{\partial}{\partial \theta} \left( \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \frac{\partial}{\partial \phi} \right)}_{\text{Term 2}} 
+    - \underbrace{\frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \cdot \frac{\partial}{\partial \phi} \left( \hat{\mathbf{e}}_\phi \frac{\partial}{\partial \theta} \right)}_{\text{Term 3}} 
+    + \underbrace{\frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \cdot \frac{\partial}{\partial \phi} \left( \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \frac{\partial}{\partial \phi} \right)}_{\text{Term 4}}.
+\end{equation}
+
+\textbf{Required Derivatives of Unit Vectors:}
+\begin{itemize}
+    \item $\partial_\theta \hat{\mathbf{e}}_\phi = 0$.
+    \item $\partial_\theta \hat{\mathbf{e}}_\theta = -\hat{\mathbf{e}}_r$ (Orthogonal to $\hat{\mathbf{e}}_\phi$, so dot product vanishes).
+    \item $\partial_\phi \hat{\mathbf{e}}_\phi = -\sin\theta \hat{\mathbf{e}}_r - \cos\theta \hat{\mathbf{e}}_\theta$.
+    \item $\partial_\phi \hat{\mathbf{e}}_\theta = \cos\theta \hat{\mathbf{e}}_\phi$.
+\end{itemize}
+
+\textbf{Evaluating Terms:}
+
+\textit{Term 1:} Since $\partial_\theta \hat{\mathbf{e}}_\phi = 0$:
+\[ \hat{\mathbf{e}}_\phi \cdot \left( \hat{\mathbf{e}}_\phi \frac{\partial^2}{\partial \theta^2} \right) = \frac{\partial^2}{\partial \theta^2}. \]
+
+\textit{Term 2:} Contains $\hat{\mathbf{e}}_\phi \cdot \partial_\theta \hat{\mathbf{e}}_\theta$. Since $\partial_\theta \hat{\mathbf{e}}_\theta = -\hat{\mathbf{e}}_r$, the dot product with $\hat{\mathbf{e}}_\phi$ is 0. Cross terms vanish here.
+
+\textit{Term 3:}
+\[ \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \cdot \left( (\partial_\phi \hat{\mathbf{e}}_\phi) \frac{\partial}{\partial \theta} + \hat{\mathbf{e}}_\phi \frac{\partial^2}{\partial \phi \partial \theta} \right). \]
+Using $\partial_\phi \hat{\mathbf{e}}_\phi = -\sin\theta \hat{\mathbf{e}}_r - \cos\theta \hat{\mathbf{e}}_\theta$:
+\[ \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \cdot \left( -\cos\theta \hat{\mathbf{e}}_\theta \frac{\partial}{\partial \theta} \right) = -\frac{\cos\theta}{\sin\theta} \frac{\partial}{\partial \theta} = -\cot\theta \frac{\partial}{\partial \theta}. \]
+
+\textit{Term 4:}
+\[ \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \cdot \frac{\partial}{\partial \phi} \left( \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \frac{\partial}{\partial \phi} \right). \]
+The derivative acts on $\hat{\mathbf{e}}_\theta$ and the function. However, $\partial_\phi \hat{\mathbf{e}}_\theta = \cos\theta \hat{\mathbf{e}}_\phi$, which is orthogonal to the pre-factor $\hat{\mathbf{e}}_\theta$. Thus, only the derivative on the scalar function survives:
+\[ \frac{1}{\sin^2\theta} \frac{\partial^2}{\partial \phi^2}. \]
+
+\textbf{Assembly:}
+Summing the non-vanishing contributions:
+\begin{equation}
+    \frac{\hat{L}^2}{-\hbar^2} = \frac{\partial^2}{\partial \theta^2} + \cot\theta \frac{\partial}{\partial \theta} + \frac{1}{\sin^2\theta}\frac{\partial^2}{\partial \phi^2}.
+\end{equation}
+Recognizing that $\frac{\partial^2}{\partial \theta^2} + \cot\theta \frac{\partial}{\partial \theta} = \frac{1}{\sin\theta}\frac{\partial}{\partial \theta}\left(\sin\theta \frac{\partial}{\partial \theta}\right)$, we arrive at the final expression[cite: 48]:
+
+\begin{equation}
+    \hat{L}^2 = -\hbar^2 \left[ \frac{1}{\sin\theta}\frac{\partial}{\partial \theta}\left(\sin\theta \frac{\partial}{\partial \theta}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2}{\partial \phi^2} \right].
+\end{equation}

@@ -1,0 +1,94 @@
+\section{Angular Momentum as the Generator of Rotations}
+
+In this section, we establish the fundamental role of the angular momentum operator $\hat{\mathbf{L}}$ as the generator of spatial rotations. We proceed from the definition of the unitary rotation operator to the conservation laws derived from the symmetry of the Hamiltonian.
+
+\subsection{Finite Rotation Operator}
+
+\subsubsection{Definition}
+We define the rotation of a physical system by an angle $|\boldsymbol{\theta}|$ around an axis defined by the unit vector $\mathbf{n} = \boldsymbol{\theta}/|\boldsymbol{\theta}|$ using the exponential map. The unitary operator for a finite rotation is defined as[cite: 53]:
+\begin{equation}
+    \hat{R}(\boldsymbol{\theta}) = \exp\left(-\frac{i}{\hbar} \boldsymbol{\theta} \cdot \hat{\mathbf{L}}\right).
+\end{equation}
+Since $\hat{\mathbf{L}}$ is Hermitian, $\hat{R}(\boldsymbol{\theta})$ is unitary ($\hat{R}^\dagger = \hat{R}^{-1}$), ensuring the conservation of probability (norm of the state) during rotation.
+
+\subsubsection{Action on Position Kets}
+To demonstrate the action of $\hat{R}(\boldsymbol{\theta})$ on the position eigenkets $|\mathbf{r}\rangle$, we consider the transformation of the position operator $\hat{\mathbf{r}}$. Using the Baker-Campbell-Hausdorff lemma or the infinitesimal properties derived below, one can show that:
+\begin{equation}
+    \hat{R}^\dagger(\boldsymbol{\theta}) \hat{\mathbf{r}} \hat{R}(\boldsymbol{\theta}) = \mathcal{R}(\boldsymbol{\theta}) \hat{\mathbf{r}},
+\end{equation}
+where $\mathcal{R}(\boldsymbol{\theta})$ is the classical $3\times3$ rotation matrix.
+Applying this to a position eigenket $|\mathbf{r}\rangle$:
+\begin{equation}
+    \hat{\mathbf{r}} \left( \hat{R}(\boldsymbol{\theta}) |\mathbf{r}\rangle \right) = \hat{R}(\boldsymbol{\theta}) \left( \hat{R}^\dagger \hat{\mathbf{r}} \hat{R} \right) |\mathbf{r}\rangle = \hat{R}(\boldsymbol{\theta}) (\mathcal{R} \mathbf{r}) |\mathbf{r}\rangle.
+\end{equation}
+Since $|\mathbf{r}\rangle$ is an eigenstate of $\hat{\mathbf{r}}$ with eigenvalue $\mathbf{r}$, the rotated ket must be an eigenstate of the position operator with eigenvalue $\mathcal{R}\mathbf{r}$. Thus[cite: 55]:
+\begin{equation}
+    \hat{R}(\boldsymbol{\theta}) |\mathbf{r}\rangle = |\mathcal{R}(\boldsymbol{\theta})\mathbf{r}\rangle.
+\end{equation}
+Physically, this implies that the operator actively transports a particle localized at $\mathbf{r}$ to the rotated point $\mathcal{R}\mathbf{r}$.
+
+\subsection{Infinitesimal Rotation}
+
+\subsubsection{First-Order Expansion}
+Consider an infinitesimal rotation by an angle $d\boldsymbol{\theta}$. Expanding the exponential to first order in the parameter $d\boldsymbol{\theta}$[cite: 59]:
+\begin{equation}
+    \hat{R}(d\boldsymbol{\theta}) \approx \hat{\mathbb{I}} - \frac{i}{\hbar} d\boldsymbol{\theta} \cdot \hat{\mathbf{L}}.
+\end{equation}
+
+\subsubsection{Action on the Wavefunction}
+We examine how this operator transforms the wavefunction $\psi(\mathbf{r}) = \langle \mathbf{r} | \psi \rangle$. The transformed state $|\psi'\rangle = \hat{R}(d\boldsymbol{\theta})|\psi\rangle$ has the wavefunction:
+\begin{equation}
+    \psi'(\mathbf{r}) = \langle \mathbf{r} | \hat{R}(d\boldsymbol{\theta}) | \psi \rangle \approx \langle \mathbf{r} | \left( 1 - \frac{i}{\hbar} d\boldsymbol{\theta} \cdot \hat{\mathbf{L}} \right) | \psi \rangle.
+\end{equation}
+Distributing the bra-ket:
+\begin{equation}
+    (\hat{R}(d\boldsymbol{\theta})\psi)(\mathbf{r}) \approx \psi(\mathbf{r}) - \frac{i}{\hbar} d\boldsymbol{\theta} \cdot \langle \mathbf{r} | \hat{\mathbf{L}} | \psi \rangle.
+\end{equation}
+Using the position representation of angular momentum derived in Section 3, $(\hat{\mathbf{L}}\psi)(\mathbf{r}) = -i\hbar (\mathbf{r} \times \nabla)\psi(\mathbf{r})$, we substitute:
+\begin{equation}
+    (\hat{R}(d\boldsymbol{\theta})\psi)(\mathbf{r}) \approx \psi(\mathbf{r}) - \frac{i}{\hbar} d\boldsymbol{\theta} \cdot \left[ -i\hbar (\mathbf{r} \times \nabla) \psi(\mathbf{r}) \right].
+\end{equation}
+\begin{equation}
+    (\hat{R}(d\boldsymbol{\theta})\psi)(\mathbf{r}) \approx \psi(\mathbf{r}) - d\boldsymbol{\theta} \cdot (\mathbf{r} \times \nabla) \psi(\mathbf{r}).
+\end{equation}
+Using the vector identity $\mathbf{A} \cdot (\mathbf{B} \times \mathbf{C}) = (\mathbf{A} \times \mathbf{B}) \cdot \mathbf{C}$, we rewrite the correction term:
+\begin{equation}
+    d\boldsymbol{\theta} \cdot (\mathbf{r} \times \nabla) = (d\boldsymbol{\theta} \times \mathbf{r}) \cdot \nabla.
+\end{equation}
+Recognizing that $d\mathbf{r} = d\boldsymbol{\theta} \times \mathbf{r}$ is the displacement vector due to rotation, we obtain the Taylor expansion for a scalar field under infinitesimal coordinate displacement[cite: 61]:
+\begin{equation}
+    \psi'(\mathbf{r}) \approx \psi(\mathbf{r}) - d\mathbf{r} \cdot \nabla \psi(\mathbf{r}) \approx \psi(\mathbf{r} - d\mathbf{r}).
+\end{equation}
+This confirms consistency with the passive transformation view: rotating the state active forward is equivalent to evaluating the original function at the reverse-rotated coordinates.
+
+\subsection{Symmetries and Conservation Laws}
+
+\subsubsection{Commutation with the Free Hamiltonian}
+The free particle Hamiltonian is $\hat{H} = \frac{\hat{p}^2}{2m}$. To test for rotational invariance, we compute the commutator $[\hat{H}, \hat{L}_i]$[cite: 64].
+Since $\hat{p}^2$ is a scalar operator (dot product of a vector operator with itself), it should commute with the generator of rotations. Explicitly:
+\begin{equation}
+    [\hat{L}_i, \hat{p}^2] = \sum_j [\hat{L}_i, \hat{p}_j \hat{p}_j] = \sum_j \left( \hat{p}_j [\hat{L}_i, \hat{p}_j] + [\hat{L}_i, \hat{p}_j] \hat{p}_j \right).
+\end{equation}
+Using the canonical commutation relation for angular momentum and vector operators, $[\hat{L}_i, \hat{p}_j] = i\hbar \epsilon_{ijk} \hat{p}_k$:
+\begin{equation}
+    [\hat{L}_i, \hat{p}^2] = i\hbar \sum_{j,k} \epsilon_{ijk} (\hat{p}_j \hat{p}_k + \hat{p}_k \hat{p}_j) = 2i\hbar \sum_{j,k} \epsilon_{ijk} \hat{p}_j \hat{p}_k.
+\end{equation}
+This sum involves the contraction of the antisymmetric tensor $\epsilon_{ijk}$ (in indices $j,k$) with the symmetric tensor $\hat{p}_j \hat{p}_k$. Therefore, the sum vanishes identically:
+\begin{equation}
+    [\hat{H}, \hat{\mathbf{L}}] = 0.
+\end{equation}
+
+\subsubsection{Conservation of Angular Momentum}
+We invoke Ehrenfest's Theorem, established in Section 1[cite: 32]:
+\begin{equation}
+    \frac{d}{dt}\langle \hat{\mathbf{L}} \rangle = \frac{1}{i\hbar} \langle [\hat{\mathbf{L}}, \hat{H}] \rangle.
+\end{equation}
+Substituting the zero commutator derived above:
+\begin{equation}
+    \frac{d}{dt}\langle \hat{\mathbf{L}} \rangle = 0.
+\end{equation}
+This result [cite: 66] constitutes the quantum mechanical proof of the conservation of angular momentum for a free particle.
+
+\subsubsection{Connection to the Correspondence Principle}
+Classically, for a free particle, there is no torque ($\boldsymbol{\tau} = \mathbf{r} \times \mathbf{F} = 0$), implying $d\mathbf{L}_{cl}/dt = 0$.
+The quantum result perfectly mirrors the classical law, as guaranteed by the Correspondence Principle. The rotational symmetry of space (isotropy) leads to the conservation of angular momentum in both frameworks, with the operator $\hat{\mathbf{L}}$ playing the dual role of the observable quantity and the generator of the symmetry group $SO(3)$.
