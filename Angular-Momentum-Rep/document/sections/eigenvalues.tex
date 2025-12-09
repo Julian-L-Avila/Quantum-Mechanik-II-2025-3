@@ -1,190 +1,106 @@
-\section{Eigenvalue Problem of $\hat{L}^2$ and $\hat{L}_z$}
+\section{Eigenvalue Problem of \texorpdfstring{$\hat{L}^2$}{L²} and
+\texorpdfstring{$\hat{L}_z$}{L\_z}}
 
-Having established that $[\hat{L}^2, \hat{L}_z] = 0$, we know there exists a common basis of eigenstates for these operators. We define these eigenstates as functions of the spherical angles, denoted by $Y(\theta, \phi)$.
-
-Our goal is to solve the simultaneous eigenvalue equations:
+The commutation $[\hat{L}^2, \hat{L}_z] = 0$ implies the existence of a common
+eigenbasis for the Hilbert space of functions on the unit sphere $L^2(S^2)$. We
+seek the simultaneous eigenfunctions $Y(\theta, \phi)$ satisfying:
 \begin{align}
-    \hat{L}_z Y(\theta, \phi) &= \lambda Y(\theta, \phi) \\
-    \hat{L}^2 Y(\theta, \phi) &= \mu Y(\theta, \phi)
+  \hat{L}_z Y(\theta, \phi) &= \lambda Y(\theta, \phi), \\
+  \hat{L}^2 Y(\theta, \phi) &= \mu Y(\theta, \phi).
 \end{align}
-where $\lambda$ and $\mu$ are the eigenvalues to be determined.
 
-\subsection{Eigenvalue Equation for $\hat{L}_z$}
+\subsection{Spectrum of \texorpdfstring{$\hat{L}_z$}{L\_z}: Azimuthal Quantization}
 
-We begin with the simpler operator, $\hat{L}_z$. In spherical coordinates, we derived in Section 4.2.1 that:
+The operator $\hat{L}_z = -i\hbar \partial_\phi$ depends solely on the azimuthal
+angle. Separation of variables $Y(\theta, \phi) = f(\theta)\Phi(\phi)$ yields
+the differential equation:
 \begin{equation}
-    \hat{L}_z = -i\hbar \frac{\partial}{\partial \phi}
+  \frac{d\Phi}{d\phi} = \frac{i\lambda}{\hbar} \Phi(\phi).
+\end{equation}
+The general solution is the complex exponential $\Phi(\phi) = A
+e^{i(\lambda/\hbar)\phi}$.
+
+\subsubsection{Topological Constraint}
+The domain of $\phi$ is the circle $S^1$. For the wavefunction to be
+single-valued (a necessary condition for the probability density to be
+physically well-defined), it must satisfy periodic boundary conditions:
+\begin{equation}
+  \Phi(\phi + 2\pi) = \Phi(\phi) \implies e^{i(\lambda/\hbar)2\pi} = 1.
+\end{equation}
+This condition restricts the spectrum of $\hat{L}_z$ to discrete values:
+\begin{equation}
+  \lambda_m = m\hbar, \quad m \in \mathbb{Z}.
+\end{equation}
+Thus, the magnetic quantum number $m$ arises from the rotational symmetry of the
+system and the topology of the configuration space.
+
+\subsection{Spectrum of \texorpdfstring{$\hat{L}^2$}{L²}: Polar
+Quantization}
+
+Using the eigenvalue $\lambda_m$ and the spherical representation of
+$\hat{L}^2$, the second eigenvalue equation becomes:
+\begin{equation}
+  -\hbar^2 \left[ \frac{1}{\sin\theta} \partial_\theta (\sin\theta
+  \partial_\theta) - \frac{m^2}{\sin^2\theta} \right] f(\theta) = \mu f(\theta).
+\end{equation}
+Letting $\mu = \hbar^2 \nu$, this simplifies to the generalized Legendre
+equation.
+
+\subsubsection{Transformation to the Legendre Equation}
+Introducing the variable $x = \cos\theta$ (mapping $\theta \in [0, \pi] \to x
+\in [-1, 1]$), the equation transforms to:
+\begin{equation} \label{eq:legendre_diff}
+  \frac{d}{dx} \left[ (1-x^2) \frac{df}{dx} \right] + \left( \nu -
+  \frac{m^2}{1-x^2} \right) f(x) = 0.
 \end{equation}
 
-The eigenvalue equation is:
+\subsubsection{Regularity Condition}
+The differential equation (\ref{eq:legendre_diff}) has regular singular points
+at the poles $x = \pm 1$. A Frobenius series analysis reveals that the general
+solution diverges logarithmically at these boundaries unless the series
+terminates. The condition for termination (and thus square-integrability) is
+that the eigenvalue parameter $\nu$ must take the form:
 \begin{equation}
-    -i\hbar \frac{\partial}{\partial \phi} Y(\theta, \phi) = \lambda Y(\theta, \phi)
+  \nu = \ell(\ell+1), \quad \ell \in \mathbb{Z}_{\ge 0}.
+\end{equation}
+This quantizes the magnitude of angular momentum:
+\begin{equation}
+  \mu_\ell = \hbar^2 \ell(\ell+1).
 \end{equation}
 
-\subsubsection{Separation of Variables}
-Since the operator only involves the variable $\phi$, we can separate the variables by proposing a solution of the form:
+\subsection{The Spherical Harmonics \texorpdfstring{$Y_{\ell m}$}{Ylm}}
+
+The non-singular solutions to the angular equation are the Associated Legendre
+Polynomials $P_\ell^m(x)$.
 \begin{equation}
-    Y(\theta, \phi) = f(\theta) \Phi(\phi)
+  Y_{\ell m}(\theta, \phi) = (-1)^m \sqrt{\frac{2\ell+1}{4\pi}
+  \frac{(\ell-m)!}{(\ell+m)!}} P_\ell^m(\cos\theta) e^{im\phi}.
+\end{equation}
+The phase factor $(-1)^m$ is the Condon-Shortley phase convention.
+
+\subsubsection{Constraints on Quantum Numbers}
+The structure of the solution space imposes the constraint $|m| \le \ell$. This
+can be understood via the Rodrigues formula for the polynomials:
+\begin{equation}
+  P_\ell^m(x) \propto (1-x^2)^{m/2} \frac{d^{\ell+m}}{dx^{\ell+m}}
+  (x^2-1)^\ell.
+\end{equation}
+Since $(x^2-1)^\ell$ is a polynomial of degree $2\ell$, derivatives of order
+higher than $2\ell$ vanish. However, a more subtle constraint arises from the
+definition of the angular momentum ladder operators $\hat{L}_\pm$. If $|m| >
+\ell$, the state would have a norm less than zero, which is impossible in a
+Hilbert space. Thus, for a fixed $\ell$:
+\begin{equation}
+  m \in \{-\ell, -\ell+1, \dots, \ell-1, \ell\}.
 \end{equation}
 
-Substituting this into the differential equation:
-\begin{equation}
-    -i\hbar f(\theta) \frac{d\Phi(\phi)}{d\phi} = \lambda f(\theta) \Phi(\phi)
-\end{equation}
+\subsection{Summary of the Angular Basis}
 
-Assuming $f(\theta) \neq 0$, we can divide by $f(\theta)$ to obtain a first-order ordinary differential equation for $\Phi(\phi)$:
-\begin{equation}
-    \frac{d\Phi}{d\phi} = \frac{i\lambda}{\hbar} \Phi(\phi)
-\end{equation}
-
-\subsubsection{General Solution}
-The solution to this differential equation is an exponential function:
-\begin{equation}
-    \Phi(\phi) = A e^{i(\lambda/\hbar)\phi}
-\end{equation}
-where $A$ is a normalization constant. Consequently, the total eigenfunction takes the form:
-\begin{equation}
-    Y(\theta, \phi) = f(\theta) e^{i(\lambda/\hbar)\phi}
-\end{equation}
-
-\subsubsection{Boundary Conditions and Quantization}
-For the wavefunction to be physically acceptable, it must be single-valued. In spherical coordinates, the angle $\phi$ and the angle $\phi + 2\pi$ represent the exact same physical point in space. Therefore, the function must satisfy the periodicity condition:
-\begin{equation}
-    \Phi(\phi + 2\pi) = \Phi(\phi)
-\end{equation}
-
-Substituting our solution:
-\begin{equation}
-    e^{i(\lambda/\hbar)(\phi + 2\pi)} = e^{i(\lambda/\hbar)\phi}
-\end{equation}
-\begin{equation}
-    e^{i(\lambda/\hbar)\phi} e^{i(\lambda/\hbar)2\pi} = e^{i(\lambda/\hbar)\phi}
-\end{equation}
-
-Dividing both sides by $e^{i(\lambda/\hbar)\phi}$, we require:
-\begin{equation}
-    e^{2\pi i (\lambda/\hbar)} = 1
-\end{equation}
-
-From Euler's formula ($e^{ix} = \cos x + i\sin x$), this equality holds if and only if the exponent is an integer multiple of $2\pi i$. Let us define a number $m$ such that:
-\begin{equation}
-    \frac{\lambda}{\hbar} = m, \quad \text{where } m \in \mathbb{Z} = \{0, \pm 1, \pm 2, \dots\}
-\end{equation}
-
-\subsubsection{Result}
-This boundary condition restricts the eigenvalues $\lambda$ to discrete values. We conclude that the eigenvalues of $\hat{L}_z$ are quantized in units of $\hbar$:
-\begin{equation}
-    \lambda = m\hbar
-\end{equation}
-And the angular dependence on $\phi$ is necessarily:
-\begin{equation}
-    Y(\theta, \phi) = f(\theta) e^{im\phi}
-\end{equation}
-where $m$ is called the \textit{magnetic quantum number}.
-
-\subsection{Eigenvalue Equation for $\hat{L}^2$}
-
-We now address the eigenvalue problem for the square of the angular momentum operator. Using the explicit expression for $\hat{L}^2$ in spherical coordinates derived in Eq. (62):
-\begin{equation}
-    \hat{L}^2 = -\hbar^2 \left[ \frac{1}{\sin\theta} \frac{\partial}{\partial \theta} \left( \sin\theta \frac{\partial}{\partial \theta} \right) + \frac{1}{\sin^2\theta} \frac{\partial^2}{\partial \phi^2} \right]
-\end{equation}
-
-We set up the eigenvalue equation aiming to find the eigenvalue $\lambda$:
-\begin{equation}
-    \hat{L}^2 Y(\theta, \phi) = \lambda Y(\theta, \phi)
-\end{equation}
-
-\subsubsection{Derivation of the Radial Equation}
-We substitute the separable solution form obtained in the previous section, $Y(\theta, \phi) = f(\theta)e^{im\phi}$, into the eigenvalue problem.
-
-First, we evaluate the action of the second derivative with respect to $\phi$ on our trial function:
-\begin{equation}
-    \frac{\partial^2}{\partial \phi^2} \left( f(\theta)e^{im\phi} \right) = f(\theta) \frac{\partial^2}{\partial \phi^2} e^{im\phi} = f(\theta) (im)^2 e^{im\phi} = -m^2 f(\theta)e^{im\phi}
-\end{equation}
-
-Substituting this result back into the full operator expression:
-\begin{equation}
-    -\hbar^2 \left[ \frac{1}{\sin\theta} \frac{\partial}{\partial \theta} \left( \sin\theta \frac{\partial f}{\partial \theta} \right) e^{im\phi} - \frac{m^2}{\sin^2\theta} f(\theta)e^{im\phi} \right] = \lambda f(\theta)e^{im\phi}
-\end{equation}
-
-Since the phase factor $e^{im\phi}$ is non-zero everywhere, we can divide the entire equation by it. Multiplying by $-1/\hbar^2$, we isolate the differential equation for the polar angle function $f(\theta)$:
-
-\begin{equation}
-    \frac{1}{\sin\theta} \frac{d}{d \theta} \left( \sin\theta \frac{d f}{d \theta} \right) - \frac{m^2}{\sin^2\theta} f(\theta) = -\frac{\lambda}{\hbar^2} f(\theta)
-\end{equation}
-
-Rearranging all terms to one side, we obtain the differential equation for $f(\theta)$:
-\begin{equation}
-    \frac{1}{\sin\theta} \frac{d}{d \theta} \left( \sin\theta \frac{d f}{d \theta} \right) + \left( \frac{\lambda}{\hbar^2} - \frac{m^2}{\sin^2\theta} \right) f(\theta) = 0
-\end{equation}
-
-\subsection{Natural Emergence of $\hat{L}^2$ and $\hat{L}_z$: Spherical Harmonics}
-
-The differential equation derived above is the well-known \textit{Associated Legendre Differential Equation}. To see this clearly, one typically performs the change of variables $x = \cos\theta$, which maps the domain $\theta \in [0, \pi]$ to $x \in [-1, 1]$.
-
-\subsubsection{Explicit Substitution}
-Let us apply the chain rule to transform the derivatives from $\theta$ to $x$. Note that:
-\begin{equation}
-    \frac{d}{d\theta} = -\sin\theta \frac{d}{dx}
-\end{equation}
-Substituting this and the identity $\sin^2\theta = 1-x^2$ into the eigenvalue equation yields:
-\begin{equation}
-    \frac{d}{dx} \left[ (1-x^2) \frac{df}{dx} \right] + \left( \frac{\lambda}{\hbar^2} - \frac{m^2}{1-x^2} \right) f(x) = 0
-\end{equation}
-
-\subsubsection{Physical Admissibility: The Origin of Quantization}
-
-The differential equation for $f(x)$ contains singular points at the poles $x = \pm 1$ (corresponding to $\theta = 0$ and $\theta = \pi$) due to the term $(1-x^2)$ in the denominator. 
-
-Mathematically, the general solution to the Legendre equation is an infinite power series. Convergence analysis (specifically using the Frobenius method) reveals that this infinite series generally diverges logarithmically at the poles ($x \to \pm 1$). 
-
-\paragraph{Regularity Condition}
-For the wavefunction to represent a physical state, it must be single-valued, continuous, and finite everywhere (square-integrable). An infinite value at the poles is physically unacceptable. 
-Therefore, we must impose a \textbf{regularity condition}: the infinite series must terminate to form a finite polynomial.
-
-This truncation of the series only occurs if the coefficient of the recursion relation vanishes at some index $l$. This condition strictly demands that the eigenvalue parameter $\lambda$ satisfies:
-\begin{equation}
-    \frac{\lambda}{\hbar^2} = l(l+1), \quad l \in \mathbb{Z}^+
-\end{equation}
-Thus, the quantization of angular momentum magnitude ($\hat{L}^2$) is not an arbitrary postulate, but a direct consequence of the topological requirement that the wavefunction must be well-behaved on the closed surface of the sphere.
-
-\paragraph{Constraints on $m$ via Rodrigues Formula}
-With $\lambda$ fixed by $l$, the acceptable non-singular solutions are the Associated Legendre Polynomials $P_l^m(x)$. Their construction via the Rodrigues formula clearly elucidates the restriction on the magnetic quantum number $m$:
-
-\begin{equation}
-    P_l^m(x) \propto (1-x^2)^{m/2} \frac{d^{l+m}}{dx^{l+m}} \left[ (x^2-1)^l \right]
-\end{equation}
-
-Notice that the term $(x^2-1)^l$ is a polynomial of degree $2l$.
-\begin{itemize}
-    \item If we differentiate a polynomial of degree $2l$ more than $2l$ times, the result is zero.
-    \item However, the structure of the Legendre equation specifically requires the order of the derivative to be $l+m$.
-    \item If $|m| > l$, then $l+m > 2l$ (considering the structure of the differential operator), or more simply, the associated function involves derivatives that would annihilate the polynomial or produce singularities structure incompatible with the equation order.
-\end{itemize}
-
-Specifically, the Rodrigues definition implies that we can only take up to $l$ ``vertical'' steps (ladder operators) away from the base state. Therefore, for a non-vanishing solution, we must have:
-\begin{equation}
-    |m| \le l
-\end{equation}
-This explains why the projection of angular momentum ($\hat{L}_z$) cannot exceed its total magnitude ($\hat{L}^2$).
-
-\subsubsection{Spherical Harmonics Definition}
-Combining the radial part $P_l^m(\cos\theta)$ with the azimuthal phase $e^{im\phi}$, we obtain the \textbf{Spherical Harmonics} $Y_{l,m}(\theta, \phi)$ , which form the orthonormal basis on the sphere:
-
-\begin{equation}
-    Y_{l,m}(\theta, \phi) = (-1)^m \sqrt{\frac{(2l+1)}{4\pi} \frac{(l-m)!}{(l+m)!}} P_l^m(\cos\theta) e^{im\phi}
-\end{equation}
-
-\subsection{Simultaneous Eigenstates}
-
-We conclude that there exist state vectors, denoted as $|l, m\rangle$, which are simultaneous eigenvectors of $\hat{L}^2$ and $\hat{L}_z$. These states completely describe the angular properties of the free particle (or any central potential system).
-
-The defining eigenvalue equations are:
-\begin{equation}
-    \hat{L}^2 |l, m\rangle = \hbar^2 l(l+1) |l, m\rangle
-\end{equation}
-\begin{equation}
-    \hat{L}_z |l, m\rangle = \hbar m |l, m\rangle
-\end{equation}
-
-These kets $|l, m\rangle$ form the angular momentum representation basis that we will use to solve the Schrödinger equation in the following section.
+We have constructed a complete orthonormal basis $\ket{\ell, m}$ for the angular
+variables. The defining actions of the operators are:
+\begin{align}
+  \hat{L}^2 \ket{\ell, m} &= \hbar^2 \ell(\ell+1) \ket{\ell, m}, \\
+  \hat{L}_z \ket{\ell, m} &= \hbar m \ket{\ell, m}.
+\end{align}
+These states provide the necessary separation of variables to solve the radial
+part of the Schrödinger equation for the free particle.
