@@ -1,0 +1,163 @@
+\section{Dynamics and the Radial Wave Equation}
+
+We formally solve the Time-Dependent Schrödinger Equation (TDSE) by projecting
+the dynamics onto the eigenbasis of the Complete Set of Commuting Observables
+(CSCO) $\{ \hat{H}, \hat{L}^2, \hat{L}_z \}$. This procedure separates the
+trivial temporal evolution from the geometric spatial structure.
+
+\subsection{Spectral Evolution}
+
+The state vector $\ket{\psi(t)}$ is expanded in the continuous basis of
+simultaneous eigenstates $\ket{k, \ell, m}$, normalized to the radial measure
+$k^2 \mathrm{d}k$:
+\begin{equation}
+	\ket{\psi(t)} = \sum_{\ell=0}^{\infty} \sum_{m=-\ell}^{\ell}
+	\int_{0}^{\infty} \mathrm{d}k \, k^2 \, c_{k\ell m}(t) \, \ket{k, \ell, m}.
+\end{equation}
+Substituting this expansion into the TDSE $i\hbar \partial_t \ket{\psi} =
+\hat{H}\ket{\psi}$ and exploiting the orthogonality of the basis, the partial
+differential equation decouples into an infinite set of independent ordinary
+differential equations for the coefficients $c_{k\ell m}(t)$:
+\begin{equation}
+	i\hbar \dot{c}_{k\ell m}(t) = E_k c_{k\ell m}(t), \quad \text{where } E_k =
+	\frac{\hbar^2 k^2}{2m}.
+\end{equation}
+The solution is exact and demonstrates that the angular quantum numbers are
+constants of motion:
+\begin{equation}
+	c_{k\ell m}(t) = c_{k\ell m}(0) \exp\left( -\frac{i}{\hbar} \frac{\hbar^2
+	k^2}{2m} t \right).
+\end{equation}
+
+\subsection{The Coordinate Representation (Radial Equation)}
+
+To determine the spatial probability distribution, we must find the coordinate
+representation of the basis kets, $\braket{\mathbf{r} | k, \ell, m}$. We exploit
+the separation of variables in spherical coordinates:
+\begin{equation}
+	\braket{\mathbf{r} | k, \ell, m} = R_{k\ell}(r) Y_{\ell m}(\theta, \phi).
+\end{equation}
+Here, $Y_{\ell m}$ are the Spherical Harmonics derived previously. The radial
+function $R_{k\ell}(r)$ is determined by the energy eigenvalue equation in
+position space:
+\begin{equation}
+	\braket{\mathbf{r} | \hat{H} | k, \ell, m} = E_k \braket{\mathbf{r} |k,
+	\ell, m}.
+\end{equation}
+Using the Laplacian decomposition $\nabla^2 = \partial_r^2 + \frac{2}{r}
+\partial_r - \frac{\hat{L}^2}{\hbar^2 r^2}$, the equation becomes:
+\begin{equation}
+	-\frac{\hbar^2}{2m} \left[ \frac{1}{r^2} \frac{\partial}{\partial r} \left(
+		r^2 \frac{\partial R_{k\ell}}{\partial r} \right) -
+	\frac{\ell(\ell+1)}{r^2} R_{k\ell}(r) \right] = \frac{\hbar^2 k^2}{2m}
+	R_{k\ell}(r).
+\end{equation}
+
+\subsubsection{The Spherical Bessel Equation}
+Rearranging terms and introducing the dimensionless variable $\rho = kr$, we
+obtain the Spherical Bessel differential equation:
+\begin{equation}
+	\frac{d^2 R}{d\rho^2} + \frac{2}{\rho} \frac{dR}{d\rho} + \left[ 1 -
+	\frac{\ell(\ell+1)}{\rho^2} \right] R(\rho) = 0.
+\end{equation}
+The term $\frac{\ell(\ell+1)}{\rho^2}$ represents the centrifugal potential
+barrier arising from angular momentum conservation, which prevents high-$\ell$
+particles from penetrating near the origin.
+
+\subsubsection{Free Spherical Waves}
+The physically admissible solutions (regular at the origin $r=0$) are the
+Spherical Bessel Functions of the first kind, denoted $j_\ell(kr)$.
+
+\begin{equation}
+	R_{k\ell}(r) = \sqrt{\frac{2}{\pi}} j_\ell(kr).
+\end{equation}
+(The normalization factor $\sqrt{2/\pi}$ is chosen to satisfy the delta-function
+normalization $\int r^2 dr R_{k\ell} R_{k'\ell} = \delta(k-k')/k^2$).
+
+\subsection{The Full Wavefunction Solution}
+
+Combining the spectral evolution with the coordinate basis, the general solution
+for the free particle in the angular momentum representation is:
+\begin{equation}
+	\psi(\mathbf{r}, t) = \sum_{\ell=0}^{\infty} \sum_{m=-\ell}^{\ell}
+	\int_{0}^{\infty} \mathrm{d}k \, k^2 \, \underbrace{c_{k\ell m}(0) e^{-i
+		E_k t/\hbar}}_{\text{Dynamics}} \, \underbrace{\sqrt{\frac{2}{\pi}}
+		j_\ell(kr) Y_{\ell m}(\theta, \phi)}_{\text{Spatial Mode}}.
+\end{equation}
+This expansion represents the free particle as a superposition of spherical
+standing waves, providing the natural basis for scattering problems where the
+asymptotic behavior is defined by incoming and outgoing spherical states.
+
+\section{Time Evolution and General Solution}
+
+The diagonalization of the Hamiltonian within the CSCO basis $\{ \ket{k, \ell, m}
+\}$ decouples the global evolution of the field $\psi(\mathbf{r}, t)$ into an
+infinite set of independent dynamical modes. We construct the general solution
+to the initial value problem by applying the unitary time-evolution operator to
+the spectral expansion.
+
+\subsection{Unitary Evolution of Spectral Modes}
+
+The equation of motion derived implies
+that each spectral amplitude $\psi_{k\ell m}(t)$ undergoes simple harmonic
+oscillation in the complex plane. The formal solution is obtained via the action
+of the propagator $\hat{U}(t) = \exp(-i\hat{H}t/\hbar)$:
+\begin{equation}
+	\psi_{k\ell m}(t) = \bra{k, \ell, m} \hat{U}(t) \ket{\psi(0)} = e^{-i E_k t
+	/ \hbar} \psi_{k\ell m}(0).
+\end{equation}
+
+Explicitly, with the free particle dispersion relation $E_k = \frac{\hbar^2
+k^2}{2m}$:
+\begin{equation} \label{eq:mode_solution}
+	\psi_{k\ell m}(t) = \psi_{k\ell m}(0) \exp\left( -i \frac{\hbar k^2}{2m} t
+	\right).
+\end{equation}
+This result highlights the stationarity of the angular momentum eigenstates; the
+probability density $|\psi_{k\ell m}(t)|^2$ is time-invariant, ensuring that
+information encoded in the angular channels is conserved.
+
+\subsection{Synthesis of the Dynamical State}
+
+The full dynamical state $\ket{\psi(t)}$ is reconstructed by synthesizing the
+evolved modes. Substituting the spectral solution (\ref{eq:mode_solution}) into
+the basis expansion yields the general solution in abstract notation:
+\begin{equation} \label{eq:general_solution_abstract}
+	\ket{\psi(t)} = \sum_{\ell=0}^{\infty} \sum_{m=-\ell}^{\ell}
+	\int_{0}^{\infty} \mathrm{d}k \, k^2 \, \psi_{k\ell m}(0) \, e^{-i
+	\frac{\hbar k^2}{2m} t} \, \ket{k, \ell, m}.
+\end{equation}
+
+Projecting this state onto the coordinate basis $\bra{\mathbf{r}}$ and utilizing
+the free spherical wave functions $\braket{\mathbf{r}}{k,\ell,m} =
+\sqrt{\frac{2}{\pi}} j_\ell(kr) Y_{\ell m}(\Omega)$, we obtain the explicit
+position-space wavefunction:
+\begin{equation} \label{eq:general_solution_spatial}
+	\psi(\mathbf{r}, t) = \sqrt{\frac{2}{\pi}} \sum_{\ell, m} Y_{\ell m}(\Omega)
+	\int_{0}^{\infty} \mathrm{d}k \, k^2 \, \psi_{k\ell m}(0) \, j_\ell(kr) \,
+	e^{-i \frac{\hbar k^2}{2m} t}.
+\end{equation}
+This integral transform constitutes the complete solution to the free-particle
+Schrödinger equation in spherical coordinates.
+
+\subsection{Physical Interpretation}
+
+The structure of Eq. (\ref{eq:general_solution_spatial}) elucidates the
+physical mechanism of free evolution:
+\begin{itemize}
+	\item \textbf{Angular Stability:} The quantum numbers $\ell$ and $m$ appear
+		strictly as summation indices for the stationary harmonics $Y_{\ell m}$. The
+		absence of time dependence in the angular sector confirms that the
+		probability distribution over the orbital angular momentum channels is
+		invariant, a direct consequence of the isotropy of free space ($[\hat{H},
+		\hat{\mathbf{L}}] = 0$).
+	\item \textbf{Radial Dispersion:} Time dependence is confined to the phase
+		modulation of the radial modes. Since the dispersion relation is non-linear
+		($E_k \propto k^2$), the group velocity $v_g = \partial_k \omega = \hbar
+		k/m$ varies with wavenumber. This gradient in propagation speed across
+		different $k$-components drives the characteristic wave packet spreading
+		(dispersion) observed in the position representation.
+\end{itemize}
+Ultimately, the angular momentum representation resolves the complex diffusive
+dynamics of the free particle into a static rotation of independent spectral
+components in the complex plane.
