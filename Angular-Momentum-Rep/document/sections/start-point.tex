@@ -1,111 +1,102 @@
-\section{Starting Point: Known Results}
+\section{Starting Point: Fundamental Formalism}
 
-In this section, we summarize the fundamental elements of the quantum mechanical formalism for a free particle of mass $m$. These results are assumed to be known and serve as the foundation for constructing the angular momentum representation. Proofs are omitted; only the necessary definitions and operational relations are presented.
+We formally define the Hilbert space $\mathcal{H} = L^2(\mathbb{R}^3)$ and the
+dynamical structure of the free particle. The following definitions establish
+the algebraic and spectral foundations required for the angular-momentum
+decomposition.
 
-\subsection{Free Particle Solution in Different Representations}
+\subsection{Dynamics and Unitary Evolution}
 
-The free particle Hamiltonian is given by $\hat{H} = \frac{\hat{\mathbf{p}}^2}{2m}$. The wavefunctions in the various representations evolve as follows:
+The dynamics are governed by the self-adjoint Hamiltonian operator $\hat{H} =
+\frac{\hat{\mathbf{p}}^2}{2m}$. The state vector $\ket{\psi(t)}$ evolves
+deterministically from an initial state $\ket{\psi_0}$ via the strongly
+continuous unitary group $\hat{U}(t)$:
+\begin{equation}
+  \ket{\psi(t)} = \hat{U}(t)\ket{\psi_0} =
+  \exp\left(-\frac{i}{\hbar}\hat{H}t\right)\ket{\psi_0}.
+\end{equation}
+This abstract evolution implies the Schrödinger equation $i\hbar \partial_t
+\ket{\psi} = \hat{H}\ket{\psi}$ via Stone's Theorem.
 
-\begin{itemize}
-    \item \textbf{Position Representation ($\psi(\mathbf{r}, t)$):}
-    Satisfies the time-dependent Schrödinger equation:
-    \begin{equation}
-        i\hbar \frac{\partial}{\partial t}\psi(\mathbf{r},t) = -\frac{\hbar^2}{2m}\nabla^2\psi(\mathbf{r},t).
-    \end{equation}
-    
-    \item \textbf{Momentum Representation ($\psi(\mathbf{p}, t)$):}
-    Since $\hat{\mathbf{p}}$ commutes with $\hat{H}$ for the free particle, the evolution is a multiplicative phase:
-    \begin{equation}
-        \psi(\mathbf{p},t) = \psi(\mathbf{p},0) \exp\left(-\frac{i}{\hbar}\frac{p^2}{2m}t\right).
-    \end{equation}
-    
-    \item \textbf{Energy Representation ($\psi(E, t)$):}
-    For an energy eigenstate with $E = p^2/2m$:
-    \begin{equation}
-        \psi(E,t) = \psi(E,0) \exp\left(-\frac{i}{\hbar}Et\right).
-    \end{equation}
-\end{itemize}
+\subsection{Continuous Representations}
 
-\subsection{Integral Transformations Between Representations}
+We utilize two continuous bases, position $\{\ket{\mathbf{r}}\}$ and linear
+momentum $\{\ket{\mathbf{p}}\}$, normalized to the Dirac distribution.
 
-The connection between different bases is established through integral transformations defined by the inner products (kernels) of the basis states.
-
-\subsubsection{Fourier Transform ($\mathbf{r} \leftrightarrow \mathbf{p}$)}
-The wavefunctions are related by:
+\subsubsection{Basis Definitions and Orthogonality}
+The basis vectors satisfy the eigenvalue equations and completeness relations
+(Resolution of Identity $\hat{\mathbb{I}}$):
 \begin{align}
-    \psi(\mathbf{r},t) &= \frac{1}{(2\pi\hbar)^{3/2}} \int d^3p \, e^{i\mathbf{p}\cdot\mathbf{r}/\hbar} \psi(\mathbf{p},t), \\
-    \psi(\mathbf{p},t) &= \frac{1}{(2\pi\hbar)^{3/2}} \int d^3r \, e^{-i\mathbf{p}\cdot\mathbf{r}/\hbar} \psi(\mathbf{r},t).
+  \hat{\mathbf{r}}\ket{\mathbf{r}} &= \mathbf{r}\ket{\mathbf{r}}, \quad &
+  \int_{\mathbb{R}^3} \mathrm{d}^3r \, \ket{\mathbf{r}}\bra{\mathbf{r}} &=
+  \hat{\mathbb{I}}, \\
+  \hat{\mathbf{p}}\ket{\mathbf{p}} &= \mathbf{p}\ket{\mathbf{p}}, \quad &
+  \int_{\mathbb{R}^3} \mathrm{d}^3p \, \ket{\mathbf{p}}\bra{\mathbf{p}} &=
+  \hat{\mathbb{I}}.
 \end{align}
-
-\subsubsection{Momentum-Energy Transformation ($\mathbf{p} \leftrightarrow E$)}
-Using the dispersion relation $E = p^2/2m$ and the properties of the deformed Dirac delta:
+The inner product defines the transformation kernel (Fourier kernel) between the
+canonically conjugate variables:
 \begin{equation}
-    \delta\left(E - \frac{p^2}{2m}\right) = \frac{m}{p}\delta(p - \sqrt{2mE}).
-\end{equation}
-This allows expressing integrals over momentum as integrals over energy, facilitating the transition from $\psi(\mathbf{p})$ to spectral energy densities.
-
-\subsection{Eigenvalue Equations and Basic Operators}
-
-We define the fundamental operators and their eigenstates, which form complete and orthonormal bases.
-
-\begin{itemize}
-    \item \textbf{Position Operator $\hat{\mathbf{r}}$:} 
-    \begin{equation}
-        \hat{\mathbf{r}}|\mathbf{r}\rangle = \mathbf{r}|\mathbf{r}\rangle, \quad \int d^3r |\mathbf{r}\rangle\langle\mathbf{r}| = \hat{\mathbb{I}}.
-    \end{equation}
-    
-    \item \textbf{Momentum Operator $\hat{\mathbf{p}}$:}
-    \begin{equation}
-        \hat{\mathbf{p}}|\mathbf{p}\rangle = \mathbf{p}|\mathbf{p}\rangle, \quad \int d^3p |\mathbf{p}\rangle\langle\mathbf{p}| = \hat{\mathbb{I}}.
-    \end{equation}
-    In the position basis, the momentum operator acts as the generator of translations: $\hat{\mathbf{p}} = -i\hbar\nabla_\mathbf{r}$.
-    
-    \item \textbf{Free Hamiltonian $\hat{H}$:}
-    Its eigenstates $|E\rangle$ coincide (with degeneracy) with the momentum states:
-    \begin{equation}
-        \hat{H}|\mathbf{p}\rangle = \frac{p^2}{2m}|\mathbf{p}\rangle.
-    \end{equation}
-    
-    \item \textbf{Inner Products (Transformation Kernels):}
-    \begin{equation}
-        \langle \mathbf{r} | \mathbf{p} \rangle = \frac{1}{(2\pi\hbar)^{3/2}}e^{i\mathbf{p}\cdot\mathbf{r}/\hbar}, \quad \langle \mathbf{p} | E \rangle \propto \delta(E - p^2/2m).
-    \end{equation}
-\end{itemize}
-
-\subsection{Symmetry Operators and Ehrenfest's Theorem}
-
-The following unitary operators generate the continuous transformations relevant to the system.
-
-\subsubsection{Translation and Evolution Operators}
-
-\begin{itemize}
-    \item \textbf{Spatial Translation:} Generated by the momentum operator $\hat{\mathbf{p}}$. For a finite vector $\mathbf{a}$ and an infinitesimal one $d\mathbf{a}$:
-    \begin{equation}
-        \hat{T}(\mathbf{a}) = \exp\left(-\frac{i}{\hbar}\mathbf{a}\cdot\hat{\mathbf{p}}\right), \quad \hat{T}(d\mathbf{a}) \approx \hat{\mathbb{I}} - \frac{i}{\hbar}d\mathbf{a}\cdot\hat{\mathbf{p}}.
-    \end{equation}
-    
-    \item \textbf{Time Evolution:} Generated by the Hamiltonian $\hat{H}$.
-    \begin{equation}
-        \hat{U}(t) = \exp\left(-\frac{i}{\hbar}\hat{H}t\right), \quad \hat{U}(dt) \approx \hat{\mathbb{I}} - \frac{i}{\hbar}\hat{H}dt.
-    \end{equation}
-    
-    \item \textbf{Momentum Space Translation:} Analogous to spatial translation, the position operator $\hat{\mathbf{r}}$ generates displacements in momentum space (boosts). For a momentum displacement $\mathbf{q}$:
-    \begin{equation}
-        \hat{T}_{\mathbf{p}}(\mathbf{q}) = \exp\left(\frac{i}{\hbar}\mathbf{q}\cdot\hat{\mathbf{r}}\right).
-    \end{equation}
-    The action of these operators defines the change of basis between the Hilbert spaces associated with the observables.
-\end{itemize}
-
-\subsubsection{Correspondence Principle and Ehrenfest's Theorem}
-
-The connection to classical mechanics is formally established via Ehrenfest's Theorem, which governs the time evolution of expectation values. For an operator $\hat{A}$ with no explicit time dependence:
-\begin{equation}
-    \frac{d}{dt}\langle \hat{A} \rangle = \frac{1}{i\hbar}\langle [\hat{A}, \hat{H}] \rangle.
+  \braket{\mathbf{r}}{\mathbf{p}} = \frac{1}{(2\pi\hbar)^{3/2}} \exp\left(
+  \frac{i}{\hbar} \mathbf{p}\cdot\mathbf{r} \right).
 \end{equation}
 
-Applied to the free particle ($\hat{H} = \hat{p}^2/2m$):
+\subsubsection{Wavefunction Representations}
+The projections of the state vector yield the coordinate and momentum space
+wavefunctions:
 \begin{itemize}
-    \item \textbf{Position:} $\frac{d}{dt}\langle \hat{\mathbf{r}} \rangle = \frac{1}{m}\langle \hat{\mathbf{p}} \rangle$ (Velocity-Momentum relation).
-    \item \textbf{Momentum:} $\frac{d}{dt}\langle \hat{\mathbf{p}} \rangle = 0$ (Conservation of linear momentum due to translational invariance).
+  \item \textbf{Coordinate Space:} $\psi(\mathbf{r}, t) \equiv
+    \braket{\mathbf{r}}{\psi(t)}$. The momentum operator acts as the generator
+    of spatial translations:
+    \begin{equation}
+      \bra{\mathbf{r}}\hat{\mathbf{p}}\ket{\psi} = -i\hbar \nabla
+      \psi(\mathbf{r}).
+    \end{equation}
+  \item \textbf{Momentum Space:} $\tilde{\psi}(\mathbf{p}, t) \equiv
+    \braket{\mathbf{p}}{\psi(t)}$. Since $\hat{H}$ is diagonal in this basis,
+    the time evolution is strictly a phase modulation:
+    \begin{equation}
+      \tilde{\psi}(\mathbf{p}, t) = \exp\left( -\frac{i}{\hbar}
+      \frac{p^2}{2m} t \right) \tilde{\psi}(\mathbf{p}, 0).
+    \end{equation}
 \end{itemize}
-These results ensure that wave packets follow classical trajectories in the macroscopic limit, satisfying the correspondence principle.
+
+\subsection{Spectral Decomposition and Density of States}
+
+For the free particle, the energy $E$ is degenerate. The transition from
+momentum integration to energy integration requires the spectral density
+function. Using the dispersion relation $E_p = p^2/2m$:
+\begin{equation}
+  \int \mathrm{d}^3p = \int_0^\infty p^2 \mathrm{d}p \int_{S^2}
+  \mathrm{d}\Omega.
+\end{equation}
+Changing variables from $p$ to $E$ introduces the density of states factor via
+the identity:
+\begin{equation}
+  \mathrm{d}p = \frac{\mathrm{d}p}{\mathrm{d}E} \mathrm{d}E = \frac{m}{p}
+  \mathrm{d}E = \sqrt{\frac{m}{2E}} \mathrm{d}E.
+\end{equation}
+This transformation is critical for isolating the radial (energy) dependence
+from the angular dependence in the final construction.
+
+\subsection{Symmetry Generators}
+
+The continuous symmetries of the system are generated by Hermitian operators,
+implying specific conservation laws via Ehrenfest's Theorem,
+$\frac{\mathrm{d}}{\mathrm{d}t}\braket{\hat{A}} = \frac{1}{i\hbar}\braket{[\hat{A},
+\hat{H}]}$.
+
+\begin{enumerate}
+  \item \textbf{Spatial Translations:} Generated by $\hat{\mathbf{p}}$. Since
+    $[\hat{\mathbf{p}}, \hat{H}] = 0$, linear momentum is conserved.
+    \begin{equation}
+      \hat{T}(\mathbf{a}) = \exp\left( -\frac{i}{\hbar} \mathbf{a} \cdot
+      \hat{\mathbf{p}} \right).
+    \end{equation}
+  \item \textbf{Galilean Boosts:} Generated by $\hat{\mathbf{r}}$ (up to mass
+    scaling). This shifts the momentum spectrum:
+    \begin{equation}
+      \hat{T}_{\mathbf{p}}(\mathbf{q}) = \exp\left( \frac{i}{\hbar}
+      \mathbf{q} \cdot \hat{\mathbf{r}} \right).
+    \end{equation}
+\end{enumerate}
