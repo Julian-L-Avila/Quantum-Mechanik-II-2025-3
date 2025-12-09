@@ -1,98 +1,134 @@
-\section{Definition of the Angular Momentum Operator}
+\section{The Angular Momentum Operator}
 
-In classical mechanics, the angular momentum of a particle with position vector $\mathbf{r}$ and linear momentum $\mathbf{p}$ is defined as the vector product $\mathbf{L}_{cl} = \mathbf{r} \times \mathbf{p}$. To transition to quantum mechanics, we apply the correspondence principle, promoting the dynamical variables to linear operators acting on the Hilbert space: $\mathbf{r} \to \hat{\mathbf{r}}$ and $\mathbf{p} \to \hat{\mathbf{p}}$.
+In classical mechanics, the angular momentum of a particle with position vector
+$\mathbf{r}$ and linear momentum $\mathbf{p}$ is defined as the vector product
+$\mathbf{L}_{cl} = \mathbf{r} \times \mathbf{p}$. To transition to quantum
+mechanics, we apply the correspondence principle, promoting the dynamical
+variables to linear operators acting on the Hilbert space: $\mathbf{r} \to
+\hat{\mathbf{r}}$ and $\mathbf{p} \to \hat{\mathbf{p}}$.
 
-However, since $\hat{\mathbf{r}}$ and $\hat{\mathbf{p}}$ are non-commuting operators, the definition of the vector product must be handled with algebraic rigor to ensure the resulting operator is Hermitian (measurable) and unambiguous.
+However, since $\hat{\mathbf{r}}$ and $\hat{\mathbf{p}}$ are non-commuting
+operators, the definition of the vector product must be handled with algebraic
+rigor to ensure the resulting operator is Hermitian (measurable) and
+unambiguous.
 
-\subsection{The Cross Product of Vector Operators}
+\subsection{Standard Vector Definition}
 
-Let $\hat{\mathbf{A}}$ and $\hat{\mathbf{B}}$ be two vector operators in $\mathbb{R}^3$. The $i$-th component of their cross product, $(\hat{\mathbf{A}} \times \hat{\mathbf{B}})_i$, is defined using the Levi-Civita completely antisymmetric tensor $\epsilon_{ijk}$, where indices $i, j, k$ run over $\{1, 2, 3\}$ (identifying $1\to x, 2\to y, 3\to z$):
-
+In 3D Euclidean space, we define the operator $\hat{\mathbf{L}}$ as the vector
+product of the position and momentum operators:
 \begin{equation}
-    (\hat{\mathbf{A}} \times \hat{\mathbf{B}})_i = \sum_{j,k} \epsilon_{ijk} \hat{A}_j \hat{B}_k.
+  \hat{\mathbf{L}} \equiv \hat{\mathbf{r}} \times \hat{\mathbf{p}} = -i\hbar
+  (\mathbf{r} \times \nabla).
 \end{equation}
+Using the Levi-Civita pseudotensor $\epsilon_{ijk}$, the components are defined
+as:
+\begin{equation} \label{eq:L_tensor_def}
+  \hat{L}_i = \epsilon_{ijk} \hat{x}_j \hat{p}_k,
+\end{equation}
+where Einstein summation is implied. This definition ensures that
+$\hat{\mathbf{L}}$ acts as a vector operator under spatial rotations.
 
-Applying this definition to the position and momentum operators, we define the orbital angular momentum operator $\hat{\mathbf{L}}$ as:
+\subsection{Geometric Algebra Perspective (Clifford Algebra)}
 
+To provide a coordinate-independent definition valid in any dimension, we employ
+the Geometric Product within the algebra $\mathcal{C}\ell_{3,0}(\mathbb{R})$.
+The product of the vector operators $\hat{\mathbf{r}}$ and $\hat{\mathbf{p}}$
+decomposes into a scalar (symmetric) and bivector (antisymmetric) part:
 \begin{equation}
-    \hat{\mathbf{L}} \equiv \hat{\mathbf{r}} \times \hat{\mathbf{p}}.
+  \hat{\mathbf{r}}\hat{\mathbf{p}} = \hat{\mathbf{r}} \cdot \hat{\mathbf{p}} +
+  \hat{\mathbf{r}} \wedge \hat{\mathbf{p}}.
 \end{equation}
-
-In component form, this definition implies:
-\begin{equation} \label{eq:L_def_tensor}
-    \hat{L}_i = \epsilon_{ijk} \hat{x}_j \hat{p}_k,
-\end{equation}
-where we have adopted the Einstein summation convention for repeated indices $j$ and $k$.
-
-\subsection{Non-Commutativity and Hermiticity}
-
-A fundamental postulate of quantum mechanics is that physical observables are represented by Hermitian operators ($ \hat{\mathcal{O}} = \hat{\mathcal{O}}^\dagger $). In general, the product of two Hermitian operators $\hat{A}\hat{B}$ is not Hermitian unless $[\hat{A}, \hat{B}] = 0$. Since position and momentum do not commute ($[\hat{x}_j, \hat{p}_k] = i\hbar \delta_{jk}$), we must verify that the definition in Eq. (\ref{eq:L_def_tensor}) yields a Hermitian operator without the need for manual symmetrization.
-
-We take the adjoint of the $i$-th component:
+The physically significant quantity is the bivector $\hat{\mathcal{L}}$,
+representing the oriented plane of rotation:
 \begin{equation}
-    \hat{L}_i^\dagger = (\epsilon_{ijk} \hat{x}_j \hat{p}_k)^\dagger.
+  \hat{\mathcal{L}} \equiv \hat{\mathbf{r}} \wedge \hat{\mathbf{p}} =
+  \frac{1}{2}(\hat{\mathbf{r}}\hat{\mathbf{p}} -
+  \hat{\mathbf{p}}\hat{\mathbf{r}}).
 \end{equation}
-Using the property $(\hat{A}\hat{B})^\dagger = \hat{B}^\dagger \hat{A}^\dagger$ and the fact that $\hat{\mathbf{x}}$ and $\hat{\mathbf{p}}$ are Hermitian ($\hat{x}_j^\dagger = \hat{x}_j$, $\hat{p}_k^\dagger = \hat{p}_k$) and $\epsilon_{ijk}$ is real:
+The standard vector operator $\hat{\mathbf{L}}$ is recovered as the Hodge
+dual of this bivector. Using the unit pseudoscalar $I = \hat{e}_1 \hat{e}_2
+\hat{e}_3$:
 \begin{equation}
-    \hat{L}_i^\dagger = \epsilon_{ijk} \hat{p}_k^\dagger \hat{x}_j^\dagger = \epsilon_{ijk} \hat{p}_k \hat{x}_j.
+  \hat{\mathbf{L}} = -i I \hat{\mathcal{L}}.
 \end{equation}
-Notice the order of operators has reversed. To restore the original order, we use the canonical commutation relation:
+This formulation reveals that spin and orbital angular momentum share the same
+bivector structure, differing only in the vector space they act upon.
+
+\subsection{Hermiticity and Observability}
+
+For $\hat{\mathbf{L}}$ to represent a physical observable, it must be Hermitian.
+We examine the adjoint of the component definition (\ref{eq:L_tensor_def}):
 \begin{equation}
-    [\hat{x}_j, \hat{p}_k] = i\hbar \delta_{jk} \implies \hat{p}_k \hat{x}_j = \hat{x}_j \hat{p}_k - i\hbar \delta_{jk}.
+  \hat{L}_i^\dagger = (\epsilon_{ijk} \hat{x}_j \hat{p}_k)^\dagger.
+\end{equation}
+Using the property $(\hat{A}\hat{B})^\dagger = \hat{B}^\dagger \hat{A}^\dagger$
+and the fact that $\hat{\mathbf{x}}$ and $\hat{\mathbf{p}}$ are Hermitian
+($\hat{x}_j^\dagger = \hat{x}_j$, $\hat{p}_k^\dagger = \hat{p}_k$) and
+$\epsilon_{ijk}$ is real:
+\begin{equation}
+  \hat{L}_i^\dagger = \epsilon_{ijk} \hat{p}_k^\dagger \hat{x}_j^\dagger =
+  \epsilon_{ijk} \hat{p}_k \hat{x}_j.
+\end{equation}
+The non-commutativity of $\hat{\mathbf{x}}$ and $\hat{\mathbf{p}}$ is resolved
+by the canonical commutation relation $[\hat{x}_j, \hat{p}_k] = i\hbar
+\delta_{jk}$:
+\begin{equation}
+  [\hat{x}_j, \hat{p}_k] = i\hbar \delta_{jk} \implies \hat{p}_k \hat{x}_j =
+  \hat{x}_j \hat{p}_k - i\hbar \delta_{jk}.
 \end{equation}
 Substituting this back into the expression for $\hat{L}_i^\dagger$:
 \begin{align}
-    \hat{L}_i^\dagger &= \epsilon_{ijk} (\hat{x}_j \hat{p}_k - i\hbar \delta_{jk}) \\
-    &= \epsilon_{ijk} \hat{x}_j \hat{p}_k - i\hbar \epsilon_{ijk} \delta_{jk}.
+  \hat{L}_i^\dagger &= \epsilon_{ijk} (\hat{x}_j \hat{p}_k - i\hbar \delta_{jk})
+  \nonumber \\
+                    &= \epsilon_{ijk} \hat{x}_j \hat{p}_k - i\hbar \epsilon_{ijk}
+  \delta_{jk}.
 \end{align}
-The second term contains the contraction of the antisymmetric tensor $\epsilon_{ijk}$ with the symmetric Kronecker delta $\delta_{jk}$. Since $\epsilon_{ijk}$ vanishes if any two indices are equal (which $\delta_{jk}$ forces), we have:
+The second term contains the contraction of the antisymmetric tensor
+$\epsilon_{ijk}$ with the symmetric Kronecker delta $\delta_{jk}$. Since
+$\epsilon_{ijk}$ vanishes if any two indices are equal (which $\delta_{jk}$
+forces), we have:
 \begin{equation}
-    \epsilon_{ijk} \delta_{jk} = \epsilon_{ijj} = 0.
+  \epsilon_{ijk} \delta_{jk} = \epsilon_{ijj} = 0.
 \end{equation}
 Therefore:
 \begin{equation}
-    \hat{L}_i^\dagger = \epsilon_{ijk} \hat{x}_j \hat{p}_k = \hat{L}_i.
+  \hat{L}_i^\dagger = \epsilon_{ijk} \hat{x}_j \hat{p}_k = \hat{L}_i.
 \end{equation}
-
-\textbf{Conclusion:} The operator $\hat{\mathbf{L}} = \hat{\mathbf{r}} \times \hat{\mathbf{p}}$ is inherently Hermitian. The specific non-commutativity of $\hat{\mathbf{r}}$ and $\hat{\mathbf{p}}$ does not affect the hermiticity of $\hat{\mathbf{L}}$ because the cross product couples orthogonal components (e.g., $x$ and $p_y$) which mutually commute ($[\hat{x}, \hat{p}_y] = 0$).
+The operator is inherently Hermitian, and no symmetrization (e.g.,
+$\frac{1}{2}(\mathbf{r}\times\mathbf{p} - \mathbf{p}\times\mathbf{r})$) is
+required because the cross product couples only commuting orthogonal components
+(e.g., $x$ and $p_y$).
 
 \subsection{Explicit Component Form}
 
-Expanding the tensor notation ($\hat{L}_x$ corresponds to $i=1$, etc.), we obtain the explicit forms used in standard calculations:
+Expanding the tensor notation, we obtain the explicit forms used in standard
+calculations:
 
 \begin{align}
-    \hat{L}_x &= \hat{y}\hat{p}_z - \hat{z}\hat{p}_y, \\
-    \hat{L}_y &= \hat{z}\hat{p}_x - \hat{x}\hat{p}_z, \\
-    \hat{L}_z &= \hat{x}\hat{p}_y - \hat{y}\hat{p}_x.
+  \hat{L}_x &= \hat{y}\hat{p}_z - \hat{z}\hat{p}_y, \\
+  \hat{L}_y &= \hat{z}\hat{p}_x - \hat{x}\hat{p}_z, \\
+  \hat{L}_z &= \hat{x}\hat{p}_y - \hat{y}\hat{p}_x.
 \end{align}
 
-These expressions confirm that the quantum angular momentum operator preserves the functional form of its classical counterpart, provided the order of operators is maintained as $\mathbf{r} \times \mathbf{p}$.
+These expressions confirm that the quantum angular momentum operator preserves
+the functional form of its classical counterpart, provided the order of
+operators is maintained as $\mathbf{r} \times \mathbf{p}$.
 
-\subsection{Geometric Algebra Formulation: Derivation from the Fundamental Product}
+\subsection{The Lie Algebra \texorpdfstring{$\mathfrak{so}(3)$}{so(3)}}
 
-A more profound insight into the nature of angular momentum can be obtained using Geometric Algebra (Clifford Algebra $\mathcal{Cl}_{3,0}$). In this framework, the fundamental operation is the \textbf{Geometric Product}, denoted by the juxtaposition of vectors $\hat{\mathbf{r}}\hat{\mathbf{p}}$.
-
-For any two vectors, the geometric product decomposes into a symmetric scalar part (Grade 0) and an antisymmetric bivector part (Grade 2):
+The fundamental commutation relations for the components of $\hat{\mathbf{L}}$
+define the structure of the rotation group. Computing $[\hat{L}_x, \hat{L}_y]$:
+\begin{align}
+  [\hat{L}_x, \hat{L}_y] &= [y p_z - z p_y, z p_x - x p_z] \nonumber \\
+                         &= [y p_z, z p_x] + [-z p_y, -x p_z] \quad
+                         (\text{other terms commute}) \nonumber \\
+                         &= y p_x [p_z, z] + x p_y [z, p_z] \nonumber \\
+                         &= y p_x (-i\hbar) + x p_y (i\hbar) \nonumber \\
+                         &= i\hbar (x p_y - y p_x) = i\hbar \hat{L}_z.
+\end{align}
+Generalizing this result yields the Lie algebra of $\mathfrak{so}(3)$:
 \begin{equation}
-    \hat{\mathbf{r}}\hat{\mathbf{p}} = \hat{\mathbf{r}} \cdot \hat{\mathbf{p}} + \hat{\mathbf{r}} \wedge \hat{\mathbf{p}}.
+  [\hat{L}_i, \hat{L}_j] = i\hbar \epsilon_{ijk} \hat{L}_k.
 \end{equation}
-
-Here, $\hat{\mathbf{r}} \cdot \hat{\mathbf{p}}$ is the standard scalar product (related to dilation), and $\hat{\mathbf{r}} \wedge \hat{\mathbf{p}}$ is the \textbf{exterior product} (wedge product).
-
-\subsubsection{Isolating the Bivector of Rotation}
-The angular momentum is physically defined as the generator of rotations. In Geometric Algebra, rotations are generated by bivectors. To isolate this physical quantity from the fundamental geometric product, we employ the \textbf{grade projection operator} $\langle \dots \rangle_k$:
-
-\begin{equation}
-    \hat{\mathcal{L}} \equiv \langle \hat{\mathbf{r}}\hat{\mathbf{p}} \rangle_2 = \hat{\mathbf{r}} \wedge \hat{\mathbf{p}}.
-\end{equation}
-
-Unlike the vector cross product, which is limited to three dimensions, the bivector $\hat{\mathcal{L}}$ represents the \textit{oriented plane} of rotation and is valid in any dimension.
-
-\subsubsection{Relation to the Cross Product (Hodge Dual)}
-The assignment requires the definition $\hat{\mathbf{L}} = \hat{\mathbf{r}} \times \hat{\mathbf{p}}$. This vector $\hat{\mathbf{L}}$ is merely the \textbf{Hodge dual} of the fundamental bivector $\hat{\mathcal{L}}$. In 3D Euclidean space, the unit pseudoscalar $I = \hat{e}_1 \hat{e}_2 \hat{e}_3$ maps bivectors to vectors via the duality relation:
-
-\begin{equation}
-    \hat{\mathbf{L}} = -i I (\hat{\mathbf{r}} \wedge \hat{\mathbf{p}}).
-\end{equation}
-
-Thus, the standard operator $\hat{\mathbf{L}}$ is the vector normal to the bivector plane $\hat{\mathcal{L}}$. While both definitions are mathematically consistent in 3D, the geometric product formulation $\hat{\mathbf{r}}\hat{\mathbf{p}}$ reveals that angular momentum arises naturally as the antisymmetric component of the interaction between position and momentum.
+This closure relation confirms that $\hat{\mathbf{L}}$ generates the group of
+spatial rotations $\mathrm{SO}(3)$.
