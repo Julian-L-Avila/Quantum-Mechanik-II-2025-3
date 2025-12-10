@@ -1,0 +1,53 @@
+\section{Methods}
+\label{sec:Methods}
+
+We adopt the formalism of relativistic quantum field theory on a flat,
+non-interacting Minkowski spacetime. The background geometry is defined by the
+orthonormal basis $\{ \gamma^\mu \}$ satisfying the Clifford algebra
+$\mathcal{C}\ell_{1,3}(\mathbb{C})$, given by the anticommutation relation
+\begin{equation}
+	\{ \gamma^\mu, \gamma^\nu \} \equiv \gamma^\mu \gamma^\nu + \gamma^\nu
+	\gamma^\mu = 2 \eta^{\mu \nu},
+\end{equation}
+where $\eta^{\mu \nu}$ is the Minkowski metric. Consequently, $(\gamma^0)^2 = 1$
+and $(\gamma^k)^2 = -1$, where Greek indices $\mu = 0, \dots, 3$ denote
+spacetime coordinates and Latin indices $k = 1, \dots, 3$ denote spatial
+components.
+
+The chiral structure is determined by the pseudoscalar $\gamma^5 \equiv i
+\gamma^0 \gamma^1 \gamma^2 \gamma^3$, where $i$ is the imaginary unit. Since
+the spacetime dimension is even, $\gamma^5$ anticommutes with all vector
+generators $\gamma^\mu$ and squares to the identity. This permits the
+construction of the orthogonal chiral projectors
+\begin{equation}
+	P_L = \frac{1}{2}(1 - \gamma^5), \quad P_R = \frac{1}{2} (1 + \gamma^5),
+\end{equation}
+satisfying $P_L + P_R = 1$ and $P_L P_R = 0$. A spinor field $\psi$ therefore
+decomposes as $\psi = P_L \psi + P_R \psi \equiv \psi_L + \psi_R$.
+
+\subsection{Hamiltonian Formulation of the Chiral Dirac Equation}
+
+Following the formulation of Watson and Musielak \cite{watson2020a,
+watson2021a, Watson2022}, we consider the Chiral Dirac Equation (CDE) for a
+spinor field $\psi$:
+\begin{equation}
+	(i \gamma^\mu \partial_\mu - m e^{- i \alpha \gamma^5}) \psi = 0.
+	\label{eq:CDE}
+\end{equation}
+The corresponding effective Lagrangian density is given by
+\begin{equation}
+	\mathcal{L}_{\text{eff}} = \bar{\psi} (i \gamma^\mu \partial_\mu - m
+	e^{- i \alpha \gamma^5}) \psi,
+\end{equation}
+where $\bar{\psi} = \psi^\dagger \gamma^0$ is the Dirac adjoint. We derive the
+Hamiltonian density $\mathcal{H}$ via the Legendre transform, using the
+canonical momentum $\pi = \partial \mathcal{L}_{\text{eff}} / \partial
+\dot{\psi}$:
+\begin{equation}
+	\mathcal{H} = \pi \dot{\psi} - \mathcal{L}_{\text{eff}}.
+\end{equation}
+Explicit calculation yields:
+\begin{equation}
+	\mathcal{H} = \psi^\dagger (- i \gamma^{0k} \partial_k + \gamma^0 m e^{-i \alpha
+	\gamma^5}) \psi.
+\end{equation}
