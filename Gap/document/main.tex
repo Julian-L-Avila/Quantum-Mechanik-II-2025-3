@@ -1,0 +1,91 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs,bookmark}
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{siunitx}
+\usepackage{derivative}
+\usepackage{braket}
+\usepackage{float}
+
+\renewcommand{\arraystretch}{1.2}
+\sisetup{group-digits=true,
+  group-separator={\,},
+  separate-uncertainty
+}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={Angular Momentum Representation},
+  pdfauthor={Avila, Herrera, Rodríguez},
+  pdfsubject={Quantum Mechanics II},
+  pdfkeywords={Last Homework}
+}
+\urlstyle{same}
+
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%
+\newtheorem{proposition}[theorem]{Proposition}%
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+
+\begin{document}
+
+\title[The Chiral Dirac Equation Challenges: Hermiticity, Neutrino Mass Formalism, and Extensions to Higher Spin Fields. ]{\textbf{The Chiral Dirac Equation Challenges: Hermiticity, Neutrino Mass Formalism, and Extensions to Higher Spin Fields.}}
+\author[]{\fnm{Julian} \sur{Avila}}
+\author[]{\fnm{Laura} \sur{Herrera}}
+\author[]{\fnm{Sebastian} \sur{Rodríguez}}
+\affil[]{\orgname{Universidad Distrital Francisco José de Caldas}}
+
+\abstract{
+ The Chiral Symmetric Dirac Equation (DECS), derived from the irreducible representations of the Poincaré group, introduces an essential chiral angle ($\alpha$) and an associated pseudoscalar mass term. This work addresses critical theoretical challenges arising from this generalization of the Dirac equation. We begin by formally establishing the physical Hermiticity of the DECS Hamiltonian by demonstrating that the complex mass term $me^{−i2\alpha\gamma^5}$ can be reduced to a purely scalar mass through a global chiral field rotation, which ensures real eigenvalues for the system's energy. Subsequently, we resolve the inherent contradiction of deriving Dirac mass for the left-chiral neutrino field ($\nu L$​) in the absence of a right-chiral component ($\nu R​$). We propose a coherent mass mechanism rooted in the $\Delta L=2$ violation of the Majorana formalism, providing a physically consistent theoretical framework for neutrino mass generation within the DECS context. Finally, we explore the conceptual role of the chiral degree of freedom in relativistic wave equations for fields with higher spin (e.g., Proca and Rarita-Schwinger), thereby laying the groundwork for future extensions of the chiral formalism beyond spin 1/2. Our findings affirm the consistency of the Chiral Dirac Equation and contribute to a more general understanding of chiral structure in Quantum Field Theory.}
+
+\keywords{
+  Chiral Symmetry, Dirac Equation, Majorana Mass, Neutrino Mass,
+  Hermiticity, Poincaré Group, Clifford Algebra, Pseudoscalar Mass,
+  Higher Spin Fields, Yukawa Coupling, Spin 1/2.
+}
+
+\maketitle
+
+\input{./sections/introduction.tex }
+
+\input{./sections/hamiltonian.tex}
+
+\input{./sections/majorana.tex}
+
+\input{./sections/higgerspin.tex}
+
+\input{./sections/results.tex}
+
+\input{./sections/conclusion.tex}
+
+
+\bibliography{./references.bib}
+\nocite{*}
+
+\end{document}
