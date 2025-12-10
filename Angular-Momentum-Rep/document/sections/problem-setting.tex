@@ -1,79 +1,81 @@
-
 \section{Problem Setting}
 
-The purpose of this project is to construct a complete and self-contained formulation of the
-angular-momentum representation for a nonrelativistic free particle. 
-The central objective is to solve the time-dependent Schr\"odinger equation (TDSE)
-\[
-i\hbar \frac{\partial}{\partial t}\ket{\psi(t)} 
-= \hat{H} \ket{\psi(t)}, 
-\qquad 
-\hat{H} = \frac{\hat{\mathbf{p}}^{\,2}}{2m},
-\]
-in a basis that diagonalizes simultaneously the free Hamiltonian $\hat{H}$ and the angular-momentum
-operators $\hat{L}^2$ and $\hat{L}_z$.
+We seek a complete formulation of the angular-momentum representation for a
+non-relativistic free particle. The central objective is the diagonalization of
+the Hamiltonian
+\begin{equation}
+  \hat{H} = \frac{\hat{\mathbf{p}}^{\,2}}{2m}
+\end{equation}
+within the basis defined by the Complete Set of Commuting Observables (CSCO):
+$\{ \hat{H}, \hat{L}^2, \hat{L}_z \}$. This corresponds to solving the
+time-dependent Schr\"odinger equation (TDSE) by exploiting the isotropy of free
+space.
 
-\vspace{0.3cm}
-The motivation for this construction is threefold:
+The formulation is motivated by three theoretical necessities:
 \begin{enumerate}
-    \item To reveal the role of rotational symmetry in quantum mechanics through the generators of the group SO(3).
-    \item To establish a clear connection between spatial symmetries and conservation laws.
-    \item To demonstrate how angular-momentum eigenstates provide a natural separation of variables for free-particle dynamics in spherical coordinates.
+  \item \textbf{Symmetry Realization:} To represent the rotation group
+    $\mathrm{SO}(3)$
+  via its generators acting on the Hilbert space of the free particle.
+  \item \textbf{Conservation Laws:} To explicitly link the invariance of
+  $\hat{H}$ under spatial rotations to the conservation of angular momentum.
+  \item \textbf{Separation of Variables:} To derive the natural basis for
+  spherical geometries, generalizing to central potential problems.
 \end{enumerate}
 
 \subsection{Physical Scenario}
 
-We consider a single spinless particle of mass $m$ moving freely in three-dimensional space.
-No external forces act on the system, so the Hamiltonian contains only kinetic energy:
-\[
-\hat{H} = \frac{\hat{\mathbf{p}}^{\,2}}{2m}.
-\]
+Consider a spinless particle of mass $m$ in Euclidean space $\mathbb{R}^3$. The
+absence of external potentials implies the Hamiltonian is purely kinetic. The
+isotropy of the system ensures that the generator of rotations, the angular
+momentum vector operator $\hat{\mathbf{L}}$, commutes with the Hamiltonian:
+\begin{equation}
+  [\hat{H}, \hat{\mathbf{L}}] = 0.
+\end{equation}
+Consequently, stationary states may be labeled simultaneously by energy ($E_k$),
+total angular momentum ($\ell$), and its projection ($m$), i.e., $\hat{H}$,
+$\hat{L}^2$ and $\hat{L}_z$ admit simultaneous eigenstates.
 
-Because the dynamics is invariant under translations and rotations, the corresponding generators
-$\hat{\mathbf{p}}$ and $\hat{\mathbf{L}}$ play a central role. In particular:
-\[
-[\hat{H}, \hat{\mathbf{L}}] = 0,
-\]
-which implies that $\hat{H}$, $\hat{L}^2$ and $\hat{L}_z$ admit simultaneous eigenstates.
+\subsection{Construction Objectives}
 
-\subsection{Goal of the Construction}
-
-We aim to:
+The project proceeds through the following formal steps:
 \begin{itemize}
-    \item Construct the operators $\hat{\mathbf{L}} = \hat{\mathbf{r}} \times \hat{\mathbf{p}}$ from the canonical commutation relations.
-    \item Express $\hat{\mathbf{L}}$ in both Cartesian and spherical coordinates.
-    \item Establish the commutation relations that define the Lie algebra of SO(3):
-    \[
-    [\hat{L}_i, \hat{L}_j] = i\hbar\, \epsilon_{ijk}\hat{L}_k.
-    \]
-    \item Solve the eigenvalue problems for $\hat{L}_z$ and $\hat{L}^2$, obtaining the spherical harmonics $Y_{\ell m}(\theta, \phi)$.
-    \item Expand the free-particle wavefunction in the basis $\ket{k,\ell,m}$.
-    \item Solve the TDSE in this basis and reconstruct the wavefunction in position, momentum, and energy representations.
+  \item \textbf{Algebraic Definition:} Derivation of the operator
+  $\hat{\mathbf{L}} = \hat{\mathbf{r}} \times \hat{\mathbf{p}}$ utilizing
+  fundamental canonical commutation relations (CCR).
+  \item \textbf{Lie Algebra $\mathfrak{so}(3)$:} Verification of the closure
+  relation $[\hat{L}_i, \hat{L}_j] = i\hbar\, \epsilon_{ijk}\hat{L}_k$,
+  establishing the connection to the structure constants of the rotation group.
+  \item \textbf{Spectral Analysis:} Determination of the spectrum for
+  $\hat{L}^2$ and $\hat{L}_z$, yielding the spherical harmonics
+  $Y_{\ell m}(\theta, \phi)$ as coordinate representations of the angular
+  eigenbasis.
+  \item \textbf{Basis Transformation:} Construction of the unitary
+  transformation connecting the linear momentum basis $\ket{\mathbf{k}}$ to the
+  spherical basis $\ket{k,\ell,m}$.
 \end{itemize}
 
-\subsection{Mathematical Background Assumed}
+\subsection{Mathematical Prerequisites}
 
-The development assumes familiarity with:
+The derivation assumes fluency in:
 \begin{itemize}
-    \item Hilbert-space formalism: kets, operators, inner products.
-    \item Canonical commutators $[\hat{x}_i, \hat{p}_j]=i\hbar\,\delta_{ij}$.
-    \item Fourier transforms and the relation between position and momentum representations.
-    \item Basic knowledge of spherical coordinates and special functions (Legendre polynomials).
+  \item \textbf{Abstract Formalism:} Hilbert space $\mathcal{H}$, Dirac
+  notation, and spectral theory of Hermitian operators.
+  \item \textbf{Symplectic Structure:} Canonical commutators
+  $[\hat{x}_i, \hat{p}_j]=i\hbar\,\delta_{ij}$.
+  \item \textbf{Integral Transforms:} Fourier analysis relating position
+  ($\mathbf{r}$) and momentum ($\mathbf{p}$) representations.
+  \item \textbf{Special Functions:} Properties of Spherical Harmonics and
+  Spherical Bessel functions.
 \end{itemize}
 
-\subsection{Expected Outcome}
+\subsection{Formal Outcome}
 
-The final result of this construction is the full decomposition
-\[
-\ket{\psi(t)} 
-= \sum_{\ell,m}\int_0^\infty \!\! dk\, k^2\,
-\psi_{k\ell m}(0)\,
-e^{-i\hbar k^2 t/(2m)}
-\ket{k,\ell,m},
-\]
-along with the corresponding integral transforms
-that yield the wavefunction in position-, momentum-, and energy-space representations.
-This framework encapsulates the full rotational structure of the free particle and sets the stage
-for generalizations to interacting systems, spin, and relativistic dynamics.
-
-
+The construction culminates in the general solution to the TDSE, expressed as a
+superposition of spherical waves:
+\begin{equation}
+  \ket{\psi(t)} = \sum_{\ell=0}^{\infty} \sum_{m=-\ell}^{\ell} \int_0^\infty
+  \mathrm{d}k\, k^2\, \psi_{k\ell m}(0)\, e^{-i \frac{\hbar k^2}{2m} t}
+  \ket{k, \ell, m}.
+\end{equation}
+This expansion connects the abstract eigenkets to the coordinate representation
+via the spherical Bessel transform.
