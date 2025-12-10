@@ -1,0 +1,106 @@
+\section{Eigenvalue Problem of \texorpdfstring{$\hat{L}^2$}{L²} and
+\texorpdfstring{$\hat{L}_z$}{L\_z}}
+
+The commutation $[\hat{L}^2, \hat{L}_z] = 0$ implies the existence of a common
+eigenbasis for the Hilbert space of functions on the unit sphere $L^2(S^2)$. We
+seek the simultaneous eigenfunctions $Y(\theta, \phi)$ satisfying:
+\begin{align}
+  \hat{L}_z Y(\theta, \phi) &= \lambda Y(\theta, \phi), \\
+  \hat{L}^2 Y(\theta, \phi) &= \mu Y(\theta, \phi).
+\end{align}
+
+\subsection{Spectrum of \texorpdfstring{$\hat{L}_z$}{L\_z}: Azimuthal Quantization}
+
+The operator $\hat{L}_z = -i\hbar \partial_\phi$ depends solely on the azimuthal
+angle. Separation of variables $Y(\theta, \phi) = f(\theta)\Phi(\phi)$ yields
+the differential equation:
+\begin{equation}
+  \frac{d\Phi}{d\phi} = \frac{i\lambda}{\hbar} \Phi(\phi).
+\end{equation}
+The general solution is the complex exponential $\Phi(\phi) = A
+e^{i(\lambda/\hbar)\phi}$.
+
+\subsubsection{Topological Constraint}
+The domain of $\phi$ is the circle $S^1$. For the wavefunction to be
+single-valued (a necessary condition for the probability density to be
+physically well-defined), it must satisfy periodic boundary conditions:
+\begin{equation}
+  \Phi(\phi + 2\pi) = \Phi(\phi) \implies e^{i(\lambda/\hbar)2\pi} = 1.
+\end{equation}
+This condition restricts the spectrum of $\hat{L}_z$ to discrete values:
+\begin{equation}
+  \lambda_m = m\hbar, \quad m \in \mathbb{Z}.
+\end{equation}
+Thus, the magnetic quantum number $m$ arises from the rotational symmetry of the
+system and the topology of the configuration space.
+
+\subsection{Spectrum of \texorpdfstring{$\hat{L}^2$}{L²}: Polar
+Quantization}
+
+Using the eigenvalue $\lambda_m$ and the spherical representation of
+$\hat{L}^2$, the second eigenvalue equation becomes:
+\begin{equation}
+  -\hbar^2 \left[ \frac{1}{\sin\theta} \partial_\theta (\sin\theta
+  \partial_\theta) - \frac{m^2}{\sin^2\theta} \right] f(\theta) = \mu f(\theta).
+\end{equation}
+Letting $\mu = \hbar^2 \nu$, this simplifies to the generalized Legendre
+equation.
+
+\subsubsection{Transformation to the Legendre Equation}
+Introducing the variable $x = \cos\theta$ (mapping $\theta \in [0, \pi] \to x
+\in [-1, 1]$), the equation transforms to:
+\begin{equation} \label{eq:legendre_diff}
+  \frac{d}{dx} \left[ (1-x^2) \frac{df}{dx} \right] + \left( \nu -
+  \frac{m^2}{1-x^2} \right) f(x) = 0.
+\end{equation}
+
+\subsubsection{Regularity Condition}
+The differential equation (\ref{eq:legendre_diff}) has regular singular points
+at the poles $x = \pm 1$. A Frobenius series analysis reveals that the general
+solution diverges logarithmically at these boundaries unless the series
+terminates. The condition for termination (and thus square-integrability) is
+that the eigenvalue parameter $\nu$ must take the form:
+\begin{equation}
+  \nu = \ell(\ell+1), \quad \ell \in \mathbb{Z}_{\ge 0}.
+\end{equation}
+This quantizes the magnitude of angular momentum:
+\begin{equation}
+  \mu_\ell = \hbar^2 \ell(\ell+1).
+\end{equation}
+
+\subsection{The Spherical Harmonics \texorpdfstring{$Y_{\ell m}$}{Ylm}}
+
+The non-singular solutions to the angular equation are the Associated Legendre
+Polynomials $P_\ell^m(x)$.
+\begin{equation}
+  Y_{\ell m}(\theta, \phi) = (-1)^m \sqrt{\frac{2\ell+1}{4\pi}
+  \frac{(\ell-m)!}{(\ell+m)!}} P_\ell^m(\cos\theta) e^{im\phi}.
+\end{equation}
+The phase factor $(-1)^m$ is the Condon-Shortley phase convention.
+
+\subsubsection{Constraints on Quantum Numbers}
+The structure of the solution space imposes the constraint $|m| \le \ell$. This
+can be understood via the Rodrigues formula for the polynomials:
+\begin{equation}
+  P_\ell^m(x) \propto (1-x^2)^{m/2} \frac{d^{\ell+m}}{dx^{\ell+m}}
+  (x^2-1)^\ell.
+\end{equation}
+Since $(x^2-1)^\ell$ is a polynomial of degree $2\ell$, derivatives of order
+higher than $2\ell$ vanish. However, a more subtle constraint arises from the
+definition of the angular momentum ladder operators $\hat{L}_\pm$. If $|m| >
+\ell$, the state would have a norm less than zero, which is impossible in a
+Hilbert space. Thus, for a fixed $\ell$:
+\begin{equation}
+  m \in \{-\ell, -\ell+1, \dots, \ell-1, \ell\}.
+\end{equation}
+
+\subsection{Summary of the Angular Basis}
+
+We have constructed a complete orthonormal basis $\ket{\ell, m}$ for the angular
+variables. The defining actions of the operators are:
+\begin{align}
+  \hat{L}^2 \ket{\ell, m} &= \hbar^2 \ell(\ell+1) \ket{\ell, m}, \\
+  \hat{L}_z \ket{\ell, m} &= \hbar m \ket{\ell, m}.
+\end{align}
+These states provide the necessary separation of variables to solve the radial
+part of the Schrödinger equation for the free particle.
