@@ -1,0 +1,76 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+
+\usepackage{graphicx}
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{textcomp}%
+\usepackage{manyfoot}%
+\usepackage{booktabs,bookmark}
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage{algpseudocode}%
+\usepackage{listings}%
+\usepackage{microtype}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{siunitx}
+\usepackage{derivative}
+\usepackage{braket}
+
+\renewcommand{\arraystretch}{1.2}
+\sisetup{group-digits=true,
+  group-separator={\,},
+  separate-uncertainty
+}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={Pasos Intermedios, Dirac Ecuation 2},
+  pdfauthor={Avila, Herrera, Rodríguez},
+  pdfsubject={Quantum Mechanics II},
+}
+\urlstyle{same}
+
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+\newtheorem{proposition}[theorem]{Proposition}%
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+
+\begin{document}
+
+\title[Pasos Intermedios, Dirac Ecuation 2]{\textbf{Pasos Intermedios, Dirac Ecuation 2}}
+\author[]{\fnm{Julian} \sur{Avila}}
+\author[]{\fnm{Laura} \sur{Herrera}}
+\author[]{\fnm{Sebastian} \sur{Rodríguez}}
+\affil[]{\orgname{Universidad Distrital Francisco José de Caldas}}
+
+\abstract{
+Aqui se desarrollan los pasos intermedios de la forma chevre. 
+}
+\keywords{
+  chevre
+}
+
+\maketitle
+
+\input{./sections/pasos.tex}
+
+
+
+\end{document}

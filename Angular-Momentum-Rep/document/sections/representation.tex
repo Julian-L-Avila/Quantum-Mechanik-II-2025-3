@@ -1,0 +1,189 @@
+\section{Coordinate Representation of Angular Momentum}
+
+We establish the representation of the abstract operator $\hat{\mathbf{L}}$
+acting on the Hilbert space of square-integrable functions $L^2(\mathbb{R}^3)$.
+
+\subsection{Cartesian Representation}
+
+In the position basis $\{\ket{\mathbf{r}}\}$, the momentum operator acts as the
+gradient generator $\hat{\mathbf{p}} \to -i\hbar \nabla$. Consequently, the
+angular momentum operator $\hat{\mathbf{L}} = \hat{\mathbf{r}} \times
+\hat{\mathbf{p}}$ becomes a differential operator:
+\begin{equation}
+  \hat{\mathbf{L}} = -i\hbar (\mathbf{r} \times \nabla).
+\end{equation}
+Expanding the cross product yields the explicit differential forms for the
+generators of rotations about the Cartesian axes:
+\begin{align}
+  \hat{L}_x &= -i\hbar \left( y \partial_z - z \partial_y \right), \nonumber \\
+  \hat{L}_y &= -i\hbar \left( z \partial_x - x \partial_z \right), \nonumber \\
+  \hat{L}_z &= -i\hbar \left( x \partial_y - y \partial_x \right).
+\end{align}
+While valid, these coupled expressions obscure the separation of radial and
+angular dynamics, necessitating a transition to spherical coordinates.
+
+\subsection{Spherical Coordinate Transformation}
+
+We employ the spherical coordinates $(r, \theta, \phi)$ where $x = r \sin\theta
+\cos\phi$, $y = r \sin\theta \sin\phi$, and $z = r \cos\theta$.
+
+\subsubsection{The Generator of Azimuthal Rotations
+(\texorpdfstring{$\hat{L}_z$}{L\_z})}
+The operator $\hat{L}_z$ generates rotations about the $z$-axis (azimuthal
+symmetry). Using the chain rule for the partial derivative $\partial_\phi$:
+\begin{equation}
+  \frac{\partial}{\partial \phi} = \frac{\partial x}{\partial \phi}\partial_x
+  + \frac{\partial y}{\partial \phi}\partial_y + \frac{\partial z}{\partial
+  \phi}\partial_z = -y \partial_x + x \partial_y.
+\end{equation}
+Comparing this to the Cartesian form of $\hat{L}_z$, we identify the identity:
+\begin{equation}
+  \hat{L}_z = -i\hbar \frac{\partial}{\partial \phi}.
+\end{equation}
+This simple form confirms that $\hat{L}_z$ is the canonical conjugate momentum
+to the azimuthal angle $\phi$.
+
+To derive the representation of the total angular momentum squared, we utilize
+the geometric decomposition of the gradient operator. In spherical coordinates,
+$\nabla$ separates into radial and tangential components:
+\begin{equation} \label{eq:grad_decomp}
+  \nabla = \hat{\mathbf{e}}_r \frac{\partial}{\partial r} + \frac{1}{r}
+  \nabla_{\Omega},
+\end{equation}
+where $\nabla_{\Omega}$ denotes the angular gradient on the unit sphere $S^2$.
+Substituting this into the definition $\hat{\mathbf{L}} = -i\hbar (\mathbf{r}
+\times \nabla)$ and noting that $\mathbf{r} = r \hat{\mathbf{e}}_r$:
+\begin{equation}
+  \hat{\mathbf{L}} = -i\hbar \, r \hat{\mathbf{e}}_r \times \left(
+  \hat{\mathbf{e}}_r \partial_r + \frac{1}{r} \nabla_{\Omega} \right).
+\end{equation}
+Since $\hat{\mathbf{e}}_r \times \hat{\mathbf{e}}_r = 0$, the radial derivative
+vanishes, proving that angular momentum is strictly a transverse operator
+(independent of radial motion):
+\begin{equation}
+  \hat{\mathbf{L}} = -i\hbar (\hat{\mathbf{e}}_r \times \nabla_{\Omega}).
+\end{equation}
+
+\subsubsection{The Casimir Invariant \texorpdfstring{$\hat{L}^2$}{L²}}
+
+To derive the squared total angular momentum $\hat{L}^2 = \hat{\mathbf{L}} \cdot
+\hat{\mathbf{L}}$, we avoid the tedious squaring of Cartesian components and
+instead use the vector properties of the Gradient in spherical coordinates.
+
+The gradient operator $\nabla$ is expressed in the spherical orthonormal basis
+$(\hat{\mathbf{e}}_r, \hat{\mathbf{e}}_\theta, \hat{\mathbf{e}}_\phi)$ as:
+\begin{equation}
+  \nabla = \hat{\mathbf{e}}_r \frac{\partial}{\partial r} +
+  \hat{\mathbf{e}}_\theta \frac{1}{r} \frac{\partial}{\partial \theta} +
+  \hat{\mathbf{e}}_\phi \frac{1}{r \sin\theta} \frac{\partial}{\partial \phi}.
+\end{equation}
+
+Using $\mathbf{r} = r \hat{\mathbf{e}}_r$ and calculating the cross product
+$\hat{\mathbf{L}} = -i\hbar (\mathbf{r} \times \nabla)$:
+\begin{equation}
+  \hat{\mathbf{L}} = -i\hbar \left[ r\hat{\mathbf{e}}_r \times \left(
+  \hat{\mathbf{e}}_r \frac{\partial}{\partial r} + \hat{\mathbf{e}}_\theta
+  \frac{1}{r} \frac{\partial}{\partial \theta} + \hat{\mathbf{e}}_\phi
+  \frac{1}{r \sin\theta} \frac{\partial}{\partial \phi} \right) \right].
+\end{equation}
+Using the orthogonality relations $\hat{\mathbf{e}}_r \times \hat{\mathbf{e}}_r
+= 0$, $\hat{\mathbf{e}}_r \times \hat{\mathbf{e}}_\theta =
+\hat{\mathbf{e}}_\phi$, and $\hat{\mathbf{e}}_r \times \hat{\mathbf{e}}_\phi =
+-\hat{\mathbf{e}}_\theta$:
+\begin{align}
+  \hat{\mathbf{L}} &= -i\hbar \left[ \left( r \frac{1}{r} \right)
+  (\hat{\mathbf{e}}_r \times \hat{\mathbf{e}}_\theta) \frac{\partial}{\partial
+  \theta} + \left( r \frac{1}{r \sin\theta} \right) (\hat{\mathbf{e}}_r \times
+  \hat{\mathbf{e}}_\phi) \frac{\partial}{\partial \phi} \right] \nonumber \\
+                   &= -i\hbar \left( \hat{\mathbf{e}}_\phi \frac{\partial}
+  {\partial \theta} - \hat{\mathbf{e}}_\theta \frac{1}{\sin\theta}
+  \frac{\partial}{\partial \phi} \right). \label{eq:L_vector_spherical}
+\end{align}
+
+We apply the vector operator $\hat{\mathbf{L}}$ from
+Eq. (\ref{eq:L_vector_spherical}) to itself. Extreme care must be taken because
+the unit vectors $\hat{\mathbf{e}}_\theta$ and $\hat{\mathbf{e}}_\phi$ depend on
+the coordinates, so derivatives acting on them are non-zero.
+\begin{equation}
+  \hat{L}^2 = (-i\hbar)^2 \left( \hat{\mathbf{e}}_\phi \frac{\partial}{\partial
+  \theta} - \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \frac{\partial}{\partial
+  \phi} \right) \cdot \left( \hat{\mathbf{e}}_\phi \frac{\partial}{\partial
+  \theta} - \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \frac{\partial}{\partial
+  \phi} \right).
+\end{equation}
+Expanding the dot product:
+\begin{equation}
+  \frac{\hat{L}^2}{-\hbar^2} = \underbrace{\hat{\mathbf{e}}_\phi \cdot
+  \frac{\partial}{\partial \theta} \left( \hat{\mathbf{e}}_\phi
+  \frac{\partial}{\partial \theta} \right)}_{\text{Term 1}}
+  - \underbrace{\hat{\mathbf{e}}_\phi \cdot \frac{\partial}{\partial \theta}
+  \left( \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \frac{\partial}{\partial
+  \phi} \right)}_{\text{Term 2}}
+  - \underbrace{\frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \cdot
+  \frac{\partial}{\partial \phi} \left( \hat{\mathbf{e}}_\phi
+  \frac{\partial}{\partial \theta} \right)}_{\text{Term 3}}
+  + \underbrace{\frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \cdot
+  \frac{\partial}{\partial \phi} \left( \frac{\hat{\mathbf{e}}_\theta}
+  {\sin\theta} \frac{\partial}{\partial \phi} \right)}_{\text{Term 4}}.
+\end{equation}
+
+Required Derivatives of Unit Vectors:
+\begin{itemize}
+  \item $\partial_\theta \hat{\mathbf{e}}_\phi = 0$.
+  \item $\partial_\theta \hat{\mathbf{e}}_\theta = -\hat{\mathbf{e}}_r$
+  (Orthogonal to $\hat{\mathbf{e}}_\phi$, so dot product vanishes).
+  \item $\partial_\phi \hat{\mathbf{e}}_\phi = -\sin\theta \hat{\mathbf{e}}_r -
+  \cos\theta \hat{\mathbf{e}}_\theta$.
+  \item $\partial_\phi \hat{\mathbf{e}}_\theta = \cos\theta
+  \hat{\mathbf{e}}_\phi$.
+\end{itemize}
+
+Evaluating Terms:
+
+\textit{Term 1:} Since $\partial_\theta \hat{\mathbf{e}}_\phi = 0$:
+\[ \hat{\mathbf{e}}_\phi \cdot \left( \hat{\mathbf{e}}_\phi
+\frac{\partial^2}{\partial \theta^2} \right) = \frac{\partial^2}{\partial
+\theta^2}. \]
+
+\textit{Term 2:} Contains $\hat{\mathbf{e}}_\phi \cdot \partial_\theta
+\hat{\mathbf{e}}_\theta$. Since $\partial_\theta \hat{\mathbf{e}}_\theta =
+-\hat{\mathbf{e}}_r$, the dot product with $\hat{\mathbf{e}}_\phi$ is 0. Cross
+terms vanish here.
+
+\textit{Term 3:}
+\[ \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \cdot \left( (\partial_\phi
+\hat{\mathbf{e}}_\phi) \frac{\partial}{\partial \theta} + \hat{\mathbf{e}}_\phi
+\frac{\partial^2}{\partial \phi \partial \theta} \right). \]
+Using $\partial_\phi \hat{\mathbf{e}}_\phi = -\sin\theta \hat{\mathbf{e}}_r -
+\cos\theta \hat{\mathbf{e}}_\theta$:
+\[ \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \cdot \left( -\cos\theta
+\hat{\mathbf{e}}_\theta \frac{\partial}{\partial \theta} \right) =
+-\frac{\cos\theta}{\sin\theta} \frac{\partial}{\partial \theta} = -\cot\theta
+\frac{\partial}{\partial \theta}. \]
+
+\textit{Term 4:}
+\[ \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \cdot \frac{\partial}{\partial
+\phi} \left( \frac{\hat{\mathbf{e}}_\theta}{\sin\theta} \frac{\partial}{\partial
+\phi} \right). \]
+The derivative acts on $\hat{\mathbf{e}}_\theta$ and the function. However,
+$\partial_\phi \hat{\mathbf{e}}_\theta = \cos\theta \hat{\mathbf{e}}_\phi$,
+which is orthogonal to the pre-factor $\hat{\mathbf{e}}_\theta$. Thus, only the
+derivative on the scalar function survives:
+\[ \frac{1}{\sin^2\theta} \frac{\partial^2}{\partial \phi^2}. \]
+
+Summing the non-vanishing contributions:
+\begin{equation}
+  \frac{\hat{L}^2}{-\hbar^2} = \frac{\partial^2}{\partial \theta^2} + \cot\theta
+  \frac{\partial}{\partial \theta} + \frac{1}{\sin^2\theta}\frac{\partial^2}
+  {\partial \phi^2}.
+\end{equation}
+Recognizing that $\frac{\partial^2}{\partial \theta^2} + \cot\theta
+\frac{\partial}{\partial \theta} = \frac{1}{\sin\theta}\frac{\partial}{\partial
+\theta}\left(\sin\theta \frac{\partial}{\partial \theta}\right)$, we arrive at
+the final expression:
+
+\begin{equation}
+  \hat{L}^2 = -\hbar^2 \left[ \frac{1}{\sin\theta}\frac{\partial}{\partial
+  \theta}\left(\sin\theta \frac{\partial}{\partial \theta}\right) +
+  \frac{1}{\sin^2\theta}\frac{\partial^2}{\partial \phi^2} \right].
+\end{equation}

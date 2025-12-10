@@ -1,0 +1,94 @@
+\section{Integral Transforms and Representations}
+
+The abstract solution $\ket{\psi(t)}$ acquires physical meaning only when
+projected onto specific basis manifolds. We construct the explicit integral
+transforms that map the angular momentum spectral amplitudes $\psi_{k\ell m}$ to
+the observable representations of position, momentum, and energy.
+
+\subsection{Position Space: The Spherical Bessel Transform}
+
+The transition to coordinate space is defined by the transformation kernel
+$\braket{\mathbf{r} | k, \ell, m}$. This kernel arises from the partial-wave
+expansion of the plane wave, identifying the free spherical wave as the radial
+eigenfunction.
+
+\subsubsection{The Transformation Kernel}
+We adopt the normalization convention consistent with the quantum Fourier
+transform:
+\begin{equation} \label{eq:pos_kernel}
+	\braket{\mathbf{r} | k, \ell, m} = i^\ell \sqrt{\frac{2}{\pi}} j_\ell(kr)
+	Y_{\ell m}(\Omega_r).
+\end{equation}
+The phase factor $i^\ell$ is essential for time-reversal consistency.
+
+\subsubsection{Wavefunction Synthesis}
+Projecting the spectral expansion Eq. (\ref{eq:general_solution_abstract}) onto
+the position bra $\bra{\mathbf{r}}$ yields the spatial field:
+\begin{align}
+	\psi(\mathbf{r}, t) &= \sum_{\ell=0}^\infty \sum_{m=-\ell}^\ell i^\ell
+	Y_{\ell m}(\Omega_r) \int_0^\infty \mathrm{d}k \, k^2 \,
+	\underbrace{\sqrt{\frac{2}{\pi}} j_\ell(kr)}_{\text{Radial Basis}}
+	\psi_{k\ell m}(t).
+\end{align}
+This expression identifies the radial wavefunction $R_{\ell}(r, t)$ as the
+Spherical Bessel Transform (or Hankel transform of order $\ell + 1/2$) of the
+spectral amplitude $\psi_{k\ell m}$. This is the spherical analog to the
+standard Fourier transform, mapping the radial momentum domain $k$ to the radial
+position domain $r$.
+
+\subsection{Momentum Space: Harmonic Analysis on the Sphere}
+
+In the linear momentum representation, the physics is simplified by the fact that
+$\hat{\mathbf{p}}$ commutes with the free Hamiltonian. The angular momentum
+states define a specific geometric partitioning of momentum space.
+
+\subsubsection{Diagonal Representation}
+The basis states $\ket{k, \ell, m}$ are eigenstates of the momentum magnitude
+operator $\hat{p} = \sqrt{\hat{\mathbf{p}}^2}$. Consequently, the projection
+kernel is sharply localized (distributional):
+\begin{equation}
+	\braket{\mathbf{p} | k, \ell, m} = \frac{\delta(p - \hbar k)}{p^2}
+	Y_{\ell m}(\Omega_p).
+\end{equation}
+Here, $\Omega_p$ denotes the angles of the momentum vector.
+
+\subsubsection{Momentum Distribution}
+Substituting this kernel into the general solution collapses the radial integral
+immediately:
+\begin{align}
+	\psi(\mathbf{p}, t) &= \int_0^\infty \mathrm{d}k \, k^2 \, \psi_{k\ell m}(t)
+	\left[ \frac{\delta(p - \hbar k)}{p^2} Y_{\ell m}(\Omega_p) \right]
+	\nonumber \\
+											&= \frac{1}{\hbar^3} \psi_{p/\hbar, \ell, m}(t) Y_{\ell m}(\Omega_p).
+\end{align}
+This result confirms that the spectral coefficients $\psi_{k\ell m}$ are
+physically equivalent to the momentum-space wavefunction projected onto
+spherical harmonics. The time evolution is strictly a phase rotation, as
+momentum states are stationary solutions of the free particle.
+
+\subsection{Energy Representation and Density of States}
+
+The energy representation is crucial for scattering theory (S-matrix formalism).
+Since the spectrum of the free particle is continuous and degenerate, the
+mapping involves the Density of States (DOS).
+
+\subsubsection{Jacobian Transformation}
+Using the dispersion relation $E = \frac{\hbar^2 k^2}{2m}$, we relate the
+differential measures:
+\begin{equation}
+	\mathrm{d}k = \frac{\mathrm{d}k}{\mathrm{d}E} \mathrm{d}E = \frac{1}{\hbar}
+	\sqrt{\frac{m}{2E}} \mathrm{d}E.
+\end{equation}
+The density of states factor is $\rho(E) \propto \sqrt{E}$.
+
+\subsubsection{Spectral Evolution}
+The wavefunction in the energy representation $\psi(E, \ell, m)$ is related to
+the $k$-space amplitude by preserving the probability norm $\int |\psi|^2
+\mathrm{d}k = \int |\phi|^2 \mathrm{d}E$:
+\begin{equation}
+	\psi(E, \ell, m; t) = \left( \frac{m k(E)}{\hbar^2} \right)^{1/2}
+	\psi_{k(E), \ell, m}(0) e^{-iEt/\hbar}.
+\end{equation}
+This representation trivializes the dynamics to a linear phase evolution,
+explicitly demonstrating that the angular momentum modes are the stationary
+states of the system.
