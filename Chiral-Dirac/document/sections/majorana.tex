@@ -1,222 +1,151 @@
-\section{Chiral Mass Generation and Neutrino Phenomenology}
-\label{sec:Seesaw}
+\section{Chiral Seesaw Mechanism}
 
-As an alternative approach to explain the smallness of neutrino masses, we
-revisit the mass generation mechanism proposed by Watson and Musielak within the
-framework of the CDE \cite{watsonChiralSymmetryDirac2020}. In this formalism, the fermion
-mass arises from Yukawa couplings to both a scalar field $\phi_1$
-(Standard Model-like) and a pseudoscalar field $\phi_2$.
-In the original proposal, restricted to pure left-handed fermionic fields, the
-mass terms are shown to vanish or require fine-tuned cancellations. However, if
-we assume the existence of a right-handed neutrino component $\nu_R$ (i.e. $\nu
-= \nu_L + \nu_R$), the Dirac mass term does not vanish.
-Instead, it acquires a complex phase determined by the chiral angle $\alpha$,
-which is intrinsic to the CDE. To naturally suppress the neutrino mass without
-relying on fine-tuning, we invoke the Majorana mass term, leading to a Chiral
-Seesaw Mechanism.
+As an alternative approach to explain the smallness of neutrino masses, we revisit the mass generation mechanism proposed by Watson and Musielak within the framework of the Chiral Dirac Equation (CDE)\cite{watson2020a, watson2021a}. In this formalism, the fermion mass arises from Yukawa couplings to both a scalar field $\phi_1$ (Standard Model-like) and a pseudoscalar field $\phi_2$.
 
+In Watson's proposal\cite{Watson2022}, restricting the theory to pure left-handed fermionic fields causes the mass terms to vanish identically. Considering the original Yukawa Lagrangian postulated by Watson:
+
+\begin{equation} \label{eq:original_yukawa}
+\mathcal{L}_Y \;=\;
+-\frac{\lambda_1 v_1}{\sqrt{2}}\,\overline{\nu}\nu
+\;-\;
+\frac{\lambda_2 v_2}{\sqrt{2}}\,\overline{\nu}\gamma^{5}\nu
+\end{equation}
+
+Both terms vanish if we impose the left-handed chirality constraint on the neutrino field ($P_L \nu = \nu$, $P_R \nu = 0$). The scalar product $\overline{\nu}\nu$ vanishes because the Dirac adjoint of a left-handed field behaves as a right-handed projector acting to the left:
+
+\begin{align*}
+    \overline{\nu} &= \overline{P_L \nu} = \nu^\dagger P_L \gamma^0 \\
+              &= \nu^\dagger \gamma^0 P_R = \overline{\nu}\, P_R .
+\end{align*}
+
+Multiplying by $\nu$ from the right, and recalling that $\nu = P_L \nu$, we obtain:
+
+\begin{equation*}
+    \overline{\nu}\, \nu = (\overline{\nu}\, P_R) (P_L \nu) = \overline{\nu} \underbrace{(P_R P_L)}_{0} \nu = 0.
+\end{equation*}
+
+Similarly, for the pseudoscalar term $\overline{\nu} \gamma^{5} \nu$, we utilize the fact that $\gamma^5$ commutes with the chiral projectors ($[\gamma^5, P_{L/R}] = 0$). Following the previous result:
+
+\begin{align*}
+    \overline{\nu} \gamma^{5} \nu &= (\overline{\nu} P_R) \gamma^{5} (P_L \nu) \\
+              &= \overline{\nu} \gamma^{5} \underbrace{(P_R P_L)}_{0} \nu \\
+              &= 0.
+\end{align*}
+
+Thus, without the inclusion of a right-handed component, no Dirac mass term can be generated in this framework. However, if we assume the existence of a right-handed neutrino component $\nu_R$ (such that $\nu = \nu_L + \nu_R$), the Dirac mass term does not vanish. Instead, it acquires a complex phase determined by the chiral angle $\alpha$, which is intrinsic to the CDE. To naturally suppress the neutrino mass without relying on fine-tuning, we invoke the Majorana mass term, leading to a Chiral Seesaw Mechanism \cite{peskin-1995}.
 
 \subsection{The Chiral Dirac Mass Term}
 
-Following Watson and Musielak \cite{watsonChiralSymmetryDirac2020}, the general
-Yukawa Lagrangian for a spinor field $\nu$ expanded about the vacuum expectation values (VEVs)
-$v_1$ and $v_2$, for the fields $\phi_1, \phi_2$ respectively, is given by
+Following Watson and Musielak\cite{watson2020a}, the general Yukawa Lagrangian expanded about the vacuum expectation values (VEVs) $v_1$ and $v_2$ corresponds to \eqref{eq:original_yukawa}. Defining the scalar mass parameter $M = \lambda_1 v_1 / \sqrt{2}$ and the pseudoscalar mass parameter $\tilde{M} = \lambda_2 v_2 / \sqrt{2}$, and decomposing the fields into their chiral components ($\nu_{L,R} = P_{L,R}\nu$), the Dirac mass term becomes:
+
 \begin{equation}
-  \mathcal{L}_{Y} \approx -\frac{\lambda_{1}v_{1}}{\sqrt{2}}\overline{\nu}\nu
-  - \frac{\lambda_{2}v_{2}}{\sqrt{2}}\overline{\nu}\gamma^{5}\nu.
+\mathcal{L}_{\text{Dirac}} = \overline{\nu}_L (M + \tilde{M}) \nu_R + \overline{\nu}_R (M - \tilde{M}) \nu_L.
 \end{equation}
 
-Defining the scalar mass parameter $M = \lambda_1 v_1 / \sqrt{2}$ and the
-pseudoscalar mass parameter $\tilde{M} = \lambda_2 v_2 / \sqrt{2}$, and
-decomposing the fields into their chiral components ($\nu_{L,R} =
-P_{L,R}\nu$), the Dirac mass term becomes
-\begin{equation}
-  \mathcal{L}_{\text{Dirac}} = -\overline{\nu}_L \left(M + \tilde{M}\right)
-  \nu_R - \overline{\nu}_R \left(M - \tilde{M}\right) \nu_L.
+In the CDE formalism, these parameters are related to the propagation mass $m$ and the chiral angle $\alpha$ by $M = m \cos \alpha$ and $\tilde{M} = -im \sin \alpha$. Consequently, the effective Dirac mass coupling $M_D$ connecting $\overline{\nu}_L$ and $\nu_R$ is identified as:
+
+\begin{equation} \label{eq:chiral_M_D}
+M_D \equiv M + \tilde{M} = m(\cos \alpha - i \sin \alpha) = m e^{-i\alpha}.
 \end{equation}
 
-In the CDE formalism, these parameters are related to the propagation mass $m$
-and the chiral angle $\alpha$ by $M = m \cos \alpha$ and $\tilde{M} = -im \sin
-\alpha$. Consequently, the effective Dirac mass coupling $M_D$ connecting
-$\overline{\nu}_L$ and $\nu_R$ is identified as
-\begin{equation}
-  M_D \equiv M + \tilde{M} = m\left(\cos \alpha - i \sin \alpha\right) =
-  m e^{-i\alpha}.
-\end{equation}
-This result is crucial, the Dirac mass in this model carries a physical phase
-derived from the underlying chiral symmetry breaking.
+The result in \eqref{eq:chiral_M_D} is crucial: the Dirac mass in this model carries a physical phase derived from the underlying chiral symmetry breaking.
 
 \subsection{The Full Majorana-Dirac Lagrangian}
 
-To implement the seesaw mechanism, we introduce Majorana mass terms. Unlike Dirac
-terms which couple left- and right-handed fields ($\overline{\nu}_L
-\nu_R$), Majorana mass terms violate lepton number by two units and must
-couple fields of the same chirality but opposite charge conjugation properties.
-Specifically, we utilize the charge-conjugated right-handed field $\nu_R^c =
-C\overline{\nu}_R^T$, which behaves as a left-handed field under Lorentz
-transformations. The most general Lorentz-invariant mass Lagrangian including
-both the Chiral Dirac term derived above and the Majorana terms for left- and
-right-handed neutrinos is
-\begin{equation}
-  -\mathcal{L}_{\text{Mass}} = \mathcal{L}_{\text{Dirac}} + \mathcal{L}_{M_L}
-  + \mathcal{L}_{M_R} +\text{h.c.}.
+To implement the seesaw mechanism, we introduce Majorana mass terms. Unlike Dirac terms which couple left- and right-handed fields ($\overline{\nu}_L \nu_R$), Majorana mass terms violate lepton number by two units. Specifically, we utilize the charge-conjugated right-handed field $\nu_R^c = C\overline{\nu}_R^T$.
+
+The most general Lorentz-invariant mass Lagrangian including both the Chiral Dirac term derived above and the Majorana terms is:
+
+\begin{equation} \label{eq:L_mass_full}
+\mathcal{L}_{\text{Mass}}
+=
+\overline{\nu}_L M_D \nu_R
++
+\frac{1}{2}\overline{\nu_L^c} M_L \nu_L
++
+\frac{1}{2}\overline{\nu_R^c} M_R \nu_R
++\text{h.c.}
 \end{equation}
 
-Explicitly writing the couplings
-\begin{equation}
-  -\mathcal{L}_{\text{Mass}} = \overline{\nu}_L M_D \nu_R + \frac{1}{2}\overline{\nu_L^c} M_L \nu_L
-  + \frac{1}{2}\overline{\nu_R^c} M_R \nu_R +\text{h.c.}.
-\end{equation}
-
-Here, $M_L$ represents the Majorana mass for the active left-handed neutrinos
----assumed to be negligible or zero in the minimal Type-I seesaw---, and
-$M_R$ is the heavy Majorana mass scale for the sterile neutrinos.
+Here, $M_L$ represents the Majorana mass for the active left-handed neutrinos (assumed to be negligible or zero in the minimal Type-I seesaw), and $M_R$ is the heavy Majorana mass scale for the sterile neutrinos.
 
 \subsection{The Chiral Mass Matrix}
 
-To find the physical mass eigenstates, we rewrite the Lagrangian using the basis
-of left-handed fields. We define the interaction basis spinor $\Psi$ and its
-charge conjugate $\Psi^c$ as
-\begin{equation}
-  \Psi = \begin{pmatrix} \nu_L \\ \nu_R^c \end{pmatrix}, \quad \text{and}
-  \quad \Psi^c = \begin{pmatrix} \nu_L^c \\ \nu_R \end{pmatrix}.
-\end{equation}
+To find the physical mass eigenstates, we rewrite \eqref{eq:L_mass_full} using the basis of left-handed fields. We define the interaction basis spinor $\Psi = (\nu_L, \nu_R^c)^T$. Utilizing the Majorana identity, the Lagrangian allows the explicit matrix expansion:
 
-Consequently, the adjoint of the charge conjugate is the row vector
-$\overline{\Psi^c} = \left(\overline{\nu_L^c}, \overline{\nu_R}\right)$.
-Utilizing the Majorana identity $\overline{\nu}_L M_D \nu_R =
-\frac{1}{2}\overline{\nu}_L M_D \nu_R + \frac{1}{2}\overline{\nu_R^c} M_D^T
-\nu_L^c$, up to total derivatives, and the conjugated spinors
-identity, the Lagrangian allows the explicit matrix expansion
-\begin{equation}
-  -\mathcal{L}_{\text{Mass}} = \frac{1}{2}
-  \underbrace{
-    \begin{pmatrix} \overline{\nu_L^c} & \overline{\nu_R} \end{pmatrix}
-  }_{\overline{\Psi^c}}
-  \begin{pmatrix}
-    M_L & m e^{-i\alpha} \\
-    m e^{-i\alpha} & M_R
-  \end{pmatrix}
-  \underbrace{
-    \begin{pmatrix} \nu_L \\ \nu_R^c \end{pmatrix}
-  }_{\Psi}
-  +\text{h.c.}.
-\end{equation}
+\begin{equation*}
+\mathcal{L}_{\text{Mass}} = \frac{1}{2} \overline{\Psi^c} \mathcal{M} \Psi + \text{h.c.},
+\end{equation*}
 
-This can be written in the concise matrix form
-\begin{equation}
-  -\mathcal{L}_{\text{Mass}} = \frac{1}{2} \overline{\Psi^c} \mathcal{M} \Psi
-  + \text{h.c.},
-\end{equation}
-where the mass matrix $\mathcal{M}$ incorporates the chiral modifications from
-the CDE
-\begin{equation}
-  \mathcal{M} =
-  \begin{pmatrix}
-    M_L & M_D \\
-    M_D^T & M_R
-  \end{pmatrix}
-  =
-  \begin{pmatrix}
-    M_L & m e^{-i\alpha} \\
-    m e^{-i\alpha} & M_R
-  \end{pmatrix}.
+where the mass matrix $\mathcal{M}$ incorporates the chiral modifications from the CDE defined in \eqref{eq:chiral_M_D}:
+
+\begin{equation} \label{eq:mass_matrix}
+\mathcal{M} = 
+\begin{pmatrix}
+M_L & M_D \\
+M_D^T & M_R
+\end{pmatrix}
+=
+\begin{pmatrix}
+M_L & m e^{-i\alpha} \\
+m e^{-i\alpha} & M_R
+\end{pmatrix}.
 \end{equation}
 
 \subsection{The Neutrino Chiral Mass}
 
-To account for the smallness of neutrino masses, it is necessary to consider
-that $M_R$ corresponds to the mass of a right-handed sterile neutrino. In this
-framework, $M_R$ represents the interaction term, while the chiral mass mixes
-the scalar and pseudoscalar components. We adopt the following identifications:
-
+To account for the smallness of neutrino masses, we adopt the following identifications in the matrix \eqref{eq:mass_matrix}:
 \begin{enumerate}
-  \item \textbf{$M_R$ (Right-handed Majorana Mass):} Generated by a
-    fundamental coupling. This represents the heavy scale, where $M_R \gg m$.
-  \item \textbf{$M_L$ (Left-handed Majorana Mass):} We assume
-    $M_L \approx 0$.
-  \item \textbf{$M_D$ (Chiral Dirac Mass):} The complete mass term
-    from the CDE corresponds to the coupling $\overline{\nu}_L \nu_R$, which we
-    identify explicitly as $m e^{-i\alpha}$.
+    \item \textbf{$M_R$:} Heavy sterile scale ($M_R \gg m$).
+    \item \textbf{$M_L$:} Assumed $M_L \approx 0$.
+    \item \textbf{$M_D$:} Given by $m e^{-i\alpha}$.
 \end{enumerate}
 
-Based on these assumptions, the mass matrix is given by
-\begin{equation}
-  \mathcal{M} = \begin{pmatrix}
-    0 & m e^{-i\alpha} \\
-    m e^{-i\alpha} & M_R
-  \end{pmatrix}.
+Based on these assumptions, the mass matrix is given by:
+
+\begin{equation} \label{eq:mass_matrix_approx}
+    \mathcal{M} \approx \begin{pmatrix} 0 & m e^{-i\alpha} \\ m e^{-i\alpha} & M_R \end{pmatrix}.
 \end{equation}
 
-Finding the eigenvalues of the matrix in the usual way yields two mass terms.
-By expanding the characteristic equation and applying the seesaw approximation
-($m \ll M_R$), we obtain:
+Finding the eigenvalues of \eqref{eq:mass_matrix_approx} and applying the seesaw approximation ($m \ll M_R$), we obtain two mass terms:
 
 \begin{enumerate}
-  \item \textbf{Heavy Mass ($m'_1$): Sterile Dominant State}
+    \item \textbf{Heavy Mass ($m'_1$):} Sterile Dominant State.
     \begin{equation}
-      m'_1 \approx M_R + \frac{\left(m e^{-i\alpha}\right)^2}{M_R} = M_R +
-      \frac{m^2 e^{-2i\alpha}}{M_R}
+        m'_1 \approx M_R + \frac{m^2 e^{-2i\alpha}}{M_R} \approx M_R
     \end{equation}
-    This Majorana state is dominated by the scale $M_R$ (sterile
-    neutrino).
-
-  \item \textbf{Light Mass ($m'_2$): Active Dominant State}
-    \begin{equation}
-      m'_2 \approx  \frac{\left(m e^{-i\alpha}\right)^2}{M_R} =
-      \frac{m^2 e^{-2i\alpha}}{M_R}
+    
+    \item \textbf{Light Mass ($m'_2$):} Active Dominant State.
+    \begin{equation} \label{eq:light_mass_eigenvalue}
+        m'_2 \approx - \frac{(m e^{-i\alpha})^2}{M_R} = - \frac{m^2}{M_R} e^{-2i\alpha}
     \end{equation}
-    This Majorana state corresponds to the active neutrino that is physically
-    observed. The resulting mass term exhibits a complex phase factor
-    $e^{-2i\alpha}$ dependent on the chiral angle $\alpha$.
 \end{enumerate}
 
 \subsection{Mass Suppression and CP Violation}
 
-The application of the Chiral Seesaw Mechanism yields the following expression
-for the active neutrino mass
-\begin{equation}
-  m'_{\nu} \approx \frac{m^2}{M_R} e^{-2i\alpha}.
+The application of the Chiral Seesaw Mechanism yields the following expression for the active neutrino mass based on \eqref{eq:light_mass_eigenvalue}:
+
+\begin{equation} \label{eq:final_neutrino_mass}
+m'_{\nu} \approx    \frac{m^2}{M_R} e^{-2i\alpha}.
 \end{equation}
-This equation implies two significant physical results regarding the magnitude
-and the phase of the neutrino mass.
+
+This equation implies two significant physical results:
 
 \subsubsection{Mass Suppression}
 
-The magnitude of the active neutrino mass is given by
-\begin{equation}
-  \left|m'_{\nu}\right| \approx \frac{m^2}{M_R}.
-\end{equation}
-This confirms the standard seesaw suppression mechanism, the observed mass is
-inversely proportional to the scale of New Physics, $M_R$. For instance, if we
-assume the electroweak scale $m \sim \qty{100}{\giga\electronvolt}$ and the
-observed neutrino mass scale $\left|m'_{\nu}\right| \sim
-\qty{0.1}{\electronvolt}$, the mechanism necessitates a heavy Majorana scale of
-$M_R \sim \qty{e14}{\giga\electronvolt}$.
+The magnitude of the active neutrino mass is given by $|m'_{\nu}| \approx m^2 / M_R$. This confirms the standard seesaw suppression mechanism. For instance, if we assume $m \sim 100 \text{ GeV}$ and $|m'_{\nu}| \sim 0.1 \text{ eV}$, the mechanism necessitates a heavy scale of $M_R \sim 10^{14}$ GeV.
 
 \subsubsection{The Chiral Phase and CP Violation}
 
-A novel feature of this model is that the \textbf{phase} of the light neutrino
-mass is directly determined by the chiral angle $\alpha$:
+A novel feature of this model is that the \textbf{phase} of the light neutrino mass in \eqref{eq:final_neutrino_mass} is directly determined by the chiral angle $\alpha$:
+
 \begin{equation}
-  \text{Phase}\left(m'_{\nu}\right) = e^{-2i\alpha}.
+\text{Phase}(m'_{\nu}) = e^{-2i\alpha}.
 \end{equation}
+
 This dependence has profound implications:
 
 \begin{itemize}
-  \item \textbf{Leptonic CP Violation:} In a three-generation scenario, this
-    complex phase translates into Majorana phases and potentially the Dirac
-    phase within the PMNS mixing matrix. A value of $\alpha \neq k\pi/2$
-    (where $k$ is an integer) implies a neutrino mass with a
-    non-trivial complex phase, thereby introducing a novel and fundamental
-    source of \textbf{leptonic CP violation}.
-  \item \textbf{BSM Link:} This establishes a direct link between the
-    theoretical angle $\alpha$ of the CDE and a physical observable
-    (CP violation) mediated by the seesaw scale $M_R$. It suggests
-    that the choice of the chiral basis becomes a physically observable property
-    when lepton number violation occurs.
+    \item \textbf{Leptonic CP Violation:} In a three-generation scenario, this complex phase translates into Majorana phases in the PMNS mixing matrix. A value of $\alpha \neq k\pi/4$ implies a novel source of \textbf{leptonic CP violation}.
+    \item \textbf{BSM Link:} This establishes a direct link between the theoretical angle $\alpha$ of the CDE and a physical observable mediated by the seesaw scale $M_R$.
 \end{itemize}
-
-This constitutes a robust and novel result that successfully integrates the
-theoretical framework of the CDE with the phenomenological success of the
-Seesaw model.
