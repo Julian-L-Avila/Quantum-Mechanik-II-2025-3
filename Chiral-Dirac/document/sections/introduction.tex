@@ -1,35 +1,67 @@
 \section{Introduction}
 
-The foundational role of group theory in Quantum Field Theory (QFT) was established by Wigner \cite{wigner-1939}, who showed that physical states are defined as unitary 
-irreducible representations of the inhomogeneous Lorentz group (Poincar\'{e} group). This classification, based on the ``little group'' method, reveals that fundamental 
-wave equations emerge as specific realizations of the underlying symmetry structure: scalar fields (spin 0) are governed by the Klein-Gordon equation, while vector fields
-(spin 1) correspond to the Maxwell and Proca equations \cite{ryder-qft}. Within this framework, the Dirac equation occupies a role for describing fermionic fields; while
-the modern group-theoretical approach derives it directly from the transformation properties of spinors under the Lorentz group, its original formulation was motivated 
-by the necessity to resolve ``duplexity'' phenomena in atomic spectra, leading Dirac to construct a wave equation linear in time and momentum that satisfied the 
-requirements of both relativity and quantum mechanics \cite{dirac-1928}.
+The foundational role of group theory in Quantum Field Theory (QFT) was
+established by Wigner \cite{Wigner1939}, who showed that physical states are
+defined as unitary irreducible representations of the inhomogeneous Lorentz
+group (Poincar\'{e} group). This classification, based on the ``little group''
+method, reveals that fundamental wave equations emerge as specific realizations
+of the underlying symmetry structure: scalar fields (spin 0) are governed by the
+Klein-Gordon equation, while vector fields (spin 1) correspond to the Maxwell
+and Proca equations \cite{ryderQuantumFieldTheory1996}. Within this framework, the Dirac equation
+occupies a role for describing fermionic fields; while the modern
+group-theoretical approach derives it directly from the transformation
+properties of spinors under the Lorentz group, its original formulation was
+motivated by the necessity to resolve ``duplexity'' phenomena in atomic spectra,
+leading Dirac to construct a wave equation linear in time and momentum that
+satisfied the requirements of both relativity and quantum mechanics
+\cite{diracQuantumTheoryElectron1928}.
 
-In recent developments, Watson and Musielak \cite{Watson2020} revisited the group-theoretical foundations of the field description. Instead of relying on the standard
-factorization of the Klein-Gordon equation, they derived the field equations directly from the irreducible representations of the Poincar\'{e} group extended by parity.
-This approach revealed an intrinsic freedom in the choice of the chiral basis, parametrized by a new physical degree of freedom identified as the chiral angle. By
-identifying this degree of freedom, they obtained a generalized form of the Dirac equation, hereafter referred to as the Chiral Dirac Equation (CDE), which incorporates
-a pseudoscalar mass term alongside the standard scalar mass. The authors suggested that this additional chiral degree of freedom has physical implications; specifically,
-the interplay between the scalar and pseudoscalar mass components offers a mechanism to explain the suppression of neutrino masses, proposing the new massive particle 
+In recent developments, Watson and Musielak \cite{watsonChiralSymmetryDirac2020,
+watsonChiralDiracEquation2021, Watson2022} revisited the
+group-theoretical foundations of the field description. Instead of relying on
+the standard factorization of the Klein-Gordon equation, they derived the field
+equations directly from the irreducible representations of the Poincar\'{e}
+group extended by parity. This approach revealed an intrinsic freedom in the
+choice of the chiral basis, parametrized by a new physical degree of freedom
+identified as the chiral angle. By identifying this degree of freedom, they
+obtained a generalized form of the Dirac equation, hereafter referred to as the
+Chiral Dirac Equation (CDE), which incorporates a pseudoscalar mass term
+alongside the standard scalar mass. The authors suggested that this additional
+chiral degree of freedom has physical implications; specifically, the interplay
+between the scalar and pseudoscalar mass components offers a mechanism to
+explain the suppression of neutrino masses, proposing the new massive particle
 as a candidate for Dark Matter.
 
-The first critical issue concerns the consistency of the quantum mechanical description derived from the CDE. Standard quantum mechanics postulates that physical
-observables must be represented by self-adjoint operators to guarantee real energy eigenvalues and unitary time evolution (probability conservation). While the 
-Dirac equation is consistent with these principles, the introduction of a chiral angle and a pseudoscalar mass term modifies the structure of the evolution operator. 
-It is not immediately evident that the Hamiltonian associated with this generalized equation retains hermiticity under the new chiral basis transformations. Therefore, 
-we aim to explicitly derive the Hamiltonian from the CDE and test its hermiticity to ensure the theory's physical viability.
+The first critical issue concerns the consistency of the quantum mechanical
+description derived from the CDE. Standard quantum mechanics postulates that
+physical observables must be represented by self-adjoint operators to guarantee
+real energy eigenvalues and unitary time evolution (probability conservation).
+While the Dirac equation is consistent with these principles, the introduction
+of a chiral angle and a pseudoscalar mass term modifies the structure of the
+evolution operator. It is not immediately evident that the Hamiltonian
+associated with this generalized equation retains hermiticity under the new
+chiral basis transformations. Therefore, we aim to explicitly derive the
+Hamiltonian from the CDE and test its hermiticity to ensure the theory's
+physical viability.
 
-Secondly, a significant algebraic inconsistency arises when applying the framework to neutrino physics under strict chirality constraints. Preliminary analyses 
-indicate that for a pure left-handed field, defined by the chiral projection $\nu_L = \frac{1}{2}(1-\gamma^5)\nu$, the scalar bilinear $\bar{\nu}\nu$ vanishes 
-identically. Consequently, the Yukawa Lagrangian $\mathcal{L}_Y$ derived in the original work becomes trivial ($\mathcal{L}_Y = 0$), thereby nullifying the 
-proposed mechanism for generating massive neutrinos in the Dirac context. To address this, we propose to explore the Majorana mass term within the context of
-a more general see-saw mechanism, functioning as a chiral see-saw.
+Secondly, a significant algebraic inconsistency arises when applying the
+framework to neutrino physics under strict chirality constraints \cite{watsonChiralSymmetryDirac2020}.
+Preliminary analyses indicate that for a pure left-handed field, defined by the chiral
+projection $\nu_L = \frac{1}{2}\left(1-\gamma^5\right)\nu$, the scalar bilinear
+$\bar{\nu}\nu$ vanishes identically. Consequently, the Yukawa Lagrangian
+$\mathcal{L}_Y$ derived in the original work becomes trivial
+($\mathcal{L}_Y = 0$), thereby nullifying the proposed mechanism for generating
+massive neutrinos in the Dirac context. To address this, we propose to explore
+the Majorana mass term within the context of a more general see-saw mechanism,
+functioning as a chiral see-saw.
 
-Finally, while the original derivation focused on bispinors, effectively restricting the analysis to spin-1/2 particles, Watson et al. have also explored vector 
-bosons. However, the method employed—based on the irreducible representations of the Poincar\'{e} group—is fundamentally geometric and should be applicable to 
-other spin sectors. To this end, we propose a comprehensive review of the feasibility of extending this chiral formalism to higher-spin fields. Specifically, 
-we examine whether similar chiral degrees of freedom can be consistently introduced into the Proca equation for massive vector bosons (spin-1) or
-the Rarita-Schwinger fields (spin-3/2).
+Finally, while the original derivation focused on bispinors, effectively
+restricting the analysis to spin-1/2 particles
+\cite{watsonChiralSymmetryDirac2020}, Watson et al. have also explored
+vector bosons \cite{Watson2022}. However, the method employed---based on the irreducible
+representations of the Poincar\'{e} group---is fundamentally geometric and
+should be applicable to other spin sectors. To this end, we propose a
+review of the feasibility of extending this chiral formalism to
+higher-spin fields. Specifically, we examine whether similar chiral degrees of
+freedom can be consistently introduced into the Proca equation for massive
+vector bosons (spin-1) or the Rarita-Schwinger fields (spin-3/2).
