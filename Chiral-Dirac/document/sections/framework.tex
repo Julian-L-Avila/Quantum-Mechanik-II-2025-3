@@ -1,0 +1,56 @@
+\section{Theoretical Framework}
+\label{sec:Framework}
+
+We adopt the formalism of relativistic quantum field theory on a flat,
+non-interacting Minkowski spacetime. The background geometry is defined by the
+orthonormal basis $\{ \gamma^\mu \}$ satisfying the Clifford algebra
+$\mathcal{C}\ell_{1,3}(\mathbb{C})$, defined by the fundamental anticommutation
+relation
+\begin{equation}
+	\{ \gamma^\mu, \gamma^\nu \} \equiv \gamma^\mu \gamma^\nu + \gamma^\nu
+	\gamma^\mu = 2 \eta^{\mu \nu},
+\end{equation}
+where $\eta^{\mu \nu} = \text{diag}(1, -1, -1, -1)$ is the Minkowski metric.
+Consequently, $(\gamma^0)^2 = 1$ and $(\gamma^k)^2 = -1$. Greek indices $\mu =
+0, \dots, 3$ denote spacetime coordinates, while Latin indices $k = 1, \dots, 3$
+denote spatial components.
+
+The chiral structure of the theory is determined by the pseudoscalar element
+$\gamma^5$, defined as
+\begin{equation}
+	\gamma^5 \equiv i \gamma^0 \gamma^1 \gamma^2 \gamma^3.
+\end{equation}
+Since the spacetime dimension is even, $\gamma^5$ anticommutes with all vector
+generators $\gamma^\mu$ and squares to the identity, $(\gamma^5)^2 = 1$. This
+algebraic property permits the construction of the orthogonal chiral projectors
+\begin{equation}
+	P_L = \frac{1}{2}(1 - \gamma^5), \quad P_R = \frac{1}{2} (1 + \gamma^5),
+\end{equation}
+which satisfy the idempotency relations $P_{L,R}^2 = P_{L,R}$ and the
+orthogonality condition $P_L P_R = 0$. A spinor field $\psi$ therefore
+decomposes uniquely into left- and right-handed chiral components, $\psi = P_L
+\psi + P_R \psi \equiv \psi_L + \psi_R$.
+
+\subsection{The Chiral Dirac Ansatz}
+
+Standard formulations of the Dirac equation assume a scalar mass term that
+couples chiral sectors trivially. Following Watson and Musielak
+\cite{watsonChiralSymmetryDirac2020}, we consider a generalized dynamical
+equation invariant under the irreducible representations of the Poincar\'{e}
+group extended by parity. This yields the Chiral Dirac Equation (CDE) for a
+spinor field $\psi$
+\begin{equation}
+	(i \gamma^\mu \partial_\mu - m e^{- i \alpha \gamma^5}) \psi = 0.
+	\label{eq:CDE}
+\end{equation}
+Here, $m$ represents the rest mass, and $\alpha$ is a chiral angle parametrizing
+the rotation between the scalar and pseudoscalar mass sectors. The corresponding
+Lorentz-invariant effective Lagrangian density is given by
+\begin{equation}
+	\mathcal{L}_{\text{eff}} = \bar{\psi} (i \gamma^\mu \partial_\mu - m
+	e^{- i \alpha \gamma^5}) \psi,
+	\label{eq:Lagrangian}
+\end{equation}
+where $\bar{\psi} \equiv \psi^\dagger \gamma^0$ is the Dirac adjoint. This
+Lagrangian serves as the generating functional for the dynamics and
+conservation laws investigated in the subsequent sections.

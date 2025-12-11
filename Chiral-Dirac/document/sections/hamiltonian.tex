@@ -1,79 +1,91 @@
-\section{Mathematical Background}
-\label{sec:Mathematical Background}
+\section{Hamiltonian Consistency and Hermiticity}
+\label{sec:Hermiticity}
 
-We adopt the formalism of relativistic quantum field theory on a flat,
-non-interacting Minkowski spacetime. The background geometry is defined by the
-orthonormal basis $\left\{ \gamma^\mu \right\}$ satisfying the Clifford algebra
-$\mathcal{C}\ell_{1,3}\left(\mathbb{C}\right)$, defined by the anticommutation
-relation
-\begin{equation}
-	\left\{ \gamma^\mu, \gamma^\nu \right\} \equiv \gamma^\mu \gamma^\nu +
-	\gamma^\nu \gamma^\mu = 2 \eta^{\mu \nu},
-\end{equation}
-where $\eta^{\mu \nu} = \text{diag}\left(1, -1, -1, -1\right)$ is the Minkowski
-metric. Consequently, $\left(\gamma^0\right)^2 = 1$ and
-$\left(\gamma^k\right)^2 = -1$. Greek indices $\mu = 0, \dots, 3$ denote
-spacetime coordinates, while Latin indices $k = 1, \dots, 3$ denote spatial
-components.
+To ensure the physical viability of the Chiral Dirac Equation (CDE), we must verify
+that it generates a unitary time evolution. This requirement demands that the
+Hamiltonian operator governing the dynamics be self-adjoint on the Hilbert space
+of states. We proceed by explicitly deriving the Hamiltonian from the effective
+Lagrangian density and analyzing its properties under Hermitian conjugation.
 
-The chiral structure is determined by the pseudoscalar $\gamma^5 \equiv i
-\gamma^0 \gamma^1 \gamma^2 \gamma^3$. Since the spacetime dimension is even,
-$\gamma^5$ anticommutes with all vector generators $\gamma^\mu$ and squares to
-the identity \cite{vazIntroductionCliffordAlgebras2016}. This permits the
-construction of the orthogonal chiral projectors
-\begin{equation}
-	P_L = \frac{1}{2}\left(1 - \gamma^5\right), \quad P_R = \frac{1}{2}
-	\left(1 + \gamma^5\right),
-\end{equation}
-satisfying $P_L + P_R = 1$ and $P_L P_R = 0$. A spinor field $\psi$ therefore
-decomposes as $\psi = P_L \psi + P_R \psi \equiv \psi_L + \psi_R$.
+\subsection{Canonical Derivation}
 
-\subsection{Hamiltonian Formulation of the Chiral Dirac Equation}
-
-Following Watson and Musielak \cite{watsonChiralSymmetryDirac2020,
-watsonChiralDiracEquation2021, Watson2022}, we consider the Chiral Dirac
-Equation (CDE) for a spinor field $\psi$:
+The canonical momentum conjugate to the field $\psi$ is obtained from the
+Lagrangian density $\mathcal{L}_{\text{eff}}$ (Eq. \ref{eq:Lagrangian}) via
+differentiation with respect to the time derivative of the field, $\dot{\psi}
+\equiv \partial_0 \psi$
 \begin{equation}
-	\left(i \gamma^\mu \partial_\mu - m e^{- i \alpha \gamma^5}\right) \psi = 0.
-	\label{eq:CDE}
+	\pi = \frac{\partial \mathcal{L}_{\text{eff}}}{\partial \dot{\psi}} =
+	i \psi^\dagger.
 \end{equation}
-The corresponding effective Lagrangian density is given by
-\begin{equation}
-	\mathcal{L}_{\text{eff}} = \overline{\psi} \left(i \gamma^\mu \partial_\mu - m
-	e^{- i \alpha \gamma^5}\right) \psi,
-\end{equation}
-where $\overline{\psi} \equiv \psi^\dagger \gamma^0$ is the Dirac adjoint. We derive
-the Hamiltonian density $\mathcal{H}$ via the Legendre transform using the
-canonical momentum $\pi = \partial \mathcal{L}_{\text{eff}} / \partial
-\dot{\psi}$:
+The Hamiltonian density $\mathcal{H}$ is constructed via the Legendre transform
 \begin{equation}
 	\mathcal{H} = \pi \dot{\psi} - \mathcal{L}_{\text{eff}}.
 \end{equation}
-Explicit calculation yields
-\begin{equation}
-	\mathcal{H} = \psi^\dagger \left(- i \gamma^{0k} \partial_k + \gamma^0 m
-	e^{-i \alpha \gamma^5}\right) \psi,
-\end{equation}
-where we have defined the Hermitian spatial generator $\gamma^{0k} \equiv
-\gamma^0 \gamma^k$. The Hamiltonian operator $H$, defined by the evolution
-equation $i \partial_0 \psi = H \psi$, is explicitly
+Substituting the explicit form of $\mathcal{L}_{\text{eff}}$ and isolating the
+temporal component of the derivative term, we find
+\begin{align}
+	\mathcal{H} &= i \psi^\dagger \dot{\psi} - \psi^\dagger \gamma^0
+	(i \gamma^0 \dot{\psi} + i \gamma^k \partial_k \psi - m e^{-i \alpha \gamma^5} \psi)
+	\nonumber \\
+							&= i \psi^\dagger \dot{\psi} - i \psi^\dagger \dot{\psi} - i \psi^\dagger \gamma^0
+							\gamma^k \partial_k \psi + \psi^\dagger \gamma^0 m e^{-i \alpha \gamma^5} \psi
+							\nonumber \\
+							&= \psi^\dagger \left( -i \gamma^{0k} \partial_k + \gamma^0 m e^{-i \alpha \gamma^5}
+							\right) \psi,
+\end{align}
+where we have introduced the Hermitian spatial generators $\gamma^{0k} \equiv
+\gamma^0 \gamma^k$. The quantum mechanical Hamiltonian operator $H$, defined by
+the Schrödinger-like evolution equation $i \partial_0 \psi = H \psi$, is
+therefore identified as
 \begin{equation}
 	H = \gamma^{0k} p_k + \gamma^0 m e^{-i \alpha \gamma^5},
+	\label{eq:HamiltonianOperator}
 \end{equation}
-where $p_k = -i \partial_k$ is the momentum operator.
+where $p_k = -i \partial_k$ is the spatial momentum operator.
 
-To verify the physical consistency of the theory, we examine the Hermiticity of
-$H$. We note that $\gamma^{0k}$ is Hermitian, and $\gamma^0$ and $\gamma^5$ are
-Hermitian. However, $\gamma^0$ and $\gamma^5$ anticommute, $\left\{ \gamma^0,
-\gamma^5 \right\} = 0$, which implies the commutation relation $e^{i \theta
-\gamma^5} \gamma^0 = \gamma^0 e^{-i \theta \gamma^5}$. The Hermitian conjugate
-is thus:
-\begin{align}
-	H^\dagger &= \left(\gamma^{0k} p_k\right)^\dagger + m \left(e^{-i \alpha
-	\gamma^5}\right)^\dagger \left(\gamma^0\right)^\dagger \nonumber \\
-						&= p_k \gamma^{0k} + m e^{i \alpha \gamma^5} \gamma^0 \nonumber \\
-						&= \gamma^{0k} p_k + \gamma^0 m e^{-i \alpha \gamma^5} \nonumber \\
-						&= H.
-		\end{align}
-		The Hamiltonian remains strictly Hermitian in the presence of the chiral phase
-		$\alpha$, ensuring a real energy spectrum and unitary time evolution.
+\subsection{Proof of Hermiticity}
+
+For the theory to be consistent, $H$ must be Hermitian ($H = H^\dagger$). We
+examine the adjoint of the derived operator
+\begin{equation}
+	H^\dagger = \left( \gamma^{0k} p_k \right)^\dagger + \left( \gamma^0 m
+	e^{-i \alpha \gamma^5} \right)^\dagger.
+\end{equation}
+The first term is the standard kinetic energy operator. Since the momentum $p_k$
+is Hermitian and the matrix $\gamma^{0k}$ is Hermitian, as $(\gamma^0 \gamma^k)^\dagger
+= \gamma^{k\dagger} \gamma^{0\dagger} = (-\gamma^k)(\gamma^0) = \gamma^0
+\gamma^k$,
+their product is Hermitian.
+
+The second term, containing the chiral mass correction, requires careful
+algebraic treatment. Expanding the adjoint yields
+\begin{equation}
+	\left( \gamma^0 m e^{-i \alpha \gamma^5} \right)^\dagger = m
+	\left( e^{-i \alpha \gamma^5} \right)^\dagger \left( \gamma^0 \right)^\dagger.
+\end{equation}
+Utilizing the hermiticity of $\gamma^5$ and $\gamma^0$, and the identity
+$(e^A)^\dagger = e^{A^\dagger}$, we obtain
+\begin{equation}
+	m e^{i \alpha \gamma^5} \gamma^0.
+\end{equation}
+Critically, $\gamma^0$ and $\gamma^5$ anticommute ($\{ \gamma^0, \gamma^5 \} =
+0$). This anticommutation implies the commutation relation for the exponential
+function
+\begin{equation}
+	e^{i \theta \gamma^5} \gamma^0 = \sum_{n=0}^\infty \frac{(i \theta)^n}{n!}
+	(\gamma^5)^n \gamma^0 = \gamma^0 \sum_{n=0}^\infty \frac{(-i \theta)^n}{n!}
+	(\gamma^5)^n = \gamma^0 e^{-i \theta \gamma^5}.
+\end{equation}
+Applying this commutation to the mass term, we recover the original operator
+\begin{equation}
+	m e^{i \alpha \gamma^5} \gamma^0 = \gamma^0 m e^{-i \alpha \gamma^5}.
+\end{equation}
+Thus,
+\begin{equation}
+	H^\dagger = \gamma^{0k} p_k + \gamma^0 m e^{-i \alpha \gamma^5} = H.
+\end{equation}
+We conclude that the Hamiltonian of the Chiral Dirac Equation is strictly
+Hermitian. The introduction of the chiral angle $\alpha$ preserves the
+self-adjoint nature of the energy operator, ensuring real energy eigenvalues and
+unitary time evolution without requiring a modification of the inner product or
+metric.
