@@ -1,4 +1,5 @@
-\section{Chiral Seesaw Mechanism}
+\section{Chiral Mass Generation and Neutrino Phenomenology}
+\label{sec:Seesaw}
 
 As an alternative approach to explain the smallness of neutrino masses, we
 revisit the mass generation mechanism proposed by Watson and Musielak within the
@@ -93,8 +94,8 @@ identity, the Lagrangian allows the explicit matrix expansion
     \begin{pmatrix} \overline{\nu_L^c} & \overline{\nu_R} \end{pmatrix}
   }_{\overline{\Psi^c}}
   \begin{pmatrix}
-    M_L & m e^{-2i\alpha} \\
-    m e^{-2i\alpha} & M_R
+    M_L & m e^{-i\alpha} \\
+    m e^{-i\alpha} & M_R
   \end{pmatrix}
   \underbrace{
     \begin{pmatrix} \nu_L \\ \nu_R^c \end{pmatrix}
@@ -117,8 +118,8 @@ the CDE
   \end{pmatrix}
   =
   \begin{pmatrix}
-    M_L & m e^{-2i\alpha} \\
-    m e^{-2i\alpha} & M_R
+    M_L & m e^{-i\alpha} \\
+    m e^{-i\alpha} & M_R
   \end{pmatrix}.
 \end{equation}
 
@@ -136,14 +137,14 @@ the scalar and pseudoscalar components. We adopt the following identifications:
     $M_L \approx 0$.
   \item \textbf{$M_D$ (Chiral Dirac Mass):} The complete mass term
     from the CDE corresponds to the coupling $\overline{\nu}_L \nu_R$, which we
-    identify explicitly as $m e^{-2i\alpha}$.
+    identify explicitly as $m e^{-i\alpha}$.
 \end{enumerate}
 
 Based on these assumptions, the mass matrix is given by
 \begin{equation}
   \mathcal{M} = \begin{pmatrix}
-    0 & m e^{-2i\alpha} \\
-    m e^{-2i\alpha} & M_R
+    0 & m e^{-i\alpha} \\
+    m e^{-i\alpha} & M_R
   \end{pmatrix}.
 \end{equation}
 
@@ -154,20 +155,20 @@ By expanding the characteristic equation and applying the seesaw approximation
 \begin{enumerate}
   \item \textbf{Heavy Mass ($m'_1$): Sterile Dominant State}
     \begin{equation}
-      m'_1 \approx M_R + \frac{\left(m e^{-2i\alpha}\right)^2}{M_R} = M_R +
-      \frac{m^2 e^{-4i\alpha}}{M_R}
+      m'_1 \approx M_R + \frac{\left(m e^{-i\alpha}\right)^2}{M_R} = M_R +
+      \frac{m^2 e^{-2i\alpha}}{M_R}
     \end{equation}
     This Majorana state is dominated by the scale $M_R$ (sterile
     neutrino).
 
   \item \textbf{Light Mass ($m'_2$): Active Dominant State}
     \begin{equation}
-      m'_2 \approx  \frac{\left(m e^{-2i\alpha}\right)^2}{M_R} =
-      \frac{m^2 e^{-4i\alpha}}{M_R}
+      m'_2 \approx  \frac{\left(m e^{-i\alpha}\right)^2}{M_R} =
+      \frac{m^2 e^{-2i\alpha}}{M_R}
     \end{equation}
     This Majorana state corresponds to the active neutrino that is physically
     observed. The resulting mass term exhibits a complex phase factor
-    $e^{-4i\alpha}$ dependent on the chiral angle $\alpha$.
+    $e^{-2i\alpha}$ dependent on the chiral angle $\alpha$.
 \end{enumerate}
 
 \subsection{Mass Suppression and CP Violation}
@@ -175,7 +176,7 @@ By expanding the characteristic equation and applying the seesaw approximation
 The application of the Chiral Seesaw Mechanism yields the following expression
 for the active neutrino mass
 \begin{equation}
-  m'_{\nu} \approx \frac{m^2}{M_R} e^{-4i\alpha}.
+  m'_{\nu} \approx \frac{m^2}{M_R} e^{-2i\alpha}.
 \end{equation}
 This equation implies two significant physical results regarding the magnitude
 and the phase of the neutrino mass.
@@ -198,14 +199,14 @@ $M_R \sim \qty{e14}{\giga\electronvolt}$.
 A novel feature of this model is that the \textbf{phase} of the light neutrino
 mass is directly determined by the chiral angle $\alpha$:
 \begin{equation}
-  \text{Phase}\left(m'_{\nu}\right) = e^{-4i\alpha}.
+  \text{Phase}\left(m'_{\nu}\right) = e^{-2i\alpha}.
 \end{equation}
 This dependence has profound implications:
 
 \begin{itemize}
   \item \textbf{Leptonic CP Violation:} In a three-generation scenario, this
     complex phase translates into Majorana phases and potentially the Dirac
-    phase within the PMNS mixing matrix. A value of $\alpha \neq k\pi/4$
+    phase within the PMNS mixing matrix. A value of $\alpha \neq k\pi/2$
     (where $k$ is an integer) implies a neutrino mass with a
     non-trivial complex phase, thereby introducing a novel and fundamental
     source of \textbf{leptonic CP violation}.
