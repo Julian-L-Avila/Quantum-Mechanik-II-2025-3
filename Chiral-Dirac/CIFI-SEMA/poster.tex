@@ -1,0 +1,188 @@
+% https://github.com/andiac/gemini-cam
+% a fork of https://github.com/anishathalye/gemini
+% also refer to https://github.com/k4rtik/uchicago-poster
+
+\documentclass[final]{beamer}
+
+% ====================
+% Packages
+% ====================
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[orientation=portrait,size=a0,scale=1.15]{beamerposter}
+\usetheme{gemini}
+\usecolortheme{nott}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{svg}
+\usepackage{cleveref}
+\pgfplotsset{compat=1.14}
+\usepackage{anyfontsize}
+\usepackage{biblatex}
+
+\addbibresource{../chiral-references.bib}
+
+% ====================
+% Lengths
+% ====================
+
+% If you have N columns, choose \sepwidth and \colwidth such that
+% (N+1)*\sepwidth + N*\colwidth = \paperwidth
+\newlength{\sepwidth}
+\newlength{\colwidth}
+\setlength{\sepwidth}{0.025\paperwidth}
+\setlength{\colwidth}{0.45\paperwidth}
+
+\newcommand{\separatorcolumn}{\begin{column}{\sepwidth}\end{column}}
+
+% ====================
+% Title
+% ====================
+
+\title{Ecuación de Dirac Quiral: \\Grados de Libertad y Masa de los Neutrinos}
+\author{Julian L. Avila-Martinez \and Laura Y. Herrera-Martinez \and Sebastian
+Rodriguez-Garcia}
+
+\institute[shortinst]{F\'isica, Universidad Distrital Francisco Jos\'e de Caldas}
+
+\footercontent{
+  \href{https://github.com/Julian-L-Avila/Quantum-Mechanik-II-2025-3}{github.com/Julian-L-Avila/Quantum-Mechanik-II-2025-3}
+}
+
+% ====================
+% Logo (optional)
+% ====================
+
+% use this to include logos on the left and/or right side of the header:
+\logoleft{\hspace{8ex}
+  \includegraphics[height=10.cm]{./figures/logo_ud.png}
+}
+
+% ====================
+% Body
+% ====================
+
+\begin{document}
+
+\begin{frame}[t]
+\begin{columns}[t]
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{block}{What is Chirality?}
+    A Lorentz-invariant property distinguishing how spinor components transform
+    under boosts $\Lambda$:
+
+    \begin{gather}
+      \psi = \psi_L + \psi_R \\
+      \psi_L \to \Lambda \psi_L \quad , \quad \psi_R \to \Lambda^{-1} \psi_R
+    \end{gather}
+
+    The components transform under inequivalent Lorentz group representations:
+    \begin{itemize}
+      \item \textbf{Left-handed ($\psi_L$):} $(\frac{1}{2}, 0)$
+      \item \textbf{Right-handed ($\psi_R$):} $(0, \frac{1}{2})$
+    \end{itemize}
+  \end{block}
+
+
+  \begin{alertblock}{Chiral Symmetric Dirac Equation}
+
+    \begin{equation}\label{eq:decs}
+      \left( i \gamma^\mu \partial_\mu - m e^{- i 2 \alpha \gamma^5} \right)
+      \psi = 0
+    \end{equation}
+
+    \heading{The properties that the DECS must satisfy}
+
+    In the theory of irreducible representations of the Poincaré group,
+    each irreducible representation is defined by how the objects it describes
+    transform under $\mathcal{P}$.
+
+    \begin{itemize}
+
+      \item \textbf{Poincaré Principle:}
+        Physics is unchanged under Lorentz transformations and translations.
+
+      \item \textbf{Gauge Invariance:}
+        Interactions emerge from requiring local symmetry of the Lagrangian.
+      \item \textbf{Locality:}  Locality: Fields interact only at the same space–time point.
+    \end{itemize}
+  \end{alertblock}
+
+  \begin{block}{El Lagrangiano Quiral de Yukawa}
+    Para generar la masa del fermión, el formalismo propone un acoplamiento
+    de Yukawa acoplado a un campo escalar (tipo Modelo Estándar) y a un
+    campo pseudoescalar. El lagrangiano toma la forma
+    \begin{equation}
+      \mathcal{L}_{Y} = -\frac{\lambda_{1}v_{1}}{\sqrt{2}}\overline{\psi}\psi -
+      \frac{\lambda_{2}v_{2}}{\sqrt{2}}\overline{\psi}\gamma^{5}\psi.
+    \end{equation}
+    Definiendo los parámetros de masa escalar $M$ y pseudoescalar $\tilde{M}$, el
+    término de Dirac en función de sus proyecciones quirales es
+    \begin{equation}
+      \mathcal{L}_{Dirac} = \overline{\psi}_{L}(M+\tilde{M})\psi_{R} +
+      \overline{\psi}_{R}(M-\tilde{M})\psi_{L}.
+    \end{equation}
+  \end{block}
+
+  \begin{alertblock}{El Problema de la Masa Nula}
+    Al formular un mecanismo de Higgs elemental para esta teoría, el
+    acoplamiento de Yukawa depende de la evaluación de bilineales escalares y
+    pseudoescalares. Si se impone una restricción estricta de quiralidad
+    asumiendo únicamente campos levógiros, es decir $P_L \nu = \nu$, los
+    invariantes se anulan idénticamente,
+    \begin{gather}
+      \overline{\nu} \nu = \overline{\nu} P_R P_L \nu = 0, \\
+      \overline{\nu} \gamma^5 \nu = \overline{\nu} \gamma^5 P_R P_L \nu = 0.
+    \end{gather}
+
+    En consecuencia, el lagrangiano de Yukawa es trivial y la teoría predice
+    una masa estrictamente nula para el neutrino activo bajo estas condiciones.
+  \end{alertblock}
+
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{block}{Mecanismo Seesaw Quiral}
+    Para resolver la inconsistencia algebraica de la masa nula, formulamos un
+    mecanismo seesaw quiral. Esto requiere la introducción de un campo
+    dextrógiro estéril acoplado a un término de masa de Majorana de alta
+    energía $M_R$. El término de masa de Dirac efectivo adquiere una fase
+    compleja dictada por el ángulo quiral, $M_D = m e^{-i\alpha}$.
+
+    El lagrangiano de masa acopla los sectores levógiro y dextrógiro mediante
+    combinaciones de masas de Dirac y Majorana. La diagonalización algebraica
+    de este sistema desacopla los estados, generando un neutrino estéril
+    pesado y un estado levógiro activo con una masa fuertemente suprimida,
+
+    \begin{equation}
+      m_{\nu}^{\prime} \approx \frac{m^2}{M_R} e^{-2i\alpha}.
+    \end{equation}
+
+    El ángulo quiral se manifiesta como una fuente geométrica para la
+    violación de simetría CP. En el límite donde el ángulo quiral tiende a
+    cero, se recupera el formalismo estándar resultando en la masa típica
+    nula del neutrino.
+  \end{block}
+
+  \begin{block}{References}
+
+    \nocite{*}
+    \footnotesize{\printbibliography}
+
+  \end{block}
+\end{column}
+\separatorcolumn
+
+\end{columns}
+\end{frame}
+
+\end{document}
