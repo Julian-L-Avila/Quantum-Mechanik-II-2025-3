@@ -1,0 +1,544 @@
+\section{Introduction}
+
+The foundational role of group theory in Quantum Field Theory (QFT) was
+established by Wigner \cite{Wigner1939}, who showed that physical states are
+defined as unitary irreducible representations of the inhomogeneous Lorentz
+group (Poincar\'{e} group). This classification, based on the ``little group''
+method, reveals that fundamental wave equations emerge as specific realizations
+of the underlying symmetry structure: scalar fields (spin 0) are governed by the
+Klein-Gordon equation, while vector fields (spin 1) correspond to the Maxwell
+and Proca equations \cite{ryderQuantumFieldTheory1996}. Within this framework, the Dirac equation
+occupies a role for describing fermionic fields; while the modern
+group-theoretical approach derives it directly from the transformation
+properties of spinors under the Lorentz group, its original formulation was
+motivated by the necessity to resolve ``duplexity'' phenomena in atomic spectra,
+leading Dirac to construct a wave equation linear in time and momentum that
+satisfied the requirements of both relativity and quantum mechanics
+\cite{diracQuantumTheoryElectron1928}.
+
+In recent developments, Watson and Musielak \cite{watsonChiralSymmetryDirac2020,
+watsonChiralDiracEquation2021, Watson2022} revisited the
+group-theoretical foundations of the field description. Instead of relying on
+the standard factorization of the Klein-Gordon equation, they derived the field
+equations directly from the irreducible representations of the Poincar\'{e}
+group extended by parity. This approach revealed an intrinsic freedom in the
+choice of the chiral basis, parametrized by a new physical degree of freedom
+identified as the chiral angle. By identifying this degree of freedom, they
+obtained a generalized form of the Dirac equation, hereafter referred to as the
+Chiral Dirac Equation (CDE), which incorporates a pseudoscalar mass term
+alongside the standard scalar mass. The authors suggested that this additional
+chiral degree of freedom has physical implications; specifically, the interplay
+between the scalar and pseudoscalar mass components offers a mechanism to
+explain the suppression of neutrino masses, proposing the new massive particle
+as a candidate for Dark Matter.
+
+The first critical issue concerns the consistency of the quantum mechanical
+description derived from the CDE. Standard quantum mechanics postulates that
+physical observables must be represented by self-adjoint operators to guarantee
+real energy eigenvalues and unitary time evolution (probability conservation).
+While the Dirac equation is consistent with these principles, the introduction
+of a chiral angle and a pseudoscalar mass term modifies the structure of the
+evolution operator. It is not immediately evident that the Hamiltonian
+associated with this generalized equation retains hermiticity under the new
+chiral basis transformations. Therefore, we aim to explicitly derive the
+Hamiltonian from the CDE and test its hermiticity to ensure the theory's
+physical viability.
+
+Secondly, a significant algebraic inconsistency arises when applying the
+framework to neutrino physics under strict chirality constraints \cite{watsonChiralSymmetryDirac2020}.
+Preliminary analyses indicate that for a pure left-handed field, defined by the chiral
+projection $\nu_L = \frac{1}{2}\left(1-\gamma^5\right)\nu$, the scalar bilinear
+$\overline{\nu}\nu$ vanishes identically. Consequently, the Yukawa Lagrangian
+$\mathcal{L}_Y$ derived in the original work becomes trivial
+($\mathcal{L}_Y = 0$), thereby nullifying the proposed mechanism for generating
+massive neutrinos in the Dirac context. To address this, we propose to explore
+the Majorana mass term within the context of a more general see-saw mechanism,
+functioning as a chiral see-saw.
+
+Finally, while the original derivation focused on bispinors, effectively
+restricting the analysis to spin-1/2 particles
+\cite{watsonChiralSymmetryDirac2020}, Watson et al. have also explored
+vector bosons \cite{Watson2022}. However, the method employed---based on the irreducible
+representations of the Poincar\'{e} group---is fundamentally geometric and
+should be applicable to other spin sectors. To this end, we propose a
+review of the feasibility of extending this chiral formalism to
+higher-spin fields. Specifically, we examine whether similar chiral degrees of
+freedom can be consistently introduced into the Proca equation for massive
+vector bosons (spin-1) or the Rarita-Schwinger fields (spin-3/2).
+\section{Theoretical Framework}
+\label{sec:Framework}
+
+We adopt the formalism of relativistic quantum field theory on a flat,
+non-interacting Minkowski spacetime. The background geometry is defined by the
+orthonormal basis $\{ \gamma^\mu \}$ satisfying the Clifford algebra
+$\mathcal{C}\ell_{1,3}(\mathbb{C})$, defined by the fundamental anticommutation
+relation
+\begin{equation}
+	\{ \gamma^\mu, \gamma^\nu \} \equiv \gamma^\mu \gamma^\nu + \gamma^\nu
+	\gamma^\mu = 2 \eta^{\mu \nu},
+\end{equation}
+where $\eta^{\mu \nu} = \text{diag}(1, -1, -1, -1)$ is the Minkowski metric.
+Consequently, $(\gamma^0)^2 = 1$ and $(\gamma^k)^2 = -1$. Greek indices $\mu =
+0, \dots, 3$ denote spacetime coordinates, while Latin indices $k = 1, \dots, 3$
+denote spatial components.
+
+The chiral structure of the theory is determined by the pseudoscalar element
+$\gamma^5$, defined as
+\begin{equation}
+	\gamma^5 \equiv i \gamma^0 \gamma^1 \gamma^2 \gamma^3.
+\end{equation}
+Since the spacetime dimension is even, $\gamma^5$ anticommutes with all vector
+generators $\gamma^\mu$ and squares to the identity, $(\gamma^5)^2 = 1$. This
+algebraic property permits the construction of the orthogonal chiral projectors
+\begin{equation}
+	P_L = \frac{1}{2}(1 - \gamma^5), \quad P_R = \frac{1}{2} (1 + \gamma^5),
+\end{equation}
+which satisfy the idempotency relations $P_{L,R}^2 = P_{L,R}$ and the
+orthogonality condition $P_L P_R = 0$. A spinor field $\psi$ therefore
+decomposes uniquely into left- and right-handed chiral components, $\psi = P_L
+\psi + P_R \psi \equiv \psi_L + \psi_R$.
+
+\subsection{The Chiral Dirac Ansatz}
+
+Standard formulations of the Dirac equation assume a scalar mass term that
+couples chiral sectors trivially. Following Watson and Musielak
+\cite{watsonChiralSymmetryDirac2020}, we consider a generalized dynamical
+equation invariant under the irreducible representations of the Poincar\'{e}
+group extended by parity. This yields the Chiral Dirac Equation (CDE) for a
+spinor field $\psi$
+\begin{equation}
+	(i \gamma^\mu \partial_\mu - m e^{- i \alpha \gamma^5}) \psi = 0.
+	\label{eq:CDE}
+\end{equation}
+Here, $m$ represents the rest mass, and $\alpha$ is a chiral angle parametrizing
+the rotation between the scalar and pseudoscalar mass sectors. The corresponding
+Lorentz-invariant effective Lagrangian density is given by
+\begin{equation}
+	\mathcal{L}_{\text{eff}} = \bar{\psi} (i \gamma^\mu \partial_\mu - m
+	e^{- i \alpha \gamma^5}) \psi,
+	\label{eq:Lagrangian}
+\end{equation}
+where $\bar{\psi} \equiv \psi^\dagger \gamma^0$ is the Dirac adjoint. This
+Lagrangian serves as the generating functional for the dynamics and
+conservation laws investigated in the subsequent sections.
+\section{Hamiltonian Consistency and Hermiticity}
+\label{sec:Hermiticity}
+
+To ensure the physical viability of the Chiral Dirac Equation (CDE), we must verify
+that it generates a unitary time evolution. This requirement demands that the
+Hamiltonian operator governing the dynamics be self-adjoint on the Hilbert space
+of states. We proceed by explicitly deriving the Hamiltonian from the effective
+Lagrangian density and analyzing its properties under Hermitian conjugation.
+
+\subsection{Canonical Derivation}
+
+The canonical momentum conjugate to the field $\psi$ is obtained from the
+Lagrangian density $\mathcal{L}_{\text{eff}}$ (Eq. \ref{eq:Lagrangian}) via
+differentiation with respect to the time derivative of the field, $\dot{\psi}
+\equiv \partial_0 \psi$
+\begin{equation}
+	\pi = \frac{\partial \mathcal{L}_{\text{eff}}}{\partial \dot{\psi}} =
+	i \psi^\dagger.
+\end{equation}
+The Hamiltonian density $\mathcal{H}$ is constructed via the Legendre transform
+\begin{equation}
+	\mathcal{H} = \pi \dot{\psi} - \mathcal{L}_{\text{eff}}.
+\end{equation}
+Substituting the explicit form of $\mathcal{L}_{\text{eff}}$ and isolating the
+temporal component of the derivative term, we find
+\begin{align}
+	\mathcal{H} &= i \psi^\dagger \dot{\psi} - \psi^\dagger \gamma^0
+	(i \gamma^0 \dot{\psi} + i \gamma^k \partial_k \psi - m e^{-i \alpha \gamma^5} \psi)
+	\nonumber \\
+							&= i \psi^\dagger \dot{\psi} - i \psi^\dagger \dot{\psi} - i \psi^\dagger \gamma^0
+							\gamma^k \partial_k \psi + \psi^\dagger \gamma^0 m e^{-i \alpha \gamma^5} \psi
+							\nonumber \\
+							&= \psi^\dagger \left( -i \gamma^{0k} \partial_k + \gamma^0 m e^{-i \alpha \gamma^5}
+							\right) \psi,
+\end{align}
+where we have introduced the Hermitian spatial generators $\gamma^{0k} \equiv
+\gamma^0 \gamma^k$. The quantum mechanical Hamiltonian operator $H$, defined by
+the Schrödinger-like evolution equation $i \partial_0 \psi = H \psi$, is
+therefore identified as
+\begin{equation}
+	H = \gamma^{0k} p_k + \gamma^0 m e^{-i \alpha \gamma^5},
+	\label{eq:HamiltonianOperator}
+\end{equation}
+where $p_k = -i \partial_k$ is the spatial momentum operator.
+
+\subsection{Proof of Hermiticity}
+
+For the theory to be consistent, $H$ must be Hermitian ($H = H^\dagger$). We
+examine the adjoint of the derived operator
+\begin{equation}
+	H^\dagger = \left( \gamma^{0k} p_k \right)^\dagger + \left( \gamma^0 m
+	e^{-i \alpha \gamma^5} \right)^\dagger.
+\end{equation}
+The first term is the standard kinetic energy operator. Since the momentum $p_k$
+is Hermitian and the matrix $\gamma^{0k}$ is Hermitian, as $(\gamma^0 \gamma^k)^\dagger
+= \gamma^{k\dagger} \gamma^{0\dagger} = (-\gamma^k)(\gamma^0) = \gamma^0
+\gamma^k$,
+their product is Hermitian.
+
+The second term, containing the chiral mass correction, requires careful
+algebraic treatment. Expanding the adjoint yields
+\begin{equation}
+	\left( \gamma^0 m e^{-i \alpha \gamma^5} \right)^\dagger = m
+	\left( e^{-i \alpha \gamma^5} \right)^\dagger \left( \gamma^0 \right)^\dagger.
+\end{equation}
+Utilizing the hermiticity of $\gamma^5$ and $\gamma^0$, and the identity
+$(e^A)^\dagger = e^{A^\dagger}$, we obtain
+\begin{equation}
+	m e^{i \alpha \gamma^5} \gamma^0.
+\end{equation}
+Critically, $\gamma^0$ and $\gamma^5$ anticommute ($\{ \gamma^0, \gamma^5 \} =
+0$). This anticommutation implies the commutation relation for the exponential
+function
+\begin{equation}
+	e^{i \theta \gamma^5} \gamma^0
+	= \left(\cos{\theta} + i \gamma^5 \sin{\theta}\right) \gamma^0
+	= \gamma^0 \left(\cos{\theta} - i \gamma^5 \sin{\theta}\right)
+	= \gamma^0 e^{-i \theta \gamma^5}.
+\end{equation}
+Applying this commutation to the mass term, we recover the original operator
+\begin{equation}
+	m e^{i \alpha \gamma^5} \gamma^0 = \gamma^0 m e^{-i \alpha \gamma^5}.
+\end{equation}
+Thus,
+\begin{equation}
+	H^\dagger = \gamma^{0k} p_k + \gamma^0 m e^{-i \alpha \gamma^5} = H.
+\end{equation}
+We conclude that the Hamiltonian of the Chiral Dirac Equation is strictly
+Hermitian. The introduction of the chiral angle $\alpha$ preserves the
+self-adjoint nature of the energy operator, ensuring real energy eigenvalues and
+unitary time evolution without requiring a modification of the inner product or
+metric.
+\section{Chiral Seesaw Mechanism}
+
+As an alternative approach to explain the smallness of neutrino masses, we
+revisit the mass generation mechanism proposed by Watson and Musielak within the
+framework of the Chiral Dirac Equation (CDE)
+\cite{watsonChiralSymmetryDirac2020, watsonChiralDiracEquation2021}.
+In this formalism, the fermion mass arises from Yukawa couplings to both a
+scalar field $\phi_1$ (Standard Model-like) and a pseudoscalar field $\phi_2$.
+In Watson's proposal \cite{Watson2022}, restricting the theory to pure
+left-handed fermionic fields causes the mass terms to vanish identically.
+Considering the original Yukawa Lagrangian postulated by Watson
+\begin{equation} \label{eq:original_yukawa}
+  \mathcal{L}_Y = -\frac{\lambda_1 v_1}{\sqrt{2}}\,\overline{\nu}\nu -
+  \frac{\lambda_2 v_2}{\sqrt{2}}\,\overline{\nu}\gamma^{5}\nu.
+\end{equation}
+
+Both terms vanish if we impose the left-handed chirality constraint on the
+neutrino field ($P_L \nu = \nu$, $P_R \nu = 0$). The scalar product
+$\overline{\nu}\nu$ vanishes because the Dirac adjoint of a left-handed field
+behaves as a right-handed projector acting to the left
+\begin{equation}
+\begin{aligned}
+  \overline{\nu} &= \overline{P_L \nu} \\
+                 &= \nu^\dagger P_L \gamma^0 \\
+                 &= \nu^\dagger \gamma^0 P_R \\
+                 &= \overline{\nu}\, P_R .
+\end{aligned}
+\end{equation}
+
+Multiplying by $\nu$ from the right, and recalling that $\nu = P_L \nu$, we
+obtain
+\begin{equation}
+  \overline{\nu}\, \nu = \left(\overline{\nu}\, P_R\right) \left(P_L
+  \nu\right) = \overline{\nu} \underbrace{\left(P_R P_L\right)}_{0} \nu = 0.
+\end{equation}
+
+Similarly, for the pseudoscalar term $\overline{\nu} \gamma^{5} \nu$, we utilize
+the fact that $\gamma^5$ commutes with the chiral projectors.
+Following the previous result
+\begin{equation}
+\begin{aligned}
+  \overline{\nu} \gamma^{5} \nu &= \left(\overline{\nu} P_R\right) \gamma^{5}
+  \left(P_L \nu\right) \\
+                                &= \overline{\nu} \gamma^{5} \left(P_R P_L\right)
+                                \nu \\
+                                &= 0.
+\end{aligned}
+\end{equation}
+
+Thus, without the inclusion of a right-handed component, no Dirac mass term can
+be generated in this framework. However, if we assume the existence of a
+right-handed neutrino component $\nu_R$ (such that $\nu = \nu_L + \nu_R$), the
+Dirac mass term does not vanish. Instead, it acquires a complex phase determined
+by the chiral angle $\alpha$, which is intrinsic to the CDE. To naturally
+suppress the neutrino mass without relying on fine-tuning, we invoke the
+Majorana mass term, leading to a Chiral Seesaw Mechanism \cite{peskinIntroductionQuantumField2019}.
+
+
+\subsection{The Chiral Dirac Mass Term}
+
+Following Watson and Musielak \cite{watsonChiralSymmetryDirac2020},
+the general Yukawa Lagrangian expanded about the vacuum expectation values
+(VEVs) $v_1$ and $v_2$ corresponds to \Cref{eq:original_yukawa}. Defining the
+scalar mass parameter $M = \lambda_1 v_1 / \sqrt{2}$ and the pseudoscalar mass
+parameter $\tilde{M} = \lambda_2 v_2 / \sqrt{2}$, and decomposing the fields
+into their chiral components, the Dirac mass term
+becomes
+\begin{equation}
+  \mathcal{L}_{\text{Dirac}} = \overline{\nu}_L \left(M + \tilde{M}\right)
+  \nu_R + \overline{\nu}_R \left(M - \tilde{M}\right) \nu_L.
+\end{equation}
+
+In the CDE formalism, these parameters are related to the propagation mass $m$
+and the chiral angle $\alpha$ by $M = m \cos \alpha$ and $\tilde{M} = -im \sin
+\alpha$. Consequently, the effective Dirac mass coupling $M_D$ connecting
+$\overline{\nu}_L$ and $\nu_R$ is identified as
+\begin{equation} \label{eq:chiral_M_D}
+  M_D \equiv M + \tilde{M} = m\left(\cos \alpha - i \sin \alpha\right) = m
+  e^{-i\alpha}.
+\end{equation}
+
+The result in \eqref{eq:chiral_M_D} is crucial, the Dirac mass in this model
+carries a physical phase derived from the underlying chiral symmetry breaking.
+
+\subsection{The Full Majorana-Dirac Lagrangian}
+
+To implement the seesaw mechanism, we introduce Majorana mass terms. Unlike
+Dirac terms which couple left- and right-handed fields ($\overline{\nu}_L
+\nu_R$), Majorana mass terms violate lepton number by two units. Specifically,
+we utilize the charge-conjugated right-handed field $\nu_R^c =
+C\overline{\nu}_R^T$. The most general Lorentz-invariant mass Lagrangian
+including both the Chiral Dirac term derived above and the Majorana terms is
+\begin{equation} \label{eq:L_mass_full}
+  \mathcal{L}_{\text{Mass}}
+  =
+  \overline{\nu}_L M_D \nu_R
+  +
+  \frac{1}{2}\overline{\nu_L^c} M_L \nu_L
+  +
+  \frac{1}{2}\overline{\nu_R^c} M_R \nu_R
+  +\text{h.c.}
+\end{equation}
+
+Here, $M_L$ represents the Majorana mass for the active left-handed neutrinos
+(assumed to be negligible or zero in the minimal Type-I seesaw), and $M_R$ is
+the heavy Majorana mass scale for the sterile neutrinos.
+
+\subsection{The Chiral Mass Matrix}
+
+To find the physical mass eigenstates, we rewrite \eqref{eq:L_mass_full} using
+the basis of left-handed fields. We define the interaction basis spinor $\Psi =
+\left(\nu_L, \nu_R^c\right)^T$. Utilizing the Majorana identity, the Lagrangian
+allows the explicit matrix expansion
+\begin{equation}
+  \mathcal{L}_{\text{Mass}} = \frac{1}{2} \overline{\Psi^c} \mathcal{M} \Psi +
+  \text{h.c.},
+\end{equation}
+
+where the mass matrix $\mathcal{M}$ incorporates the chiral modifications from
+the CDE defined in \eqref{eq:chiral_M_D}
+\begin{equation} \label{eq:mass_matrix}
+  \mathcal{M} =
+  \begin{pmatrix}
+    M_L & M_D \\
+    M_D^T & M_R
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    M_L & m e^{-i\alpha} \\
+    m e^{-i\alpha} & M_R
+  \end{pmatrix}.
+\end{equation}
+
+\subsection{The Neutrino Chiral Mass}
+
+To account for the smallness of neutrino masses, we adopt the following
+identifications in the matrix \eqref{eq:mass_matrix}
+\begin{enumerate}
+  \item \textbf{$M_R$:} Heavy sterile scale ($M_R \gg m$).
+  \item \textbf{$M_L$:} Assumed $M_L \approx 0$.
+  \item \textbf{$M_D$:} Given by $m e^{-i\alpha}$.
+\end{enumerate}
+
+Based on these assumptions, the mass matrix is given by
+\begin{equation} \label{eq:mass_matrix_approx}
+  \mathcal{M} \approx \begin{pmatrix} 0 & m e^{-i\alpha} \\ m e^{-i\alpha} &
+  M_R \end{pmatrix}.
+\end{equation}
+
+Finding the eigenvalues of \eqref{eq:mass_matrix_approx} and applying the seesaw
+approximation ($m \ll M_R$), we obtain two mass terms
+\begin{enumerate}
+  \item \textbf{Heavy Mass ($m'_1$):} Sterile Dominant State.
+    \begin{equation}
+      m'_1 \approx M_R + \frac{m^2 e^{-2i\alpha}}{M_R} \approx M_R
+    \end{equation}
+
+  \item \textbf{Light Mass ($m'_2$):} Active Dominant State.
+    \begin{equation} \label{eq:light_mass_eigenvalue}
+      m'_2 \approx - \frac{\left(m e^{-i\alpha}\right)^2}{M_R} = -
+      \frac{m^2}{M_R} e^{-2i\alpha}
+    \end{equation}
+\end{enumerate}
+
+\subsection{Mass Suppression and CP Violation}
+
+The application of the Chiral Seesaw Mechanism yields the following expression
+for the active neutrino mass based on \eqref{eq:light_mass_eigenvalue}
+\begin{equation} \label{eq:final_neutrino_mass}
+  m'_{\nu} \approx    \frac{m^2}{M_R} e^{-2i\alpha}.
+\end{equation}
+
+This equation implies two significant physical results.
+
+\subsubsection{Mass Suppression}
+
+The magnitude of the active neutrino mass is given by $\left|m'_{\nu}\right|
+\approx m^2 / M_R$. This confirms the standard seesaw suppression mechanism. For
+instance, if we assume $m \sim \qty{100}{\giga\electronvolt}$ and
+$\left|m'_{\nu}\right| \sim \qty{0.1}{\electronvolt}$, the mechanism
+necessitates a heavy scale of $M_R \sim \qty{e14}{\giga\electronvolt}$.
+
+\subsubsection{The Chiral Phase and CP Violation}
+
+A novel feature of this model is that the phase of the light neutrino
+mass in \eqref{eq:final_neutrino_mass} is directly determined by the chiral
+angle $\alpha$
+\begin{equation}
+  \text{Phase}\left(m'_{\nu}\right) = e^{-2i\alpha}.
+\end{equation}
+
+This dependence has the following implications:
+\begin{itemize}
+  \item \textbf{Leptonic CP Violation:} In a three-generation scenario, this
+    complex phase translates into Majorana phases in the PMNS mixing matrix. A
+    value of $\alpha \neq k\pi/2$ implies a novel source of leptonic CP
+    violation.
+  \item \textbf{BSM Link:} This establishes a direct link between the
+    theoretical angle $\alpha$ of the CDE and a physical observable mediated by
+    the seesaw scale $M_R$.
+\end{itemize}
+\section{Generalization to Higher Spins}
+\label{sec:HigherSpins}
+
+To systematically address the extension to higher spins, we adopt the
+Bargmann-Wigner (BW) formalism, which provides a rigorous group-theoretical
+framework for constructing relativistic wave equations for particles of
+arbitrary spin $s$. Established by V. Bargmann and E. P. Wigner
+\cite{bargmannGroupTheoreticalDiscussion1997}, this method posits that the wavefunction of a particle
+with spin $s$ can be represented by a multispinor field $\Psi_{\alpha_1 \alpha_2
+\dots \alpha_{2s}}$ of rank $2s$, which effectively describes a composite state
+of $2s$ fundamental spin-1/2 fermions. To ensure that this object transforms
+irreducibly under the Poincar\'{e} group, the multispinor must satisfy two
+conditions: it must be totally symmetric under the exchange of any pair of
+spinor indices, and it must satisfy the Dirac equation for each index
+independently
+\begin{equation}
+  \left( i\,\gamma^\mu \partial_\mu - m \right)_{\alpha_k \beta}\,
+  \Psi_{\alpha_1 \dots \beta \dots \alpha_{2s}}(x)
+  = 0,
+  \qquad \text{for } k = 1, \dots, 2s .
+\end{equation}
+
+To address the specific extension to vector bosons, we adopt the methodology
+established by Watson in their generalization of the Proca equation
+\cite{Watson2022}. Their approach serves as the guiding framework for this
+analysis. Specifically, for the vector boson case ($s=1$), the formalism begins
+with the Bargmann-Wigner equations for a symmetric rank-2 spinor
+$\Psi_{\alpha\beta}$. Crucially, the standard scalar mass $m$ is replaced by the
+chiral mass operator $\hat{M}$ derived from the fermionic theory, applied to
+each spinor index independently
+\begin{equation}
+  \left(i \gamma^\mu \partial_\mu - \hat{M}\right)_{\alpha \lambda}
+  \Psi_{\lambda \beta}(x) = 0, \quad \text{with} \quad \hat{M} = m
+  e^{-i\alpha\gamma^5}.
+\end{equation}
+
+The wavefunction is then expanded in terms of the Clifford algebra generators.
+The symmetry constraint intrinsic to the Bargmann-Wigner formalism for $s=1$
+requires the spinor $\Psi_{\alpha\beta}$ to be symmetric, which effectively
+eliminates the scalar, pseudoscalar, and axial-vector components. Consequently,
+the wavefunction reduces naturally to a superposition of only the vector
+($A_\mu$) and tensor ($F_{\mu\nu}$) sectors
+\begin{equation}
+  \Psi(x) = \left( \gamma^\mu A_\mu(x) + \frac{1}{2}\sigma^{\mu\nu}
+  F_{\mu\nu}(x) \right) C,
+\end{equation}
+where $C$ is the charge conjugation matrix. Substituting this ansatz back into
+the fundamental chiral equations leads to a decoupling of the components. While
+the standard theory yields the Proca equation $\partial_\mu F^{\mu\nu} + m^2
+A^\nu = 0$, the chiral extension results in the Generalized Proca Equation
+\begin{equation}
+  \partial_\mu F^{\mu\nu} + m^2 \cos^2\left(\alpha\right) A^\nu + \dots = 0.
+\end{equation}
+
+It is important to clarify that the appearance of the $\cos^2\left(\alpha\right)$
+factor in this sector does not violate the relativistic structure of the theory;
+rather, it acts as a scaling parameter that defines an effective physical mass
+$M_{\text{eff}} = m \cos\left(\alpha\right)$. This implies that the chiral angle
+can modulate the observable mass of the boson without altering the underlying
+geometric consistency of the Poincar\'{e} group.
+
+\subsection{The Chiral Rarita-Schwinger Equation}
+
+Building on this success, we apply the procedure to the Rarita-Schwinger field
+($s=3/2$). To maintain full consistency with the underlying Bargmann-Wigner
+theory, we treat the field strictly as a totally symmetric rank-3 spinor
+$\Psi_{\alpha\beta\gamma}$. In this formalism, the field is a composite state of
+three fundamental spin-1/2 fermions. The chiral mass generation mechanism is
+applied to each of the three constituent spinor indices. Since the chiral
+rotation $e^{-i\alpha\gamma^5}$ induces a projection factor of
+$\cos\left(\alpha\right)$ for a single spinor (as seen in the Dirac case), the
+composite mass term for a rank-3 object must scale as the product of the
+projections of its constituents. This leads to a cubic scaling law
+\begin{equation}
+  \hat{M}_{\text{composite}} \rightarrow m \cos^3\left(\alpha\right).
+\end{equation}
+
+Consequently, the modified Chiral Rarita-Schwinger equation takes the form
+\begin{equation}
+  \epsilon^{\mu\nu\rho\sigma} \gamma^5 \gamma_\nu \partial_\rho \psi_\sigma +
+  i m \cos^3\left(\alpha\right) \sigma^{\mu\nu} \psi_\nu = 0.
+\end{equation}
+
+This result suggests a general scaling law for the effective mass of a particle
+with spin $s$: $M_{\text{eff}}^{(s)} \approx m \cos^{2s}\left(\alpha\right)$.
+This theoretical prediction aligns with the linear scaling found for Dirac
+fermions ($2s=1 \rightarrow \cos^1$) and the quadratic scaling found for Proca
+bosons ($2s=2 \rightarrow \cos^2$), offering a unified geometric interpretation
+of mass modulation across the spin spectrum. Finally, we note that for
+higher-spin fields, the introduction of non-trivial mass matrices requires
+careful checking of the constraint algebra ($\gamma^\mu\psi_\mu=0$ and
+$\partial^\mu\psi_\mu=0$) to avoid the propagation of acausal modes. This is a
+known issue in massive Rarita-Schwinger theories referred to as the
+Velo-Zwanziger problem \cite{napsucialeSpinFrac32$RaritaSchwinger2006}.
+While a full causality analysis is beyond the scope of this proposal, future
+work must verify the preservation of these constraints under chiral mass
+modifications.
+
+\subsection{Discussion on Generalization via Projection Operators}
+
+The explicit construction of equations for higher spins (like $s=3/2$ or $s=2$)
+using standard component notation becomes exponentially complex. To solve this,
+Watson and Musielak propose a powerful generalization based on Orthogonal
+Idempotents. Instead of manually constructing the Lagrangians, this method
+utilizes projection operators $\hat{P}$ to define the physical subspaces
+directly. For a system of $N$ constituent spinors (which would form a spin-$N/2$
+particle), the generalized projection operator is defined as the tensor product
+of the individual helicity projectors
+\begin{equation}
+  \hat{P}_{s_1, s_2, \dots, s_N}\left(\hat{n}\right) =
+  \hat{P}_{s_1}\left(\hat{n}\right) \otimes \hat{P}_{s_2}\left(\hat{n}\right)
+  \otimes \dots \otimes \hat{P}_{s_N}\left(\hat{n}\right),
+\end{equation}
+where each $\hat{P}_{s_i}\left(\hat{n}\right)$ projects the spin state relative
+to a quantization axis $\hat{n}$. For the specific case of the Rarita-Schwinger
+field ($N=3$), one selects the symmetric subspace of three entangled spinors.
+This projector formalism is superior because it automatically handles the chiral
+constraints. By defining the chiral basis for each projector (parameterized by
+angles $\alpha_1, \alpha_2, \dots$), the resulting equation of motion emerges
+naturally with the mass terms already modulated by the relative chiral angles.
+Thus, the effective mass $M_{\text{eff}}$ is not an ad-hoc insertion but an
+eigenvalue of the generalized projection operator acting on the vacuum state
+\begin{equation}
+  \hat{P}_{\text{total}} \Psi = M_{\text{eff}} \Psi.
+\end{equation}
+This confirms that the chiral degrees of freedom are fundamental to the
+algebraic structure of the Poincar\'{e} group representations, providing a
+path to derive wave equations for any arbitrary spin $s$.
